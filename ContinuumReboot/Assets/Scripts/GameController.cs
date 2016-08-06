@@ -8,7 +8,16 @@ public class GameController : MonoBehaviour
 	public Transform Player;
 	public TimescaleController timeScaleControllerScript;
 
+	[Header ("Object Spawning")]
+	public Vector3 SpawnPosition;
+
+	[Header ("Scoring")]
+	public float CurrentScore;
+	public float ScoreSpeed;
+
 	[Header ("UI Elements")]
+	public Text ScoreL;
+	public Text ScoreR;
 	public GameObject PanelL;
 	public GameObject PanelR;
 	public Text TimeScaleTextL;
@@ -29,6 +38,9 @@ public class GameController : MonoBehaviour
 		TimeScaleTextL.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.TimeScaleReadOnly * 100f)) + "%";
 		TimeScaleTextR.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.TimeScaleReadOnly * 100f)) + "%";
 
+		CurrentScore += Time.deltaTime * ScoreSpeed;
+		ScoreL.text = "" + Mathf.Round (CurrentScore) + "";
+		ScoreR.text = "" + Mathf.Round (CurrentScore) + "";
 
 		// When the player starts to approach the bottom of the screen
 		if (Player.transform.position.y < -14.0f) 
