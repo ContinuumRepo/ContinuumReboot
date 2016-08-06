@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour 
+public class GameControllerOLD : MonoBehaviour 
 {
 	[Header ("TIME")]
 	public Text TimescaleText;

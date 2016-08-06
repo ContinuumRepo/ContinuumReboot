@@ -4,24 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Fire
-  - Point
-  - Bullet
-  - LevelMod
-  - Enemy
-  - PlayerObject
-  - TSCalc
-  - PlayerGeom
-  - PointsText
-  - LevelModText
-  - MainAudioSource
-  - Camera
+  - TimeScaleController
   - Draggable
-  - MovementFollower
-  - TimeMod
-  - Powerup
-  - BendingMaster
-  - StaticPointExplosion
   layers:
   - Default
   - TransparentFX
@@ -31,12 +15,12 @@ TagManager:
   - UI
   - 
   - 
-  - Points
-  - Bullets
-  - Player
-  - Powerups
-  - Stars
-  - Barrier
+  - Barriers
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
