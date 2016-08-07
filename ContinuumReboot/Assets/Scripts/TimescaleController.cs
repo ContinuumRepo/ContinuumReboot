@@ -4,9 +4,9 @@ using System.Collections;
 public class TimescaleController : MonoBehaviour 
 {
 	public float CurrentTimeScale; // Stores calculation of timescale here.
-	public float highestTimeScale;
+	public float highestTimeScale; // For stats screen.
 	public float TimeScaleReadOnly; // The actual value of time.timeScale.
-	public float StartTimeScale = 1.0f;
+	public float StartTimeScale = 1.0f; // So there is no runtime error that timescale is below 0 at the start of the game.
 	public float TimeSpeedIncreaseSens; // Multipler to minimum time increase per frame.
 	public float AddMinTime = 0.1f; // Minimum time scale.
 	public float TimeSpeedSens; // Dampens change in timescale as the distance between player and reference point increase.
@@ -19,7 +19,6 @@ public class TimescaleController : MonoBehaviour
 	{
 		Time.timeScale = StartTimeScale; // Sets timescale to 1
 	}
-	
 
 	void Update () 
 	{
@@ -28,6 +27,7 @@ public class TimescaleController : MonoBehaviour
 		CurrentTimeScale += Time.unscaledDeltaTime * TimeSpeedIncreaseSens; // Increases minimum timescale.
 		distance = Player.transform.position.y - ReferencePoint.transform.position.y; // Calculates distance.
 
+		// Stores the highest timescale value for stats.
 		if (Time.timeScale > highestTimeScale) 
 		{
 			highestTimeScale = Time.timeScale;

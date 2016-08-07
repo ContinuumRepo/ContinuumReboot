@@ -7,6 +7,7 @@ public class HitSparks : MonoBehaviour
 
 	void Start () 
 	{
+		// Gets particle system component.
 		HitSpark = GetComponent<ParticleSystem> ();
 	}
 
@@ -19,8 +20,8 @@ public class HitSparks : MonoBehaviour
 	{
 		if (collision.collider.tag == "Barrier" && HitSpark.isPlaying == false) 
 		{
+			// Play hit spark particle system.
 			HitSpark.Play ();
-			//Debug.Log ("Collided.");
 		}
 	}
 
@@ -28,8 +29,8 @@ public class HitSparks : MonoBehaviour
 	{
 		if (collision.collider.tag == "Barrier" && HitSpark.isPlaying == false) 
 		{
+			// Stop hit spark particle system.
 			HitSpark.Stop ();
-			//Debug.Log ("Collided.");
 		}
 	}
 }

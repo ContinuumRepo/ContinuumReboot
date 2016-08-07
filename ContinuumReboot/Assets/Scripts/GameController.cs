@@ -5,21 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
-	public Transform Player;
-	public TimescaleController timeScaleControllerScript;
-
-	[Header ("Object Spawning")]
-	public Vector3 SpawnPosition;
+	private Transform Player;
+	private TimescaleController timeScaleControllerScript; // Timescale script component.
 
 	[Header ("Scoring")]
 	public float CurrentScore;
-	public float ScoreSpeed;
+	public float ScoreSpeed; // How fast the score increases per frame.
 
 	[Header ("UI Elements")]
-	public Text ScoreL;
-	public Text ScoreR;
 	public GameObject PanelL;
 	public GameObject PanelR;
+	public Text ScoreL;
+	public Text ScoreR;
 	public Text TimeScaleTextL;
 	public Text TimeScaleTextR;
 
@@ -30,11 +27,13 @@ public class GameController : MonoBehaviour
 
 		PanelL.SetActive (false); // Turns off left panel.
 		PanelR.SetActive (true); // Turns on right panel.
+
+		Player = gameObject.transform;
 	}
 
 	void Update () 
 	{
-		// Sets UI for time multipler.
+		// Sets UI for time multipler and converts to string format.
 		TimeScaleTextL.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.TimeScaleReadOnly * 100f)) + "%";
 		TimeScaleTextR.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.TimeScaleReadOnly * 100f)) + "%";
 
