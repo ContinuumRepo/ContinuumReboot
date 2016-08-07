@@ -28,7 +28,8 @@ public class GameController : MonoBehaviour
 		PanelL.SetActive (false); // Turns off left panel.
 		PanelR.SetActive (true); // Turns on right panel.
 
-		Player = gameObject.transform;
+		GameObject PlayerObject = GameObject.FindGameObjectWithTag ("Player");
+		Player = PlayerObject.transform;
 	}
 
 	void Update () 
