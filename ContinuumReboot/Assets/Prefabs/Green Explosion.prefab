@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 450478}
   - 198: {fileID: 19813906}
   - 199: {fileID: 19917144}
+  - 114: {fileID: 11461990}
   m_Layer: 0
   m_Name: Green Explosion
   m_TagString: Untagged
@@ -30,6 +31,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11461990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 2
+  deactivateOnly: 0
 --- !u!198 &19813906
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1411,7 +1425,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     m_Bounce:
-      scalar: 1
+      scalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
