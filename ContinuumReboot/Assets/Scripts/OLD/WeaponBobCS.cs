@@ -45,8 +45,7 @@ public class WeaponBobCS : MonoBehaviour {
 				timer = timer - (Mathf.PI * 2);
 			}
 		}
-
-		// X axis only
+			
 		if (waveslice != 0) 
 		{
 			translateChange = waveslice * bobbingAmount;

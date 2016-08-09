@@ -81,7 +81,7 @@ public class SmoothFollowOrig : MonoBehaviour
 	}
 	
 	// ReSharper disable UnusedMember.Local
-	private void LateUpdate()
+	public void LateUpdate()
 		// ReSharper restore UnusedMember.Local
 	{
 		if (PlayerM == true) {

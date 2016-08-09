@@ -12,11 +12,11 @@ public class CamRotation : MonoBehaviour
 
 	void FixedUpdate () 
 	{
-		gameObject.transform.rotation = Quaternion.Euler 
+		gameObject.transform.localRotation = Quaternion.Euler 
 			(
-				transform.rotation.x, 
-				transform.rotation.y, 
-				transform.position.x * amount
+				transform.localRotation.x, 
+				transform.localRotation.y, 
+				transform.localPosition.x * amount
 			);
 	}
 }
