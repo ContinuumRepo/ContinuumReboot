@@ -19,6 +19,7 @@ public class FPSCounterJ : MonoBehaviour
 	public Text FPSText;
 	public bool showPrefix;
 	public int FramesPerSec { get; protected set; }
+	public float FramesPerSecB { get; protected set; }
 
 	private void Start()
 	{
@@ -42,11 +43,12 @@ public class FPSCounterJ : MonoBehaviour
 			
 			// Display it
 			FramesPerSec = Mathf.RoundToInt(frameCount / timeSpan);
+			FramesPerSecB = frameCount / timeSpan;
 			FPSText.text = FramesPerSec.ToString() + "";
 
 			if (showPrefix == true)
 			{
-				FPSText.text = "FPS: " + FramesPerSec.ToString() + "";
+				FPSText.text = "FPS: " + FramesPerSec.ToString() + " (" + ((1.0f/(FramesPerSecB)) * 1000.0f) + " ms)";
 			}
 		}
 	}
