@@ -5,6 +5,9 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 {
 	public float delay;
 	public bool deactivateOnly;
+	public bool activateOnly;
+	public GameObject ActiveObject;
+	public PressAnyKeyDeactivate PressAnyKeyScript;
 
 	void Start () 
 	{
@@ -13,10 +16,19 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 			StartCoroutine (Deactivate ());
 		}
 
-		if (deactivateOnly == false) 
+		if (activateOnly == true) 
+		{
+			ActiveObject.SetActive (false);
+			PressAnyKeyScript.useInput = false;
+			StartCoroutine (Activate ());
+		}
+
+		if (deactivateOnly == false && activateOnly == false) 
 		{
 			Destroy (gameObject, delay);
 		}
+
+
 	}
 
 	void Update () 
@@ -28,5 +40,13 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 	{
 		yield return new WaitForSeconds (delay);
 		gameObject.SetActive (false);
+	}
+
+	IEnumerator Activate ()
+	{
+		yield return new WaitForSeconds (delay);
+		ActiveObject.SetActive (true);
+		PressAnyKeyScript.useInput = true;
+		//gameObject.GetComponent<DestroyOrDeactivateByTime> ().enabled = false;
 	}
 }

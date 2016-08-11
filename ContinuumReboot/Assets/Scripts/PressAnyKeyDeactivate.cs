@@ -7,6 +7,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 	public GameObject Enabler;
 	public GameObject SocialMedia;
 	public AudioSource PressStartSound;
+	public bool useInput;
 
 	void Start ()
 	{
@@ -17,7 +18,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 
 	void Update () 
 	{
-		if (Input.anyKeyDown) 
+		if (Input.anyKeyDown && useInput == true) 
 		{
 			Enabler.SetActive (true);
 			SocialMedia.SetActive (true);
