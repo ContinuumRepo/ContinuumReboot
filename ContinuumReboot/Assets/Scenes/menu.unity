@@ -110,7 +110,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 3260623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.853, y: -0, z: 1.4360006}
+  m_LocalPosition: {x: 0.896, y: 0, z: 1.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -588,9 +588,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -1670,7 +1675,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 41020143}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8529999, y: 0, z: 1.4360005}
+  m_LocalPosition: {x: 0.89, y: -0, z: 1.159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -2148,9 +2153,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -3235,6 +3245,8 @@ Transform:
   - {fileID: 811418893}
   - {fileID: 1170441601}
   - {fileID: 1662770318}
+  - {fileID: 851595510}
+  - {fileID: 1791353178}
   m_Father: {fileID: 0}
   m_RootOrder: 5
 --- !u!1 &49800829
@@ -5296,14 +5308,14 @@ RectTransform:
   m_GameObject: {fileID: 209178338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1621393779}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35}
+  m_AnchoredPosition: {x: 0, y: 88.65}
   m_SizeDelta: {x: 3937, y: 289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &209178340
@@ -5633,9 +5645,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children:
-  - {fileID: 851595510}
-  - {fileID: 1791353178}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &300336743
@@ -5895,8 +5905,8 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.10453879, b: 0.32352942, a: 0.7058824}
-    m_HighlightedColor: {r: 0, g: 0.32311988, b: 1, a: 0.5882353}
+    m_NormalColor: {r: 0, g: 0.10453879, b: 0.32352942, a: 0.5882353}
+    m_HighlightedColor: {r: 0, g: 0.14492877, b: 0.44852942, a: 1}
     m_PressedColor: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -6039,6 +6049,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 19885534, guid: 3d54c605c45188e4290c70b8fe62d822, type: 2}
+      propertyPath: ColorBySpeedModule.gradient.maxGradient.m_NumColorKeys
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19885534, guid: 3d54c605c45188e4290c70b8fe62d822, type: 2}
+      propertyPath: ColorBySpeedModule.range.x
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d54c605c45188e4290c70b8fe62d822, type: 2}
   m_IsPrefabParent: 0
@@ -6150,11 +6168,11 @@ RectTransform:
   m_Children:
   - {fileID: 1098036211}
   m_Father: {fileID: 1621393779}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -591.25, y: -219}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: -560, y: -101}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &323376877
 MonoBehaviour:
@@ -6260,7 +6278,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 24382f36ce5a89e44a0ca22ea31d09bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9bd42c8333f86440a55260aa43b0517, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6329,15 +6347,15 @@ RectTransform:
   m_GameObject: {fileID: 415114709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: -0.2, y: 0.2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1788876983}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00005340576, y: -0.00000071526}
-  m_SizeDelta: {x: 2884, y: 464}
+  m_AnchoredPosition: {x: -92, y: -0.00000071526}
+  m_SizeDelta: {x: 2245.5, y: 464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415114711
 MonoBehaviour:
@@ -6378,6 +6396,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 415114709}
+--- !u!198 &429509255 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19885534, guid: 3d54c605c45188e4290c70b8fe62d822,
+    type: 2}
+  m_PrefabInternal: {fileID: 318066439}
 --- !u!1 &448801535
 GameObject:
   m_ObjectHideFlags: 0
@@ -6519,7 +6542,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 504518255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8500004, y: 0, z: 2.0600007}
+  m_LocalPosition: {x: 0.89, y: -0, z: 1.675}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -6997,9 +7020,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -8079,7 +8107,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 522015976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8529999, y: 0, z: 1.4360003}
+  m_LocalPosition: {x: -0.898, y: -0, z: 1.195}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -8557,9 +8585,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -9912,6 +9945,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 429509255}
+          m_MethodName: set_startSpeed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 200
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -10416,7 +10460,6 @@ GameObject:
   - 114: {fileID: 644881661}
   - 114: {fileID: 644881660}
   - 114: {fileID: 644881659}
-  - 114: {fileID: 644881666}
   m_Layer: 0
   m_Name: Menu Camera
   m_TagString: MainCamera
@@ -10468,7 +10511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 5
   showGeneratedNormals: 0
   offsetScale: 0.2
   blurRadius: 18
@@ -10570,24 +10613,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 644881658}
   m_Enabled: 1
---- !u!114 &644881666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 644881658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ec2fe99d1108b9d0006a298d76c639, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  axes: 0
-  sensitivityX: 0.1
-  sensitivityY: 0.1
-  minimumX: -5
-  maximumX: 5
-  minimumY: -5
-  maximumY: 5
 --- !u!1 &651053413
 GameObject:
   m_ObjectHideFlags: 0
@@ -10612,7 +10637,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651053413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8529999, y: 0, z: 1.4360003}
+  m_LocalPosition: {x: 0.899, y: 0, z: 1.171}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -11090,9 +11115,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -12172,7 +12202,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 658445499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.853, y: -0, z: 1.4360002}
+  m_LocalPosition: {x: -0.895, y: -0, z: 1.209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -12650,9 +12680,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -13932,7 +13967,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 698102101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85299987, y: 0, z: 1.4360005}
+  m_LocalPosition: {x: -0.883, y: 0, z: 1.201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -14410,9 +14445,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -15653,6 +15693,74 @@ Canvas:
 Transform:
   m_PrefabParentObject: {fileID: 495434, guid: 2b37861cab6bcca48a7ffe8eedb17067, type: 2}
   m_PrefabInternal: {fileID: 1518807817}
+--- !u!1 &814848042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 814848043}
+  - 222: {fileID: 814848045}
+  - 114: {fileID: 814848044}
+  m_Layer: 0
+  m_Name: Outer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &814848043
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814848042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1621393779}
+  m_RootOrder: 1
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0.000061035156, y: -0.000015258789}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &814848044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814848042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5019608}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &814848045
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 814848042}
 --- !u!1 &822665080
 GameObject:
   m_ObjectHideFlags: 0
@@ -15793,12 +15901,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 851595509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 294741540}
-  m_RootOrder: 0
+  m_Father: {fileID: 48534358}
+  m_RootOrder: 3
 --- !u!1 &869886985
 GameObject:
   m_ObjectHideFlags: 0
@@ -15916,7 +16024,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 876328188}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.853, y: -0, z: 1.4360006}
+  m_LocalPosition: {x: 0.894, y: 0, z: 1.166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -16394,9 +16502,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -17539,7 +17652,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 890009980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85300004, y: -0, z: 1.4360008}
+  m_LocalPosition: {x: 0.896, y: -0, z: 1.141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -18017,9 +18130,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -19099,7 +19217,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 929247595}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8529999, y: 0, z: 1.4360003}
+  m_LocalPosition: {x: -0.893, y: -0, z: 1.214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -19577,9 +19695,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -20659,7 +20782,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 953942313}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85299987, y: 0, z: 1.4360005}
+  m_LocalPosition: {x: -0.898, y: -0, z: 1.206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -21137,9 +21260,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -22219,7 +22347,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 962747893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.85300004, y: -0, z: 1.4360008}
+  m_LocalPosition: {x: 0.898, y: -0, z: 1.166}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -22697,9 +22825,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -24336,8 +24469,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0.000008106227}
-  m_SizeDelta: {x: 2884, y: 464}
+  m_AnchoredPosition: {x: -106, y: 0.000008106227}
+  m_SizeDelta: {x: 2260, y: 464}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1098036212
 MonoBehaviour:
@@ -25083,6 +25216,7 @@ GameObject:
   - 114: {fileID: 1308495295}
   - 114: {fileID: 1308495298}
   - 114: {fileID: 1308495299}
+  - 95: {fileID: 1308495300}
   m_Layer: 0
   m_Name: Facebook Page Button
   m_TagString: Untagged
@@ -25244,9 +25378,65 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 979868345}
+          m_MethodName: Play
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1308495300}
+          m_MethodName: Play
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: FacebookButtonPointerEnter
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1308495300}
+          m_MethodName: Play
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: FacebookButtonPointerExit
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!95 &1308495300
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1308495293}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ca58bd8a8610254fa390899a2410c8e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1320628159 stripped
 Transform:
   m_PrefabParentObject: {fileID: 412076, guid: 3d54c605c45188e4290c70b8fe62d822, type: 2}
@@ -25422,6 +25612,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1423367114}
+  - 95: {fileID: 1423367115}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -25452,6 +25643,23 @@ RectTransform:
   m_AnchoredPosition: {x: 80, y: 0}
   m_SizeDelta: {x: -160, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1423367115
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1423367113}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8d203e6660b0ab41ae971ee3853d19e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1426047046
 GameObject:
   m_ObjectHideFlags: 0
@@ -26077,6 +26285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1880255546}
+  - {fileID: 814848043}
   - {fileID: 209178339}
   - {fileID: 323376876}
   - {fileID: 1788876983}
@@ -26623,7 +26832,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1683482786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8529999, y: 0, z: 1.4360003}
+  m_LocalPosition: {x: -0.897, y: 0, z: 1.221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -27101,9 +27310,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -28190,9 +28404,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 810285245}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -515, y: 107.75}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 541.7, y: 157}
   m_SizeDelta: {x: 1908.1, y: 337.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1696477860
@@ -28238,7 +28452,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -28570,16 +28784,16 @@ RectTransform:
   m_GameObject: {fileID: 1788876982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 415114710}
   m_Father: {fileID: 1621393779}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 591.25, y: -219}
-  m_SizeDelta: {x: 1000, y: 100}
+  m_AnchoredPosition: {x: 560, y: -101}
+  m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1788876984
 MonoBehaviour:
@@ -28601,7 +28815,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.3897059, g: 0.3897059, b: 0.3897059, a: 0.078}
-    m_HighlightedColor: {r: 0, g: 0.39215687, b: 0.19880931, a: 1}
+    m_HighlightedColor: {r: 0, g: 0.8014706, b: 0.40631652, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -28696,7 +28910,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 24382f36ce5a89e44a0ca22ea31d09bf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9bd42c8333f86440a55260aa43b0517, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -28774,12 +28988,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1791353177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 294741540}
-  m_RootOrder: 1
+  m_Father: {fileID: 48534358}
+  m_RootOrder: 4
 --- !u!82 &1791353179
 AudioSource:
   m_ObjectHideFlags: 0
@@ -29082,7 +29296,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 0, y: -600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880255547
 MonoBehaviour:
@@ -29349,7 +29563,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2061812264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85, y: -0, z: 2.06}
+  m_LocalPosition: {x: -0.885, y: -0, z: 1.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -29827,9 +30041,14 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0
           inSlope: 0
           outSlope: 0
+          tangentMode: 0
+        - time: 0.16780181
+          value: 0.94285715
+          inSlope: -0.26851892
+          outSlope: -0.26851892
           tangentMode: 0
         - time: 1
           value: 0
@@ -31392,6 +31611,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
+        - m_Target: {fileID: 429509255}
+          m_MethodName: set_startSpeed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 400
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -31451,6 +31681,17 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 429509255}
+          m_MethodName: set_startSpeed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 200
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
