@@ -1799,7 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentScore: 0
-  ScoreSpeed: 1000
+  ScoreSpeed: 200
   PanelL: {fileID: 1876983886}
   PanelR: {fileID: 1772476380}
   ScoreL: {fileID: 777585015}
@@ -1930,7 +1930,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -796.5, y: -41.2}
+  m_AnchoredPosition: {x: -766, y: -41}
   m_SizeDelta: {x: 1299, y: 423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232644493
@@ -1953,7 +1953,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cc1ba05822de07a4e907f6b6382c08f9, type: 3}
+    m_Font: {fileID: 12800000, guid: 806957b618258d74190ba70ca9964e13, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
@@ -2054,7 +2054,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 807.58, y: -44}
+  m_AnchoredPosition: {x: 764, y: -44}
   m_SizeDelta: {x: 1446, y: 423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283724135
@@ -2077,7 +2077,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cc1ba05822de07a4e907f6b6382c08f9, type: 3}
+    m_Font: {fileID: 12800000, guid: 806957b618258d74190ba70ca9964e13, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 0
@@ -2935,7 +2935,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 234.8, y: -44}
+  m_AnchoredPosition: {x: 175, y: -44}
   m_SizeDelta: {x: 4108, y: 423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &413306265
@@ -2958,7 +2958,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cc1ba05822de07a4e907f6b6382c08f9, type: 3}
+    m_Font: {fileID: 12800000, guid: 806957b618258d74190ba70ca9964e13, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 1
@@ -3290,7 +3290,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: -44}
+  m_AnchoredPosition: {x: -218, y: -44}
   m_SizeDelta: {x: 4060, y: 423}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &777585015
@@ -3313,7 +3313,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 59a69664a436e824a98db425d00c8a66, type: 3}
+    m_Font: {fileID: 12800000, guid: 806957b618258d74190ba70ca9964e13, type: 3}
     m_FontSize: 300
     m_FontStyle: 0
     m_BestFit: 1
@@ -7774,7 +7774,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key1.rgba
-      value: 134283259
+      value: 1677787131
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
@@ -7790,7 +7790,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
-      value: 838892031
+      value: 620788223
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key2.rgba
@@ -9893,7 +9893,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key1.rgba
-      value: 134283259
+      value: 1677787131
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
@@ -9909,7 +9909,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
-      value: 838892031
+      value: 620788223
       objectReference: {fileID: 0}
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key2.rgba
