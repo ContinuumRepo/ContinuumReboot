@@ -44,6 +44,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   deactivateOnly: 0
+  activateOnly: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!198 &19821846
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -259,7 +262,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294901891
+        rgba: 4289069311
       minMaxState: 0
     startSize:
       scalar: 0.2
