@@ -8,6 +8,9 @@ TagManager:
   - Draggable
   - MainEngine
   - Barrier
+  - Point
+  - StaticPointExplosion
+  - ReferencePoint
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Cubes
   - Player
   - HitSparks
-  - 
+  - TopBarrier
   - 
   - 
   - 

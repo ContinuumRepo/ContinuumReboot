@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MenuPlayer Credits
+  m_Name: MenuPlayer Settings
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
@@ -275,7 +275,7 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 3, g: 0.7720592, b: 2.2242546, a: 1}
+        second: {r: 1.9139571, g: 0.7720592, b: 3, a: 1}
       data:
         first:
           name: _Color
