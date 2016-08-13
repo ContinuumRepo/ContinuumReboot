@@ -44,6 +44,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 2
   deactivateOnly: 0
+  activateOnly: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!198 &19830664
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -262,7 +265,7 @@ ParticleSystem:
         rgba: 4278255614
       minMaxState: 0
     startSize:
-      scalar: 0.2
+      scalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -464,11 +467,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 50
+    cnt0: 30
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 50
+    cntmax0: 30
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30

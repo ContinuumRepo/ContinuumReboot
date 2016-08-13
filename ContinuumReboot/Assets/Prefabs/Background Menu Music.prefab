@@ -27,10 +27,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110458}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -2.92, y: 0.58653694, z: 0.01}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +43,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: abb88e3a81958344884f312e09bcbebf, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 82a8aad7440900f4fad25e42d7269969, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 189ad8aa9b7a09b4783f5cec4098eca5, type: 3}
   m_Name: 
@@ -134,7 +134,7 @@ AudioHighPassFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110458}
   m_Enabled: 0
-  m_CutoffFrequency: 5000
+  m_CutoffFrequency: 300
   m_HighpassResonanceQ: 1
 --- !u!169 &16944474
 AudioLowPassFilter:
@@ -144,7 +144,7 @@ AudioLowPassFilter:
   m_GameObject: {fileID: 110458}
   m_Enabled: 0
   serializedVersion: 3
-  m_LowpassResonanceQ: 1
+  m_LowpassResonanceQ: 2
   lowpassLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -374,7 +374,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 0.02
+      scalar: 0.03
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -515,7 +515,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 5000
+    maxNumParticles: 100
     rotation3D: 1
   ShapeModule:
     serializedVersion: 2
@@ -542,7 +542,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 800
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:

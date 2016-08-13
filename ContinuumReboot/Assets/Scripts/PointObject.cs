@@ -57,7 +57,7 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
 			}
 
-			Destroy (gameObject); // Destroys the gameObject.
+			//Destroy (gameObject); // Destroys the gameObject.
 		}
 	}
 }
