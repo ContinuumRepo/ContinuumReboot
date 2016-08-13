@@ -12,11 +12,10 @@ GameObject:
   - 65: {fileID: 6517236}
   - 23: {fileID: 2307810}
   - 54: {fileID: 5422120}
-  - 114: {fileID: 11420820}
-  - 114: {fileID: 11455722}
+  - 114: {fileID: 11477206}
   m_Layer: 9
   m_Name: Cyan Brick
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +79,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 8
   m_CollisionDetection: 0
 --- !u!65 &6517236
 BoxCollider:
@@ -94,25 +93,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11420820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144984}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveUnitsPerSecond:
-    value: {x: 0, y: 40, z: 0}
-    space: 1
-  rotateDegreesPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  ignoreTimescale: 0
---- !u!114 &11455722
+--- !u!114 &11477206
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -120,14 +101,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 144984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
+  m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 20
-  deactivateOnly: 0
-  activateOnly: 0
-  ActiveObject: {fileID: 0}
-  PressAnyKeyScript: {fileID: 0}
+  moveSpeed: -10
+  rotationSpeed: 0
+  tweenRate: 0.1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

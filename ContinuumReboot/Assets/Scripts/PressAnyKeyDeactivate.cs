@@ -8,6 +8,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 	public GameObject SocialMedia;
 	public AudioSource PressStartSound;
 	public bool useInput;
+	public Animator TitleAnim;
 
 	void Start ()
 	{
@@ -24,6 +25,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 			SocialMedia.SetActive (true);
 			Deactivator.SetActive (false);
 			PressStartSound.Play ();
+			TitleAnim.Play ("MoveUp");
 			GetComponent<PressAnyKeyDeactivate> ().enabled = false;
 		}
 	}
