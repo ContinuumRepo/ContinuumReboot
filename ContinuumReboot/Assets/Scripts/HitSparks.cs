@@ -4,6 +4,7 @@ using System.Collections;
 public class HitSparks : MonoBehaviour 
 {
 	public ParticleSystem HitSpark;
+	public AudioSource Audio;
 
 	void Start () 
 	{
@@ -23,6 +24,10 @@ public class HitSparks : MonoBehaviour
 			// Play hit spark particle system.
 			HitSpark.Play ();
 		}
+		if (Audio.isPlaying == false) 
+		{
+			Audio.Play ();
+		}
 	}
 
 	void OnCollisionExit (Collision collision)
@@ -31,6 +36,11 @@ public class HitSparks : MonoBehaviour
 		{
 			// Stop hit spark particle system.
 			HitSpark.Stop ();
+		}
+
+		if (Audio.isPlaying == true) 
+		{
+			Audio.Stop ();
 		}
 	}
 }

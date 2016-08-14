@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour 
 {
+	private GameController gameControllerScript;
+
 	[Header ("Movement")]
 	private Rigidbody rb;
 	public float speed = 10.0f;
@@ -11,6 +13,8 @@ public class PlayerController : MonoBehaviour
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
+
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 	}
 
 	void Update () 
@@ -20,16 +24,18 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		// Movement from Space Shooter tutorial. (Uses WASD/arrow keys).
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+		if (gameControllerScript.isPreGame == false) 
+		{
+			// Movement from Space Shooter tutorial. (Uses WASD/arrow keys).
+			float moveHorizontal = Input.GetAxis ("Horizontal");
+			float moveVertical = Input.GetAxis ("Vertical");
 
-		Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
-		rb.velocity = movement * speed;
+			Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
+			rb.velocity = movement * speed;
 
-		rb.position = new Vector3 
-		(rb.position.x, rb.position.y, 0);
+			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
-		rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * - tilt, 0.0f);
+			rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * -tilt, 0.0f);
+		}
 	}		
 }

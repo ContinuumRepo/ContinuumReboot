@@ -28854,8 +28854,16 @@ Prefab:
     - target: {fileID: 11492870, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
       propertyPath: m_FontData.m_Font
       value: 
-      objectReference: {fileID: 12800000, guid: 806957b618258d74190ba70ca9964e13,
+      objectReference: {fileID: 12800000, guid: cedbf3ebc6751284ba9a8adea440be28,
         type: 3}
+    - target: {fileID: 11492870, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
+      propertyPath: m_Text
+      value: CITRIC JUNGLE
+      objectReference: {fileID: 0}
+    - target: {fileID: 11492870, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
   m_IsPrefabParent: 0
