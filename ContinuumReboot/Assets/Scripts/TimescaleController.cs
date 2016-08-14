@@ -15,14 +15,14 @@ public class TimescaleController : MonoBehaviour
 	private Transform player;
 	private Transform referencePoint;
 
-	void Start () 
+	public void Start () 
 	{
 		Time.timeScale = startTimeScale; // Sets timescale to 1
 		player = GameObject.Find ("Player").transform; // Finds Player GameObject.transform.
 		referencePoint = GameObject.FindGameObjectWithTag ("ReferencePoint").transform; // Finds reference point gameObject.transform.
 	}
 
-	void Update () 
+	public void Update () 
 	{
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
 		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.

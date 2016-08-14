@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
 		if (isPreGame) 
 		{
 			timeScaleControllerScript.enabled = false;
+			isPaused = false;
 		}
 
 		if (!isPreGame) 
@@ -104,7 +105,7 @@ public class GameController : MonoBehaviour
 		}
 
 		// HOTKEYS //
-		if (Input.GetKeyDown (KeyCode.Escape)) 
+		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
 			isPaused = true;
 			PauseGame ();

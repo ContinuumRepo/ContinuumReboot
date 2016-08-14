@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 			float moveHorizontal = Input.GetAxis ("Horizontal");
 			float moveVertical = Input.GetAxis ("Vertical");
 
-			Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
+			Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
 			rb.velocity = movement * speed;
 
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
