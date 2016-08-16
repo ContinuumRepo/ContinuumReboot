@@ -20,9 +20,9 @@ public class PointObject : MonoBehaviour
 	
 	}
 
-	void OnCollisionEnter (Collision col)
+	void OnTriggerEnter (Collider other)
 	{
-		if (col.collider.tag == "Player") 
+		if (other.tag == "Player" || other.tag == "Bullet") 
 		{
 			// Creates explosion.
 			Instantiate (Explosion, transform.position, transform.rotation);

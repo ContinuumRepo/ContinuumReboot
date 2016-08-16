@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TranslateForward : MonoBehaviour {
+public class TranslateForward : MonoBehaviour 
+{
+	public float speed = 1.0f;
 
-	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.Translate (Vector3.forward * Time.deltaTime);
+
+	void Update () 
+	{
+		transform.Translate (Vector3.forward * speed * Time.deltaTime);
 	
 	}
 }

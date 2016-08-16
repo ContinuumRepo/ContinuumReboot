@@ -10,6 +10,15 @@ public class PlayerController : MonoBehaviour
 	public float speed = 10.0f;
 	public float tilt;
 
+
+	[Header ("Shooting")]
+	public GameObject shot;
+	public Transform shotSpawn;
+	public float fireRate;
+
+	private float nextFire;
+
+
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -36,6 +45,12 @@ public class PlayerController : MonoBehaviour
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
 			rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * -tilt, 0.0f);
+		}
+
+		if (Input.GetButton("Fire1") && Time.time > nextFire)
+		{
+			nextFire = Time.time + fireRate;
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 		}
 	}		
 }

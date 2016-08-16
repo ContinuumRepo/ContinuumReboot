@@ -47,8 +47,8 @@ GameObject:
   - 33: {fileID: 3386972}
   - 65: {fileID: 6593664}
   - 54: {fileID: 5411918}
-  m_Layer: 8
-  m_Name: Cube
+  m_Layer: 12
+  m_Name: Top Barrier
   m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ GameObject:
   - 65: {fileID: 6565482}
   - 54: {fileID: 5477046}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Bottom Barrier
   m_TagString: Barrier
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130610}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -333,7 +333,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116692}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -345,7 +345,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169858}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -357,7 +357,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 131576}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -382,12 +382,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181552}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
+  mode: 5
   showGeneratedNormals: 0
   offsetScale: 0.2
   blurRadius: 18
@@ -416,17 +416,17 @@ MonoBehaviour:
   tweakMode: 1
   screenBlendMode: 1
   hdr: 1
-  sepBlurSpread: 3
+  sepBlurSpread: 2.76
   quality: 1
-  bloomIntensity: 0.85
+  bloomIntensity: 0.8
   bloomThreshold: 0.2
-  bloomThresholdColor: {r: 0, g: 0.089654684, b: 1, a: 1}
+  bloomThresholdColor: {r: 1, g: 1, b: 1, a: 1}
   bloomBlurIterations: 4
   hollywoodFlareBlurIterations: 4
   flareRotation: 0
   lensflareMode: 1
   hollyStretchWidth: 3
-  lensflareIntensity: 0
+  lensflareIntensity: 0.05
   lensflareThreshold: 0.18
   lensFlareSaturation: 0.5
   flareColorA: {r: 0, g: 0.5738163, b: 1, a: 0.75}
@@ -458,8 +458,8 @@ MonoBehaviour:
   sunColor: {r: 0.32352942, g: 0.7682288, b: 1, a: 1}
   sunThreshold: {r: 1, g: 1, b: 1, a: 1}
   sunShaftBlurRadius: 3.5
-  sunShaftIntensity: 0.3
-  maxRadius: 0.35399997
+  sunShaftIntensity: 1
+  maxRadius: 0.9
   useDepthTexture: 1
   sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
   simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
