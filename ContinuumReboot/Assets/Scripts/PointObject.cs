@@ -7,12 +7,17 @@ public class PointObject : MonoBehaviour
 	public enum type {Orange, Yellow, Green, Cyan, Purple}; // Cube types.
 	public type PointType;
 	public ParticleSystem MainEngineParticles; // Engine Particle system.
+	public GameObject PlayerExplosion;
+	private PlayerController PlayerControllerScript;
+	public float Damage = 25.0f;
 
 	void Start ()
 	{
 		// Finding the main engine particle system GameObject.
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
 		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
+
+		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
 	}
 
 	void Update () 
@@ -22,7 +27,7 @@ public class PointObject : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Player" || other.tag == "Bullet") 
+		if (other.tag == "Bullet") 
 		{
 			// Creates explosion.
 			Instantiate (Explosion, transform.position, transform.rotation);
@@ -58,6 +63,19 @@ public class PointObject : MonoBehaviour
 			}
 
 			Destroy (gameObject); // Destroys the gameObject.
+		}
+
+		if (other.tag == "Player")
+		{
+			GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
+
+			for (int i = Destroyers.Length-1; i > 0; i--)
+			{
+				Destroy (Destroyers [i].gameObject);
+			}
+
+			Instantiate (PlayerExplosion, transform.position, transform.rotation);
+			PlayerControllerScript.Health -= Damage;
 		}
 	}
 }

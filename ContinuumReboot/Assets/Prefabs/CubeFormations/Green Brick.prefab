@@ -16,6 +16,7 @@ GameObject:
   - 95: {fileID: 9538236}
   - 114: {fileID: 11440634}
   - 114: {fileID: 11474292}
+  - 114: {fileID: 11429008}
   m_Layer: 9
   m_Name: Green Brick
   m_TagString: Cube
@@ -113,6 +114,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11429008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xBound: {x: -100, y: 100}
+  yBound: {x: -50, y: 50}
+  zBound: {x: -100, y: 100}
 --- !u!114 &11440634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,6 +174,7 @@ MonoBehaviour:
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
   PointType: 0
   MainEngineParticles: {fileID: 0}
+  PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

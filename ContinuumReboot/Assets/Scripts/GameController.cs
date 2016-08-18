@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour 
 {
 	private Transform Player;
+	private PlayerController playerControllerScript;
 	private TimescaleController timeScaleControllerScript; // Timescale script component.
 
 	[Header ("MouseStates")]
@@ -64,6 +65,8 @@ public class GameController : MonoBehaviour
 		// Finds TimeScale Controller Component.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
 
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
+
 		if (timeScaleControllerScript == null) 
 		{
 			Debug.Log ("Cannot find Timescale Controller script.");
@@ -76,6 +79,10 @@ public class GameController : MonoBehaviour
 		{
 			Debug.Log ("Cannot find Player.");
 		}
+
+		CurrentScore = 0;
+		ScoreL.text = "" + 0 + "";
+		ScoreR.text = "" + 0 + "";
 	}
 
 	void Update () 
@@ -86,7 +93,7 @@ public class GameController : MonoBehaviour
 			isPaused = false;
 		}
 
-		if (!isPreGame) 
+		if (!isPreGame && playerControllerScript.Health > playerControllerScript.minHealth) 
 		{
 			// Sets UI for time multipler and converts to string format.
 			TimeScaleTextL.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
@@ -120,6 +127,11 @@ public class GameController : MonoBehaviour
 				PanelL.SetActive (false); // Turns off left panel.
 				PanelR.SetActive (true); // Turns on right panel.
 			}
+		}
+
+		if (CurrentScore < 0) 
+		{
+			CurrentScore = 0;
 		}
 
 		// HOTKEYS //

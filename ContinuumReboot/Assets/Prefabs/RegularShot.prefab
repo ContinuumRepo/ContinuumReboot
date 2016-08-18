@@ -275,7 +275,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!114 &11417432
 MonoBehaviour:
@@ -307,6 +307,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSpeed: -70
+  BulletCostType: 0
+  DecrementPortion: 0.02
+  DecrementAmount: 100
 --- !u!114 &11481534
 MonoBehaviour:
   m_ObjectHideFlags: 1

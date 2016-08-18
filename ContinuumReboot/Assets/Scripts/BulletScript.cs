@@ -8,10 +8,26 @@ public class BulletScript : MonoBehaviour
 {
 	private AutoMoveAndRotate MoveAndRotateScript;
 	public float newSpeed = -70.0f;
+	private GameController gameControllerScript;
+	public enum bulletcost {FixedRate, Percentage}
+	public bulletcost BulletCostType;
+	public float DecrementPortion = 0.1f;
+	public float DecrementAmount = 100.0f;
 
 	void Start () 
 	{
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+
+		if (BulletCostType == bulletcost.Percentage)
+		{
+			gameControllerScript.CurrentScore = gameControllerScript.CurrentScore - (DecrementPortion * gameControllerScript.CurrentScore);
+		}
+
+		if (BulletCostType == bulletcost.FixedRate) 
+		{
+			gameControllerScript.CurrentScore -= DecrementAmount;
+		}
 	}
 
 	void Update ()
