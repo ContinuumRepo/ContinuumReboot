@@ -13,22 +13,6 @@ public class LockHideMouse : MonoBehaviour
 
 	void Start () 
 	{
-		/*
-		// Default settings
-		CursorLockModeType = lockmode.FreeCursor;
-		hideMouse = false;
-
-		if (hideMouse) 
-		{
-			Cursor.visible = false;
-		}
-
-		if (!hideMouse) 
-		{
-			Cursor.visible = true;
-		}
-		*/
-
 		// Lock cursor
 		if (CursorLockModeType == lockmode.LockCursor) 
 		{
@@ -76,10 +60,5 @@ public class LockHideMouse : MonoBehaviour
 				Cursor.visible = true;
 			}
 		}
-	}
-	
-	void Update () 
-	{
-	
 	}
 }

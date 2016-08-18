@@ -1,28 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+namespace UnityStandardAssets.Utility
+{
+
 public class BulletScript : MonoBehaviour 
 {
-	public GameObject[] ObjectsFound;
+	private AutoMoveAndRotate MoveAndRotateScript;
+	public float newSpeed = -70.0f;
 
 	void Start () 
 	{
-		ObjectsFound = GameObject.FindGameObjectsWithTag ("Brick");
+		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 	}
 
-	void Update () 
+	void Update ()
 	{
-		Vector3.MoveTowards (gameObject.transform.position, ObjectsFound [Random.Range (0, ObjectsFound.Length)].transform.position, 0.5f);
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Brick" || other.tag == "Barrier") 
+		if (other.tag == "Brick" || other.tag == "Cube") 
 		{
-			//transform.LookAt(ObjectsFound[Random.Range(0, ObjectsFound.Length)].transform.position);
-			gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-180, 180));
+			gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
+			MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
+			Debug.Log ("Ricoshet from hit object!");
+		}
 
-			Debug.Log ("Ricoshet!");
+		if (other.tag == "Barrier") 
+		{
+			gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
+			Debug.Log ("Ricoshet from barrier!");
 		}
 	}
+}
 }

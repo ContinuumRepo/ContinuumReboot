@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
 
 	private float nextFire;
 
-
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody> ();

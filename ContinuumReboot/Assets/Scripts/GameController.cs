@@ -8,12 +8,23 @@ public class GameController : MonoBehaviour
 	private Transform Player;
 	private TimescaleController timeScaleControllerScript; // Timescale script component.
 
+	[Header ("MouseStates")]
+	public GlobalMouseVisibility MouseScript;
+
 	[Header ("Pre-game")]
 	public bool isPreGame;
 	public GameObject PreGameUI;
 	public float CountDownDelay = 5.0f;
 	public Animator PlayerAnim;
 	public GameObject BottomBarrier;
+
+	[Header ("Spawning Objects")]
+	public GameObject[] Hazards;
+	public Vector3 spawnValues;
+	public float startWait;
+	public float spawnWait;
+	public float waveWait;
+	public float hazardCount;
 
 	[Header ("Pausing")]
 	public bool isPaused;
@@ -35,6 +46,13 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+		StartCoroutine (BrickSpawnWaves ());
+		// Disables and hides mouse movement.
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Confined;
+
+		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
+
 		isPreGame = true;
 		BottomBarrier.GetComponent<BoxCollider>().enabled = false;
 		StartCoroutine (CountDown ());
@@ -105,10 +123,18 @@ public class GameController : MonoBehaviour
 		}
 
 		// HOTKEYS //
+
+		// Pauses game and enables mouse pointer.
 		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
 			isPaused = true;
 			PauseGame ();
+
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+
+			MouseScript.visibleTime = MouseScript.visibleDuration;
+			MouseScript.enabled = false;
 		}
 
 		if (Input.GetKeyDown (KeyCode.P)) 
@@ -134,9 +160,22 @@ public class GameController : MonoBehaviour
 			// Loads game from the start
 			SceneManager.LoadScene ("disclaimer");
 		}
+
+		// Right click to enable mouse pointer
+		if (Input.GetMouseButtonDown (1)) 
+		{
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
+			MouseScript.visibleTime = MouseScript.visibleDuration;
+		}
 	}
 
-	void PauseGame ()
+	public void StartSpawningBricks ()
+	{
+		StartCoroutine (BrickSpawnWaves ());
+	}
+
+	public void PauseGame ()
 	{
 		timeScaleControllerScript.enabled = false; // Turns off Timescale controller script.
 		Time.timeScale = 0; // Sets timescale to 0.
@@ -150,7 +189,7 @@ public class GameController : MonoBehaviour
 		Cursor.visible = true; // Makes cursor visible.
 	}
 
-	void UnPauseGame ()
+	public void UnPauseGame ()
 	{
 		timeScaleControllerScript.enabled = true; // Turns on Timescale controller script.
 		PauseUI.SetActive (false); // Deactivates Pause UI.
@@ -160,8 +199,10 @@ public class GameController : MonoBehaviour
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.7f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = false; // Turns off low pass filter.
-		Cursor.lockState = CursorLockMode.Locked; // Locks the cursor.
+		//Cursor.lockState = CursorLockMode.Locked; // Locks the cursor.
 		Cursor.visible = false; // Makes cursor invisible.
+		isPaused = false;
+
 	}
 
 	IEnumerator CountDown ()
@@ -174,5 +215,22 @@ public class GameController : MonoBehaviour
 		PreGameUI.SetActive (false); // Turns off PreGame UI.
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
+	}
+
+	IEnumerator BrickSpawnWaves ()
+	{
+		yield return new WaitForSeconds (startWait);
+		while (true) 
+		{
+			for (int i = 0; i < hazardCount; i++) 
+			{
+				GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
+				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+				Quaternion spawnRotation = Quaternion.identity;
+				Instantiate (hazard, spawnPosition, spawnRotation);
+				yield return new WaitForSeconds (spawnWait);
+			}
+			yield return new WaitForSeconds (waveWait);
+		}
 	}
 }
