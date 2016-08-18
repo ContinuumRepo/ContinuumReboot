@@ -37,6 +37,11 @@ public class GameController : MonoBehaviour
 
 	[Header ("Scoring")]
 	public float CurrentScore;
+	public int LevelOneScore = 1000;
+	public int LevelTwoScore = 10000;
+	public int LevelThreeScore = 20000;
+	public int LevelFourScore = 50000;
+	public int LevelFiveScore = 100000;
 	public float ScoreSpeed; // How fast the score increases per frame.
 	public GameObject PanelL;
 	public GameObject PanelR;
@@ -236,11 +241,62 @@ public class GameController : MonoBehaviour
 		{
 			for (int i = 0; i < hazardCount; i++) 
 			{
-				GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
-				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
-				Quaternion spawnRotation = Quaternion.identity;
-				Instantiate (hazard, spawnPosition, spawnRotation);
-				yield return new WaitForSeconds (spawnWait);
+				// Spawn element 0 if less than level one score
+				if (CurrentScore > 0 && CurrentScore < LevelOneScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, 1)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
+
+				// Spawn element 0 and 1 if less than level 2 score.
+				if (CurrentScore > LevelOneScore && CurrentScore < LevelTwoScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, 2)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
+
+
+				if (CurrentScore > LevelTwoScore && CurrentScore < LevelThreeScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, 3)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
+
+				if (CurrentScore > LevelThreeScore && CurrentScore < LevelFourScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, 4)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
+
+				if (CurrentScore > LevelFourScore && CurrentScore < LevelFiveScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, 5)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
+
+				if (CurrentScore > LevelFiveScore)
+				{
+					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
+					Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
+					Quaternion spawnRotation = Quaternion.identity;
+					Instantiate (hazard, spawnPosition, spawnRotation);
+					yield return new WaitForSeconds (spawnWait);
+				}
 			}
 			yield return new WaitForSeconds (waveWait);
 		}
