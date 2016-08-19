@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	private MeshCollider PlayerCollider;
 	private MeshRenderer PlayerMesh;
 	private AudioSourcePitchByTimescale BGMPitchScript;
+	private ColorCorrectionCurves ColorCorrectionCurvesScript;
 	private bool playedGameOverSound;
 
 	[Header ("Movement")]
@@ -62,6 +64,10 @@ public class PlayerController : MonoBehaviour
 		// Background music pitch by timescale script.
 		BGMPitchScript = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSourcePitchByTimescale>();
 
+		// Finds color correction curves script.
+		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
+		ColorCorrectionCurvesScript.enabled = false;
+
 		// Turns off GameOver UI.
 		GameOverUI.SetActive (false);
 	}
@@ -99,8 +105,15 @@ public class PlayerController : MonoBehaviour
 				GameOverSound.PlayDelayed (2.0f);
 				playedGameOverSound = true;
 			}
-
 		}
+
+		if (Health > 0 && Health <= 25 && ColorCorrectionCurvesScript.saturation <= 1) 
+		{
+			ColorCorrectionCurvesScript.enabled = true;
+			ColorCorrectionCurvesScript.saturation += 0.1f * Time.unscaledDeltaTime;
+		}
+
+
 	}
 
 	void FixedUpdate ()

@@ -52,8 +52,13 @@ public class GameController : MonoBehaviour
 	public Text GameOverScoreText;
 	public Text HighestTimeScaleText;
 
+	[Header ("Misc")]
+	public GameObject ShowFpsText;
+
 	void Start () 
 	{
+		ShowFpsText.SetActive (false);
+
 		// Starts coroutines.
 		StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (CountDown ());
@@ -196,6 +201,12 @@ public class GameController : MonoBehaviour
 			Cursor.visible = true;
 			Cursor.lockState = CursorLockMode.None;
 			MouseScript.visibleTime = MouseScript.visibleDuration;
+		}
+
+		// Show FPS.
+		if (Input.GetKeyDown (KeyCode.F1)) 
+		{
+			ShowFpsText.SetActive (true);
 		}
 	}
 
