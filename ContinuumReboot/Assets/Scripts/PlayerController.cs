@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	private MeshCollider PlayerCollider;
 	private MeshRenderer PlayerMesh;
 	private AudioSourcePitchByTimescale BGMPitchScript;
+	private bool playedGameOverSound;
 
 	[Header ("Movement")]
 	private Rigidbody rb;
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
 	public float TimeSlowingSpeed = 0.1f;
 	public float minTimeScale = 0.0f;
 	public GameObject GameOverUI;
+	public AudioSource GameOverSound;
+	public AudioSource GameOverLoop;
 
 	void Start () 
 	{
@@ -83,6 +86,18 @@ public class PlayerController : MonoBehaviour
 			{
 				GameOverUI.SetActive (true);
 			}
+
+			if (!GameOverLoop.isPlaying) 
+			{
+				GameOverLoop.PlayDelayed (4.0f);
+			}
+
+			if (!GameOverSound.isPlaying && playedGameOverSound == false)
+			{
+				GameOverSound.PlayDelayed (2.0f);
+				playedGameOverSound = true;
+			}
+
 		}
 	}
 
