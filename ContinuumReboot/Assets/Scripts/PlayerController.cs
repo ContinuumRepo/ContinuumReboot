@@ -71,6 +71,8 @@ public class PlayerController : MonoBehaviour
 		// The UI fill amount of the health.
 		HealthImageL.fillAmount = Health / 100;
 		HealthImageR.fillAmount = Health / 100;
+		HealthImageR.color = new Color (25/Health, Health/100, 0, 0.9f);
+		HealthImageL.color = new Color (25/Health, Health/100, 0, 0.9f);
 
 		if (Health <= 0) 
 		{
