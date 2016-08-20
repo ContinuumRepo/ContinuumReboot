@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Generic Brick
+  m_Name: GenericCombo
   m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 810bc470791a75c41a1c7d7178ad5d6d, type: 3}
+          m_Texture: {fileID: 2800000, guid: 904e705136eee074aa60691c8db73dd7, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -130,7 +130,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 0.01
+        second: 1
     m_Colors:
       data:
         first:
@@ -143,4 +143,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 1, g: 1, b: 1, a: 0.097}
+        second: {r: 1, g: 1, b: 1, a: 1}

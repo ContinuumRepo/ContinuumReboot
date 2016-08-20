@@ -25,7 +25,16 @@ public class GameController : MonoBehaviour
 	public float startWait;
 	public float spawnWait;
 	public float waveWait;
-	public float hazardCount;
+	public int hazardCount;
+
+	[Header ("Spawning Powerups")]
+	public GameObject[] Powerups;
+	public Vector3 powerupSpawnValues;
+	public float powerupStartWait;
+	public float powerupSpawnWait;
+	public float powerupWaveWait;
+	public int powerupCount;
+	public Text PowerupText;
 
 	[Header ("Pausing")]
 	public bool isPaused;
@@ -62,6 +71,7 @@ public class GameController : MonoBehaviour
 		// Starts coroutines.
 		StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (CountDown ());
+		StartCoroutine (PowerupSpawnWaves ());
 
 		// Start cursor lock state.
 		Cursor.visible = false;
@@ -322,6 +332,22 @@ public class GameController : MonoBehaviour
 				}
 			}
 			yield return new WaitForSeconds (waveWait);
+		}
+	}
+
+	IEnumerator PowerupSpawnWaves ()
+	{
+		yield return new WaitForSeconds (powerupStartWait);
+		while (true)
+		{
+			for (int i = 0; i < powerupCount; i++) 
+			{
+				GameObject powerup = Powerups [Random.Range (0, Powerups.Length)];
+				Vector3 powerupSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-powerupSpawnValues.x, powerupSpawnValues.x)), powerupSpawnValues.y, powerupSpawnValues.z);
+				Quaternion powerupSpawnRotation = Quaternion.identity;
+				Instantiate (powerup, powerupSpawnPos, powerupSpawnRotation);
+				yield return new WaitForSeconds (powerupSpawnWait);
+			}
 		}
 	}
 }

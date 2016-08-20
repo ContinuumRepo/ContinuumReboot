@@ -24,6 +24,20 @@ public class PlayerController : MonoBehaviour
 	public float fireRate;
 	private float nextFire;
 
+	[Header ("Powerups")]
+	public GameObject[] Powerups;
+	public GameObject RegularShot;
+	public GameObject DoubleShot;
+	public GameObject TriShot;
+	public enum powerup {RegularShot, DoubleShot, TriShot, rowClear, disableStacking}
+	public powerup CurrentPowerup;
+	public float powerupTime = 0;
+	public float powerupDuration = 10.0f;
+	public AudioSource powerupTimeRunningOut;
+	public GameObject powerupDeactivateAudio;
+	public ParticleSystem ActivePowerupParticles;
+	public ParticleSystem TimeRunningOutParticles;
+
 	[Header ("Health")]
 	public float Health;
 	public float startingHealth = 100;
@@ -38,6 +52,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject GameOverUI;
 	public AudioSource GameOverSound;
 	public AudioSource GameOverLoop;
+	public GameObject gameOverExplosion;
 
 	void Start () 
 	{
@@ -70,6 +85,8 @@ public class PlayerController : MonoBehaviour
 
 		// Turns off GameOver UI.
 		GameOverUI.SetActive (false);
+
+		CurrentPowerup = powerup.RegularShot;
 	}
 
 	void Update () 
@@ -80,6 +97,47 @@ public class PlayerController : MonoBehaviour
 		HealthImageR.color = new Color (25/Health, Health/100, 0, 0.9f);
 		HealthImageL.color = new Color (25/Health, Health/100, 0, 0.9f);
 
+		if (CurrentPowerup == powerup.RegularShot) 
+		{
+			shot = RegularShot;
+			gameControllerScript.PowerupText.text = "" + "Cost 2.5% score";
+		}
+
+		if (CurrentPowerup == powerup.DoubleShot) 
+		{
+			shot = DoubleShot;
+			powerupTime -= Time.unscaledDeltaTime;
+			gameControllerScript.PowerupText.text = "Double Shot " + "Cost 0 pts";
+		}
+
+		if (CurrentPowerup == powerup.TriShot) 
+		{
+			shot = TriShot;
+			powerupTime -= Time.unscaledDeltaTime;
+			gameControllerScript.PowerupText.text = "Triple Shot " + "Cost 0 pts";
+		}
+
+		if (powerupTime < 0) 
+		{
+			powerupTime = 0;
+			CurrentPowerup = powerup.RegularShot;
+		}
+
+		// Warning powerup time.
+		if (powerupTime < 3.0f && powerupTime > 2.8f)
+		{
+			ActivePowerupParticles.Stop ();
+			powerupTimeRunningOut.Play ();
+			TimeRunningOutParticles.Play ();
+		}
+
+		// Powerup ran out.
+		if (powerupTime > 0 && powerupTime < 0.02f && !powerupDeactivateAudio.GetComponent<AudioSource>().isPlaying) 
+		{
+			Instantiate (powerupDeactivateAudio, Vector3.zero, Quaternion.identity);
+		}
+
+		// Health at 0.
 		if (Health <= 0) 
 		{
 			PlayerMesh.enabled = false;
@@ -100,11 +158,12 @@ public class PlayerController : MonoBehaviour
 				GameOverLoop.PlayDelayed (4.0f);
 			}
 
+			/*
 			if (!GameOverSound.isPlaying && playedGameOverSound == false)
 			{
 				GameOverSound.PlayDelayed (2.0f);
 				playedGameOverSound = true;
-			}
+			}*/
 		}
 
 		if (Health > 0 && Health <= 25 && ColorCorrectionCurvesScript.saturation <= 1) 

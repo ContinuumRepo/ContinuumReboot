@@ -3,15 +3,23 @@ using System.Collections;
 
 public class PointObject : MonoBehaviour 
 {
+	private PlayerController PlayerControllerScript; // The Player Controller script.
+	private GameController gameControllerScript; // The GameController script.
+
 	public GameObject Explosion; // Instantiated explosion.
 	public enum type {Orange, Yellow, Green, Cyan, Purple}; // Cube types.
 	public type PointType;
-	public float PointReward = 150;
+	public float PointReward = 150; // Rewards the player this many points when a bullet hits it.
 	public ParticleSystem MainEngineParticles; // Engine Particle system.
-	public GameObject PlayerExplosion;
-	private PlayerController PlayerControllerScript;
-	private GameController gameControllerScript;
-	public float Damage = 25.0f;
+	public GameObject PlayerExplosion; // The explosion when the player hits it.
+	public float Damage = 25.0f; // Damage amount to player.
+
+	// Combo particle systems.
+	public ParticleSystem ComboOne;
+	public ParticleSystem ComboTwo;
+	public ParticleSystem ComboThree;
+	public ParticleSystem ComboFour;
+	public ParticleSystem ComboFive;
 
 	void Start ()
 	{
@@ -19,9 +27,18 @@ public class PointObject : MonoBehaviour
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
 		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
 
+		// Finds player controller script and assigns to private variable.
 		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
 
+		// Finds GameController script and assigns to private variable.
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+
+		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
+		ComboOne = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
+		ComboTwo = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
+		ComboThree = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
+		ComboFour = GameObject.FindGameObjectWithTag ("ComboCyanParticles").GetComponent<ParticleSystem>();
+		ComboFive = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
 	}
 
 	void Update () 
@@ -41,6 +58,7 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to orange.
 				MainEngineParticles.startColor = new Color (0.78f, 0.33f, 0, 1);
 				gameControllerScript.CurrentScore += PointReward;
+				ComboOne.Play ();
 			}
 
 			if (PointType == type.Yellow) 
@@ -48,6 +66,7 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to yellow.
 				MainEngineParticles.startColor = new Color (1, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 2;
+				ComboTwo.Play ();
 			}
 
 			if (PointType == type.Green) 
@@ -55,6 +74,7 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to green.
 				MainEngineParticles.startColor = new Color (0, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 3;
+				ComboThree.Play ();
 			}
 
 			if (PointType == type.Cyan) 
@@ -62,6 +82,7 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to cyan.
 				MainEngineParticles.startColor = new Color (0, 1, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 4;
+				ComboFour.Play ();
 			}
 
 			if (PointType == type.Purple) 
@@ -69,6 +90,7 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to purple.
 				MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 5;
+				ComboFive.Play ();
 			}
 
 			Destroy (gameObject); // Destroys the gameObject.
@@ -85,6 +107,11 @@ public class PointObject : MonoBehaviour
 
 			Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			PlayerControllerScript.Health -= Damage;
+
+			if (PlayerControllerScript.Health <= 10) 
+			{
+				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
+			}
 		}
 	}
 }

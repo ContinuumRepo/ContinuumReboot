@@ -38,7 +38,7 @@ public class BulletScript : MonoBehaviour
 
 	void Update ()
 	{
-			PlayElement = Mathf.Clamp (PlayElement, 0, Oneshots.Length);
+		PlayElement = Mathf.Clamp (PlayElement, 0, Oneshots.Length);
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -49,7 +49,7 @@ public class BulletScript : MonoBehaviour
 			{
 				gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
 				MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
-				Debug.Log ("Ricoshet from hit object!");
+				Debug.Log ("Ricoshet from hit object!" + ricoshet);
 				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
 				PlayElement += 1;
 				ricoshet += 1;
