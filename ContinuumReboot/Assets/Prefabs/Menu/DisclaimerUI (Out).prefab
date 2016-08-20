@@ -260,6 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 5
   deactivateOnly: 0
+  activateOnly: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!222 &22202164
 CanvasRenderer:
   m_ObjectHideFlags: 1
