@@ -17,6 +17,8 @@ public class BulletScript : MonoBehaviour
 	public AudioSource[] Oneshots;
 	public int ricoshet; 
 	public int ricoshetMax = 6;
+	public GameObject BulletNoCost;
+	public bool useRandomRotation = true;
 
 	void Start () 
 	{
@@ -45,30 +47,35 @@ public class BulletScript : MonoBehaviour
 	{
 		if (other.tag == "Brick" || other.tag == "Cube") 
 		{
-			if (ricoshet < ricoshetMax)
-			{
-				gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
-				MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
-				Debug.Log ("Ricoshet from hit object!" + ricoshet);
-				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
-				PlayElement += 1;
-				ricoshet += 1;
-				Instantiate (gameObject, gameObject.transform.position, Quaternion.Euler(0, 0, Random.Range(-360, 360)));
+			if (useRandomRotation == true) {
+				if (ricoshet < ricoshetMax) {
+					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
+					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
+					Debug.Log ("Ricoshet from hit object!" + ricoshet);
+					Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
+					PlayElement += 1;
+					ricoshet += 1;
+					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+				}
+
+				if (ricoshet >= ricoshetMax) {
+					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
+					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
+					Debug.Log ("Ricoshet from hit object!");
+					Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
+					PlayElement += 1;
+					ricoshet += 1;
+				}
+		
+				if (PlayElement > 8) {
+					PlayElement = 8;
+				}
 			}
 
-			if (ricoshet >= ricoshetMax)
+			if (useRandomRotation == false) 
 			{
-				gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
-				MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
-				Debug.Log ("Ricoshet from hit object!");
+				PlayElement = 0;
 				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
-				PlayElement += 1;
-				ricoshet += 1;
-			}
-			
-			if (PlayElement > 8) 
-			{
-				PlayElement = 8;
 			}
 		}
 

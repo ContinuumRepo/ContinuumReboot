@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject RegularShot;
 	public GameObject DoubleShot;
 	public GameObject TriShot;
-	public enum powerup {RegularShot, DoubleShot, TriShot, rowClear, disableStacking}
+	public GameObject BeamShot;
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, rowClear, disableStacking}
 	public powerup CurrentPowerup;
 	public float powerupTime = 0;
 	public float powerupDuration = 10.0f;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject powerupDeactivateAudio;
 	public ParticleSystem ActivePowerupParticles;
 	public ParticleSystem TimeRunningOutParticles;
+	public Image PowerupMeter;
 
 	[Header ("Health")]
 	public float Health;
@@ -97,10 +99,13 @@ public class PlayerController : MonoBehaviour
 		HealthImageR.color = new Color (25/Health, Health/100, 0, 0.9f);
 		HealthImageL.color = new Color (25/Health, Health/100, 0, 0.9f);
 
+		PowerupMeter.fillAmount = 0.1f * powerupTime;
+
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
 			shot = RegularShot;
 			gameControllerScript.PowerupText.text = "" + "Cost 2.5% score";
+			BeamShot.SetActive (false);
 		}
 
 		if (CurrentPowerup == powerup.DoubleShot) 
@@ -117,10 +122,19 @@ public class PlayerController : MonoBehaviour
 			gameControllerScript.PowerupText.text = "Triple Shot " + "Cost 0 pts";
 		}
 
+		if (CurrentPowerup == powerup.BeamShot) 
+		{
+			shot = RegularShot;
+			BeamShot.SetActive (true);
+			powerupTime -= Time.unscaledDeltaTime;
+			gameControllerScript.PowerupText.text = "Ultra Beam";
+		}
+
 		if (powerupTime < 0) 
 		{
 			powerupTime = 0;
 			CurrentPowerup = powerup.RegularShot;
+			BeamShot.SetActive (false);
 		}
 
 		// Warning powerup time.
