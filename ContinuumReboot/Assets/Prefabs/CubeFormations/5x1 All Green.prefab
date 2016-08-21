@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 427918}
+  - 114: {fileID: 11443454}
   m_Layer: 0
   m_Name: 5x1 All Green
   m_TagString: Untagged
@@ -775,6 +776,17 @@ MonoBehaviour:
   xBound: {x: -100, y: 100}
   yBound: {x: -50, y: 50}
   zBound: {x: -100, y: 100}
+--- !u!114 &11443454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11452352
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 418162}
+  - 114: {fileID: 11410072}
   m_Layer: 0
   m_Name: 5x1 All colours (uniform)
   m_TagString: Untagged
@@ -631,6 +632,17 @@ MonoBehaviour:
   moveSpeed: -10
   rotationSpeed: 0
   tweenRate: 0.1
+--- !u!114 &11410072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 113118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11425478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,9 +734,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 148528, guid: 21803ee831ba8ff459d0b94a16faa165, type: 2}
   PointType: 0
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!114 &11448706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -848,9 +866,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PointType: 3
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!114 &11482632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,9 +888,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
   PointType: 1
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!114 &11482804
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -894,9 +924,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
   PointType: 0
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!114 &11498668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -910,9 +946,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   PointType: 4
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -80,6 +80,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 487080}
+  - 114: {fileID: 11483422}
   m_Layer: 0
   m_Name: 5x1 All Yellow
   m_TagString: Untagged
@@ -883,6 +884,17 @@ MonoBehaviour:
   moveSpeed: -10
   rotationSpeed: 0
   tweenRate: 0.1
+--- !u!114 &11483422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11485916
 MonoBehaviour:
   m_ObjectHideFlags: 1

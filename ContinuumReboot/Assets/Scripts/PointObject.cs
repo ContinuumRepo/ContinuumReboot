@@ -57,7 +57,7 @@ public class PointObject : MonoBehaviour
 			{
 				// Turns the engine color to orange.
 				MainEngineParticles.startColor = new Color (0.78f, 0.33f, 0, 1);
-				gameControllerScript.CurrentScore += PointReward;
+				gameControllerScript.CurrentScore += PointReward * Time.timeScale;
 				ComboOne.Play ();
 			}
 
@@ -65,7 +65,7 @@ public class PointObject : MonoBehaviour
 			{
 				// Turns the engine color to yellow.
 				MainEngineParticles.startColor = new Color (1, 1, 0, 1);
-				gameControllerScript.CurrentScore += PointReward * 2;
+				gameControllerScript.CurrentScore += PointReward * 2 * Time.timeScale;
 				ComboTwo.Play ();
 			}
 
@@ -73,7 +73,7 @@ public class PointObject : MonoBehaviour
 			{
 				// Turns the engine color to green.
 				MainEngineParticles.startColor = new Color (0, 1, 0, 1);
-				gameControllerScript.CurrentScore += PointReward * 3;
+				gameControllerScript.CurrentScore += PointReward * 3 * Time.timeScale;
 				ComboThree.Play ();
 			}
 
@@ -81,7 +81,7 @@ public class PointObject : MonoBehaviour
 			{
 				// Turns the engine color to cyan.
 				MainEngineParticles.startColor = new Color (0, 1, 1, 1);
-				gameControllerScript.CurrentScore += PointReward * 4;
+				gameControllerScript.CurrentScore += PointReward * 4 * Time.timeScale;
 				ComboFour.Play ();
 			}
 
@@ -89,7 +89,7 @@ public class PointObject : MonoBehaviour
 			{
 				// Turns the engine color to purple.
 				MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
-				gameControllerScript.CurrentScore += PointReward * 5;
+				gameControllerScript.CurrentScore += PointReward * 5 * Time.timeScale;
 				ComboFive.Play ();
 			}
 

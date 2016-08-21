@@ -48,6 +48,7 @@ GameObject:
   - 114: {fileID: 11481534}
   - 114: {fileID: 11483534}
   - 114: {fileID: 11470464}
+  - 114: {fileID: 11495374}
   m_Layer: 13
   m_Name: RegularShot
   m_TagString: Bullet
@@ -256,7 +257,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.05
   m_StartWidth: 0.4
   m_EndWidth: 0
   m_Colors:
@@ -275,7 +276,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.01
+  m_MinVertexDistance: 0.05
   m_Autodestruct: 0
 --- !u!114 &11417432
 MonoBehaviour:
@@ -323,6 +324,8 @@ MonoBehaviour:
   ricoshet: 0
   ricoshetMax: 6
   BulletNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
+  useRandomRotation: 1
+  BeamExplosion: {fileID: 0}
 --- !u!114 &11481534
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,6 +356,18 @@ MonoBehaviour:
   xBound: {x: -50, y: 50}
   yBound: {x: -30, y: 60}
   zBound: {x: -100, y: 100}
+--- !u!114 &11495374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
