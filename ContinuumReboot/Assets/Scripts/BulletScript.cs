@@ -46,8 +46,10 @@ public class BulletScript : MonoBehaviour
 	{
 		if (other.tag == "Brick" || other.tag == "Cube") 
 		{
-			if (useRandomRotation == true) {
-				if (ricoshet < ricoshetMax) {
+			if (useRandomRotation == true) 
+			{
+				if (ricoshet < ricoshetMax) 
+				{
 					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
 					//Debug.Log ("Ricoshet from hit object!" + ricoshet);
@@ -57,7 +59,8 @@ public class BulletScript : MonoBehaviour
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 				}
 
-				if (ricoshet >= ricoshetMax) {
+				if (ricoshet >= ricoshetMax) 
+				{
 					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
 					//Debug.Log ("Ricoshet from hit object!");
@@ -66,15 +69,16 @@ public class BulletScript : MonoBehaviour
 					ricoshet = 1;
 				}
 		
-				if (PlayElement > 8) {
+				if (PlayElement > 8) 
+				{
 					PlayElement = 1;
 				}
 			}
 
 			if (useRandomRotation == false) 
 			{
-				//PlayElement = 0;
-				//Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
+				PlayElement = 0;
+				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
 				BeamExplosion.Play ();
 			}
 		}

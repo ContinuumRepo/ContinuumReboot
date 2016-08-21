@@ -6686,6 +6686,7 @@ MonoBehaviour:
   - {fileID: 158244, guid: bccd315c99db307438ebf29f7cc7ac44, type: 2}
   - {fileID: 122492, guid: 7ae7d378dc01e494cbbfb608946897b2, type: 2}
   - {fileID: 181582, guid: b7e261dfd0c1c7b46baf6bcdc5366641, type: 2}
+  - {fileID: 102078, guid: 0e0f5171bb57a624a86fa08553329d0d, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupSpawnValues: {x: 35, y: 30, z: 0}
   powerupStartWait: 6
@@ -14064,6 +14065,7 @@ Transform:
   - {fileID: 683608842}
   - {fileID: 353225749}
   - {fileID: 1540288344}
+  - {fileID: 766750762}
   m_Father: {fileID: 864279380}
   m_RootOrder: 0
 --- !u!114 &634708998
@@ -19099,6 +19101,125 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 745394102}
+--- !u!1 &766750761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 766750762}
+  - 33: {fileID: 766750765}
+  - 135: {fileID: 766750764}
+  - 23: {fileID: 766750763}
+  - 114: {fileID: 766750766}
+  - 114: {fileID: 766750767}
+  m_Layer: 13
+  m_Name: Shield
+  m_TagString: Bullet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &766750762
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 634708997}
+  m_RootOrder: 9
+--- !u!23 &766750763
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 9c858fc30e5707548a9fce22b54e01c0, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!135 &766750764
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &766750765
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &766750766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newSpeed: 0
+  BulletCostType: 0
+  DecrementPortion: 0
+  DecrementAmount: 0
+  PlayElement: 0
+  Oneshots:
+  - {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
+  ricoshet: 0
+  ricoshetMax: 6
+  BulletNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
+  useRandomRotation: 0
+  BeamExplosion: {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
+--- !u!114 &766750767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveUnitsPerSecond:
+    value: {x: 0, y: 0, z: 0}
+    space: 1
+  rotateDegreesPerSecond:
+    value: {x: 0, y: 0, z: 0}
+    space: 1
+  ignoreTimescale: 0
 --- !u!1 &772321695
 GameObject:
   m_ObjectHideFlags: 0
@@ -19654,11 +19775,12 @@ MonoBehaviour:
   shotSpawn: {fileID: 353225749}
   fireRate: 0.1
   Powerups: []
+  CurrentPowerup: 0
   RegularShot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   DoubleShot: {fileID: 186690, guid: 52a14fc10a79d1b489b818e53b7d80ab, type: 2}
   TriShot: {fileID: 115924, guid: ecaa6e4c8461b9445a25757ab92c7dd7, type: 2}
   BeamShot: {fileID: 1540288343}
-  CurrentPowerup: 0
+  Shield: {fileID: 766750761}
   powerupTime: 0
   powerupDuration: 10
   powerupTimeRunningOut: {fileID: 107156133}
@@ -31554,7 +31676,8 @@ MonoBehaviour:
   DecrementPortion: 0
   DecrementAmount: 100
   PlayElement: 0
-  Oneshots: []
+  Oneshots:
+  - {fileID: 2106444434}
   ricoshet: 0
   ricoshetMax: 6
   BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}

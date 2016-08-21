@@ -26,12 +26,13 @@ public class PlayerController : MonoBehaviour
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups;
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, rowClear, disableStacking}
+	public powerup CurrentPowerup;
 	public GameObject RegularShot;
 	public GameObject DoubleShot;
 	public GameObject TriShot;
 	public GameObject BeamShot;
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, rowClear, disableStacking}
-	public powerup CurrentPowerup;
+	public GameObject Shield;
 	public float powerupTime = 0;
 	public float powerupDuration = 10.0f;
 	public AudioSource powerupTimeRunningOut;
@@ -88,7 +89,10 @@ public class PlayerController : MonoBehaviour
 		// Turns off GameOver UI.
 		GameOverUI.SetActive (false);
 
+		// Start powerup conditions.
 		CurrentPowerup = powerup.RegularShot;
+		BeamShot.SetActive (false);
+		Shield.SetActive (false);
 	}
 
 	void Update () 
@@ -99,8 +103,10 @@ public class PlayerController : MonoBehaviour
 		HealthImageR.color = new Color (25/Health, Health/100, 0, 0.9f);
 		HealthImageL.color = new Color (25/Health, Health/100, 0, 0.9f);
 
-		PowerupMeter.fillAmount = 0.1f * powerupTime;
+		/// POWERUPS ///
+		PowerupMeter.fillAmount = powerupTime / powerupDuration; // UI fill amount for powerup.
 
+		// No powerup
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
 			shot = RegularShot;
@@ -108,6 +114,7 @@ public class PlayerController : MonoBehaviour
 			BeamShot.SetActive (false);
 		}
 
+		// Double Shot
 		if (CurrentPowerup == powerup.DoubleShot) 
 		{
 			shot = DoubleShot;
@@ -115,6 +122,7 @@ public class PlayerController : MonoBehaviour
 			gameControllerScript.PowerupText.text = "Double Shot " + "Cost 0 pts";
 		}
 
+		// Tri shot.
 		if (CurrentPowerup == powerup.TriShot) 
 		{
 			shot = TriShot;
@@ -122,6 +130,7 @@ public class PlayerController : MonoBehaviour
 			gameControllerScript.PowerupText.text = "Triple Shot " + "Cost 0 pts";
 		}
 
+		// Beam shot.
 		if (CurrentPowerup == powerup.BeamShot) 
 		{
 			shot = RegularShot;
@@ -130,13 +139,14 @@ public class PlayerController : MonoBehaviour
 			gameControllerScript.PowerupText.text = "Ultra Beam";
 		}
 
-		if (powerupTime < 0) 
+		// Shield.
+		if (CurrentPowerup == powerup.shield) 
 		{
-			powerupTime = 0;
-			CurrentPowerup = powerup.RegularShot;
-			BeamShot.SetActive (false);
+			Shield.SetActive (true);
+			powerupTime -= Time.unscaledDeltaTime;
+			gameControllerScript.PowerupText.text = "Shield";
 		}
-
+			
 		// Warning powerup time.
 		if (powerupTime < 3.0f && powerupTime > 2.8f)
 		{
@@ -145,11 +155,22 @@ public class PlayerController : MonoBehaviour
 			TimeRunningOutParticles.Play ();
 		}
 
+		// When powerup runs out.
+		if (powerupTime < 0) 
+		{
+			powerupTime = 0;
+			CurrentPowerup = powerup.RegularShot;
+			BeamShot.SetActive (false);
+			Shield.SetActive (false);
+		}
+
 		// Powerup ran out.
 		if (powerupTime > 0 && powerupTime < 0.02f && !powerupDeactivateAudio.GetComponent<AudioSource>().isPlaying) 
 		{
 			Instantiate (powerupDeactivateAudio, Vector3.zero, Quaternion.identity);
 		}
+			
+		/// Health ///
 
 		// Health at 0.
 		if (Health <= 0) 
@@ -162,31 +183,25 @@ public class PlayerController : MonoBehaviour
 			timeScaleControllerScript.enabled = false;
 			BGMPitchScript.addPitch = 0;
 
+			// Turn on Game over UI.
 			if (GameOverUI.activeInHierarchy == false) 
 			{
 				GameOverUI.SetActive (true);
 			}
 
+			// Play game over loop.
 			if (!GameOverLoop.isPlaying) 
 			{
 				GameOverLoop.PlayDelayed (4.0f);
 			}
-
-			/*
-			if (!GameOverSound.isPlaying && playedGameOverSound == false)
-			{
-				GameOverSound.PlayDelayed (2.0f);
-				playedGameOverSound = true;
-			}*/
 		}
 
+		// Warning hit with low health.
 		if (Health > 0 && Health <= 25 && ColorCorrectionCurvesScript.saturation <= 1) 
 		{
 			ColorCorrectionCurvesScript.enabled = true;
 			ColorCorrectionCurvesScript.saturation += 0.1f * Time.unscaledDeltaTime;
 		}
-
-
 	}
 
 	void FixedUpdate ()

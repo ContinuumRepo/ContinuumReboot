@@ -172,9 +172,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
-  PointType: 0
+  PointType: 2
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
+  Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
