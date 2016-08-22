@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
 
 public class PointObject : MonoBehaviour 
 {
@@ -45,7 +46,6 @@ public class PointObject : MonoBehaviour
 
 	void Update () 
 	{
-	
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -124,9 +124,8 @@ public class PointObject : MonoBehaviour
 		}
 
 		if (other.tag == "Player")
-		{
+		{	
 			GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-
 			for (int i = Destroyers.Length-1; i > 0; i--)
 			{
 				Destroy (Destroyers [i].gameObject);

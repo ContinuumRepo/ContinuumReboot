@@ -19204,6 +19204,7 @@ MonoBehaviour:
   useRandomRotation: 0
   BeamExplosion: {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   RicoshetParticle: []
+  VibrationTime: 0.2
 --- !u!114 &766750767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19796,6 +19797,9 @@ MonoBehaviour:
   minHealth: 0
   HealthImageL: {fileID: 1842616384}
   HealthImageR: {fileID: 727007274}
+  vibrationAmount: 1
+  vibrationDuration: 0.4
+  vibrationTime: 0
   DeactivatePlayerElements: {fileID: 634708996}
   TimeSlowingSpeed: 0.5
   minTimeScale: 0.01667
@@ -31686,6 +31690,7 @@ MonoBehaviour:
   useRandomRotation: 0
   BeamExplosion: {fileID: 2106444434}
   RicoshetParticle: []
+  VibrationTime: 0.2
 --- !u!114 &1540288351
 MonoBehaviour:
   m_ObjectHideFlags: 0

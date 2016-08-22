@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour 
 {
@@ -47,6 +48,9 @@ public class PlayerController : MonoBehaviour
 	public float minHealth = 0;
 	public Image HealthImageL;
 	public Image HealthImageR;
+	public float vibrationAmount = 1;
+	public float vibrationDuration = 0.4f;
+	public float vibrationTime;
 
 	[Header ("Game Over")]
 	public GameObject DeactivatePlayerElements;
@@ -97,6 +101,19 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		vibrationTime -= Time.unscaledDeltaTime;
+
+		if (vibrationTime > 0) 
+		{
+			GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
+		}
+
+		if (vibrationTime <= 0) 
+		{
+			vibrationTime = 0;
+			GamePad.SetVibration (PlayerIndex.One, 0, 0);
+		}
+
 		// The UI fill amount of the health.
 		HealthImageL.fillAmount = Health / 100;
 		HealthImageR.fillAmount = Health / 100;
@@ -234,6 +251,14 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
+	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "Brick" || other.tag == "Cube")
+		{
+			vibrationTime = vibrationDuration;
 		}
 	}
 
