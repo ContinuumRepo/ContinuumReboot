@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Utility;
+using XInputDotNetPure;
 
 public class BulletScript : MonoBehaviour 
 {
@@ -19,9 +20,11 @@ public class BulletScript : MonoBehaviour
 	public bool useRandomRotation = true;
 	public AudioSource BeamExplosion;
 	public ParticleSystem[] RicoshetParticle;
+	public float VibrationTime = 0.2f;
 
 	void Start () 
 	{
+		VibrationTime = 0;
 		PlayElement = 0;
 		ricoshet = 0;
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
@@ -48,6 +51,18 @@ public class BulletScript : MonoBehaviour
 	void Update ()
 	{
 		//PlayElement = Mathf.Clamp (PlayElement, 0, Oneshots.Length);
+		VibrationTime -= Time.fixedDeltaTime;
+
+		if (VibrationTime > 0) 
+		{
+			GamePad.SetVibration (PlayerIndex.One, 0, 0.4f);
+		}
+
+		if (VibrationTime <= 0) 
+		{
+			GamePad.SetVibration (PlayerIndex.One, 0, 0);
+			VibrationTime = 0;
+		}
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -66,6 +81,8 @@ public class BulletScript : MonoBehaviour
 					ricoshet += 1;
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 					RicoshetParticle [Mathf.Clamp(PlayElement - 1, 0, 5)].Play ();
+					VibrationTime = 0.04f;
+
 				}
 
 				if (ricoshet >= ricoshetMax) 
