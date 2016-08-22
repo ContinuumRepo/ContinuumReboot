@@ -20,11 +20,11 @@ public class BulletScript : MonoBehaviour
 	public bool useRandomRotation = true;
 	public AudioSource BeamExplosion;
 	public ParticleSystem[] RicoshetParticle;
-	public float VibrationTime = 0.2f;
+	public float VibrationTime = 0.04f;
 
 	void Start () 
 	{
-		VibrationTime = 0;
+		VibrationTime = 0.04f;
 		PlayElement = 0;
 		ricoshet = 0;
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
@@ -50,7 +50,6 @@ public class BulletScript : MonoBehaviour
 
 	void Update ()
 	{
-		//PlayElement = Mathf.Clamp (PlayElement, 0, Oneshots.Length);
 		VibrationTime -= Time.fixedDeltaTime;
 
 		if (VibrationTime > 0) 
@@ -75,29 +74,30 @@ public class BulletScript : MonoBehaviour
 				{
 					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
-					//Debug.Log ("Ricoshet from hit object!" + ricoshet);
 					Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
 					PlayElement += 1;
 					ricoshet += 1;
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
-					RicoshetParticle [Mathf.Clamp(PlayElement - 1, 0, 5)].Play ();
+					RicoshetParticle [PlayElement - 1].Play ();
 					VibrationTime = 0.04f;
-
 				}
 
 				if (ricoshet >= ricoshetMax) 
 				{
+					/*
 					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
-					//Debug.Log ("Ricoshet from hit object!");
-					Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
+					Instantiate (Oneshots [5], Vector3.zero, Quaternion.identity);
+					RicoshetParticle [5].Play ();
 					PlayElement = 1;
 					ricoshet = 1;
+					*/
+					Destroy (gameObject);
 				}
 		
-				if (PlayElement > 8) 
+				if (PlayElement >= ricoshetMax) 
 				{
-					PlayElement = 1;
+					PlayElement = 0;
 				}
 			}
 
@@ -116,8 +116,7 @@ public class BulletScript : MonoBehaviour
 
 		if (other.tag == "Barrier") 
 		{
-			gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Random.Range(-360, 360));
-			//Debug.Log ("Ricoshet from barrier!");
+			gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 		}
 	}
 }

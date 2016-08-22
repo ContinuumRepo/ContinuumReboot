@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XInputDotNetPure;
+using UnityStandardAssets.ImageEffects;
 
 public class PointObject : MonoBehaviour 
 {
@@ -45,7 +47,6 @@ public class PointObject : MonoBehaviour
 
 	void Update () 
 	{
-	
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -124,9 +125,8 @@ public class PointObject : MonoBehaviour
 		}
 
 		if (other.tag == "Player")
-		{
+		{	
 			GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-
 			for (int i = Destroyers.Length-1; i > 0; i--)
 			{
 				Destroy (Destroyers [i].gameObject);
@@ -134,6 +134,7 @@ public class PointObject : MonoBehaviour
 
 			Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			PlayerControllerScript.Health -= Damage;
+			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
 
 			if (PlayerControllerScript.Health <= 10) 
 			{

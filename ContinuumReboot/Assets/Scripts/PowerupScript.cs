@@ -6,7 +6,7 @@ public class PowerupScript : MonoBehaviour
 	private PlayerController playerControllerScript;
 	private GameController gameControllerScript;
 
-	public enum poweruptype {doubleShot, triShot, beamShot, shield} // Add more later.
+	public enum poweruptype {doubleShot, triShot, beamShot, shield, homingShot} // Add more later.
 	public poweruptype PowerupType;
 
 	public GameObject Explosion;
@@ -58,6 +58,15 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
+				Destroy (gameObject);
+			}
+
+			if (PowerupType == poweruptype.homingShot) 
+			{
+				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.homingShot;
+				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
+				playerControllerScript.ActivePowerupParticles.Play ();
 				Destroy (gameObject);
 			}
 		}
