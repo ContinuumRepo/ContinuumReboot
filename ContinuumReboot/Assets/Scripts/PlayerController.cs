@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	private MeshCollider PlayerCollider;
 	private MeshRenderer PlayerMesh;
 	private AudioSourcePitchByTimescale BGMPitchScript;
-	private ColorCorrectionCurves ColorCorrectionCurvesScript;
+	public ColorCorrectionCurves ColorCorrectionCurvesScript;
 	private bool playedGameOverSound;
 
 	[Header ("Movement")]
@@ -27,13 +27,14 @@ public class PlayerController : MonoBehaviour
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups;
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, rowClear, disableStacking}
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, homingShot, rowClear, disableStacking}
 	public powerup CurrentPowerup;
 	public GameObject RegularShot;
 	public GameObject DoubleShot;
 	public GameObject TriShot;
 	public GameObject BeamShot;
 	public GameObject Shield;
+	public GameObject HomingShot;
 	public float powerupTime = 0;
 	public float powerupDuration = 10.0f;
 	public AudioSource powerupTimeRunningOut;
@@ -88,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
 		// Finds color correction curves script.
 		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
-		ColorCorrectionCurvesScript.enabled = false;
+		//ColorCorrectionCurvesScript.enabled = false;
 
 		// Turns off GameOver UI.
 		GameOverUI.SetActive (false);
@@ -163,6 +164,14 @@ public class PlayerController : MonoBehaviour
 			powerupTime -= Time.unscaledDeltaTime;
 			gameControllerScript.PowerupText.text = "Shield";
 		}
+
+		// Homing Shot.
+		if (CurrentPowerup == powerup.homingShot) 
+		{
+			shot = HomingShot;
+			powerupTime -= Time.unscaledDeltaTime;
+			gameControllerScript.PowerupText.text = "Homing Shot";
+		}
 			
 		// Warning powerup time.
 		if (powerupTime < 3.0f && powerupTime > 2.8f)
@@ -213,12 +222,11 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		// Warning hit with low health.
-		if (Health > 0 && Health <= 25 && ColorCorrectionCurvesScript.saturation <= 1) 
+		if (ColorCorrectionCurvesScript.saturation < 1) 
 		{
-			ColorCorrectionCurvesScript.enabled = true;
-			ColorCorrectionCurvesScript.saturation += 0.1f * Time.unscaledDeltaTime;
+			ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime;
 		}
+
 	}
 
 	void FixedUpdate ()

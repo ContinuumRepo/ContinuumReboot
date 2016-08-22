@@ -6687,6 +6687,7 @@ MonoBehaviour:
   - {fileID: 122492, guid: 7ae7d378dc01e494cbbfb608946897b2, type: 2}
   - {fileID: 181582, guid: b7e261dfd0c1c7b46baf6bcdc5366641, type: 2}
   - {fileID: 102078, guid: 0e0f5171bb57a624a86fa08553329d0d, type: 2}
+  - {fileID: 101600, guid: ca46fdb9bcdb9da41914f4c71731a47e, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupSpawnValues: {x: 30, y: 30, z: 0}
@@ -11927,7 +11928,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 538907853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
@@ -12045,7 +12046,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  saturation: 0
+  saturation: 1
   selectiveCc: 0
   selectiveFromColor: {r: 1, g: 1, b: 1, a: 1}
   selectiveToColor: {r: 1, g: 1, b: 1, a: 1}
@@ -19772,6 +19773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ColorCorrectionCurvesScript: {fileID: 0}
   speed: 40
   tilt: 0
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
@@ -19784,6 +19786,7 @@ MonoBehaviour:
   TriShot: {fileID: 115924, guid: ecaa6e4c8461b9445a25757ab92c7dd7, type: 2}
   BeamShot: {fileID: 1540288343}
   Shield: {fileID: 766750761}
+  HomingShot: {fileID: 199040, guid: 95413c47169776e48881c82669d768c5, type: 2}
   powerupTime: 0
   powerupDuration: 10
   powerupTimeRunningOut: {fileID: 107156133}
@@ -21619,7 +21622,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 708efb016a1ee5140b29046cd0fdd66e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -26579,7 +26582,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5552c5d70f5577f46af2454ec15a36c9, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -40490,7 +40493,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f9da62bcb4c44d34287ccfbe12e3deac, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

@@ -50,7 +50,6 @@ public class BulletScript : MonoBehaviour
 
 	void Update ()
 	{
-		//PlayElement = Mathf.Clamp (PlayElement, 0, Oneshots.Length);
 		VibrationTime -= Time.fixedDeltaTime;
 
 		if (VibrationTime > 0) 
@@ -79,23 +78,26 @@ public class BulletScript : MonoBehaviour
 					PlayElement += 1;
 					ricoshet += 1;
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
-					RicoshetParticle [Mathf.Clamp(PlayElement - 1, 0, 5)].Play ();
+					RicoshetParticle [PlayElement - 1].Play ();
 					VibrationTime = 0.04f;
 				}
 
 				if (ricoshet >= ricoshetMax) 
 				{
+					/*
 					gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 					MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0.0f, newSpeed, 0.0f);
 					Instantiate (Oneshots [5], Vector3.zero, Quaternion.identity);
 					RicoshetParticle [5].Play ();
 					PlayElement = 1;
 					ricoshet = 1;
+					*/
+					Destroy (gameObject);
 				}
 		
-				if (PlayElement > 8) 
+				if (PlayElement >= ricoshetMax) 
 				{
-					PlayElement = 1;
+					PlayElement = 0;
 				}
 			}
 

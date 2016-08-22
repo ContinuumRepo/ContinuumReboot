@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using XInputDotNetPure;
+using UnityStandardAssets.ImageEffects;
 
 public class PointObject : MonoBehaviour 
 {
@@ -133,6 +134,7 @@ public class PointObject : MonoBehaviour
 
 			Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			PlayerControllerScript.Health -= Damage;
+			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
 
 			if (PlayerControllerScript.Health <= 10) 
 			{
