@@ -6642,7 +6642,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1226859555}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &162497497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7052,7 +7052,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1226859555}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &241236807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19204,6 +19204,7 @@ MonoBehaviour:
   useRandomRotation: 0
   BeamExplosion: {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   RicoshetParticle: []
+  VibrationTime: 0.2
 --- !u!114 &766750767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27076,12 +27077,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1719542368}
   - {fileID: 162497496}
   - {fileID: 241236806}
   - {fileID: 1673086484}
   - {fileID: 1503868212}
   - {fileID: 1058476195}
-  - {fileID: 1719542368}
   - {fileID: 240054773}
   - {fileID: 1471581253}
   - {fileID: 1929333241}
@@ -27896,7 +27897,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 445046, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11485262, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sunTransform
@@ -29823,7 +29824,7 @@ Transform:
   - {fileID: 1082494264}
   - {fileID: 1533407595}
   m_Father: {fileID: 1226859555}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1513401237
 GameObject:
   m_ObjectHideFlags: 0
@@ -31686,6 +31687,7 @@ MonoBehaviour:
   useRandomRotation: 0
   BeamExplosion: {fileID: 2106444434}
   RicoshetParticle: []
+  VibrationTime: 0.2
 --- !u!114 &1540288351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33500,7 +33502,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1226859555}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &1719108511
 GameObject:
   m_ObjectHideFlags: 0
@@ -33688,11 +33690,11 @@ GameObject:
   - 114: {fileID: 1719542369}
   m_Layer: 0
   m_Name: BrickStackController
-  m_TagString: Brick Stack Controller
+  m_TagString: BrickStackController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1719542368
 Transform:
   m_ObjectHideFlags: 0
@@ -33705,7 +33707,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1226859555}
-  m_RootOrder: 5
+  m_RootOrder: 0
 --- !u!114 &1719542369
 MonoBehaviour:
   m_ObjectHideFlags: 0

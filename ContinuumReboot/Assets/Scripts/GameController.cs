@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	private Transform Player;
 	private PlayerController playerControllerScript;
 	private TimescaleController timeScaleControllerScript; // Timescale script component.
+	private BrickStackController brickStackControllerScript;
 
 	[Header ("MouseStates")]
 	public GlobalMouseVisibility MouseScript;
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour
 	public float spawnWait;
 	public float waveWait;
 	public int hazardCount;
+	private float[] columnLocations;
 
 	[Header ("Spawning Powerups")]
 	public GameObject[] Powerups;
@@ -92,10 +94,22 @@ public class GameController : MonoBehaviour
 
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
 
+		brickStackControllerScript = GameObject.FindGameObjectWithTag ("BrickStackController").GetComponent<BrickStackController> ();
+
 		if (timeScaleControllerScript == null) 
 		{
 			Debug.Log ("Cannot find Timescale Controller script.");
 		}
+
+		if (brickStackControllerScript == null) 
+		{
+			Debug.Log ("Cannot find Brick Stack Controller script.");
+		}
+
+		int temp = brickStackControllerScript.GetTotalColumns;
+		columnLocations = new float[temp];
+		for (int i = 0; i < temp; i++) // X-loc for each column
+			columnLocations [i] = brickStackControllerScript.GetBrickXPos (i);
 
 		// Finds Player transform.
 		Player = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -272,13 +286,15 @@ public class GameController : MonoBehaviour
 		yield return new WaitForSeconds (startWait);
 		while (true) 
 		{
+			int randomColumn;
 			for (int i = 0; i < hazardCount; i++) 
 			{
 				// Spawn element 0 if less than level one score
 				if (CurrentScore > 0 && CurrentScore < LevelOneScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 1)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
@@ -288,7 +304,8 @@ public class GameController : MonoBehaviour
 				if (CurrentScore > LevelOneScore && CurrentScore < LevelTwoScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 2)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
@@ -298,7 +315,8 @@ public class GameController : MonoBehaviour
 				if (CurrentScore > LevelTwoScore && CurrentScore < LevelThreeScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 3)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
@@ -307,7 +325,8 @@ public class GameController : MonoBehaviour
 				if (CurrentScore > LevelThreeScore && CurrentScore < LevelFourScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 4)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
@@ -316,7 +335,8 @@ public class GameController : MonoBehaviour
 				if (CurrentScore > LevelFourScore && CurrentScore < LevelFiveScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 5)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
@@ -325,7 +345,8 @@ public class GameController : MonoBehaviour
 				if (CurrentScore > LevelFiveScore)
 				{
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
-					Vector3 spawnPosition = new Vector3 (Mathf.RoundToInt(Random.Range(-spawnValues.x, spawnValues.x)), spawnValues.y, spawnValues.z);
+					randomColumn = Random.Range (0, columnLocations.Length -1);
+					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);

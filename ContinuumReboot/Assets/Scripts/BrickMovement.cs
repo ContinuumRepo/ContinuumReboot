@@ -18,20 +18,32 @@ public class BrickMovement : MonoBehaviour
 
 	void Start ()
 	{
-		stackCont = GameObject.FindGameObjectWithTag ("Brick Stack Controller").GetComponent <BrickStackController> ();
+		stackCont = GameObject.FindGameObjectWithTag ("BrickStackController").GetComponent <BrickStackController> ();
 		cellDist = stackCont.GetCellDistance;
 
 		Quaternion newRotation = Quaternion.Euler (45, 0, 45);
 		this.transform.rotation = Quaternion.Slerp (this.transform.rotation, newRotation, rotationSpeed * Time.timeScale);
-		yPos = stackCont.GetBrickYPos; // Y-loc for each row
+
+		int tempRows = stackCont.GetTotalRows;
+		yPos = new float[tempRows];
+		for (int i = 0; i < tempRows; i++) // Y-loc for each row
+			yPos [i] = stackCont.GetBrickYPos (i);
+
+		int tempColumns = stackCont.GetTotalColumns;
+		for (int i = 0; i < tempColumns; i++) // X-loc for each column
+			if (stackCont.GetBrickXPos (i) == this.transform.position.x)
+			{
+				SetColumn = i;
+				break;
+			}
 	}
 
 	void FixedUpdate ()
 	{
 		if (!cellSet)
 		{
-			this.GetComponent<Rigidbody> ().velocity = transform.up * (moveSpeed * Time.timeScale);
-			this.transform.Rotate (0, rotationSpeed * Time.timeScale, 0);
+			transform.Translate ( 0, moveSpeed * Time.deltaTime, 0, Space.Self);
+			transform.Rotate (0, rotationSpeed * Time.deltaTime, 0);
 		}
 		else
 		{
@@ -60,7 +72,9 @@ public class BrickMovement : MonoBehaviour
 	void OnDestroy ()
 	{
 		if (cellSet)
+		{
 			stackCont.ResetCell (stackLocation[0], stackLocation[1]);
+		}
 	}
 
 	public int SetColumn
@@ -89,7 +103,7 @@ public class BrickMovement : MonoBehaviour
 			if (!cellSet)
 			{
 				// Set brick (in i+1) if cell below (i) is occupied and is not in the top row
-				if ((stackCont.CellOccupied (i, column)) && (i != yPos.Length-1) && (Y <= (float) yPos[i+1]))
+				if ((stackCont.CellOccupied (column, i)) && (i != yPos.Length-1) && (Y <= (float) yPos[i+1]))
 				{
 					GetComponent<Rigidbody>().velocity = Vector3.zero;
 					Quaternion newRotation = Quaternion.identity;
@@ -100,12 +114,12 @@ public class BrickMovement : MonoBehaviour
 					cellSet = true;
 				}
 				// Destroy brick if cell below is occupied and is in the top row
-				else if ((stackCont.CellOccupied (i, column)) && (i == yPos.Length-1) && (Y <= (float) yPos[i] + cellDist))
+				else if ((stackCont.CellOccupied (column, i)) && (i == yPos.Length-1) && (Y <= (float) yPos[i] + cellDist))
 				{
 					Destroy (gameObject);
 				}
 				// Set brick in bottom cell if it is not occupied
-				else if ((!stackCont.CellOccupied (i, column)) && (i == 0) && (Y <= (float) yPos[0]))
+				else if ((!stackCont.CellOccupied (column, i)) && (i == 0) && (Y <= (float) yPos[0]))
 				{
 					GetComponent<Rigidbody>().velocity = Vector3.zero;
 					Quaternion newRotation = Quaternion.identity;

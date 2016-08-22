@@ -134,7 +134,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
   m_Name: 
@@ -159,15 +159,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
   PointType: 1
+  PointReward: 150
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
+  Damage: 25
+  ComboOne: {fileID: 0}
+  ComboTwo: {fileID: 0}
+  ComboThree: {fileID: 0}
+  ComboFour: {fileID: 0}
+  ComboFive: {fileID: 0}
 --- !u!114 &11485808
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166562}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
