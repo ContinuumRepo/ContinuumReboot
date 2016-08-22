@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
 			shot = RegularShot;
-			gameControllerScript.PowerupText.text = "" + "Cost 2.5% score";
+			gameControllerScript.PowerupText.text = "" + "Cost: 2.5% score/bullet";
 			BeamShot.SetActive (false);
 		}
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 		{
 			shot = DoubleShot;
 			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Double Shot " + "Cost 0 pts";
+			gameControllerScript.PowerupText.text = "Double Shot " + "Free";
 		}
 
 		// Tri shot.
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
 		{
 			shot = TriShot;
 			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Triple Shot " + "Cost 0 pts";
+			gameControllerScript.PowerupText.text = "Triple Shot " + "Free";
 		}
 
 		// Beam shot.
@@ -206,9 +206,10 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		/// Movement ///
+	
 		if (gameControllerScript.isPreGame == false) 
 		{
-			// Movement from Space Shooter tutorial. (Uses WASD/arrow keys).
 			float moveHorizontal = Input.GetAxis ("Horizontal");
 			float moveVertical = Input.GetAxis ("Vertical");
 
@@ -219,8 +220,17 @@ public class PlayerController : MonoBehaviour
 			rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * -tilt, 0.0f);
 		}
 
-		// Shooting functionality
+		/// Shooting functionality ///
+
+		// PC Controller Input.
 		if (Input.GetButton ("Fire1") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)
+		{
+			nextFire = Time.time + fireRate;
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
+
+		// XBox 360 controller input for Windows.
+		if (Input.GetAxisRaw ("Fire1") < 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);

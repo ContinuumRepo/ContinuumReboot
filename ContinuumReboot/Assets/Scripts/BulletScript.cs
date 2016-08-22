@@ -18,6 +18,7 @@ public class BulletScript : MonoBehaviour
 	public GameObject BulletNoCost;
 	public bool useRandomRotation = true;
 	public AudioSource BeamExplosion;
+	public ParticleSystem[] RicoshetParticle;
 
 	void Start () 
 	{
@@ -25,6 +26,13 @@ public class BulletScript : MonoBehaviour
 		ricoshet = 0;
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+
+		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
+		RicoshetParticle[0] = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
+		RicoshetParticle[1] = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
+		RicoshetParticle[2] = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
+		RicoshetParticle[3] = GameObject.FindGameObjectWithTag ("ComboCyanParticles").GetComponent<ParticleSystem>();
+		RicoshetParticle[4] = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
 
 		if (BulletCostType == bulletcost.Percentage)
 		{
@@ -57,6 +65,7 @@ public class BulletScript : MonoBehaviour
 					PlayElement += 1;
 					ricoshet += 1;
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+					RicoshetParticle [Mathf.Clamp(PlayElement - 1, 0, 5)].Play ();
 				}
 
 				if (ricoshet >= ricoshetMax) 

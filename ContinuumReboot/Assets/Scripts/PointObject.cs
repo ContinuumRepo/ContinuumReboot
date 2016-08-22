@@ -33,12 +33,14 @@ public class PointObject : MonoBehaviour
 		// Finds GameController script and assigns to private variable.
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 
+
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
 		ComboOne = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
 		ComboTwo = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
 		ComboThree = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
 		ComboFour = GameObject.FindGameObjectWithTag ("ComboCyanParticles").GetComponent<ParticleSystem>();
 		ComboFive = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
+
 	}
 
 	void Update () 
@@ -58,7 +60,12 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to orange.
 				MainEngineParticles.startColor = new Color (0.78f, 0.33f, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * Time.timeScale;
-				ComboOne.Play ();
+				//ComboOne.Play ();
+				ComboOne.startColor = new Color (0.78f, 0.33f, 0, 1);
+				ComboTwo.startColor = new Color (0.78f, 0.33f, 0, 1);
+				ComboThree.startColor = new Color (0.78f, 0.33f, 0, 1);
+				ComboFour.startColor = new Color (0.78f, 0.33f, 0, 1);
+				ComboFive.startColor = new Color (0.78f, 0.33f, 0, 1);
 			}
 
 			if (PointType == type.Yellow) 
@@ -66,7 +73,12 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to yellow.
 				MainEngineParticles.startColor = new Color (1, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 2 * Time.timeScale;
-				ComboTwo.Play ();
+				//ComboTwo.Play ();
+				ComboOne.startColor = new Color (1, 1, 0, 1);
+				ComboTwo.startColor = new Color (1, 1, 0, 1);
+				ComboThree.startColor = new Color (1, 1, 0, 1);
+				ComboFour.startColor = new Color (1, 1, 0, 1);
+				ComboFive.startColor = new Color (1, 1, 0, 1);
 			}
 
 			if (PointType == type.Green) 
@@ -74,7 +86,12 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to green.
 				MainEngineParticles.startColor = new Color (0, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 3 * Time.timeScale;
-				ComboThree.Play ();
+				//ComboThree.Play ();
+				ComboOne.startColor = new Color (0, 1, 0, 1);
+				ComboTwo.startColor = new Color (0, 1, 0, 1);
+				ComboThree.startColor = new Color (0, 1, 0, 1);
+				ComboFour.startColor = new Color (0, 1, 0, 1);
+				ComboFive.startColor = new Color (0, 1, 0, 1);
 			}
 
 			if (PointType == type.Cyan) 
@@ -82,7 +99,12 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to cyan.
 				MainEngineParticles.startColor = new Color (0, 1, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 4 * Time.timeScale;
-				ComboFour.Play ();
+				//ComboFour.Play ();
+				ComboOne.startColor = new Color (0, 1, 1, 1);
+				ComboTwo.startColor = new Color (0, 1, 1, 1);
+				ComboThree.startColor = new Color (0, 1, 1, 1);
+				ComboFour.startColor = new Color (0, 1, 1, 1);
+				ComboFive.startColor = new Color (0, 1, 1, 1);
 			}
 
 			if (PointType == type.Purple) 
@@ -90,7 +112,12 @@ public class PointObject : MonoBehaviour
 				// Turns the engine color to purple.
 				MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 5 * Time.timeScale;
-				ComboFive.Play ();
+				//ComboFive.Play ();
+				ComboOne.startColor = new Color (0.39f, 0, 1, 1);
+				ComboTwo.startColor = new Color (0.39f, 0, 1, 1);
+				ComboThree.startColor = new Color (0.39f, 0, 1, 1);
+				ComboFour.startColor = new Color (0.39f, 0, 1, 1);
+				ComboFive.startColor = new Color (0.39f, 0, 1, 1);
 			}
 
 			Destroy (gameObject); // Destroys the gameObject.

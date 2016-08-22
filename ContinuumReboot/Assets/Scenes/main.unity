@@ -6688,10 +6688,11 @@ MonoBehaviour:
   - {fileID: 181582, guid: b7e261dfd0c1c7b46baf6bcdc5366641, type: 2}
   - {fileID: 102078, guid: 0e0f5171bb57a624a86fa08553329d0d, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  powerupSpawnValues: {x: 35, y: 30, z: 0}
+  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  powerupSpawnValues: {x: 30, y: 30, z: 0}
   powerupStartWait: 6
-  powerupSpawnWait: 15
-  powerupWaveWait: 3
+  powerupSpawnWait: 20
+  powerupWaveWait: 5
   powerupCount: 4
   PowerupText: {fileID: 2041953062}
   isPaused: 0
@@ -10549,7 +10550,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -14749,7 +14750,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -19202,6 +19203,7 @@ MonoBehaviour:
   BulletNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
   useRandomRotation: 0
   BeamExplosion: {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
+  RicoshetParticle: []
 --- !u!114 &766750767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25567,7 +25569,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -28871,7 +28873,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
@@ -31683,6 +31685,7 @@ MonoBehaviour:
   BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   useRandomRotation: 0
   BeamExplosion: {fileID: 2106444434}
+  RicoshetParticle: []
 --- !u!114 &1540288351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37225,7 +37228,7 @@ ParticleSystem:
       maxColor:
         serializedVersion: 2
         rgba: 4294967295
-      minMaxState: 0
+      minMaxState: 1
     startSize:
       scalar: 10
       maxCurve:
@@ -37588,15 +37591,15 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4286316799
+          rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 8126719
+          rgba: 16777215
         key2:
           serializedVersion: 2
           rgba: 0
