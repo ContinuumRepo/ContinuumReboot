@@ -226,8 +226,6 @@ public class PlayerController : MonoBehaviour
 			GameOver ();
 			timeScaleControllerScript.enabled = false;
 			BGMPitchScript.addPitch = 0;
-
-
 		}
 
 		if (ColorCorrectionCurvesScript.saturation < 1) 
@@ -297,7 +295,7 @@ public class PlayerController : MonoBehaviour
 			timeScaleControllerScript.enabled = false; // Turns off timescale controller.
 			PressToContinue.SetActive (true); // Activates "Press A to continue" text.
 
-			if (Input.GetKeyDown ("joystick button 0")) // When the player presses A on the controller,
+			if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
 			{
 				Time.timeScale = initialTimeScale; // sets timescale to this.
 				PressToContinue.SetActive (false); // tuens off press to continue text for that frame.

@@ -130,6 +130,7 @@ public class GameController : MonoBehaviour
 		if (isPreGame) 
 		{
 			timeScaleControllerScript.enabled = false;
+			Time.timeScale = 1.0f;
 			isPaused = false;
 		}
 

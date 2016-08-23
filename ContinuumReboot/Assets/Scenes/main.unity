@@ -7034,6 +7034,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 241236806}
   - 114: {fileID: 241236807}
+  - 114: {fileID: 241236808}
   m_Layer: 0
   m_Name: Timescale Controller
   m_TagString: TimeScaleController
@@ -7072,6 +7073,18 @@ MonoBehaviour:
   addMinTime: 0.1
   timeSpeedSens: 0.05
   distance: 1
+--- !u!114 &241236808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 241236805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3571a79941bd8b41bc4596b2a6bc077, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeScale: 1
 --- !u!1 &263280686
 GameObject:
   m_ObjectHideFlags: 0
@@ -14211,7 +14224,7 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0.05
+  m_VelocityScale: 1.6
   m_LengthScale: 2
   m_SortingFudge: 0
   m_NormalDirection: 1
@@ -14269,13 +14282,13 @@ ParticleSystem:
   looping: 1
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14439,7 +14452,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 1
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -14586,7 +14599,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     type: 12
-    radius: 120
+    radius: 50
     angle: 25
     length: 5
     boxX: 1
@@ -14808,7 +14821,7 @@ ParticleSystem:
           rgba: 4278190335
         key1:
           serializedVersion: 2
-          rgba: 4294953472
+          rgba: 4294956288
         key2:
           serializedVersion: 2
           rgba: 0
@@ -14828,7 +14841,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 26407
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -20859,6 +20872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSpeed: 0
+  timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0
   DecrementPortion: 0
   DecrementAmount: 0
@@ -29258,7 +29272,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b0c69e3f78521a943817d0fccee1c588, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -33372,6 +33386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSpeed: 0
+  timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0
   DecrementPortion: 0
   DecrementAmount: 100
@@ -35611,7 +35626,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: dac3f2d26ce2cb34890f806ed6a93827, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -35849,7 +35864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1814519605
 Transform:
   m_ObjectHideFlags: 0
@@ -35858,7 +35873,7 @@ Transform:
   m_GameObject: {fileID: 1814519604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.976e-12, z: 0}
-  m_LocalScale: {x: 120, y: 1, z: 0.02}
+  m_LocalScale: {x: 120, y: 1, z: 0.05}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 629393502}
@@ -35995,6 +36010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newSpeed: 0
+  timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0
   DecrementPortion: 0
   DecrementAmount: 0

@@ -34,10 +34,20 @@ public class SmoothFollowOrig : MonoBehaviour
 		thisTransform = transform;
 		
 		velocity = new Vector3(0.5f, 0.5f, 0.5f);
+
+		if (target == null) 
+		{
+			target = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
 	}
 
 	void start ()
 	{
+
+		if (target == null) 
+		{
+			target = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
 
 		if (OnlyInStart == true) 
 		{

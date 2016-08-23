@@ -8,6 +8,7 @@ public class BulletScript : MonoBehaviour
 	private AutoMoveAndRotate MoveAndRotateScript;
 	public float newSpeed = -70.0f;
 	private GameController gameControllerScript;
+	public TimescaleController timeScaleControllerScript;
 	public enum bulletcost {FixedRate, Percentage}
 	public bulletcost BulletCostType;
 	public float DecrementPortion = 0.1f;
@@ -30,7 +31,7 @@ public class BulletScript : MonoBehaviour
 		ricoshet = 0;
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
-
+		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
 		RicoshetParticle[0] = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[1] = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
@@ -55,7 +56,7 @@ public class BulletScript : MonoBehaviour
 
 		if (VibrationTime > 0) 
 		{
-			GamePad.SetVibration (PlayerIndex.One, 0, 0.4f);
+			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f);
 		}
 
 		if (VibrationTime <= 0) 
@@ -81,6 +82,7 @@ public class BulletScript : MonoBehaviour
 					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 					RicoshetParticle [PlayElement - 1].Play ();
 					VibrationTime = 0.04f;
+					timeScaleControllerScript.enabled = true;
 				}
 
 				if (ricoshet >= ricoshetMax) 
