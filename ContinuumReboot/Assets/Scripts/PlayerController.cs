@@ -27,14 +27,15 @@ public class PlayerController : MonoBehaviour
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups;
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, homingShot, rowClear, disableStacking}
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, rowClear, disableStacking}
 	public powerup CurrentPowerup;
 	public GameObject RegularShot;
 	public GameObject DoubleShot;
 	public GameObject TriShot;
 	public GameObject BeamShot;
 	public GameObject Shield;
-	public GameObject HomingShot;
+	public Lens LensScript;
+	public GameObject HorizontalBeam;
 	public float powerupTime = 0;
 	public float powerupDuration = 10.0f;
 	public AudioSource powerupTimeRunningOut;
@@ -54,6 +55,12 @@ public class PlayerController : MonoBehaviour
 	public float vibrationTime;
 
 	[Header ("Game Over")]
+	public bool initialPart;
+	public float initialTimeScale = 0.1f;
+	public float slowTimeDuration = 3.0f;
+	public float slowTimeRemaining = 0.0f;
+	public AudioSource BGMMusic;
+	public GameObject PressToContinue;
 	public GameObject DeactivatePlayerElements;
 	public float TimeSlowingSpeed = 0.1f;
 	public float minTimeScale = 0.0f;
@@ -98,6 +105,13 @@ public class PlayerController : MonoBehaviour
 		CurrentPowerup = powerup.RegularShot;
 		BeamShot.SetActive (false);
 		Shield.SetActive (false);
+		HorizontalBeam.SetActive (false);
+
+		initialPart = false;
+		PressToContinue.SetActive (false);
+		slowTimeRemaining = slowTimeDuration;
+		LensScript = Camera.main.GetComponent<Lens> ();
+		LensScript.enabled = false;
 	}
 
 	void Update () 
@@ -130,6 +144,8 @@ public class PlayerController : MonoBehaviour
 			shot = RegularShot;
 			gameControllerScript.PowerupText.text = "" + "Cost: 2.5% score/bullet";
 			BeamShot.SetActive (false);
+			HorizontalBeam.SetActive (false);
+			LensScript.enabled = false;
 		}
 
 		// Double Shot
@@ -163,14 +179,15 @@ public class PlayerController : MonoBehaviour
 			Shield.SetActive (true);
 			powerupTime -= Time.unscaledDeltaTime;
 			gameControllerScript.PowerupText.text = "Shield";
+			LensScript.enabled = true;
 		}
 
 		// Homing Shot.
-		if (CurrentPowerup == powerup.homingShot) 
+		if (CurrentPowerup == powerup.horizontalBeam) 
 		{
-			shot = HomingShot;
+			HorizontalBeam.SetActive (true);
 			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Homing Shot";
+			gameControllerScript.PowerupText.text = "Horizontal Beam";
 		}
 			
 		// Warning powerup time.
@@ -201,6 +218,7 @@ public class PlayerController : MonoBehaviour
 		// Health at 0.
 		if (Health <= 0) 
 		{
+			//initialPart = true;
 			PlayerMesh.enabled = false;
 			PlayerCollider.enabled = false;
 			DeactivatePlayerElements.SetActive (false);
@@ -209,17 +227,7 @@ public class PlayerController : MonoBehaviour
 			timeScaleControllerScript.enabled = false;
 			BGMPitchScript.addPitch = 0;
 
-			// Turn on Game over UI.
-			if (GameOverUI.activeInHierarchy == false) 
-			{
-				GameOverUI.SetActive (true);
-			}
 
-			// Play game over loop.
-			if (!GameOverLoop.isPlaying) 
-			{
-				GameOverLoop.PlayDelayed (4.0f);
-			}
 		}
 
 		if (ColorCorrectionCurvesScript.saturation < 1) 
@@ -248,14 +256,16 @@ public class PlayerController : MonoBehaviour
 		/// Shooting functionality ///
 
 		// PC Controller Input.
-		if (Input.GetButton ("Fire1") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)
+		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) ||
+			(Input.GetKey (KeyCode.LeftControl) && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth))
 		{
-			nextFire = Time.time + fireRate;
+			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 		}
 
 		// XBox 360 controller input for Windows.
-		if (Input.GetAxisRaw ("Fire1") < 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)
+		if ((Input.GetAxisRaw ("Fire1") < 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+			(Input.GetKeyDown ("joystick button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) // Using A button.
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -272,16 +282,57 @@ public class PlayerController : MonoBehaviour
 
 	void GameOver ()
 	{
-		// When timescale is above an amount, to decrement time scale.
-		if (Time.timeScale >= 0.0166f)
+		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
+		BGMMusic.Stop ();
+
+		if (slowTimeRemaining > 0) 
 		{
-			Time.timeScale -= Time.unscaledDeltaTime * TimeSlowingSpeed;
+			Time.timeScale = 0.01f;
 		}
 
-		// When timescale is low enough.
-		if (Time.timeScale < 0.0165f) 
+		if (slowTimeRemaining <= 0) 
 		{
-			Time.timeScale = 0.0165f;
+			slowTimeRemaining = 0; // Stops decrementing slow time remaining.
+			Time.timeScale = 1; // Has time scale back to normal.
+			timeScaleControllerScript.enabled = false; // Turns off timescale controller.
+			PressToContinue.SetActive (true); // Activates "Press A to continue" text.
+
+			if (Input.GetKeyDown ("joystick button 0")) // When the player presses A on the controller,
+			{
+				Time.timeScale = initialTimeScale; // sets timescale to this.
+				PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
+
+				// Turns on Game over UI.
+				if (GameOverUI.activeInHierarchy == false) 
+				{
+					GameOverUI.SetActive (true);
+				}
+
+				// Plays game over loop.
+				if (!GameOverLoop.isPlaying) 
+				{
+					GameOverLoop.PlayDelayed (4.0f);
+				}
+			}
+		}
+
+		if (Health <= 0 && GameOverUI.activeSelf == true) 
+		{
+			PressToContinue.SetActive (false);
+
+			// When timescale is above an amount, to decrement time scale.
+			if (Time.timeScale >= 0.0166f) 
+			{
+				Time.timeScale -= Time.unscaledDeltaTime * TimeSlowingSpeed;
+				PressToContinue.SetActive (false);
+			}
+
+			// When timescale is low enough.
+			if (Time.timeScale < 0.0165f)
+			{
+				Time.timeScale = 0.0165f;
+				PressToContinue.SetActive (false);
+			}
 		}
 	}
 }

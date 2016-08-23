@@ -4,9 +4,9 @@ using System.Collections;
 public class PowerupScript : MonoBehaviour 
 {
 	private PlayerController playerControllerScript;
-	private GameController gameControllerScript;
+	//private GameController gameControllerScript;
 
-	public enum poweruptype {doubleShot, triShot, beamShot, shield, homingShot} // Add more later.
+	public enum poweruptype {doubleShot, triShot, beamShot, shield, horizontalBeam} // Add more later.
 	public poweruptype PowerupType;
 
 	public GameObject Explosion;
@@ -14,7 +14,7 @@ public class PowerupScript : MonoBehaviour
 	void Start () 
 	{
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent <GameController> ();
+		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent <GameController> ();
 	}
 
 	void Update () 
@@ -61,10 +61,10 @@ public class PowerupScript : MonoBehaviour
 				Destroy (gameObject);
 			}
 
-			if (PowerupType == poweruptype.homingShot) 
+			if (PowerupType == poweruptype.horizontalBeam) 
 			{
 				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
-				playerControllerScript.CurrentPowerup = PlayerController.powerup.homingShot;
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.horizontalBeam;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
 				Destroy (gameObject);

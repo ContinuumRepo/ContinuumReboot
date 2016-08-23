@@ -287,7 +287,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Time: 0.05
-  m_StartWidth: 0.4
+  m_StartWidth: 0.5
   m_EndWidth: 0
   m_Colors:
     m_Color[0]:
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -140, z: 0}
+    value: {x: 0, y: -90, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
   - {fileID: 8216500, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   - {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   ricoshet: 0
-  ricoshetMax: 5
+  ricoshetMax: 4
   BulletNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
   useRandomRotation: 1
   BeamExplosion: {fileID: 0}

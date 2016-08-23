@@ -21,6 +21,7 @@ public class BulletScript : MonoBehaviour
 	public AudioSource BeamExplosion;
 	public ParticleSystem[] RicoshetParticle;
 	public float VibrationTime = 0.04f;
+	public bool isHorizontal;
 
 	void Start () 
 	{
@@ -114,7 +115,7 @@ public class BulletScript : MonoBehaviour
 			
 		}
 
-		if (other.tag == "Barrier") 
+		if (other.tag == "Barrier" && isHorizontal == false) 
 		{
 			gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 		}

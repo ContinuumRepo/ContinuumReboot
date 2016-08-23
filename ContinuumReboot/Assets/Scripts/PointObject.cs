@@ -126,14 +126,18 @@ public class PointObject : MonoBehaviour
 
 		if (other.tag == "Player")
 		{	
-			GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-			for (int i = Destroyers.Length-1; i > 0; i--)
+			if (PlayerControllerScript.Health > 25)
 			{
-				Destroy (Destroyers [i].gameObject);
+				// Finds Points to destroy.
+				GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
+				for (int i = Destroyers.Length - 1; i > 0; i--) {
+					Destroy (Destroyers [i].gameObject);
+				}
 			}
 
 			Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			PlayerControllerScript.Health -= Damage;
+
 			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
 
 			if (PlayerControllerScript.Health <= 10) 

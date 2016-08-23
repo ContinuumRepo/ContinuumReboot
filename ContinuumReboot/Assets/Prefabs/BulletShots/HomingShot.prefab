@@ -64,8 +64,7 @@ GameObject:
   - 114: {fileID: 11474850}
   - 114: {fileID: 11487884}
   - 114: {fileID: 11421080}
-  - 114: {fileID: 11461186}
-  - 114: {fileID: 11400648}
+  - 114: {fileID: 11494306}
   m_Layer: 13
   m_Name: HomingShot
   m_TagString: Bullet
@@ -309,37 +308,6 @@ TrailRenderer:
       rgba: 4294901980
   m_MinVertexDistance: 0.05
   m_Autodestruct: 0
---- !u!114 &11400648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyInStart: 0
-  SMOOTH_TIME: 0.1
-  LockX: 0
-  LockY: 0
-  LockZ: 0
-  useSmoothing: 1
-  target: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  xMin: 0
-  xMax: 0
-  yMin: 0
-  yMax: 0
-  zMin: 0
-  zMax: 0
-  useRB: 0
-  lockedPos: 0
-  hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!114 &11405316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -386,18 +354,6 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
---- !u!114 &11461186
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4847b933317bbc94c99c0c59f589aead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: Cube
 --- !u!114 &11474850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -438,7 +394,7 @@ MonoBehaviour:
   - {fileID: 8216500, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   - {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   ricoshet: 0
-  ricoshetMax: 5
+  ricoshetMax: 4
   BulletNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
   useRandomRotation: 1
   BeamExplosion: {fileID: 0}
@@ -449,6 +405,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   VibrationTime: 0.04
+--- !u!114 &11494306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 199040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06765dc16a50403459741568dc1b03ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  moveSpeed: 200
+  rotationSpeed: 45
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
