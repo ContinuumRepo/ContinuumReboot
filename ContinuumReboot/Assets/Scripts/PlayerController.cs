@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 	private AudioSourcePitchByTimescale BGMPitchScript;
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;
 	private bool playedGameOverSound;
+	private CameraShake camShakeScrpt;
+	public float shakeTime = 0.5f;
+	public float shakeAmount = 1.0f;
 
 	[Header ("Movement")]
 	private Rigidbody rb;
@@ -71,6 +74,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		// Finds Camera Shake script.
+		camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake>();
+
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
 
@@ -275,6 +281,8 @@ public class PlayerController : MonoBehaviour
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
 			vibrationTime = vibrationDuration;
+			camShakeScrpt.shakeAmount = shakeAmount;
+			camShakeScrpt.shakeDuration = shakeTime;
 		}
 	}
 

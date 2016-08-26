@@ -3177,7 +3177,7 @@ GameObject:
   - 198: {fileID: 82449001}
   - 199: {fileID: 82449000}
   m_Layer: 0
-  m_Name: ReawdCombo
+  m_Name: RewardCombo
   m_TagString: ComboOrangeParticles
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11953,6 +11953,21 @@ CanvasRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 181552, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
   m_PrefabInternal: {fileID: 1368095619}
+--- !u!114 &538907854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538907853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a13d9c9e2cc424380e11b8f5cc2ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camTransform: {fileID: 1058476195}
+  shakeDuration: 0
+  shakeAmount: 0.5
+  decreaseFactor: 1
 --- !u!114 &538907860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20871,6 +20886,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShakeDuration: 0.25
+  InitialShakeStrength: 0.5
   newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0
@@ -21470,6 +21487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ColorCorrectionCurvesScript: {fileID: 0}
+  shakeTime: 0.5
+  shakeAmount: 1.2
   speed: 40
   tilt: 0
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
@@ -29613,6 +29632,10 @@ Prefab:
       propertyPath: sunTransform
       value: 
       objectReference: {fileID: 2050921667}
+    - target: {fileID: 181552, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
   m_IsPrefabParent: 0
@@ -33385,6 +33408,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShakeDuration: 0.25
+  InitialShakeStrength: 0.5
   newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0
@@ -36078,6 +36103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShakeDuration: 0.25
+  InitialShakeStrength: 0.5
   newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 0

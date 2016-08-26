@@ -379,7 +379,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialShakeDuration: 0.15
+  InitialShakeStrength: 0.25
   newSpeed: -70
+  timeScaleControllerScript: {fileID: 0}
   BulletCostType: 1
   DecrementPortion: 0
   DecrementAmount: 0
@@ -405,6 +408,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   VibrationTime: 0.04
+  isHorizontal: 0
 --- !u!114 &11494306
 MonoBehaviour:
   m_ObjectHideFlags: 1

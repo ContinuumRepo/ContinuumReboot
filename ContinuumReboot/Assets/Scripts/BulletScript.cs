@@ -5,6 +5,9 @@ using XInputDotNetPure;
 
 public class BulletScript : MonoBehaviour 
 {
+	private CameraShake camShakeScript;
+	public float InitialShakeDuration = 0.25f;
+	public float InitialShakeStrength = 0.5f;
 	private AutoMoveAndRotate MoveAndRotateScript;
 	public float newSpeed = -70.0f;
 	private GameController gameControllerScript;
@@ -26,6 +29,9 @@ public class BulletScript : MonoBehaviour
 
 	void Start () 
 	{
+		camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
+		camShakeScript.shakeDuration = InitialShakeDuration;
+		camShakeScript.shakeAmount = InitialShakeStrength;
 		VibrationTime = 0.04f;
 		PlayElement = 0;
 		ricoshet = 0;
@@ -70,6 +76,8 @@ public class BulletScript : MonoBehaviour
 	{
 		if (other.tag == "Brick" || other.tag == "Cube") 
 		{
+			camShakeScript.shakeDuration = InitialShakeDuration;
+			camShakeScript.shakeAmount = InitialShakeStrength;
 			if (useRandomRotation == true) 
 			{
 				if (ricoshet < ricoshetMax) 
