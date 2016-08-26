@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
 	public AudioSource MainSound;
 	public AudioSource ResumeSound;
 	public AudioSourcePitchByTimescale AudioPitchScript;
+	public GameObject ControlsScreen;
 
 	[Header ("Scoring")]
 	public float CurrentScore;
@@ -54,12 +55,9 @@ public class GameController : MonoBehaviour
 	public int LevelFourScore = 50000;
 	public int LevelFiveScore = 100000;
 	public float ScoreSpeed; // How fast the score increases per frame.
-	public GameObject PanelL;
-	public GameObject PanelR;
-	public Text ScoreL;
-	public Text ScoreR;
-	public Text TimeScaleTextL;
-	public Text TimeScaleTextR;
+	public GameObject Panel;
+	public Text ScoreText;
+	public Text TimeScaleText;
 	public Text GameOverScoreText;
 	public Text HighestTimeScaleText;
 
@@ -84,9 +82,6 @@ public class GameController : MonoBehaviour
 
 		// turns off bottom barrier so the player can safely translate into the play space.
 		BottomBarrier.GetComponent<BoxCollider>().enabled = false;
-
-		PanelL.SetActive (false); // Turns off left panel.
-		PanelR.SetActive (true); // Turns on right panel.
 		PauseUI.SetActive (false); // Disables Pause UI.
 
 		// Finds TimeScale Controller Component.
@@ -121,8 +116,7 @@ public class GameController : MonoBehaviour
 
 		// Start score.
 		CurrentScore = 0;
-		ScoreL.text = "" + 0 + "";
-		ScoreR.text = "" + 0 + "";
+		ScoreText.text = "" + 0 + "";
 	}
 
 	void Update () 
@@ -137,37 +131,11 @@ public class GameController : MonoBehaviour
 		if (!isPreGame && playerControllerScript.Health > playerControllerScript.minHealth) 
 		{
 			// Sets UI for time multipler and converts to string format.
-			TimeScaleTextL.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
-			TimeScaleTextR.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
+			TimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
 
 			// Sets score and shows on UI.
 			CurrentScore += Time.deltaTime * ScoreSpeed;
-			ScoreL.text = "" + Mathf.Round (CurrentScore) + "";
-			ScoreR.text = "" + Mathf.Round (CurrentScore) + "";
-
-			// When the player starts to approach the bottom of the screen
-			if (Player.transform.position.y < -10.0f) 
-			{
-				// When the Player is positioned on the left hand side of the screen, (or exactly in the middle (when transform.position.x = 0)). 
-				if (Player.transform.position.x <= 0) 
-				{
-					PanelL.SetActive (false); // Turns off left panel.
-					PanelR.SetActive (true); // Turns on right panel.
-				}
-
-				// When the Player is positioned on the right hand side of the screen. 
-				if (Player.transform.position.x > 0) 
-				{
-					PanelL.SetActive (true); // Turns on left panel.
-					PanelR.SetActive (false); // Turns on right panel.
-				}
-			}
-
-			if (Player.transform.position.y >= -10.0f)
-			{
-				PanelL.SetActive (false); // Turns off left panel.
-				PanelR.SetActive (true); // Turns on right panel.
-			}
+			ScoreText.text = "" + Mathf.Round (CurrentScore) + "";
 		}
 
 		if (!isPreGame && playerControllerScript.Health <= playerControllerScript.minHealth) 
@@ -207,6 +175,14 @@ public class GameController : MonoBehaviour
 
 			MouseScript.visibleTime = MouseScript.visibleDuration;
 			MouseScript.enabled = false;
+		}
+
+		if (Input.GetKeyDown ("joystick button 1") && isPaused == true && ControlsScreen.activeInHierarchy == false) 
+		{
+			isPaused = false;
+			UnPauseGame ();
+
+			MouseScript.enabled = true;
 		}
 			
 		if (Input.GetKeyDown (KeyCode.P)) 

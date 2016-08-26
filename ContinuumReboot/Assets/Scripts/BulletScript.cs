@@ -38,6 +38,7 @@ public class BulletScript : MonoBehaviour
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
+
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
 		RicoshetParticle[0] = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[1] = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();

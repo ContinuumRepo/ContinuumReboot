@@ -35,7 +35,7 @@ public class CameraShake : MonoBehaviour
 		{
 			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
 			
-			shakeDuration -= Time.deltaTime * decreaseFactor;
+			shakeDuration -= Time.unscaledDeltaTime * decreaseFactor;
 		}
 		else
 		{

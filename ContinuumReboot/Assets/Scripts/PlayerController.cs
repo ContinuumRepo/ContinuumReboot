@@ -51,11 +51,11 @@ public class PlayerController : MonoBehaviour
 	public float Health;
 	public float startingHealth = 100;
 	public float minHealth = 0;
-	public Image HealthImageL;
-	public Image HealthImageR;
+	public Image HealthImage;
 	public float vibrationAmount = 1;
 	public float vibrationDuration = 0.4f;
 	public float vibrationTime;
+	public Text HealthText;
 
 	[Header ("Game Over")]
 	public bool initialPart;
@@ -91,8 +91,7 @@ public class PlayerController : MonoBehaviour
 
 		// Gives health starting health amount.
 		Health = startingHealth;
-		HealthImageL.fillAmount = Health / 100;
-		HealthImageR.fillAmount = Health / 100;
+		HealthImage.fillAmount = Health / 100;
 
 		// Timescale controller script.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
@@ -117,7 +116,7 @@ public class PlayerController : MonoBehaviour
 		PressToContinue.SetActive (false);
 		slowTimeRemaining = slowTimeDuration;
 		LensScript = Camera.main.GetComponent<Lens> ();
-		LensScript.enabled = false;
+		//LensScript.enabled = false;
 	}
 
 	void Update () 
@@ -136,10 +135,9 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// The UI fill amount of the health.
-		HealthImageL.fillAmount = Health / 100;
-		HealthImageR.fillAmount = Health / 100;
-		HealthImageR.color = new Color (25/Health, Health/100, 0, 0.9f);
-		HealthImageL.color = new Color (25/Health, Health/100, 0, 0.9f);
+		HealthImage.fillAmount = Health / 100;
+		HealthImage.color = new Color (25/Health, Health/100, 0, 0.9f);
+		HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
 
 		/// POWERUPS ///
 		PowerupMeter.fillAmount = powerupTime / powerupDuration; // UI fill amount for powerup.
@@ -148,10 +146,15 @@ public class PlayerController : MonoBehaviour
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
 			shot = RegularShot;
-			gameControllerScript.PowerupText.text = "" + "Cost: 2.5% score/bullet";
+			gameControllerScript.PowerupText.text = "" + "-2.5% x shot";
 			BeamShot.SetActive (false);
 			HorizontalBeam.SetActive (false);
-			LensScript.enabled = false;
+			//LensScript.enabled = false;
+
+			if (LensScript.radius > 0) 
+			{
+				LensScript.radius -= 1f * Time.unscaledDeltaTime;
+			}
 		}
 
 		// Double Shot
@@ -159,7 +162,7 @@ public class PlayerController : MonoBehaviour
 		{
 			shot = DoubleShot;
 			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Double Shot " + "Free";
+			gameControllerScript.PowerupText.text = "Double Shot";
 		}
 
 		// Tri shot.
@@ -167,7 +170,7 @@ public class PlayerController : MonoBehaviour
 		{
 			shot = TriShot;
 			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Triple Shot " + "Free";
+			gameControllerScript.PowerupText.text = "Triple Shot";
 		}
 
 		// Beam shot.
@@ -186,6 +189,11 @@ public class PlayerController : MonoBehaviour
 			powerupTime -= Time.unscaledDeltaTime;
 			gameControllerScript.PowerupText.text = "Shield";
 			LensScript.enabled = true;
+
+			if (LensScript.radius <= 0.75f && LensScript.radius >= 0) 
+			{
+				LensScript.radius += 0.1f * Time.unscaledDeltaTime;
+			}
 		}
 
 		// Homing Shot.
