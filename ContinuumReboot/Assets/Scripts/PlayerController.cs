@@ -155,6 +155,10 @@ public class PlayerController : MonoBehaviour
 			{
 				LensScript.radius -= 1f * Time.unscaledDeltaTime;
 			}
+			if (LensScript.radius < 0) 
+			{
+				LensScript.radius = 0;
+			}
 		}
 
 		// Double Shot
@@ -190,7 +194,7 @@ public class PlayerController : MonoBehaviour
 			gameControllerScript.PowerupText.text = "Shield";
 			LensScript.enabled = true;
 
-			if (LensScript.radius <= 0.75f && LensScript.radius >= 0) 
+			if (LensScript.radius <= 0.6f && LensScript.radius >= 0) 
 			{
 				LensScript.radius += 0.1f * Time.unscaledDeltaTime;
 			}
