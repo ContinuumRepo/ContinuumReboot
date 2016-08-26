@@ -12,11 +12,17 @@ public class QuitScript : MonoBehaviour
 
 	void Update () 
 	{
-	
+		
 	}
 
 	public void QuitGame ()
 	{
 		Application.Quit ();
+
+		#if UNITY_EDITOR
+
+		Debug.Log ("Tried to quit in editor.");
+
+		#endif
 	}
 }

@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour
 			ScoreR.text = "" + Mathf.Round (CurrentScore) + "";
 
 			// When the player starts to approach the bottom of the screen
-			if (Player.transform.position.y < -14.0f) 
+			if (Player.transform.position.y < -10.0f) 
 			{
 				// When the Player is positioned on the left hand side of the screen, (or exactly in the middle (when transform.position.x = 0)). 
 				if (Player.transform.position.x <= 0) 
@@ -163,7 +163,7 @@ public class GameController : MonoBehaviour
 				}
 			}
 
-			if (Player.transform.position.y >= -14.0f)
+			if (Player.transform.position.y >= -10.0f)
 			{
 				PanelL.SetActive (false); // Turns off left panel.
 				PanelR.SetActive (true); // Turns on right panel.
