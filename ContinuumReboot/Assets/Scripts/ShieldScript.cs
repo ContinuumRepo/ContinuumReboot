@@ -54,7 +54,7 @@ public class ShieldScript : MonoBehaviour
 
 		if (Oneshots [0].isPlaying == false) 
 		{
-			Destroy (Oneshots[0]);
+			//Destroy (Oneshots[0]);
 		}
 	}
 

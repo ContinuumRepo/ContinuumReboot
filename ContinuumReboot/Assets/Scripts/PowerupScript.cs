@@ -28,7 +28,7 @@ public class PowerupScript : MonoBehaviour
 		{
 			if (PowerupType == poweruptype.doubleShot) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 15.0f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.DoubleShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -37,7 +37,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.triShot) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 20.0f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.TriShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -46,7 +46,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.beamShot) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 15.0f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.BeamShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -55,7 +55,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.shield) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 12.5f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				Destroy (gameObject);
@@ -63,7 +63,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.horizontalBeam) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 10.0f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.horizontalBeam;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -72,7 +72,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.clone) 
 			{
-				playerControllerScript.powerupTime = playerControllerScript.powerupDuration;
+				playerControllerScript.powerupTime = 30.0f;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
