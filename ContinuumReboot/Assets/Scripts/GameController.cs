@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour
 	public Text ScoreText; // The score text to display current score as an integer.
 	public Text TimeScaleText; // The current time scale multiplier text.
 	public Text GameOverScoreText; // The game over text to display final score.
-	public Text HighestTimeScaleText; // The game over text to display the highest time scale achieved.
+	//public Text HighestTimeScaleText; // The game over text to display the highest time scale achieved.
 
 	[Header ("Misc")]
 	public GameObject ShowFpsText; // The UI text to display frames per second.
@@ -149,7 +149,7 @@ public class GameController : MonoBehaviour
 			// Sets game over score text.
 			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
 			// Sets game over highest itme scale text.
-			HighestTimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.highestTimeScale * 100f)) + "%";
+			//HighestTimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.highestTimeScale * 100f)) + "%";
 		}
 
 		// If the game's score is less than 0.

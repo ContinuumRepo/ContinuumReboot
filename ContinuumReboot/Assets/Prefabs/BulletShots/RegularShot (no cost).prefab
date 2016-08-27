@@ -192,7 +192,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 119278}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d68c3b6c63c0174aba7776c1a1854ba, type: 3}
@@ -362,15 +362,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: -70
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
-  newSpeed: -70
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 119278}
   BulletCostType: 1
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
-  PlayElement: 0
   Oneshots:
   - {fileID: 8234212, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   - {fileID: 8248528, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
@@ -380,11 +379,10 @@ MonoBehaviour:
   - {fileID: 8281918, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   - {fileID: 8216500, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   - {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
+  PlayElement: 0
+  BeamExplosion: {fileID: 0}
   ricoshet: 0
   ricoshetMax: 0
-  BulletNoCost: {fileID: 119278}
-  useRandomRotation: 1
-  BeamExplosion: {fileID: 0}
   RicoshetParticle:
   - {fileID: 0}
   - {fileID: 0}
@@ -392,7 +390,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   VibrationTime: 0.04
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 1
 --- !u!114 &11498180
 MonoBehaviour:
   m_ObjectHideFlags: 1

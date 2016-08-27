@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 	public powerup CurrentPowerup; // The above enum values.
 	public GameObject RegularShot; // The bullet the player shoots when there is no powerup.
 	public GameObject RegularShotNoCost; // The bullet the player shoots when there is a powerup that doesnt change the regular shot.
+	public GameObject MutedRegularShot; // Smae as above but has no volume.
 	public GameObject DoubleShot; // Allows the player to shoot TWO bullets at a time without costing points.
 	public GameObject TriShot; // Allows the player to shoot THREE bullets at a time without costing points.
 	public GameObject BeamShot; // A solid beam of energy wiping out everything in its path vertically.
@@ -152,6 +153,11 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		if (isClone) 
+		{
+			shot = MutedRegularShot;
+		}
+
 		// If the Game Object that is attached to this script is not a clone.
 		if (!isClone) 
 		{
