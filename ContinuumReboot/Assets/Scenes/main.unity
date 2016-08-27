@@ -12078,25 +12078,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 0
-  PlayElement: 0
   Oneshots:
   - {fileID: 8269652, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  PlayElement: 0
+  BeamExplosion: {fileID: 1940907496}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 1940907496}
   RicoshetParticle: []
   VibrationTime: 0.04
+  isShield: 0
   isHorizontal: 1
+  useRandomRotation: 0
 --- !u!82 &139805447
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12479,25 +12479,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 0
-  PlayElement: 0
   Oneshots:
   - {fileID: 8269652, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  PlayElement: 0
+  BeamExplosion: {fileID: 1940907496}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 1940907496}
   RicoshetParticle: []
   VibrationTime: 0.04
+  isShield: 0
   isHorizontal: 1
+  useRandomRotation: 0
 --- !u!82 &156460793
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18995,25 +18995,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 0
-  PlayElement: 0
   Oneshots:
   - {fileID: 1239581683}
+  PlayElement: 0
+  BeamExplosion: {fileID: 1239581683}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 1239581683}
   RicoshetParticle: []
   VibrationTime: 0.2
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 0
 --- !u!23 &383704233
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26347,7 +26347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &533073589
 Transform:
   m_ObjectHideFlags: 0
@@ -28770,7 +28770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571314197
 Transform:
   m_ObjectHideFlags: 0
@@ -29054,7 +29054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &620930550
 Transform:
   m_ObjectHideFlags: 0
@@ -40175,7 +40175,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 5700864
+          rgba: 6447714
         key1:
           serializedVersion: 2
           rgba: 4283498751
@@ -42995,6 +42995,11 @@ MonoBehaviour:
   shakeAmount: 1
   speed: 40
   tilt: 0
+  xBoundLower: -32
+  xBoundUpper: 32
+  yBoundLower: -16.5
+  yBoundUpper: 20
+  zBound: 0
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   shotSpawn: {fileID: 353225749}
   fireRate: 0.125
@@ -43002,6 +43007,7 @@ MonoBehaviour:
   Powerups: []
   CurrentPowerup: 0
   RegularShot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
+  RegularShotNoCost: {fileID: 119278, guid: 56b9f1029bbd9004cb3e7193e8b28a05, type: 2}
   DoubleShot: {fileID: 186690, guid: 52a14fc10a79d1b489b818e53b7d80ab, type: 2}
   TriShot: {fileID: 115924, guid: ecaa6e4c8461b9445a25757ab92c7dd7, type: 2}
   BeamShot: {fileID: 1540288343}
@@ -43017,7 +43023,12 @@ MonoBehaviour:
   CloneIcon: {fileID: 89779196}
   LensScript: {fileID: 0}
   powerupTime: 0
-  powerupDuration: 10
+  powerupDurationA: 10
+  powerupDurationB: 20
+  powerupDurationC: 12
+  powerupDurationD: 20
+  powerupDurationE: 12
+  powerupDurationF: 30
   powerupTimeRunningOut: {fileID: 107156133}
   powerupDeactivateAudio: {fileID: 388618436}
   ActivePowerupParticles: {fileID: 2043040999}
@@ -55677,7 +55688,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 5700864
+          rgba: 6447714
         key1:
           serializedVersion: 2
           rgba: 4283498751
@@ -56649,25 +56660,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
-  PlayElement: 0
   Oneshots:
   - {fileID: 2106444434}
+  PlayElement: 0
+  BeamExplosion: {fileID: 2106444434}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 2106444434}
   RicoshetParticle: []
   VibrationTime: 0.2
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 0
 --- !u!82 &1115116168
 AudioSource:
   m_ObjectHideFlags: 0
@@ -61085,25 +61096,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 0
-  PlayElement: 0
   Oneshots:
   - {fileID: 1239581683}
+  PlayElement: 0
+  BeamExplosion: {fileID: 1239581683}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 1239581683}
   RicoshetParticle: []
   VibrationTime: 0.2
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 0
 --- !u!23 &1286155020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61165,7 +61176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1286900731
 Transform:
   m_ObjectHideFlags: 0
@@ -63337,7 +63348,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362413234}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: 6.5, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children:
@@ -63404,6 +63415,11 @@ MonoBehaviour:
   shakeAmount: 1
   speed: 60
   tilt: 0
+  xBoundLower: -20
+  xBoundUpper: 20
+  yBoundLower: -20
+  yBoundUpper: 20
+  zBound: 0
   shot: {fileID: 159602, guid: c064567c033410f478f437d28b68dade, type: 2}
   shotSpawn: {fileID: 269095114}
   fireRate: 0.125
@@ -63411,6 +63427,7 @@ MonoBehaviour:
   Powerups: []
   CurrentPowerup: 0
   RegularShot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
+  RegularShotNoCost: {fileID: 0}
   DoubleShot: {fileID: 186690, guid: 52a14fc10a79d1b489b818e53b7d80ab, type: 2}
   TriShot: {fileID: 115924, guid: ecaa6e4c8461b9445a25757ab92c7dd7, type: 2}
   BeamShot: {fileID: 1540288343}
@@ -63426,7 +63443,12 @@ MonoBehaviour:
   CloneIcon: {fileID: 89779196}
   LensScript: {fileID: 0}
   powerupTime: 10
-  powerupDuration: 10
+  powerupDurationA: 10
+  powerupDurationB: 10
+  powerupDurationC: 10
+  powerupDurationD: 10
+  powerupDurationE: 10
+  powerupDurationF: 10
   powerupTimeRunningOut: {fileID: 107156133}
   powerupDeactivateAudio: {fileID: 388618436}
   ActivePowerupParticles: {fileID: 2043040999}
@@ -69098,22 +69120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
-  PlayElement: 0
   Oneshots:
   - {fileID: 2106444434}
+  PlayElement: 0
+  BeamExplosion: {fileID: 2106444434}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 2106444434}
   RicoshetParticle:
   - {fileID: 1013753588}
   - {fileID: 443119758}
@@ -69121,7 +69141,9 @@ MonoBehaviour:
   - {fileID: 1486054472}
   - {fileID: 2073842998}
   VibrationTime: 0.2
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 0
 --- !u!114 &1540288351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71785,7 +71807,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 5700864
+          rgba: 6447714
         key1:
           serializedVersion: 2
           rgba: 4283498751
@@ -76231,7 +76253,7 @@ Transform:
   m_GameObject: {fileID: 1717470043}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 1957681819}
@@ -80036,22 +80058,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 0
-  PlayElement: 0
   Oneshots:
   - {fileID: 8269652, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  PlayElement: 0
+  BeamExplosion: {fileID: 1940907496}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 1940907496}
   RicoshetParticle:
   - {fileID: 1013753588}
   - {fileID: 443119758}
@@ -80059,7 +80079,9 @@ MonoBehaviour:
   - {fileID: 1486054472}
   - {fileID: 2073842998}
   VibrationTime: 0.04
+  isShield: 0
   isHorizontal: 1
+  useRandomRotation: 0
 --- !u!114 &1814519611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80545,7 +80567,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1957681818}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -0.00000016292068}
-  m_LocalPosition: {x: -6.5, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children:
@@ -80612,6 +80634,11 @@ MonoBehaviour:
   shakeAmount: 1
   speed: 60
   tilt: 0
+  xBoundLower: -20
+  xBoundUpper: 20
+  yBoundLower: -20
+  yBoundUpper: 20
+  zBound: 0
   shot: {fileID: 159602, guid: c064567c033410f478f437d28b68dade, type: 2}
   shotSpawn: {fileID: 1485354901}
   fireRate: 0.125
@@ -80619,6 +80646,7 @@ MonoBehaviour:
   Powerups: []
   CurrentPowerup: 0
   RegularShot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
+  RegularShotNoCost: {fileID: 0}
   DoubleShot: {fileID: 186690, guid: 52a14fc10a79d1b489b818e53b7d80ab, type: 2}
   TriShot: {fileID: 115924, guid: ecaa6e4c8461b9445a25757ab92c7dd7, type: 2}
   BeamShot: {fileID: 1540288343}
@@ -80634,7 +80662,12 @@ MonoBehaviour:
   CloneIcon: {fileID: 89779196}
   LensScript: {fileID: 0}
   powerupTime: 10
-  powerupDuration: 10
+  powerupDurationA: 10
+  powerupDurationB: 10
+  powerupDurationC: 10
+  powerupDurationD: 10
+  powerupDurationE: 10
+  powerupDurationF: 10
   powerupTimeRunningOut: {fileID: 107156133}
   powerupDeactivateAudio: {fileID: 388618436}
   ActivePowerupParticles: {fileID: 2043040999}
@@ -80763,25 +80796,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  newSpeed: 0
   timeScaleControllerScript: {fileID: 0}
+  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   BulletCostType: 0
-  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
-  PlayElement: 0
   Oneshots:
   - {fileID: 2106444434}
+  PlayElement: 0
+  BeamExplosion: {fileID: 2106444434}
   ricoshet: 0
   ricoshetMax: 6
-  BulletNoCost: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  useRandomRotation: 0
-  BeamExplosion: {fileID: 2106444434}
   RicoshetParticle: []
   VibrationTime: 0.2
+  isShield: 0
   isHorizontal: 0
+  useRandomRotation: 0
 --- !u!82 &1958203786
 AudioSource:
   m_ObjectHideFlags: 0
@@ -88674,7 +88707,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 5700864
+          rgba: 6447714
         key1:
           serializedVersion: 2
           rgba: 4283498751

@@ -1011,10 +1011,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialShakeDuration: 0.13
-  InitialShakeStrength: 0.3
+  InitialShakeStrength: 0.15
   newSpeed: -70
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 1
+  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
   PlayElement: 0
@@ -1150,10 +1151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialShakeDuration: 0.13
-  InitialShakeStrength: 0.3
+  InitialShakeStrength: 0.15
   newSpeed: -70
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 1
+  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
   PlayElement: 0
@@ -1203,10 +1205,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialShakeDuration: 0.13
-  InitialShakeStrength: 0.3
+  InitialShakeStrength: 0.15
   newSpeed: -70
   timeScaleControllerScript: {fileID: 0}
   BulletCostType: 1
+  isShield: 0
   DecrementPortion: 0
   DecrementAmount: 100
   PlayElement: 0

@@ -5,84 +5,88 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
-	private Transform Player;
-	private PlayerController playerControllerScript;
+	private Transform Player; // The Player's transform component.
+	private PlayerController playerControllerScript; // Player controller script component.
 	private TimescaleController timeScaleControllerScript; // Timescale script component.
-	private BrickStackController brickStackControllerScript;
+	private BrickStackController brickStackControllerScript; // Brick stack controller component.
 
 	[Header ("MouseStates")]
-	public GlobalMouseVisibility MouseScript;
+	public GlobalMouseVisibility MouseScript; // Mouse visibility component.
 
 	[Header ("Pre-game")]
-	public bool isPreGame;
-	public GameObject PreGameUI;
-	public float CountDownDelay = 5.0f;
-	public Animator PlayerAnim;
-	public GameObject BottomBarrier;
+	public bool isPreGame; // Is the game in pre-game mode?
+	public GameObject PreGameUI; // Pre-game UI.
+	public float CountDownDelay = 5.0f; // Countdown delay.
+	public Animator PlayerAnim; // Player enter animation.
+	public GameObject BottomBarrier; // The bottom barrier of the play space.
 
 	[Header ("Spawning Objects")]
-	public GameObject[] Hazards;
-	public Vector3 spawnValues;
-	public float startWait;
-	public float spawnWait;
-	public float waveWait;
-	public int hazardCount;
+	public GameObject[] Hazards; // Array of different hazards to spawn.
+	public Vector3 spawnValues; // Spawn X, Y, Z values.
+	public float startWait; // Start spawn wait.
+	public float spawnWait; // Time between new spawned hazards.
+	public float waveWait; // Time between new waves.
+	public int hazardCount; // The amount of hazards to be spawned before a new wave.
 	private float[] columnLocations;
 
 	[Header ("Spawning Powerups")]
-	public GameObject[] Powerups;
-	public Vector3 powerupSpawnValues;
-	public float powerupStartWait;
-	public float powerupSpawnWait;
-	public float powerupWaveWait;
-	public int powerupCount;
-	public Text PowerupText;
+	public GameObject[] Powerups; // Array of different powerups to spawn.
+	public Vector3 powerupSpawnValues; // Spawn X, Y, Z values.
+	public float powerupStartWait; // Start powerup spawn wait.
+	public float powerupSpawnWait; // Time between new spawned powerups.
+	public float powerupWaveWait; // Time between powerup waves.
+	public int powerupCount; // The amountof hazards to be spawned before a new wave of powerups.
+	public Text PowerupText; // Powerup label for the player.
 
 	[Header ("Pausing")]
-	public bool isPaused;
-	public GameObject PauseUI;
-	public AudioSource PauseSound;
-	public AudioSource MainSound;
-	public AudioSource ResumeSound;
-	public AudioSourcePitchByTimescale AudioPitchScript;
-	public GameObject ControlsScreen;
+	public bool isPaused; // Is the game paused right now?
+	public GameObject PauseUI; // Pause UI object.
+	public AudioSource PauseSound; // The pause sound.
+	public AudioSource MainSound; // The main music.
+	public AudioSource ResumeSound; // The resume sound.
+	public AudioSourcePitchByTimescale AudioPitchScript; // The audio pitch by timescale component.
+	public GameObject ControlsScreen; // Controls screen.
 
 	[Header ("Scoring")]
-	public float CurrentScore;
-	public int LevelOneScore = 1000;
-	public int LevelTwoScore = 10000;
-	public int LevelThreeScore = 20000;
-	public int LevelFourScore = 50000;
-	public int LevelFiveScore = 100000;
-	public float ScoreSpeed; // How fast the score increases per frame.
-	public GameObject Panel;
-	public Text ScoreText;
-	public Text TimeScaleText;
-	public Text GameOverScoreText;
-	public Text HighestTimeScaleText;
+	public float CurrentScore; // The current score in the playthrough.
+	public int LevelOneScore = 1000; // Reach this score so TWO types of hazards are able to be spawned.
+	public int LevelTwoScore = 10000; // Reach this score so THREE types of hazards are able to be spawned.
+	public int LevelThreeScore = 20000; // Reach this score so FOUR types of hazards are able to be spawned.
+	public int LevelFourScore = 50000; // Reach this score so FIVE types of hazards are able to be spawned.
+	public int LevelFiveScore = 100000; // Reach this score so ALL types of hazards are able to be spawned.
+	public float ScoreSpeed; // How fast the score increases per update.
+	public GameObject Panel; // The panel behind the score text.
+	public Text ScoreText; // The score text to display current score as an integer.
+	public Text TimeScaleText; // The current time scale multiplier text.
+	public Text GameOverScoreText; // The game over text to display final score.
+	public Text HighestTimeScaleText; // The game over text to display the highest time scale achieved.
 
 	[Header ("Misc")]
-	public GameObject ShowFpsText;
+	public GameObject ShowFpsText; // The UI text to display frames per second.
 
 	void Start () 
 	{
-		ShowFpsText.SetActive (false);
-
 		// Starts coroutines.
 		StartCoroutine (BrickSpawnWaves ());
-		StartCoroutine (CountDown ());
 		StartCoroutine (PowerupSpawnWaves ());
+		StartCoroutine (CountDown ());
+
+		isPreGame = true; // We are in pre-game mode.
+		ShowFpsText.SetActive (false); // Turns off showing FPS object.
+		PauseUI.SetActive (false); // Disables Pause UI.
+
+
+		// Start score.
+		CurrentScore = 0;
+		ScoreText.text = "" + 0 + "";
 
 		// Start cursor lock state.
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Confined;
 		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
 
-		isPreGame = true;
-
 		// turns off bottom barrier so the player can safely translate into the play space.
 		BottomBarrier.GetComponent<BoxCollider>().enabled = false;
-		PauseUI.SetActive (false); // Disables Pause UI.
 
 		// Finds TimeScale Controller Component.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
@@ -91,20 +95,17 @@ public class GameController : MonoBehaviour
 
 		brickStackControllerScript = GameObject.FindGameObjectWithTag ("BrickStackController").GetComponent<BrickStackController> ();
 
+		// Checks if there is a time scale controller script present in scene.
 		if (timeScaleControllerScript == null) 
 		{
 			Debug.Log ("Cannot find Timescale Controller script.");
 		}
 
+		// Checks if there is a brick stack controller script present in scene.
 		if (brickStackControllerScript == null) 
 		{
 			Debug.Log ("Cannot find Brick Stack Controller script.");
 		}
-
-		int temp = brickStackControllerScript.GetTotalColumns;
-		columnLocations = new float[temp];
-		for (int i = 0; i < temp; i++) // X-loc for each column
-			columnLocations [i] = brickStackControllerScript.GetBrickXPos (i);
 
 		// Finds Player transform.
 		Player = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -114,20 +115,24 @@ public class GameController : MonoBehaviour
 			Debug.Log ("Cannot find Player.");
 		}
 
-		// Start score.
-		CurrentScore = 0;
-		ScoreText.text = "" + 0 + "";
+		// Brick stack controller start conditions.
+		int temp = brickStackControllerScript.GetTotalColumns;
+		columnLocations = new float[temp];
+		for (int i = 0; i < temp; i++) // X-loc for each column
+			columnLocations [i] = brickStackControllerScript.GetBrickXPos (i);
 	}
 
 	void Update () 
 	{
-		if (isPreGame) 
+		// If game is in pre-game mode.
+		if (isPreGame == true) 
 		{
-			timeScaleControllerScript.enabled = false;
-			Time.timeScale = 1.0f;
-			isPaused = false;
+			timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
+			Time.timeScale = 1.0f; // Sets time scale to 1.
+			isPaused = false; // Keeps game unpaused.
 		}
 
+		// If the game is not in pre-game mode, and player health is greater than 0.
 		if (!isPreGame && playerControllerScript.Health > playerControllerScript.minHealth) 
 		{
 			// Sets UI for time multipler and converts to string format.
@@ -138,15 +143,19 @@ public class GameController : MonoBehaviour
 			ScoreText.text = "" + Mathf.Round (CurrentScore) + "";
 		}
 
+		// If the game is not in pre-game mode, and the player's is at game over condition.
 		if (!isPreGame && playerControllerScript.Health <= playerControllerScript.minHealth) 
 		{
+			// Sets game over score text.
 			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
+			// Sets game over highest itme scale text.
 			HighestTimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.highestTimeScale * 100f)) + "%";
 		}
 
+		// If the game's score is less than 0.
 		if (CurrentScore < 0) 
 		{
-			CurrentScore = 0;
+			CurrentScore = 0; // Make it equal to 0.
 		}
 
 		// HOTKEYS //
@@ -154,14 +163,14 @@ public class GameController : MonoBehaviour
 		// Pauses game and enables mouse pointer.
 		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
-			isPaused = true;
-			PauseGame ();
+			isPaused = true; // Paused boolean.
+			PauseGame (); // Calls PauseGame method.
 
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None; // Unlocks mouse cursor.
+			Cursor.visible = true; // Makes cursor visible.
 
-			MouseScript.visibleTime = MouseScript.visibleDuration;
-			MouseScript.enabled = false;
+			MouseScript.visibleTime = MouseScript.visibleDuration; // Sets mouse duration
+			MouseScript.enabled = false; // Turns off mouse visibility script.
 		}
 
 		// Pause via controller input.
@@ -220,7 +229,7 @@ public class GameController : MonoBehaviour
 		// Show FPS.
 		if (Input.GetKeyDown (KeyCode.F1)) 
 		{
-			ShowFpsText.SetActive (true);
+			ShowFpsText.SetActive (true); // Turns off FPS Game Object.
 		}
 	}
 

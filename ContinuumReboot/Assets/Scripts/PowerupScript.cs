@@ -3,32 +3,33 @@ using System.Collections;
 
 public class PowerupScript : MonoBehaviour 
 {
-	private PlayerController playerControllerScript;
-	//private GameController gameControllerScript;
-
-	public enum poweruptype {doubleShot, triShot, beamShot, shield, horizontalBeam, clone} // Add more later.
-	public poweruptype PowerupType;
-
-	public GameObject Explosion;
+	private PlayerController playerControllerScript; // The player controller script component.
+	public enum poweruptype {doubleShot, triShot, beamShot, shield, horizontalBeam, clone} // Powerups list.
+	public poweruptype PowerupType; // To show the above enum.
+	public GameObject Explosion; // The explosion to play on trigger enter.
 
 	void Start () 
 	{
+		// Finds player controller component.
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
-		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent <GameController> ();
-	}
-
-	void Update () 
-	{
-	
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Player" || other.tag == "Bullet") 
 		{
+			/// Summary ///
+			/// if powerup type == X powerup
+			/// set powerup time duration
+			/// change powerup type in player script
+			/// Instantiate explosion
+			/// Turn on powerup particles on player
+			/// Destroy this gameObject
+			/// End Summary ///
+
 			if (PowerupType == poweruptype.doubleShot) 
 			{
-				playerControllerScript.powerupTime = 15.0f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationA;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.DoubleShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -37,7 +38,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.triShot) 
 			{
-				playerControllerScript.powerupTime = 20.0f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationB;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.TriShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -46,7 +47,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.beamShot) 
 			{
-				playerControllerScript.powerupTime = 15.0f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationC;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.BeamShot;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -55,7 +56,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.shield) 
 			{
-				playerControllerScript.powerupTime = 12.5f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationD;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				Destroy (gameObject);
@@ -63,7 +64,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.horizontalBeam) 
 			{
-				playerControllerScript.powerupTime = 10.0f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationE;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.horizontalBeam;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
@@ -72,7 +73,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.clone) 
 			{
-				playerControllerScript.powerupTime = 30.0f;
+				playerControllerScript.powerupTime = playerControllerScript.powerupDurationF;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
