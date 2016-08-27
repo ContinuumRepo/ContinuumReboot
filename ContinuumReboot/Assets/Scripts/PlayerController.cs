@@ -27,22 +27,32 @@ public class PlayerController : MonoBehaviour
 	public Transform shotSpawn;
 	public float fireRate;
 	private float nextFire;
+	public GameObject EmptyInstantdestroy;
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups;
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, rowClear, disableStacking}
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone}
 	public powerup CurrentPowerup;
 	public GameObject RegularShot;
 	public GameObject DoubleShot;
 	public GameObject TriShot;
 	public GameObject BeamShot;
 	public GameObject Shield;
-	public Lens LensScript;
 	public GameObject HorizontalBeam;
+	public GameObject ClonedPlayer;
+	public bool isClone;
+	public GameObject DoubleShotIcon;
+	public GameObject TriShotIcon;
+	public GameObject BeamShotIcon;
+	public GameObject ShieldIcon;
+	public GameObject HorizontalBeamIcon;
+	public GameObject CloneIcon;
+
+	public Lens LensScript;
 	public float powerupTime = 0;
 	public float powerupDuration = 10.0f;
 	public AudioSource powerupTimeRunningOut;
-	public GameObject powerupDeactivateAudio;
+	public AudioSource powerupDeactivateAudio;
 	public ParticleSystem ActivePowerupParticles;
 	public ParticleSystem TimeRunningOutParticles;
 	public Image PowerupMeter;
@@ -74,6 +84,12 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		DoubleShotIcon.SetActive (false);
+		BeamShotIcon.SetActive (false);
+		TriShotIcon.SetActive (false);
+		ShieldIcon.SetActive (false);
+		HorizontalBeamIcon.SetActive (false);
+		CloneIcon.SetActive (false);
 		// Finds Camera Shake script.
 		camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake>();
 
@@ -121,134 +137,143 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
-		vibrationTime -= Time.unscaledDeltaTime;
+		if (!isClone) {
+			vibrationTime -= Time.unscaledDeltaTime;
 
-		if (vibrationTime > 0) 
-		{
-			GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
-		}
-
-		if (vibrationTime <= 0) 
-		{
-			vibrationTime = 0;
-			GamePad.SetVibration (PlayerIndex.One, 0, 0);
-		}
-
-		// The UI fill amount of the health.
-		HealthImage.fillAmount = Health / 100;
-		HealthImage.color = new Color (25/Health, Health/100, 0, 0.9f);
-		HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
-
-		/// POWERUPS ///
-		PowerupMeter.fillAmount = powerupTime / powerupDuration; // UI fill amount for powerup.
-
-		// No powerup
-		if (CurrentPowerup == powerup.RegularShot) 
-		{
-			shot = RegularShot;
-			gameControllerScript.PowerupText.text = "" + "-2.5% x shot";
-			BeamShot.SetActive (false);
-			HorizontalBeam.SetActive (false);
-			//LensScript.enabled = false;
-
-			if (LensScript.radius > 0) 
-			{
-				LensScript.radius -= 1f * Time.unscaledDeltaTime;
+			if (vibrationTime > 0) {
+				GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
 			}
-			if (LensScript.radius < 0) 
-			{
-				LensScript.radius = 0;
+
+			if (vibrationTime <= 0) {
+				vibrationTime = 0;
+				GamePad.SetVibration (PlayerIndex.One, 0, 0);
 			}
-		}
 
-		// Double Shot
-		if (CurrentPowerup == powerup.DoubleShot) 
-		{
-			shot = DoubleShot;
-			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Double Shot";
-		}
+			// The UI fill amount of the health.
+			HealthImage.fillAmount = Health / 100;
+			HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
+			HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
+			PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
 
-		// Tri shot.
-		if (CurrentPowerup == powerup.TriShot) 
-		{
-			shot = TriShot;
-			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Triple Shot";
-		}
+			/// POWERUPS ///
+			PowerupMeter.fillAmount = powerupTime / powerupDuration; // UI fill amount for powerup.
 
-		// Beam shot.
-		if (CurrentPowerup == powerup.BeamShot) 
-		{
-			shot = RegularShot;
-			BeamShot.SetActive (true);
-			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Ultra Beam";
-		}
+			// No powerup
+			if (CurrentPowerup == powerup.RegularShot) {
+				shot = RegularShot;
+				ClonedPlayer.SetActive (false);
+				gameControllerScript.PowerupText.text = "" + "- 2.5% x shot";
+				BeamShot.SetActive (false);
+				HorizontalBeam.SetActive (false);
+				//LensScript.enabled = false;
 
-		// Shield.
-		if (CurrentPowerup == powerup.shield) 
-		{
-			Shield.SetActive (true);
-			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Shield";
-			LensScript.enabled = true;
+				if (LensScript.radius > 0) {
+					LensScript.radius -= 1f * Time.unscaledDeltaTime;
+				}
+				if (LensScript.radius < 0) {
+					LensScript.radius = 0;
+				}
 
-			if (LensScript.radius <= 0.6f && LensScript.radius >= 0) 
-			{
-				LensScript.radius += 0.1f * Time.unscaledDeltaTime;
+				DoubleShotIcon.SetActive (false);
+				BeamShotIcon.SetActive (false);
+				TriShotIcon.SetActive (false);
+				ShieldIcon.SetActive (false);
+				HorizontalBeamIcon.SetActive (false);
+				CloneIcon.SetActive (false);
 			}
-		}
 
-		// Homing Shot.
-		if (CurrentPowerup == powerup.horizontalBeam) 
-		{
-			HorizontalBeam.SetActive (true);
-			powerupTime -= Time.unscaledDeltaTime;
-			gameControllerScript.PowerupText.text = "Horizontal Beam";
-		}
+			// Double Shot
+			if (CurrentPowerup == powerup.DoubleShot) {
+				shot = DoubleShot;
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Double Shot";
+				DoubleShotIcon.SetActive (true);
+			}
+
+			// Tri shot.
+			if (CurrentPowerup == powerup.TriShot) {
+				shot = TriShot;
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Triple Shot";
+				TriShotIcon.SetActive (true);
+			}
+
+			// Beam shot.
+			if (CurrentPowerup == powerup.BeamShot) {
+				shot = EmptyInstantdestroy;
+				BeamShot.SetActive (true);
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Ultra Beam";
+				BeamShotIcon.SetActive (true);
+			}
+
+			// Shield.
+			if (CurrentPowerup == powerup.shield) {
+				shot = EmptyInstantdestroy;
+				Shield.SetActive (true);
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Shield";
+				LensScript.enabled = true;
+
+				if (LensScript.radius <= 0.6f && LensScript.radius >= 0) {
+					LensScript.radius += 0.1f * Time.unscaledDeltaTime;
+				}
+				ShieldIcon.SetActive (true);
+			}
+
+			// Horizontal Beam
+			if (CurrentPowerup == powerup.horizontalBeam) {	
+				shot = EmptyInstantdestroy;
+				HorizontalBeam.SetActive (true);
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Horizontal Beam";
+			}
+
+			// Clone Player
+			if (CurrentPowerup == powerup.Clone) {
+				ClonedPlayer.SetActive (true);
+				powerupTime -= Time.unscaledDeltaTime;
+				gameControllerScript.PowerupText.text = "Cloned!";
+				CloneIcon.SetActive (true);
+			}
 			
-		// Warning powerup time.
-		if (powerupTime < 3.0f && powerupTime > 2.8f)
-		{
-			ActivePowerupParticles.Stop ();
-			powerupTimeRunningOut.Play ();
-			TimeRunningOutParticles.Play ();
-		}
+			// Warning powerup time.
+			if (powerupTime < 3.0f && powerupTime > 2.8f) {
+				ActivePowerupParticles.Stop ();
+				powerupTimeRunningOut.Play ();
+				TimeRunningOutParticles.Play ();
+			}
 
-		// When powerup runs out.
-		if (powerupTime < 0) 
-		{
-			powerupTime = 0;
-			CurrentPowerup = powerup.RegularShot;
-			BeamShot.SetActive (false);
-			Shield.SetActive (false);
-		}
+			// When powerup runs out.
+			if (powerupTime < 0) {
+				powerupTime = 0;
+				CurrentPowerup = powerup.RegularShot;
+				BeamShot.SetActive (false);
+				Shield.SetActive (false);
+			}
 
-		// Powerup ran out.
-		if (powerupTime > 0 && powerupTime < 0.02f && !powerupDeactivateAudio.GetComponent<AudioSource>().isPlaying) 
-		{
-			Instantiate (powerupDeactivateAudio, Vector3.zero, Quaternion.identity);
-		}
+			// Powerup ran out.
+			if (powerupTime > 0 && powerupTime < 0.05f && !powerupDeactivateAudio.GetComponent<AudioSource> ().isPlaying) {
+				powerupDeactivateAudio.Play ();
+			}
 			
-		/// Health ///
+			/// Health ///
 
-		// Health at 0.
-		if (Health <= 0) 
-		{
-			//initialPart = true;
-			PlayerMesh.enabled = false;
-			PlayerCollider.enabled = false;
-			DeactivatePlayerElements.SetActive (false);
-			gameControllerScript.StopAllCoroutines ();
-			GameOver ();
-			timeScaleControllerScript.enabled = false;
-			BGMPitchScript.addPitch = 0;
-		}
+			// Health at 0.
+			if (Health <= 0) {
+				//initialPart = true;
+				PlayerMesh.enabled = false;
+				PlayerCollider.enabled = false;
+				DeactivatePlayerElements.SetActive (false);
+				gameControllerScript.StopAllCoroutines ();
+				GameOver ();
+				timeScaleControllerScript.enabled = false;
+				BGMPitchScript.addPitch = 0;
+			}
 
-		if (ColorCorrectionCurvesScript.saturation < 1) 
-		{
-			ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime;
+			if (ColorCorrectionCurvesScript.saturation < 1) {
+				ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime;
+			}
 		}
 
 	}
@@ -266,7 +291,7 @@ public class PlayerController : MonoBehaviour
 			Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
 			rb.velocity = movement * speed;
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
-			rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * -tilt, 0.0f);
+			//rb.rotation = Quaternion.Euler (0.0f, rb.velocity.x * -tilt, 0.0f);
 		}
 
 		/// Shooting functionality ///
@@ -303,18 +328,44 @@ public class PlayerController : MonoBehaviour
 		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
 		BGMMusic.Stop ();
 
-		if (slowTimeRemaining > 0) 
+		if (slowTimeRemaining > 0.5f) 
 		{
 			Time.timeScale = 0.01f;
 		}
 
-		if (slowTimeRemaining <= 0) 
+		if (slowTimeRemaining < 0.5f && slowTimeRemaining > 0) 
+		{
+			Time.timeScale = 1;
+		}
+
+		if (slowTimeRemaining <= 0 && Time.timeScale >= 0.01f) 
 		{
 			slowTimeRemaining = 0; // Stops decrementing slow time remaining.
-			Time.timeScale = 1; // Has time scale back to normal.
+			Time.timeScale -= 0.2f * Time.unscaledDeltaTime; // Has time scale back to normal.
 			timeScaleControllerScript.enabled = false; // Turns off timescale controller.
 			PressToContinue.SetActive (true); // Activates "Press A to continue" text.
 
+			if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
+			{
+				Time.timeScale = initialTimeScale; // sets timescale to this.
+				PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
+
+				// Turns on Game over UI.
+				if (GameOverUI.activeInHierarchy == false) 
+				{
+					GameOverUI.SetActive (true);
+				}
+
+				// Plays game over loop.
+				if (!GameOverLoop.isPlaying) 
+				{
+					GameOverLoop.PlayDelayed (4.0f);
+				}
+			}
+		}
+
+		if (slowTimeRemaining <= 0 && Time.timeScale < 0.01f) 
+		{
 			if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
 			{
 				Time.timeScale = initialTimeScale; // sets timescale to this.

@@ -14,6 +14,7 @@ public class BulletScript : MonoBehaviour
 	public TimescaleController timeScaleControllerScript;
 	public enum bulletcost {FixedRate, Percentage}
 	public bulletcost BulletCostType;
+	public bool isShield;
 	public float DecrementPortion = 0.1f;
 	public float DecrementAmount = 100.0f;
 	public int PlayElement;
@@ -126,7 +127,7 @@ public class BulletScript : MonoBehaviour
 			
 		}
 
-		if (other.tag == "Barrier" && isHorizontal == false) 
+		if (other.tag == "Barrier" && isHorizontal == false && isShield == false) 
 		{
 			gameObject.transform.rotation = Quaternion.Euler (0.0f, 0.0f, Random.Range (-360, 360));
 		}

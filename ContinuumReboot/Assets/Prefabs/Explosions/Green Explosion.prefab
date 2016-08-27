@@ -248,7 +248,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 300
+      scalar: 150
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -377,7 +377,7 @@ ParticleSystem:
         rgba: 4278320896
       minMaxState: 0
     startSize:
-      scalar: 0.15
+      scalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -579,11 +579,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 12
+    cnt0: 15
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 12
+    cntmax0: 15
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -1023,7 +1023,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 200
       maxCurve:
