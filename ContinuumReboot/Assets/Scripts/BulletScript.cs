@@ -34,6 +34,8 @@ public class BulletScript : MonoBehaviour
 	public bool isShield; // Is this bullet a shield instead?
 	public bool isHorizontal; // Is the beam a horizontal one?
 	public bool useRandomRotation = true; // Does the bullet need a random rotation after a trigger enter?
+	public bool goThroughAnything;
+	public bool followers;
 
 	void Start () 
 	{
@@ -125,8 +127,11 @@ public class BulletScript : MonoBehaviour
 					PlayElement += 1;
 					ricoshet += 1;
 
-					// Instantiates a noc cost bullet giving that a random rotation also.
-					Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+					if (followers == false) 
+					{
+						// Instantiates a noc cost bullet giving that a random rotation also.
+						Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+					}
 
 					// Plays previous particle element.
 					RicoshetParticle [PlayElement - 1].Play ();
@@ -138,24 +143,47 @@ public class BulletScript : MonoBehaviour
 				}
 
 				// If the gameObject reaches maximum ricoshet.
-				if (ricoshet >= ricoshetMax) 
+				if (ricoshet >= ricoshetMax && goThroughAnything == false) 
 				{
 					Destroy (gameObject); // Destroys it.
 				}
 		
 				// If the gameObject reaches more audio elements than ricoshets
-				if (PlayElement >= ricoshetMax) 
+				if (PlayElement >= ricoshetMax && goThroughAnything == true) 
 				{
-					PlayElement = 0; // Resets play element number.
+					PlayElement -= 1;
+					ricoshet -= 1;
 				}
 			}
 
 			// If the object has useRandomRotation boolean disabled.
-			if (useRandomRotation == false) 
+			if (useRandomRotation == false && goThroughAnything == false && followers == false) 
 			{
 				PlayElement = 0; // Resets play element to 0.
 				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity); // Instantiates the assigned audio source.
 				BeamExplosion.Play (); // Plays explosion particle effect.
+			}
+
+			// If the object has useRandomRotation boolean disabled.
+			if (useRandomRotation == false && goThroughAnything == true && followers == true) 
+			{
+				// If the gameObject reaches more audio elements than ricoshets
+				if (PlayElement >= ricoshetMax) 
+				{
+					PlayElement -= 2;
+					ricoshet -= 2;
+				}
+
+				// If the gameObject reaches more audio elements than ricoshets
+				if (PlayElement < ricoshetMax) 
+				{
+					PlayElement += 1;
+					ricoshet += 1;
+				}
+				//PlayElement += 1; // Resets play element to 0.
+				Oneshots [PlayElement].Play ();
+				//BeamExplosion.Play (); // Plays explosion particle effect.
+				Debug.Log ("Played.");
 			}
 		}
 

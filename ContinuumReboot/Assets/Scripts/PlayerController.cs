@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
 using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour 
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups; // An array of powerup objects to spawn for the player.
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone} // The different types of powerups.
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix} // The different types of powerups.
 	public powerup CurrentPowerup; // The above enum values.
 	public GameObject RegularShot; // The bullet the player shoots when there is no powerup.
 	public GameObject RegularShotNoCost; // The bullet the player shoots when there is a powerup that doesnt change the regular shot.
@@ -50,12 +51,14 @@ public class PlayerController : MonoBehaviour
 	public GameObject HorizontalBeam; // An unbreakable laser which wipes out everything in its path horizontally.
 	public GameObject ClonedPlayer; // The extra players which help the main player.
 	public bool isClone; // Is this script attached to this gameObject a clone?
+	public GameObject HelixObject;
 	public GameObject DoubleShotIcon; // The UI for the double shot powerup.
 	public GameObject TriShotIcon; // The UI for the tri shot powerup.
 	public GameObject BeamShotIcon; // The UI for the beam shot powerup.
 	public GameObject ShieldIcon; // The UI for the shield powerup.
 	public GameObject HorizontalBeamIcon; // The UI for the horizontal beam powerup.
 	public GameObject CloneIcon; // The UI for the clone player powerup.
+	public GameObject HelixIcon; // The UI for the helix player powerup.
 
 	public Lens LensScript; // The Lens script that is attached to the main camera.
 	public float powerupTime = 0; // The current powerup time left.
@@ -106,6 +109,7 @@ public class PlayerController : MonoBehaviour
 		ShieldIcon.SetActive (false);
 		HorizontalBeamIcon.SetActive (false);
 		CloneIcon.SetActive (false);
+		HelixIcon.SetActive (false);
 	
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
@@ -143,6 +147,7 @@ public class PlayerController : MonoBehaviour
 		BeamShot.SetActive (false);
 		Shield.SetActive (false);
 		HorizontalBeam.SetActive (false);
+		HelixObject.SetActive (false);
 
 		// Start GameOver conditions.
 		GameOverUI.SetActive (false);
@@ -184,7 +189,7 @@ public class PlayerController : MonoBehaviour
 			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
 			PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
 
-			// No powerup
+			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
 			{
 				shot = RegularShot; // Assigns shot which costs points.
@@ -192,6 +197,7 @@ public class PlayerController : MonoBehaviour
 				BeamShot.SetActive (false); // Turns off the vertical beam.
 				Shield.SetActive (false); // Turns off the shield.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
+				HelixObject.SetActive (false);
 
 				// Turns off all powerup icons.
 				DoubleShotIcon.SetActive (false);
@@ -200,6 +206,7 @@ public class PlayerController : MonoBehaviour
 				ShieldIcon.SetActive (false);
 				HorizontalBeamIcon.SetActive (false);
 				CloneIcon.SetActive (false);
+				HelixIcon.SetActive (false);
 
 				gameControllerScript.PowerupText.text = "" + "- 2.5% x shot"; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
@@ -219,12 +226,12 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			// Double Shot
+			// Double shot.
 			if (CurrentPowerup == powerup.DoubleShot) 
 			{
 				shot = DoubleShot; // Assigns free double shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Double Shot"; // UI displays double shot text.
+				gameControllerScript.PowerupText.text = "DOUBLE SHOT"; // UI displays double shot text.
 				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
 			}
 
@@ -233,7 +240,7 @@ public class PlayerController : MonoBehaviour
 			{
 				shot = TriShot; // Assigns free triple shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Triple Shot"; // UI displays triple shot text.
+				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
 				TriShotIcon.SetActive (true); // Turns on double shot icon.
 			}
 
@@ -242,7 +249,7 @@ public class PlayerController : MonoBehaviour
 			{
 				BeamShot.SetActive (true); // Turns on vertical beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Ultra Beam"; // UI displays vertical beam text.
+				gameControllerScript.PowerupText.text = "ULTRA BEAM"; // UI displays vertical beam text.
 				BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
 
 				// If shot is the regular shot.
@@ -257,7 +264,7 @@ public class PlayerController : MonoBehaviour
 			{
 				Shield.SetActive (true); // Turns on the shield.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Shield"; // UI text to display shield.
+				gameControllerScript.PowerupText.text = "GIGA SHIELD"; // UI text to display shield.
 				PlayerCollider.enabled = false; // Turns off the player collider.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
 
@@ -274,12 +281,12 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			// Horizontal Beam
+			// Horizontal beam.
 			if (CurrentPowerup == powerup.horizontalBeam) 
 			{		
 				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Horizontal Beam"; // UI display for powerup text.
+				gameControllerScript.PowerupText.text = "TERROR BEAM"; // UI display for powerup text.
 
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
@@ -288,14 +295,31 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			// Clone Player
+			// Clone player.
 			if (CurrentPowerup == powerup.Clone) 
 			{
 				ClonedPlayer.SetActive (true); // Turns on the clones!
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "Cloned!"; // UI display clones.
+				gameControllerScript.PowerupText.text = "CLONES!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
 				PlayerCollider.enabled = false; // Turns off player collider.
+
+				// If shot is the regular shot.
+				if (shot == RegularShot) 
+				{
+					shot = RegularShotNoCost; // Make it the free version.
+				}
+			}
+
+			// Helix bullets.
+			if (CurrentPowerup == powerup.helix) 
+			{
+				HelixObject.SetActive (true);
+
+				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
+				HelixIcon.SetActive (true); // Turns on clone icon.
+				//PlayerCollider.enabled = false; // Turns off player collider.
 
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
@@ -401,6 +425,13 @@ public class PlayerController : MonoBehaviour
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.
 		}
+
+		if (other.tag == "Barrier") 
+		{
+			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
+			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
+			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.
+		}
 	}
 
 	void GameOver ()
@@ -426,27 +457,25 @@ public class PlayerController : MonoBehaviour
 			if (Time.timeScale >= 0.01f)
 			{
 				slowTimeRemaining = 0; // Stops decrementing slow time remaining.
-				Time.timeScale -= 0.2f * Time.unscaledDeltaTime; // Has time scale back to normal.
+				Time.timeScale -= 0.25f * Time.unscaledDeltaTime; // Has time scale back to normal.
 				timeScaleControllerScript.enabled = false; // Turns off timescale controller.
 				PressToContinue.SetActive (true); // Activates "Press A to continue" text.
 
-				// Player presses A button or space during this time.
-				if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space")) 
+				// Plays game over loop.
+				if (!GameOverLoop.isPlaying)
 				{
-					Time.timeScale = initialTimeScale; // sets timescale to this.
-					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
+					GameOverLoop.PlayDelayed (4.0f); // Delays.
+				}
 
-					// Checks if Game Over UI is active in the heirarchy.
-					if (GameOverUI.activeInHierarchy == false) 
-					{
-						GameOverUI.SetActive (true); // Turns on Game over UI.
-					}
+				// Player presses A button or space during this time.
+				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown ("space")) 
+				{
+					SceneManager.LoadScene ("main");				
+				}
 
-					// Plays game over loop.
-					if (!GameOverLoop.isPlaying)
-					{
-						GameOverLoop.PlayDelayed (4.0f); // Delays.
-					}
+				if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Backspace)) 
+				{
+					SceneManager.LoadScene ("disclaimer");			
 				}
 			}
 
@@ -457,17 +486,28 @@ public class PlayerController : MonoBehaviour
 					Time.timeScale = initialTimeScale; // sets timescale to this.
 					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
 
-					// Turns on Game over UI.
+					/*// Turns on Game over UI.
 					if (GameOverUI.activeInHierarchy == false) 
 					{
 						GameOverUI.SetActive (true);
-					}
+					}*/
 
 					// Plays game over loop.
 					if (!GameOverLoop.isPlaying) 
 					{
 						GameOverLoop.PlayDelayed (4.0f);
 					}
+				}
+
+				// Player presses A button or space during this time.
+				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown (KeyCode.Return)) 
+				{
+					SceneManager.LoadScene ("main");				
+				}
+
+				if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Backspace) || Input.GetKeyDown (KeyCode.Escape)) 
+				{
+					SceneManager.LoadScene ("disclaimer");			
 				}
 			}
 		}
