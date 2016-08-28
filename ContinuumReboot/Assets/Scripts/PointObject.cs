@@ -136,8 +136,11 @@ public class PointObject : MonoBehaviour
 				}
 			}
 
-			// Instantiates a larger explosion.
-			Instantiate (PlayerExplosion, transform.position, transform.rotation);
+			if (PlayerControllerScript.Health > 10) 
+			{
+				// Instantiates a larger explosion.
+				Instantiate (PlayerExplosion, transform.position, transform.rotation);
+			}
 
 			// Gives damage to player.
 			PlayerControllerScript.Health -= Damage;

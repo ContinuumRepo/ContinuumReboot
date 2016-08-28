@@ -160,7 +160,7 @@ public class BulletScript : MonoBehaviour
 			if (useRandomRotation == false && goThroughAnything == false && followers == false) 
 			{
 				PlayElement = 0; // Resets play element to 0.
-				Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity); // Instantiates the assigned audio source.
+				//Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity); // Instantiates the assigned audio source.
 				BeamExplosion.Play (); // Plays explosion particle effect.
 			}
 
