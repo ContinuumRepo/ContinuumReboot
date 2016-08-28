@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups; // An array of powerup objects to spawn for the player.
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix} // The different types of powerups.
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix, wifi} // The different types of powerups.
 	public powerup CurrentPowerup; // The above enum values.
 	public GameObject RegularShot; // The bullet the player shoots when there is no powerup.
 	public GameObject RegularShotNoCost; // The bullet the player shoots when there is a powerup that doesnt change the regular shot.
@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject ClonedPlayer; // The extra players which help the main player.
 	public bool isClone; // Is this script attached to this gameObject a clone?
 	public GameObject HelixObject;
+	public GameObject WifiShot;
 	public GameObject DoubleShotIcon; // The UI for the double shot powerup.
 	public GameObject TriShotIcon; // The UI for the tri shot powerup.
 	public GameObject BeamShotIcon; // The UI for the beam shot powerup.
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject HorizontalBeamIcon; // The UI for the horizontal beam powerup.
 	public GameObject CloneIcon; // The UI for the clone player powerup.
 	public GameObject HelixIcon; // The UI for the helix player powerup.
+	public GameObject WifiIcon; // The UI for the wifi player powerup.
 
 	public Lens LensScript; // The Lens script that is attached to the main camera.
 	public float powerupTime = 0; // The current powerup time left.
@@ -110,6 +112,7 @@ public class PlayerController : MonoBehaviour
 		HorizontalBeamIcon.SetActive (false);
 		CloneIcon.SetActive (false);
 		HelixIcon.SetActive (false);
+		WifiIcon.SetActive (false);
 	
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
@@ -233,6 +236,15 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "DOUBLE SHOT"; // UI displays double shot text.
 				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
+			}
+
+			// WIFI shot.
+			if (CurrentPowerup == powerup.wifi) 
+			{
+				shot = WifiShot; // Assigns free wifi shot powerup.
+				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				gameControllerScript.PowerupText.text = "CONNECTED TO WIFI!"; // UI displays double shot text.
+				WifiIcon.SetActive (true); // Turns on the wifi shot icon.
 			}
 
 			// Tri shot.

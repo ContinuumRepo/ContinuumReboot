@@ -36,6 +36,9 @@ public class BulletScript : MonoBehaviour
 	public bool useRandomRotation = true; // Does the bullet need a random rotation after a trigger enter?
 	public bool goThroughAnything;
 	public bool followers;
+	public GameObject PrefabWifi;
+	public AudioSource WifiAudio;
+	public bool wifiAudio;
 
 	void Start () 
 	{
@@ -68,6 +71,8 @@ public class BulletScript : MonoBehaviour
 		RicoshetParticle[2] = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[3] = GameObject.FindGameObjectWithTag ("ComboCyanParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[4] = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
+
+		WifiAudio = GameObject.FindGameObjectWithTag ("WifiAudio").GetComponent<AudioSource> ();
 
 		// If the bullet cost is in percentage mode.
 		if (BulletCostType == bulletcost.Percentage)
@@ -108,6 +113,20 @@ public class BulletScript : MonoBehaviour
 			camShakeScript.shakeDuration = InitialShakeDuration;
 			camShakeScript.shakeAmount = InitialShakeStrength;
 
+			if (wifiAudio && ricoshetMax == 1) 
+			{
+				WifiAudio.Play ();
+				ricoshet += 1;
+				Instantiate (PrefabWifi, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+				Destroy (gameObject);
+			}
+
+			if (wifiAudio && ricoshetMax == 0) 
+			{
+				WifiAudio.Play ();
+				Destroy (gameObject);
+			}
+
 			// If the object has useRandomRotation boolean enabled.
 			if (useRandomRotation == true) 
 			{
@@ -129,7 +148,7 @@ public class BulletScript : MonoBehaviour
 
 					if (followers == false) 
 					{
-						// Instantiates a noc cost bullet giving that a random rotation also.
+						// Instantiates a no cost bullet giving that a random rotation also.
 						Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 					}
 
