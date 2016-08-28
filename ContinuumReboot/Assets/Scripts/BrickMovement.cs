@@ -44,7 +44,7 @@ public class BrickMovement : MonoBehaviour
 		{
 			transform.Translate ( 0, moveSpeed * Time.deltaTime, 0, Space.Self);
 			transform.Rotate (0, rotationSpeed * Time.deltaTime, 0);
-		}
+		}/*
 		else
 		{
 			// If enemy is not in bottom cell and the cell below it is empty
@@ -59,7 +59,7 @@ public class BrickMovement : MonoBehaviour
 					stackCont.SetBrick (stackLocation[0], stackLocation[1]); // Set new cell to true
 				}
 			}
-		}
+		}*/
 		
 		if (gameObject.tag == "Cube")
 			setStackPosition ();
