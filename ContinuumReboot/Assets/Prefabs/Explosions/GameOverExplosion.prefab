@@ -851,11 +851,11 @@ ParticleSystem:
     cntmax1: 300
     cntmax2: 300
     cntmax3: 300
-    time0: 0.6
-    time1: 0.5
-    time2: 1
-    time3: 1.5
-    m_BurstCount: 1
+    time0: 0
+    time1: 0.2
+    time2: 0.4
+    time3: 0.6
+    m_BurstCount: 4
   SizeModule:
     enabled: 1
     curve:
@@ -6450,7 +6450,7 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0.04
+  m_VelocityScale: 0.01
   m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1

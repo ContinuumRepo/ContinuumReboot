@@ -7,7 +7,7 @@ public class ShieldScript : MonoBehaviour
 	private CameraShake camShakeScript;
 	public float InitialShakeDuration = 0.25f;
 	public float InitialShakeStrength = 0.5f;
-	private GameController gameControllerScript;
+	//private GameController gameControllerScript;
 	public TimescaleController timeScaleControllerScript;
 	public float DecrementPortion = 0.1f;
 	public float DecrementAmount = 100.0f;
@@ -26,7 +26,7 @@ public class ShieldScript : MonoBehaviour
 		camShakeScript.shakeAmount = InitialShakeStrength;
 		VibrationTime = 0.04f;
 		PlayElement = 0;
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
 
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).

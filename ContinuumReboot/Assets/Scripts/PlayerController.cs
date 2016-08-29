@@ -35,11 +35,17 @@ public class PlayerController : MonoBehaviour
 	public Transform shotSpawn; // Where the shot will be placed when instantiated.
 	public float fireRate; // Time between bullets before a new one is instantiated.
 	private float nextFire; 
+	public float altfireRate;
+	private float altnextFire;
 	public GameObject EmptyInstantdestroy; // A GameObject when spawned will destroy itself immediately (To keep the console quiet of exceptions).
+	public GameObject AltFire;
+	public Image AltFireImage;
+	public GameObject AltFireIndicator;
+	public Animator FlashIndicator;
 
 	[Header ("Powerups")]
 	public GameObject[] Powerups; // An array of powerup objects to spawn for the player.
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix, wifi} // The different types of powerups.
+	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix, wifi, threeD} // The different types of powerups.
 	public powerup CurrentPowerup; // The above enum values.
 	public GameObject RegularShot; // The bullet the player shoots when there is no powerup.
 	public GameObject RegularShotNoCost; // The bullet the player shoots when there is a powerup that doesnt change the regular shot.
@@ -61,6 +67,10 @@ public class PlayerController : MonoBehaviour
 	public GameObject CloneIcon; // The UI for the clone player powerup.
 	public GameObject HelixIcon; // The UI for the helix player powerup.
 	public GameObject WifiIcon; // The UI for the wifi player powerup.
+	public GameObject ThreeDIcon; // The UI for the 3D perspective powerup.
+	public AudioLowPassFilter BgmLowFilter;
+	public AudioHighPassFilter BgmHighFilter;
+	public GameObject ThreeDCam;
 
 	public Lens LensScript; // The Lens script that is attached to the main camera.
 	public float powerupTime = 0; // The current powerup time left.
@@ -104,6 +114,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		BgmHighFilter.enabled = false;
+		BgmLowFilter.enabled = false;
+		ThreeDCam.SetActive (false);
 		// Turns off powerup icons.
 		DoubleShotIcon.SetActive (false);
 		BeamShotIcon.SetActive (false);
@@ -113,6 +126,8 @@ public class PlayerController : MonoBehaviour
 		CloneIcon.SetActive (false);
 		HelixIcon.SetActive (false);
 		WifiIcon.SetActive (false);
+		ThreeDIcon.SetActive (false);
+		FlashIndicator.enabled = false;
 	
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
@@ -195,13 +210,17 @@ public class PlayerController : MonoBehaviour
 			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
 			{
+				BgmHighFilter.enabled = false;
+				BgmLowFilter.enabled = false;
+				ThreeDCam.SetActive (false);
 				shot = RegularShot; // Assigns shot which costs points.
 				ClonedPlayer.SetActive (false); // Turns off cloned players.
 				BeamShot.SetActive (false); // Turns off the vertical beam.
 				Shield.SetActive (false); // Turns off the shield.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
 				HelixObject.SetActive (false);
-
+				WifiIcon.SetActive (false);
+				ThreeDIcon.SetActive (false);
 				// Turns off all powerup icons.
 				DoubleShotIcon.SetActive (false);
 				BeamShotIcon.SetActive (false);
@@ -210,8 +229,9 @@ public class PlayerController : MonoBehaviour
 				HorizontalBeamIcon.SetActive (false);
 				CloneIcon.SetActive (false);
 				HelixIcon.SetActive (false);
+				//FlashIndicator.enabled = false;
 
-				gameControllerScript.PowerupText.text = "" + "- 2.5% x shot"; // Shows how much each bullet costs as the powerup text.
+				gameControllerScript.PowerupText.text = "" + "- 1.5% x BULLET"; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
 				PlayerCollider.enabled = true; // Turns the player collider on.
@@ -234,8 +254,11 @@ public class PlayerController : MonoBehaviour
 			{
 				shot = DoubleShot; // Assigns free double shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "DOUBLE SHOT"; // UI displays double shot text.
+				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
 				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
+
+				BgmHighFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 			}
 
 			// WIFI shot.
@@ -245,6 +268,8 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CONNECTED TO WIFI!"; // UI displays double shot text.
 				WifiIcon.SetActive (true); // Turns on the wifi shot icon.
+				BgmHighFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 			}
 
 			// Tri shot.
@@ -254,6 +279,8 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
 				TriShotIcon.SetActive (true); // Turns on double shot icon.
+				BgmHighFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 			}
 
 			// Beam shot.
@@ -261,9 +288,27 @@ public class PlayerController : MonoBehaviour
 			{
 				BeamShot.SetActive (true); // Turns on vertical beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "ULTRA BEAM"; // UI displays vertical beam text.
+				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
 				BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
+				//BgmHighFilter.enabled = true;
+				BgmLowFilter.enabled = true;
+				// If shot is the regular shot.
+				if (shot == RegularShot) 
+				{
+					shot = RegularShotNoCost; // Make it the free version.
+				}
+			}
 
+			// Beam shot.
+			if (CurrentPowerup == powerup.threeD) 
+			{
+				ThreeDIcon.SetActive (true);
+				ThreeDCam.SetActive (true); // Turns on vertical beam.
+				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				gameControllerScript.PowerupText.text = "3D!"; // UI displays vertical beam text.
+				//BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
+				//BgmHighFilter.enabled = true;
+				BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -276,10 +321,11 @@ public class PlayerController : MonoBehaviour
 			{
 				Shield.SetActive (true); // Turns on the shield.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "GIGA SHIELD"; // UI text to display shield.
+				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
 				PlayerCollider.enabled = false; // Turns off the player collider.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
-
+				//BgmHighFilter.enabled = true;
+				BgmLowFilter.enabled = true;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
 				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
 				{
@@ -296,10 +342,12 @@ public class PlayerController : MonoBehaviour
 			// Horizontal beam.
 			if (CurrentPowerup == powerup.horizontalBeam) 
 			{		
+				HorizontalBeamIcon.SetActive (true);
 				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "TERROR BEAM"; // UI display for powerup text.
-
+				gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
+				//BgmHighFilter.enabled = true;
+				BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -314,8 +362,9 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CLONES!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
-				PlayerCollider.enabled = false; // Turns off player collider.
-
+				//PlayerCollider.enabled = false; // Turns off player collider.
+				BgmHighFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -332,7 +381,8 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
 				HelixIcon.SetActive (true); // Turns on clone icon.
 				//PlayerCollider.enabled = false; // Turns off player collider.
-
+				BgmHighFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -365,6 +415,11 @@ public class PlayerController : MonoBehaviour
 			{
 				powerupDeactivateAudio.Play (); // Plays powerup ran out sound.
 			}
+
+			if (powerupTime > 40) 
+			{
+				powerupTime = 40;
+			}
 			
 			/// Health ///
 
@@ -390,6 +445,20 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		if (AltFireImage.fillAmount < 1) 
+		{
+			AltFireImage.fillAmount += Time.deltaTime / altfireRate;
+			AltFireIndicator.GetComponent<Image> ().color = Color.red;
+			FlashIndicator.enabled = false;
+		}
+			
+		if (AltFireImage.fillAmount >= 1) 
+		{
+			AltFireImage.fillAmount = 1;
+			AltFireIndicator.GetComponent<Image> ().color = Color.green;
+			FlashIndicator.enabled = true;
+		}
+
 		/// Movement ///
 	
 		if (gameControllerScript.isPreGame == false) 
@@ -421,11 +490,20 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// XBox 360 controller input for Windows.
-		if ((Input.GetAxisRaw ("Fire1") < 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+		if ((Input.GetAxisRaw ("Fire1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
 			(Input.GetKeyDown ("joystick button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) // Using A button.
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
+
+		if ((Input.GetAxisRaw ("Fire2") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			(Input.GetKeyDown ("joystick button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+		{
+			altnextFire = Time.time + altfireRate;
+			Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+			AltFireImage.fillAmount = 0;
+			//AltFireIndicator.SetActive (false);
 		}
 	}
 

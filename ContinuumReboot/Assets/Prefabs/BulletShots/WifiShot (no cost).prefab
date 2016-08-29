@@ -279,8 +279,9 @@ MonoBehaviour:
   goThroughAnything: 0
   followers: 0
   PrefabWifi: {fileID: 154546, guid: ceefba5dc7c8d35489cc8d5e7d6eb60b, type: 2}
-  WifiAudio: {fileID: 0}
+  WifiAudio: {fileID: 8276002, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   wifiAudio: 1
+  useMutedBullet: 0
 --- !u!114 &11441710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 2
+  delay: 12
   deactivateOnly: 0
   activateOnly: 0
   ActiveObject: {fileID: 0}

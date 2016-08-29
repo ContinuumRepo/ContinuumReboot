@@ -39,11 +39,15 @@ public class BulletScript : MonoBehaviour
 	public GameObject PrefabWifi;
 	public AudioSource WifiAudio;
 	public bool wifiAudio;
+	public bool useMutedBullet;
+	public bool isAltFire;
 
 	void Start () 
 	{
+
 		// Finds camera shake component.
-		camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
+		//camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
+		camShakeScript = Camera.main.GetComponent<CameraShake> ();
 
 		// Sets shake duration and strength.
 		camShakeScript.shakeDuration = InitialShakeDuration;
@@ -109,6 +113,11 @@ public class BulletScript : MonoBehaviour
 		// Triggers with Brick or Cube tags.
 		if (other.tag == "Brick" || other.tag == "Cube") 
 		{
+			if (isAltFire == true) 
+			{
+				Instantiate (Oneshots[0], gameObject.transform.position, gameObject.transform.rotation);
+			}
+
 			// Sets shake duration and strength.
 			camShakeScript.shakeDuration = InitialShakeDuration;
 			camShakeScript.shakeAmount = InitialShakeStrength;
@@ -152,6 +161,11 @@ public class BulletScript : MonoBehaviour
 						Instantiate (BulletNoCost, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 					}
 
+					if (useMutedBullet == true) 
+					{
+						Instantiate (PrefabWifi, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+					}
+
 					// Plays previous particle element.
 					RicoshetParticle [PlayElement - 1].Play ();
 
@@ -176,12 +190,22 @@ public class BulletScript : MonoBehaviour
 			}
 
 			// If the object has useRandomRotation boolean disabled.
-			if (useRandomRotation == false && goThroughAnything == false && followers == false) 
+			if (useRandomRotation == false && goThroughAnything == false && followers == false && wifiAudio == false) 
 			{
 				PlayElement = 0; // Resets play element to 0.
 				//Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity); // Instantiates the assigned audio source.
 				BeamExplosion.Play (); // Plays explosion particle effect.
 			}
+
+			// If the object has useRandomRotation boolean disabled.
+			if (useRandomRotation == false && goThroughAnything == false && followers == false && wifiAudio == true) 
+			{
+				PlayElement = 0; // Resets play element to 0.
+				//Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity); // Instantiates the assigned audio source.
+				//BeamExplosion.Play (); // Plays explosion particle effect.
+				Instantiate (BeamExplosion, gameObject.transform.position, gameObject.transform.rotation);
+			}
+
 
 			// If the object has useRandomRotation boolean disabled.
 			if (useRandomRotation == false && goThroughAnything == true && followers == true) 
@@ -202,7 +226,7 @@ public class BulletScript : MonoBehaviour
 				//PlayElement += 1; // Resets play element to 0.
 				Oneshots [PlayElement].Play ();
 				//BeamExplosion.Play (); // Plays explosion particle effect.
-				Debug.Log ("Played.");
+				//Debug.Log ("Played.");
 			}
 		}
 
