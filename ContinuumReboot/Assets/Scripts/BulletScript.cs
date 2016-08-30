@@ -6,48 +6,60 @@ using XInputDotNetPure;
 public class BulletScript : MonoBehaviour 
 {
 	[Header ("External")]
-	private AutoMoveAndRotate MoveAndRotateScript; // Auto Move and Rotate component.
-	public float newSpeed = -70.0f; // New speed when ricoshet.
-	private CameraShake camShakeScript; // The camera shake component.
-	public float InitialShakeDuration = 0.25f; // Shake time.
-	public float InitialShakeStrength = 0.5f; // Shake strength.
-	private GameController gameControllerScript; // Game Controller component.
-	public TimescaleController timeScaleControllerScript; // Time scale controller component.
+	private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
+	public float newSpeed = -70.0f; 						// New speed when ricoshet.
+	private CameraShake camShakeScript; 					// The camera shake component.
+	public float InitialShakeDuration = 0.25f;				// Shake time.
+	public float InitialShakeStrength = 0.5f; 				// Shake strength.
+	private GameController gameControllerScript; 			// Game Controller component.
+	public TimescaleController timeScaleControllerScript; 	// Time scale controller component.
 
 	[Header ("Costing")]
-	public GameObject BulletNoCost; // The bullet prefab that doesn't cost points.
-	public enum bulletcost {FixedRate, Percentage} // Bullet cost type.
-	public bulletcost BulletCostType; // The above enum.
-	public float DecrementPortion = 0.1f; // In percentage (0.1 means 10% cost, 0.9 means 90% cost, Citric Jungle isnt that harsh ;) ).
-	public float DecrementAmount = 100.0f; // Decrement points constant.
+	// Bullet cost type.
+	public GameObject BulletNoCost; 		// The bullet prefab that doesn't cost points.
+	public enum bulletcost 
+	{
+		FixedRate, 
+		Percentage
+	} 
+
+	public bulletcost BulletCostType; 		// The above enum.
+	public float DecrementPortion = 0.1f;	// In percentage (0.1 means 10% cost, 0.9 means 90% cost, Citric Jungle isnt that harsh ;) ).
+	public float DecrementAmount = 100.0f;  // Decrement points constant.
 
 	[Header ("Audio")]
-	public AudioSource[] Oneshots; // Array of audio clips.
-	public int PlayElement; // Play element for audio.
-	public AudioSource BeamExplosion; // Explosion sound when a beam hits an object.
+	public AudioSource[] Oneshots;			// Array of audio clips.
+	public int PlayElement; 				// Play element for audio.
+	public AudioSource BeamExplosion; 		// Explosion sound when a beam hits an object.
 
 	[Header ("Ricoshet")]
-	public int ricoshet; // Ricoshet number.
-	public int ricoshetMax = 6; // The max amount of ricoshets before the gameObject is destroyed.
-	public ParticleSystem[] RicoshetParticle; // Particle combos, should be children of the Player GameObject.
-	public float VibrationTime = 0.04f; // How long should the vibrationh occur?
-	public bool isShield; // Is this bullet a shield instead?
-	public bool isHorizontal; // Is the beam a horizontal one?
-	public bool useRandomRotation = true; // Does the bullet need a random rotation after a trigger enter?
-	public bool goThroughAnything;
-	public bool followers;
-	public GameObject PrefabWifi;
-	public AudioSource WifiAudio;
-	public bool wifiAudio;
-	public bool useMutedBullet;
-	public bool isAltFire;
+	public int ricoshet; 						// Ricoshet number.
+	public int ricoshetMax = 6; 				// The max amount of ricoshets before the gameObject is destroyed.
+	public ParticleSystem[] RicoshetParticle;   // Particle combos, should be children of the Player GameObject.
+	public float VibrationTime = 0.04f;  		// How long should the vibrationh occur?
+	public bool isShield; 						// Is this bullet a shield instead?
+	public bool isHorizontal; 					// Is the beam a horizontal one?
+	public bool useRandomRotation = true;		// Does the bullet need a random rotation after a trigger enter?
+	public bool goThroughAnything;				// Do/do not (there is no try) destroy on trigger enter.
+	public bool followers;						// Has followers for one of the powerups.
+	public GameObject PrefabWifi;				// Wifi bullet.
+	public AudioSource WifiAudio;				// Audio to play for the wifi bullet on explosion.
+	public bool wifiAudio;						// Use wifi ubllet's audio.
+	public bool useMutedBullet;					// Is the bullet (no cost) without sound?
+	public bool isAltFire;						// Is the bullet in alt-fire mode.
 
 	void Start () 
 	{
-
 		// Finds camera shake component.
-		//camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
-		camShakeScript = Camera.main.GetComponent<CameraShake> ();
+		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
+		{
+			camShakeScript = Camera.main.GetComponent<CameraShake> ();
+		}
+
+		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == false) 
+		{
+			camShakeScript = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<CameraShake> ();
+		}
 
 		// Sets shake duration and strength.
 		camShakeScript.shakeDuration = InitialShakeDuration;

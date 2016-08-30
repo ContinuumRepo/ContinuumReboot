@@ -7,21 +7,21 @@ using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour 
 {
-	private GameController gameControllerScript; // GameController component.
-	private TimescaleController timeScaleControllerScript; // TimeScale Controller component.
-	private MeshCollider PlayerCollider; // Collider for the player.
-	private MeshRenderer PlayerMesh; // MeshRenderer for the player
-	private AudioSourcePitchByTimescale BGMPitchScript; // Pitch Script for the main music.
+	private GameController gameControllerScript; 			  // GameController component.
+	private TimescaleController timeScaleControllerScript;    // TimeScale Controller component.
+	private MeshCollider PlayerCollider; 					  // Collider for the player.
+	private MeshRenderer PlayerMesh; 						  // MeshRenderer for the player
+	private AudioSourcePitchByTimescale BGMPitchScript; 	  // Pitch Script for the main music.
 	public ColorCorrectionCurves ColorCorrectionCurvesScript; // Color Corrections image effect.
-	private bool playedGameOverSound; // Has the game over sound been played?
-	private CameraShake camShakeScrpt; // Camera shake attached to the main camera.
-	public float shakeTime = 0.5f; // Time to shake the camera.
-	public float shakeAmount = 1.0f; // How hard the shake is on the camera.
+	private bool playedGameOverSound; 						  // Has the game over sound been played?
+	private CameraShake camShakeScrpt; 						  // Camera shake attached to the main camera.
+	public float shakeTime = 0.5f;							  // Time to shake the camera.
+	public float shakeAmount = 1.0f; 						  // How hard the shake is on the camera.
 
 	[Header ("Movement")]
-	private Rigidbody rb; // The attached rigidbody component.
+	private Rigidbody rb; 		// The attached rigidbody component.
 	public float speed = 10.0f; // The overall speed the player can move (sensitivity).
-	public float tilt = 0.0f; // The amount the player can tilt (default = 0).
+	public float tilt = 0.0f;   // The amount the player can tilt (default = 0).
 
 	[Header ("Bounds")]
 	public float xBoundLower = -20.0f;
@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
 	public float zBound = 0;
 
 	[Header ("Shooting")]
-	public GameObject shot; // The main shot GameObject.
+	public GameObject shot; 	// The main shot GameObject.
 	public Transform shotSpawn; // Where the shot will be placed when instantiated.
-	public float fireRate; // Time between bullets before a new one is instantiated.
+	public float fireRate;	    // Time between bullets before a new one is instantiated.
 	private float nextFire; 
 	public float altfireRate;
 	private float altnextFire;
@@ -44,79 +44,104 @@ public class PlayerController : MonoBehaviour
 	public Animator FlashIndicator;
 
 	[Header ("Powerups")]
-	public GameObject[] Powerups; // An array of powerup objects to spawn for the player.
-	public enum powerup {RegularShot, DoubleShot, TriShot, BeamShot, shield, horizontalBeam, Clone, helix, wifi, threeD} // The different types of powerups.
-	public powerup CurrentPowerup; // The above enum values.
-	public GameObject RegularShot; // The bullet the player shoots when there is no powerup.
-	public GameObject RegularShotNoCost; // The bullet the player shoots when there is a powerup that doesnt change the regular shot.
-	public GameObject MutedRegularShot; // Smae as above but has no volume.
-	public GameObject DoubleShot; // Allows the player to shoot TWO bullets at a time without costing points.
-	public GameObject TriShot; // Allows the player to shoot THREE bullets at a time without costing points.
-	public GameObject BeamShot; // A solid beam of energy wiping out everything in its path vertically.
-	public GameObject Shield; // An unbreakable shield whic wipes out everything in its path spherically.
-	public GameObject HorizontalBeam; // An unbreakable laser which wipes out everything in its path horizontally.
-	public GameObject ClonedPlayer; // The extra players which help the main player.
-	public bool isClone; // Is this script attached to this gameObject a clone?
-	public GameObject HelixObject;
-	public GameObject WifiShot;
-	public GameObject DoubleShotIcon; // The UI for the double shot powerup.
-	public GameObject TriShotIcon; // The UI for the tri shot powerup.
-	public GameObject BeamShotIcon; // The UI for the beam shot powerup.
-	public GameObject ShieldIcon; // The UI for the shield powerup.
-	public GameObject HorizontalBeamIcon; // The UI for the horizontal beam powerup.
-	public GameObject CloneIcon; // The UI for the clone player powerup.
-	public GameObject HelixIcon; // The UI for the helix player powerup.
-	public GameObject WifiIcon; // The UI for the wifi player powerup.
-	public GameObject ThreeDIcon; // The UI for the 3D perspective powerup.
-	public AudioLowPassFilter BgmLowFilter;
-	public AudioHighPassFilter BgmHighFilter;
-	public GameObject ThreeDCam;
+	// An array of powerup objects to spawn for the player.
+	public GameObject[] Powerups; 	
 
-	public Lens LensScript; // The Lens script that is attached to the main camera.
+	// The different types of powerups.
+	public enum powerup 
+	{
+		RegularShot, 
+	    DoubleShot, 
+		TriShot, 
+		BeamShot, 
+		shield, 
+  		horizontalBeam, 
+		Clone, 
+		helix, 
+		wifi, 
+		threeD
+	} 
+
+	public powerup CurrentPowerup;			    // The above enum values.
+	public GameObject RegularShot; 				// The bullet the player shoots when there is no powerup.
+	public GameObject RegularShotNoCost; 		// The bullet the player shoots when there is a powerup that doesnt change the regular shot.
+	public GameObject MutedRegularShot; 		// Smae as above but has no volume.
+	public GameObject DoubleShot; 				// Allows the player to shoot TWO bullets at a time without costing points.
+	public GameObject TriShot; 					// Allows the player to shoot THREE bullets at a time without costing points.
+	public GameObject BeamShot; 				// A solid beam of energy wiping out everything in its path vertically.
+	public GameObject Shield; 					// An unbreakable shield whic wipes out everything in its path spherically.
+	public GameObject HorizontalBeam; 			// An unbreakable laser which wipes out everything in its path horizontally.
+	public GameObject ClonedPlayer; 			// The extra players which help the main player.
+	public bool isClone; 						// Is this script attached to this gameObject a clone?
+	public GameObject HelixObject;				// Helix powerup.
+	public GameObject WifiShot;					// Wifi shot.
+	public GameObject DoubleShotIcon; 			// The UI for the double shot powerup.
+	public GameObject TriShotIcon; 				// The UI for the tri shot powerup.
+	public GameObject BeamShotIcon; 			// The UI for the beam shot powerup.
+	public GameObject ShieldIcon; 				// The UI for the shield powerup.
+	public GameObject HorizontalBeamIcon; 		// The UI for the horizontal beam powerup.
+	public GameObject CloneIcon; 				// The UI for the clone player powerup.
+	public GameObject HelixIcon; 				// The UI for the helix player powerup.
+	public GameObject WifiIcon; 				// The UI for the wifi player powerup.
+	public GameObject ThreeDIcon; 				// The UI for the 3D perspective powerup.
+	public AudioLowPassFilter BgmLowFilter;		// Low pass filter for the main music.
+	public AudioHighPassFilter BgmHighFilter;	// High pass filter for the main music.
+	public GameObject ThreeDCam;				// The GameObject where the perspective camera for the powerup is.
+	public Camera ThreeDCamera;					// The perspective camera for the powerup.
+	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
+
+	public Lens LensScript; 	  // The Lens script that is attached to the main camera.
 	public float powerupTime = 0; // The current powerup time left.
-	public float powerupDurationA = 10.0f; // The powerupDuration.
+
+	// The powerup durations.
+	public float powerupDurationA = 10.0f;
 	public float powerupDurationB = 20.0f;
 	public float powerupDurationC = 12.0f;
 	public float powerupDurationD = 20.0f;
 	public float powerupDurationE = 12.0f;
 	public float powerupDurationF = 30.0f;
 
-	public AudioSource powerupTimeRunningOut; // The audio source to play as there is a few seconds left of the powerup.
-	public AudioSource powerupDeactivateAudio; // The audio source to play as the powerup time runs out.
-	public ParticleSystem ActivePowerupParticles; // Plays particle system if powerup is active.
-	public ParticleSystem TimeRunningOutParticles; // Plays particle system if powerup is running out.
-	public Image PowerupMeter; // The UI for the powerup bar.
+	public AudioSource powerupTimeRunningOut; 		// The audio source to play as there is a few seconds left of the powerup.
+	public AudioSource powerupDeactivateAudio;	    // The audio source to play as the powerup time runs out.
+	public ParticleSystem ActivePowerupParticles;   // Plays particle system if powerup is active.
+	public ParticleSystem TimeRunningOutParticles;  // Plays particle system if powerup is running out.
+	public Image PowerupMeter; 						// The UI for the powerup bar.
 
 	[Header ("Health")]
-	public float Health; // Current health
-	public float startingHealth = 100; // The initial starting health so the UI health bar appears filled 100%.
-	public float minHealth = 0; // The health amount in which the player is defeated if this or below.
-	public Image HealthImage; // The health bar.
-	public float vibrationAmount = 1; // The vibration amount as the player loses some health.
+	public float Health; 			   	   // Current health
+	public float startingHealth = 100; 	   // The initial starting health so the UI health bar appears filled 100%.
+	public float minHealth = 0; 	   	   // The health amount in which the player is defeated if this or below.
+	public Image HealthImage; 		       // The health bar.
+	public float vibrationAmount = 1;  	   // The vibration amount as the player loses some health.
 	public float vibrationDuration = 0.4f; // The vibration duration as the player loses some health.
-	public float vibrationTime; // The actual vibration time left.
-	public Text HealthText; // The health text value which will be in percentage.
+	public float vibrationTime; 		   // The actual vibration time left.
+	public Text HealthText; 			   // The health text value which will be in percentage.
 
 	[Header ("Game Over")]
-	public bool initialPart; // Is the GameOver state in its initial sequence.
-	public float initialTimeScale = 0.1f; // The Time.timeScale in the GameOver initial sequence.
-	public float slowTimeDuration = 3.0f; // How long does the initial sequence go for?
-	public float slowTimeRemaining = 0.0f; // The actual time left of the initial GameOver sequence.
-	public AudioSource BGMMusic; // The main game music.
-	public GameObject PressToContinue; // The initial UI "Press A to view stats".
+	public bool initialPart; 					// Is the GameOver state in its initial sequence.
+	public float initialTimeScale = 0.1f; 		// The Time.timeScale in the GameOver initial sequence.
+	public float slowTimeDuration = 3.0f; 		// How long does the initial sequence go for?
+	public float slowTimeRemaining = 0.0f; 		// The actual time left of the initial GameOver sequence.
+	public AudioSource BGMMusic; 				// The main game music.
+	public GameObject PressToContinue; 			// The initial UI "Press A to view stats".
 	public GameObject DeactivatePlayerElements; // The GameObjects to deactivate once the player is defeated.
-	public float TimeSlowingSpeed = 0.1f; // The rate which the Time.timeScale decreases.
-	public float minTimeScale = 0.0f; // The minimum timescale which Time.timeScale should be greater.
-	public GameObject GameOverUI; // The Game Over UI after the initial sequence.
-	public AudioSource GameOverSound; // The GameOver Sound effect.
-	public AudioSource GameOverLoop; // The defeated Game Over music loop.
-	public GameObject gameOverExplosion; // The Awesome particle system for the Game Over.
+	public float TimeSlowingSpeed = 0.1f; 		// The rate which the Time.timeScale decreases.
+	public float minTimeScale = 0.0f; 			// The minimum timescale which Time.timeScale should be greater.
+	public GameObject GameOverUI; 				// The Game Over UI after the initial sequence.
+	public AudioSource GameOverSound; 			// The GameOver Sound effect.
+	public AudioSource GameOverLoop; 			// The defeated Game Over music loop.
+	public GameObject gameOverExplosion; 		// The Awesome particle system for the Game Over.
 
 	void Start () 
 	{
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
-		ThreeDCam.SetActive (false);
+
+		if (isClone == false) 
+		{
+			ThreeDCam.SetActive (false);
+		}
+
 		// Turns off powerup icons.
 		DoubleShotIcon.SetActive (false);
 		BeamShotIcon.SetActive (false);
@@ -128,7 +153,8 @@ public class PlayerController : MonoBehaviour
 		WifiIcon.SetActive (false);
 		ThreeDIcon.SetActive (false);
 		FlashIndicator.enabled = false;
-	
+		MainCanvas.worldCamera = Camera.main;
+		//Camera.main.enabled = true;
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
 
@@ -155,10 +181,20 @@ public class PlayerController : MonoBehaviour
 		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
 
 		// Finds Camera Shake script.
-		camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake>();
+		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true && isClone == false) 
+		{
+			camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
+			LensScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Lens> ();
+		}
+
+		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == false && isClone == false) 
+		{
+			camShakeScrpt = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<CameraShake> ();
+			LensScript = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<Lens> ();
+		}
 
 		// Finds main camera's lens script.
-		LensScript = Camera.main.GetComponent<Lens> ();
+		// LensScript = Camera.main.GetComponent<Lens> ();
 
 		// Start powerup conditions.
 		CurrentPowerup = powerup.RegularShot;
@@ -210,6 +246,9 @@ public class PlayerController : MonoBehaviour
 			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
 			{
+				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
+				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+				ThreeDCamera.enabled = false;
 				BgmHighFilter.enabled = false;
 				BgmLowFilter.enabled = false;
 				ThreeDCam.SetActive (false);
@@ -229,6 +268,7 @@ public class PlayerController : MonoBehaviour
 				HorizontalBeamIcon.SetActive (false);
 				CloneIcon.SetActive (false);
 				HelixIcon.SetActive (false);
+				LensScript.enabled = true;
 				//FlashIndicator.enabled = false;
 
 				gameControllerScript.PowerupText.text = "" + "- 1.5% x BULLET"; // Shows how much each bullet costs as the powerup text.
@@ -304,11 +344,15 @@ public class PlayerController : MonoBehaviour
 			{
 				ThreeDIcon.SetActive (true);
 				ThreeDCam.SetActive (true); // Turns on vertical beam.
+				ThreeDCamera.enabled = true;
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "3D!"; // UI displays vertical beam text.
 				//BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
 				//BgmHighFilter.enabled = true;
 				BgmLowFilter.enabled = true;
+				MainCanvas.worldCamera = ThreeDCamera;
+				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = false;
+				LensScript.enabled = false;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
