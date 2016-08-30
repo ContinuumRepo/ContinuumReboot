@@ -963,7 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -140, z: 0}
+    value: {x: 0, y: -70, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -1047,6 +1047,7 @@ MonoBehaviour:
   WifiAudio: {fileID: 0}
   wifiAudio: 0
   useMutedBullet: 0
+  isAltFire: 0
 --- !u!114 &11424294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1059,7 +1060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -140, z: 0}
+    value: {x: 0, y: -70, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -1107,7 +1108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -140, z: 0}
+    value: {x: 0, y: -70, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -1193,6 +1194,7 @@ MonoBehaviour:
   WifiAudio: {fileID: 0}
   wifiAudio: 0
   useMutedBullet: 0
+  isAltFire: 0
 --- !u!114 &11474812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1253,6 +1255,7 @@ MonoBehaviour:
   WifiAudio: {fileID: 0}
   wifiAudio: 0
   useMutedBullet: 0
+  isAltFire: 0
 --- !u!114 &11496840
 MonoBehaviour:
   m_ObjectHideFlags: 1

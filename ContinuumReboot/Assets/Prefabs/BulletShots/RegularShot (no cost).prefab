@@ -345,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -140, z: 0}
+    value: {x: 0, y: -70, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -399,6 +399,7 @@ MonoBehaviour:
   WifiAudio: {fileID: 8234212, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
   wifiAudio: 0
   useMutedBullet: 1
+  isAltFire: 0
 --- !u!114 &11498180
 MonoBehaviour:
   m_ObjectHideFlags: 1
