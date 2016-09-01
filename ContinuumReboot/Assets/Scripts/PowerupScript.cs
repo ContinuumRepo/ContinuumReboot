@@ -4,7 +4,19 @@ using System.Collections;
 public class PowerupScript : MonoBehaviour 
 {
 	private PlayerController playerControllerScript; // The player controller script component.
-	public enum poweruptype {doubleShot, triShot, beamShot, shield, horizontalBeam, clone, helix, wifi, ThreeD} // Powerups list.
+	// Powerups list.
+	public enum poweruptype 
+	{
+		doubleShot, 
+		triShot, 
+		beamShot, 
+		shield, 
+		horizontalBeam, 
+		clone, 
+		helix, 
+		wifi 
+		//ThreeD
+	} 
 	public poweruptype PowerupType; // To show the above enum.
 	public GameObject Explosion; // The explosion to play on trigger enter.
 
@@ -56,7 +68,7 @@ public class PowerupScript : MonoBehaviour
 				Debug.Log ("Beam shot powerup collected.");
 				Destroy (gameObject);
 			}
-
+			/*
 			if (PowerupType == poweruptype.ThreeD) 
 			{
 				playerControllerScript.powerupTime = playerControllerScript.powerupDurationC;
@@ -65,7 +77,7 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.ActivePowerupParticles.Play ();
 				Debug.Log ("3D.");
 				Destroy (gameObject);
-			}
+			}*/
 
 			if (PowerupType == poweruptype.shield) 
 			{

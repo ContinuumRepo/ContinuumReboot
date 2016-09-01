@@ -19312,7 +19312,7 @@ MonoBehaviour:
   - {fileID: 192416, guid: c3773da1ffb98b0449a4a483622b127f, type: 2}
   - {fileID: 155280, guid: f43a537c3888a2c40bd60c9ebd511a00, type: 2}
   - {fileID: 144514, guid: 45bc97165ab9b7445a351fe96e447907, type: 2}
-  - {fileID: 145664, guid: ec9f506d28c587241920fded892ffed1, type: 2}
+  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
@@ -33134,8 +33134,6 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
   powerupTime: 10
@@ -82420,11 +82418,9 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
-  powerupTime: 90
+  powerupTime: 0
   powerupDurationA: 10
   powerupDurationB: 12
   powerupDurationC: 12
@@ -104946,8 +104942,6 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
   powerupTime: 10
@@ -111258,8 +111252,6 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
   powerupTime: 10
@@ -111668,7 +111660,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -623, y: -53}
+  m_AnchoredPosition: {x: -633, y: -53}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417307745
@@ -150119,8 +150111,6 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
   powerupTime: 10
@@ -151259,8 +151249,6 @@ MonoBehaviour:
   ThreeDIcon: {fileID: 2114196955}
   BgmLowFilter: {fileID: 339966604}
   BgmHighFilter: {fileID: 339966603}
-  ThreeDCam: {fileID: 1168317447}
-  ThreeDCamera: {fileID: 153525940}
   MainCanvas: {fileID: 1082494267}
   LensScript: {fileID: 0}
   powerupTime: 10

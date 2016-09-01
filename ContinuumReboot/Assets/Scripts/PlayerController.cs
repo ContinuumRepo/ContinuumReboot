@@ -58,8 +58,8 @@ public class PlayerController : MonoBehaviour
   		horizontalBeam, 
 		Clone, 
 		helix, 
-		wifi, 
-		threeD
+		wifi 
+		//threeD
 	} 
 
 	public powerup CurrentPowerup;			    // The above enum values.
@@ -86,8 +86,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject ThreeDIcon; 				// The UI for the 3D perspective powerup.
 	public AudioLowPassFilter BgmLowFilter;		// Low pass filter for the main music.
 	public AudioHighPassFilter BgmHighFilter;	// High pass filter for the main music.
-	public GameObject ThreeDCam;				// The GameObject where the perspective camera for the powerup is.
-	public Camera ThreeDCamera;					// The perspective camera for the powerup.
+	//public GameObject ThreeDCam;				// The GameObject where the perspective camera for the powerup is.
+	//public Camera ThreeDCamera;					// The perspective camera for the powerup.
 	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
 
 	public Lens LensScript; 	  // The Lens script that is attached to the main camera.
@@ -137,10 +137,11 @@ public class PlayerController : MonoBehaviour
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
 
+		/*
 		if (isClone == false) 
 		{
 			ThreeDCam.SetActive (false);
-		}
+		}*/
 
 		// Turns off powerup icons.
 		DoubleShotIcon.SetActive (false);
@@ -186,12 +187,12 @@ public class PlayerController : MonoBehaviour
 			camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
 			LensScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Lens> ();
 		}
-
+		/*
 		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == false && isClone == false) 
 		{
 			camShakeScrpt = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<CameraShake> ();
 			LensScript = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<Lens> ();
-		}
+		}*/
 
 		// Finds main camera's lens script.
 		// LensScript = Camera.main.GetComponent<Lens> ();
@@ -248,10 +249,10 @@ public class PlayerController : MonoBehaviour
 			{
 				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
-				ThreeDCamera.enabled = false;
+				//ThreeDCamera.enabled = false;
 				BgmHighFilter.enabled = false;
 				BgmLowFilter.enabled = false;
-				ThreeDCam.SetActive (false);
+				//ThreeDCam.SetActive (false);
 				shot = RegularShot; // Assigns shot which costs points.
 				ClonedPlayer.SetActive (false); // Turns off cloned players.
 				BeamShot.SetActive (false); // Turns off the vertical beam.
@@ -306,7 +307,7 @@ public class PlayerController : MonoBehaviour
 			{
 				shot = WifiShot; // Assigns free wifi shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "CONNECTED TO WIFI!"; // UI displays double shot text.
+				gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
 				WifiIcon.SetActive (true); // Turns on the wifi shot icon.
 				BgmHighFilter.enabled = true;
 				//BgmLowFilter.enabled = true;
@@ -339,7 +340,8 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			// Beam shot.
+			/*
+			// 3D
 			if (CurrentPowerup == powerup.threeD) 
 			{
 				ThreeDIcon.SetActive (true);
@@ -358,7 +360,7 @@ public class PlayerController : MonoBehaviour
 				{
 					shot = RegularShotNoCost; // Make it the free version.
 				}
-			}
+			}*/
 
 			// Shield.
 			if (CurrentPowerup == powerup.shield) 
