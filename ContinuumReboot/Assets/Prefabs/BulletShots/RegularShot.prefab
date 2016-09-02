@@ -286,7 +286,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 0.15
+  m_Time: 0.3
   m_StartWidth: 0.5
   m_EndWidth: 0
   m_Colors:
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -40, z: 0}
+    value: {x: 0, y: -30, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -336,44 +336,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletType: 0
   newSpeed: -70
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
   timeScaleControllerScript: {fileID: 0}
-  BulletNoCost: {fileID: 159602, guid: c064567c033410f478f437d28b68dade, type: 2}
-  BulletCostType: 1
-  DecrementPortion: 0
-  DecrementAmount: 0
-  Oneshots:
-  - {fileID: 8234212, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8248528, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8206582, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8276002, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8265516, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8281918, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8216500, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  - {fileID: 8209492, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  PlayElement: 0
-  BeamExplosion: {fileID: 8265516, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  ricoshet: 0
-  ricoshetMax: 5
   RicoshetParticle:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   VibrationTime: 0.04
-  isShield: 0
-  isHorizontal: 0
-  useRandomRotation: 1
-  goThroughAnything: 0
-  followers: 0
-  PrefabWifi: {fileID: 159602, guid: c064567c033410f478f437d28b68dade, type: 2}
-  WifiAudio: {fileID: 8276002, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  wifiAudio: 0
-  useMutedBullet: 1
-  isAltFire: 0
+  useMutedBullet: 0
+  ricoshetNumber: 0
+  ricoshetMax: 5
 --- !u!114 &11481534
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -266,37 +266,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletType: 3
   newSpeed: 0
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
   timeScaleControllerScript: {fileID: 0}
-  BulletNoCost: {fileID: 161744}
-  BulletCostType: 1
-  DecrementPortion: 0
-  DecrementAmount: 100
-  Oneshots:
-  - {fileID: 8206582, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  PlayElement: 0
-  BeamExplosion: {fileID: 8276002, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  ricoshet: 0
-  ricoshetMax: 8
   RicoshetParticle:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   VibrationTime: 0.04
-  isShield: 0
-  isHorizontal: 0
-  useRandomRotation: 0
-  goThroughAnything: 0
-  followers: 0
-  PrefabWifi: {fileID: 161744}
-  WifiAudio: {fileID: 8276002, guid: 8b875040967b4de43970cfdb80c44a93, type: 2}
-  wifiAudio: 0
   useMutedBullet: 0
-  isAltFire: 1
+  ricoshetNumber: 0
+  ricoshetMax: 0
 --- !u!114 &11441238
 MonoBehaviour:
   m_ObjectHideFlags: 1

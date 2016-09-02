@@ -272,7 +272,7 @@ public class PlayerController : MonoBehaviour
 				LensScript.enabled = true;
 				//FlashIndicator.enabled = false;
 
-				gameControllerScript.PowerupText.text = "" + "- 1.5% x BULLET"; // Shows how much each bullet costs as the powerup text.
+				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
 				PlayerCollider.enabled = true; // Turns the player collider on.
