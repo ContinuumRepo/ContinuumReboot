@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 	public float CountDownDelay = 5.0f; // Countdown delay.
 	public Animator PlayerAnim; // Player enter animation.
 	public GameObject BottomBarrier; // The bottom barrier of the play space.
+	public GameObject ControlsUI;
 
 	[Header ("Spawning Objects")]
 	public GameObject[] Hazards; // Array of different hazards to spawn.
@@ -71,6 +72,8 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+		ControlsUI.SetActive (false);
+
 		// Starts coroutines.
 		StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (PowerupSpawnWaves ());
@@ -295,6 +298,8 @@ public class GameController : MonoBehaviour
 		PreGameUI.SetActive (false); // Turns off PreGame UI.
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
+		yield return new WaitForSeconds (2);
+		ControlsUI.SetActive (true);
 	}
 
 	IEnumerator BrickSpawnWaves ()
