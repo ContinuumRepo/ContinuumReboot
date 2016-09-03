@@ -60,7 +60,8 @@ public class PlayerController : MonoBehaviour
 		helix, 
 		wifi 
 		//threeD
-	} 
+	}
+	public float powerupTime = 0; // The current powerup time left.
 
 	public powerup CurrentPowerup;			    // The above enum values.
 	public GameObject RegularShot; 				// The bullet the player shoots when there is no powerup.
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
 	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
 
 	public Lens LensScript; 	  // The Lens script that is attached to the main camera.
-	public float powerupTime = 0; // The current powerup time left.
+
 
 	// The powerup durations.
 	public float powerupDurationA = 10.0f;

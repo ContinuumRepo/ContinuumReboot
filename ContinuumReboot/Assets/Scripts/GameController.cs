@@ -28,6 +28,11 @@ public class GameController : MonoBehaviour
 	public float waveWait; // Time between new waves.
 	public int hazardCount; // The amount of hazards to be spawned before a new wave.
 	private float[] columnLocations;
+	public float speedupSpawnRate = 0.005f;
+	public float minSpawnWait = 0.05f;
+	public Text LevelUpText;
+	public int wave;
+	public GameObject WaveLabel;
 
 	[Header ("Spawning Powerups")]
 	public GameObject[] Powerups; // Array of different powerups to spawn.
@@ -79,6 +84,7 @@ public class GameController : MonoBehaviour
 		// Start score.
 		CurrentScore = 0;
 		ScoreText.text = "" + 0 + "";
+		wave = 1;
 
 		// Start cursor lock state.
 		Cursor.visible = false;
@@ -124,6 +130,15 @@ public class GameController : MonoBehaviour
 
 	void Update () 
 	{
+		LevelUpText.GetComponent<Text> ().text = "LEVEL " + wave + "";
+		WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + wave + "";
+
+		// Important!
+		if (spawnWait > minSpawnWait) 
+		{
+			spawnWait -= speedupSpawnRate * Time.unscaledDeltaTime;
+		}
+
 		// If game is in pre-game mode.
 		if (isPreGame == true) 
 		{
@@ -270,7 +285,9 @@ public class GameController : MonoBehaviour
 
 	IEnumerator CountDown ()
 	{
-		//timeScaleControllerScript.enabled = false;
+		WaveLabel.SetActive (true);
+		WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+		WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + (wave + 1)  + "";
 		PreGameUI.SetActive (true); // Turns on PreGame UI.
 		yield return new WaitForSeconds (CountDownDelay); 
 		BottomBarrier.GetComponent<BoxCollider>().enabled = true;
@@ -351,7 +368,17 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 			}
-			yield return new WaitForSeconds (waveWait);
+
+			yield return new WaitForSeconds (waveWait / 2);
+			WaveLabel.SetActive (true);
+			WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
+			WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+
+			//WaveLabel.GetComponentInChildren<Text> ().text = "LEVEL " + (wave + 2) + "";
+			wave += 1;
+			hazardCount += 2;
+			yield return new WaitForSeconds (waveWait / 2);
+
 		}
 	}
 

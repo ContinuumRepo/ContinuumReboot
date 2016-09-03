@@ -71,7 +71,6 @@ public class BulletScript : MonoBehaviour
 		ComboAudio[5] = GameObject.FindGameObjectWithTag ("ComboAudioFive").GetComponent<AudioSource>();
 		ComboAudio[6] = GameObject.FindGameObjectWithTag ("ComboAudioSix").GetComponent<AudioSource>();
 		ComboAudio[7] = GameObject.FindGameObjectWithTag ("ComboAudioSeven").GetComponent<AudioSource>();
-
 	}
 
 	void Update ()
@@ -96,6 +95,16 @@ public class BulletScript : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
+		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam)
+		{
+			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (-360, 360));
+		}
+
+		if (other.tag == "Barrier" && BulletType == bulletType.horizontalBeam) 
+		{
+			gameObject.transform.rotation = Quaternion.identity;
+		}
+
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
 			camShakeScript.shakeDuration = InitialShakeDuration;
@@ -103,12 +112,12 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.regularShot) 
 			{
-				if (ricoshetNumber <= ricoshetMax) 
+				if (ricoshetNumber < ricoshetMax) 
 				{
 					RicoshetParticle [Mathf.Clamp(ricoshetNumber, 0, 5)].Play ();
 				}
 
-				if (ricoshetNumber > ricoshetMax) 
+				if (ricoshetNumber >= ricoshetMax) 
 				{
 					Destroy (gameObject);
 				}
@@ -125,7 +134,7 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.ricoshetShot) 
 			{
-				if (ricoshetNumber <= ricoshetMax) 
+				if (ricoshetNumber < ricoshetMax) 
 				{
 					RicoshetParticle [Mathf.Clamp(ricoshetNumber, 0, 5)].Play ();
 					ComboAudio [ricoshetNumber].Play ();
@@ -133,7 +142,7 @@ public class BulletScript : MonoBehaviour
 					Instantiate (gameObject, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 				}
 
-				if (ricoshetNumber > ricoshetMax) 
+				if (ricoshetNumber >= ricoshetMax) 
 				{
 					Destroy (gameObject);
 				}
@@ -149,6 +158,7 @@ public class BulletScript : MonoBehaviour
 			{
 				ComboAudio [3].Play ();
 				Destroy (other.gameObject);
+				gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
 
 			if (BulletType == bulletType.helix) 
