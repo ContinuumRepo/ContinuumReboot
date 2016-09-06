@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
 	private CameraShake camShakeScrpt; 						  // Camera shake attached to the main camera.
 	public float shakeTime = 0.5f;							  // Time to shake the camera.
 	public float shakeAmount = 1.0f; 						  // How hard the shake is on the camera.
+	//public bool multiplayer;
+	public enum playerNumber {PlayerOne, PlayerTwo, PlayerThree, PlayerFour}
+	public playerNumber PlayerNumber;
 
 	[Header ("Movement")]
 	private Rigidbody rb; 		// The attached rigidbody component.
@@ -510,12 +513,38 @@ public class PlayerController : MonoBehaviour
 	
 		if (gameControllerScript.isPreGame == false) 
 		{
-			float moveHorizontal = Input.GetAxis ("Horizontal");
-			float moveVertical = Input.GetAxis ("Vertical");
+			if (PlayerNumber == playerNumber.PlayerOne) 
+			{
+				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
+				float moveVerticalA = Input.GetAxis ("Vertical P1");
+				Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementA * speed;
+			}
 
-			// Assigns movement to a Vector 3, changes sensitivity according to timescale.
-			Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-			rb.velocity = movement * speed;
+			if (PlayerNumber == playerNumber.PlayerTwo) 
+			{
+				float moveHorizontalB = Input.GetAxis ("Horizontal P2");
+				float moveVerticalB = Input.GetAxis ("Vertical P2");
+				Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementB * speed;
+			}
+
+			if (PlayerNumber == playerNumber.PlayerThree) 
+			{
+				float moveHorizontalC = Input.GetAxis ("Horizontal P3");
+				float moveVerticalC = Input.GetAxis ("Vertical P3");
+				Vector3 movementC = new Vector3 (moveHorizontalC * (1/Time.timeScale), moveVerticalC * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementC * speed;
+			}
+
+			if (PlayerNumber == playerNumber.PlayerFour) 
+			{
+				float moveHorizontalD = Input.GetAxis ("Horizontal P4");
+				float moveVerticalD = Input.GetAxis ("Vertical P4");
+				Vector3 movementD = new Vector3 (moveHorizontalD * (1/Time.timeScale), moveVerticalD * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementD * speed;
+			}
+
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
 			// Player boundaries
@@ -536,22 +565,78 @@ public class PlayerController : MonoBehaviour
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 		}
 
-		// XBox 360 controller input for Windows.
-		if ((Input.GetAxisRaw ("Fire1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
-			(Input.GetKeyDown ("joystick button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) // Using A button.
+		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			// XBox 360 controller input for Windows.
+			if ((Input.GetAxisRaw ("Fire P1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+			   (Input.GetKeyDown ("joystick 1 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
+				nextFire = Time.time + fireRate;
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if ((Input.GetAxisRaw ("Alt Fire P1") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			   (Input.GetKeyDown ("joystick 1 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+				altnextFire = Time.time + altfireRate;
+				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+				AltFireImage.fillAmount = 0;
+				//AltFireIndicator.SetActive (false);
+			}
 		}
 
-		if ((Input.GetAxisRaw ("Fire2") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-			(Input.GetKeyDown ("joystick button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+		if (PlayerNumber == playerNumber.PlayerTwo) 
 		{
-			altnextFire = Time.time + altfireRate;
-			Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-			AltFireImage.fillAmount = 0;
-			//AltFireIndicator.SetActive (false);
+			// XBox 360 controller input for Windows.
+			if ((Input.GetAxisRaw ("Fire P2") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
+				nextFire = Time.time + fireRate;
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if ((Input.GetAxisRaw ("Alt Fire P2") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+				altnextFire = Time.time + altfireRate;
+				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+				AltFireImage.fillAmount = 0;
+				//AltFireIndicator.SetActive (false);
+			}
 		}
+
+		if (PlayerNumber == playerNumber.PlayerThree) 
+		{
+			// XBox 360 controller input for Windows.
+			if ((Input.GetAxisRaw ("Fire P3") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
+				nextFire = Time.time + fireRate;
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if ((Input.GetAxisRaw ("Alt Fire P3") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+				altnextFire = Time.time + altfireRate;
+				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+				AltFireImage.fillAmount = 0;
+				//AltFireIndicator.SetActive (false);
+			}
+		}
+
+		if (PlayerNumber == playerNumber.PlayerFour) 
+		{
+			// XBox 360 controller input for Windows.
+			if ((Input.GetAxisRaw ("Fire P4") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
+				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
+				nextFire = Time.time + fireRate;
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if ((Input.GetAxisRaw ("Alt Fire P4") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+				altnextFire = Time.time + altfireRate;
+				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+				AltFireImage.fillAmount = 0;
+				//AltFireIndicator.SetActive (false);
+			}
+		}
+
 	}
 
 	void OnTriggerEnter (Collider other)
