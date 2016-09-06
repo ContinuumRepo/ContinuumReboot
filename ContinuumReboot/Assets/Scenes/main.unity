@@ -19296,8 +19296,8 @@ MonoBehaviour:
   startWait: 2
   spawnWait: 0.4
   waveWait: 8
-  hazardCount: 35
-  speedupSpawnRate: 0.002
+  hazardCount: 45
+  speedupSpawnRate: 0.004
   minSpawnWait: 0.01
   LevelUpText: {fileID: 1574134262}
   wave: 1
@@ -19318,10 +19318,10 @@ MonoBehaviour:
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupSpawnValues: {x: 30, y: 50, z: 0}
-  powerupStartWait: 8
-  powerupSpawnWait: 35
-  powerupWaveWait: 10
-  powerupCount: 3
+  powerupStartWait: 9
+  powerupSpawnWait: 30
+  powerupWaveWait: 8
+  powerupCount: 4
   PowerupText: {fileID: 2041953062}
   isPaused: 0
   PauseUI: {fileID: 862326352}
@@ -23591,7 +23591,7 @@ MonoBehaviour:
   timeScaleReadOnly: 0
   startTimeScale: 1
   timeSpeedIncreaseSens: 0.05
-  addMinTime: 0
+  addMinTime: -0
   timeSpeedSens: 0.08
   distance: 1
 --- !u!114 &241236808
@@ -82319,7 +82319,7 @@ MonoBehaviour:
   zBound: 0
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   shotSpawn: {fileID: 353225749}
-  fireRate: 0.125
+  fireRate: 0.15
   altfireRate: 10
   EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
@@ -111244,11 +111244,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomIntensity
-      value: 0.25
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sepBlurSpread
-      value: 1.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11407330, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: m_Enabled
@@ -111256,7 +111256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomThreshold
-      value: 0.12
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 11485262, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: maxRadius
@@ -111280,7 +111280,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: lensflareThreshold
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: hollyStretchWidth
@@ -111300,15 +111300,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomThresholdColor.r
-      value: 0.2352941
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomThresholdColor.g
-      value: 0.2352941
+      value: 0.80689657
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomThresholdColor.b
-      value: 0.2352941
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11485262, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sunThreshold.r
@@ -111332,7 +111332,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11485262, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sunShaftIntensity
-      value: 0.4
+      value: 0.45
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8130986, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
