@@ -515,34 +515,34 @@ public class PlayerController : MonoBehaviour
 		{
 			if (PlayerNumber == playerNumber.PlayerOne) 
 			{
-				float moveHorizontal = Input.GetAxis ("Horizontal P1");
-				float moveVertical = Input.GetAxis ("Vertical P1");
-				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
+				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
+				float moveVerticalA = Input.GetAxis ("Vertical P1");
+				Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementA * speed;
 			}
 
 			if (PlayerNumber == playerNumber.PlayerTwo) 
 			{
-				float moveHorizontal = Input.GetAxis ("Horizontal P2");
-				float moveVertical = Input.GetAxis ("Vertical P2");
-				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
+				float moveHorizontalB = Input.GetAxis ("Horizontal P2");
+				float moveVerticalB = Input.GetAxis ("Vertical P2");
+				Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementB * speed;
 			}
 
 			if (PlayerNumber == playerNumber.PlayerThree) 
 			{
-				float moveHorizontal = Input.GetAxis ("Horizontal P3");
-				float moveVertical = Input.GetAxis ("Vertical P3");
-				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
+				float moveHorizontalC = Input.GetAxis ("Horizontal P3");
+				float moveVerticalC = Input.GetAxis ("Vertical P3");
+				Vector3 movementC = new Vector3 (moveHorizontalC * (1/Time.timeScale), moveVerticalC * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementC * speed;
 			}
 
 			if (PlayerNumber == playerNumber.PlayerFour) 
 			{
-				float moveHorizontal = Input.GetAxis ("Horizontal P4");
-				float moveVertical = Input.GetAxis ("Vertical P4");
-				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
+				float moveHorizontalD = Input.GetAxis ("Horizontal P4");
+				float moveVerticalD = Input.GetAxis ("Vertical P4");
+				Vector3 movementD = new Vector3 (moveHorizontalD * (1/Time.timeScale), moveVerticalD * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementD * speed;
 			}
 
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
