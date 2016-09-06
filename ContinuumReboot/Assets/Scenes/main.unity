@@ -1711,6 +1711,7 @@ GameObject:
   - 224: {fileID: 8844941}
   - 222: {fileID: 8844943}
   - 114: {fileID: 8844942}
+  - 95: {fileID: 8844944}
   m_Layer: 0
   m_Name: ShieldIcon
   m_TagString: Untagged
@@ -1748,7 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16155994, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1769,6 +1770,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8844940}
+--- !u!95 &8844944
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8844940}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &12318576
 GameObject:
   m_ObjectHideFlags: 0
@@ -5020,6 +5038,7 @@ GameObject:
   - 224: {fileID: 27727168}
   - 222: {fileID: 27727170}
   - 114: {fileID: 27727169}
+  - 95: {fileID: 27727171}
   m_Layer: 0
   m_Name: TriShotIcon
   m_TagString: Untagged
@@ -5057,7 +5076,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.8412256, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5078,6 +5097,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27727167}
+--- !u!95 &27727171
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27727167}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &38132553
 GameObject:
   m_ObjectHideFlags: 0
@@ -8693,6 +8729,7 @@ GameObject:
   - 224: {fileID: 89779197}
   - 222: {fileID: 89779199}
   - 114: {fileID: 89779198}
+  - 95: {fileID: 89779200}
   m_Layer: 0
   m_Name: ClonePlayerIcon
   m_TagString: Untagged
@@ -8730,7 +8767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.4958217, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -8751,6 +8788,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 89779196}
+--- !u!95 &89779200
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89779196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &96605535
 GameObject:
   m_ObjectHideFlags: 0
@@ -19241,10 +19295,10 @@ MonoBehaviour:
   spawnValues: {x: 35, y: 50, z: 0}
   startWait: 2
   spawnWait: 0.4
-  waveWait: 7
-  hazardCount: 30
-  speedupSpawnRate: 0.001
-  minSpawnWait: 0.016667
+  waveWait: 8
+  hazardCount: 35
+  speedupSpawnRate: 0.002
+  minSpawnWait: 0.01
   LevelUpText: {fileID: 1574134262}
   wave: 1
   WaveLabel: {fileID: 1918200056}
@@ -19282,7 +19336,7 @@ MonoBehaviour:
   LevelThreeScore: 3000
   LevelFourScore: 5000
   LevelFiveScore: 10000
-  ScoreSpeed: 40
+  ScoreSpeed: 20
   Panel: {fileID: 1772476380}
   ScoreText: {fileID: 413306265}
   TimeScaleText: {fileID: 283724135}
@@ -21319,6 +21373,7 @@ GameObject:
   - 224: {fileID: 211911167}
   - 222: {fileID: 211911169}
   - 114: {fileID: 211911168}
+  - 95: {fileID: 211911170}
   m_Layer: 0
   m_Name: RippleIcon
   m_TagString: Untagged
@@ -21356,7 +21411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.49025083, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -21377,6 +21432,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 211911166}
+--- !u!95 &211911170
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 211911166}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &217206849
 GameObject:
   m_ObjectHideFlags: 0
@@ -22970,6 +23042,7 @@ GameObject:
   - 224: {fileID: 223823094}
   - 222: {fileID: 223823096}
   - 114: {fileID: 223823095}
+  - 95: {fileID: 223823097}
   m_Layer: 0
   m_Name: HelixIcon
   m_TagString: Untagged
@@ -23007,7 +23080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.6740947, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23028,6 +23101,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 223823093}
+--- !u!95 &223823097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 223823093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &224025759
 GameObject:
   m_ObjectHideFlags: 0
@@ -105172,6 +105262,7 @@ GameObject:
   - 224: {fileID: 1265303974}
   - 222: {fileID: 1265303976}
   - 114: {fileID: 1265303975}
+  - 95: {fileID: 1265303977}
   m_Layer: 0
   m_Name: BeamShotIcon
   m_TagString: Untagged
@@ -105209,7 +105300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.50696373, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -105230,6 +105321,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1265303973}
+--- !u!95 &1265303977
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265303973}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1267004074
 GameObject:
   m_ObjectHideFlags: 0
@@ -106823,6 +106931,7 @@ GameObject:
   - 224: {fileID: 1272269062}
   - 222: {fileID: 1272269064}
   - 114: {fileID: 1272269063}
+  - 95: {fileID: 1272269065}
   m_Layer: 0
   m_Name: DoubleShotIcon
   m_TagString: Untagged
@@ -106860,7 +106969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.8245125, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -106881,6 +106990,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1272269061}
+--- !u!95 &1272269065
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1272269061}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1286155014
 GameObject:
   m_ObjectHideFlags: 0
@@ -111118,7 +111244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomIntensity
-      value: 0.3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sepBlurSpread
@@ -111130,7 +111256,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: bloomThreshold
-      value: 0.15
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 11485262, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: maxRadius
@@ -175047,6 +175173,7 @@ GameObject:
   - 224: {fileID: 2118340500}
   - 222: {fileID: 2118340502}
   - 114: {fileID: 2118340501}
+  - 95: {fileID: 2118340503}
   m_Layer: 0
   m_Name: HorizontalBeamIcon
   m_TagString: Untagged
@@ -175084,7 +175211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.17270184, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -175105,6 +175232,23 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2118340499}
+--- !u!95 &2118340503
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2118340499}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c88509fd5b4b7c47af7fd4ff2d2e463, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2124383508
 GameObject:
   m_ObjectHideFlags: 0
