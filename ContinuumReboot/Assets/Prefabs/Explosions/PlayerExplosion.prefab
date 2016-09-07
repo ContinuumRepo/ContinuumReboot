@@ -462,7 +462,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 1
     gravityModifier: 1
     maxNumParticles: 400
     rotation3D: 0
@@ -689,7 +689,7 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 2162138156
+          rgba: 2162147628
         key1:
           serializedVersion: 2
           rgba: 16777215
@@ -1635,7 +1635,7 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0.04
+  m_VelocityScale: -0.08
   m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1

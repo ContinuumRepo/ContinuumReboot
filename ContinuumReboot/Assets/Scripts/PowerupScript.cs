@@ -19,11 +19,17 @@ public class PowerupScript : MonoBehaviour
 	} 
 	public poweruptype PowerupType; // To show the above enum.
 	public GameObject Explosion; // The explosion to play on trigger enter.
+	public bool useRandomPower;
 
 	void Start () 
 	{
 		// Finds player controller component.
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+
+		if (useRandomPower == true) 
+		{
+			PowerupType = (poweruptype)Random.Range (0, 7);
+		}
 	}
 
 	void OnTriggerEnter (Collider other)
