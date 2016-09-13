@@ -139,7 +139,7 @@ public class BulletScript : MonoBehaviour
 					RicoshetParticle [Mathf.Clamp(ricoshetNumber, 0, 5)].Play ();
 					ComboAudio [ricoshetNumber].Play ();
 					ricoshetNumber += 1;
-					Instantiate (gameObject, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
+					//Instantiate (gameObject, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 				}
 
 				if (ricoshetNumber >= ricoshetMax) 

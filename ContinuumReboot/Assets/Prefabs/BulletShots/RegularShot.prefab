@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -30, z: 0}
+    value: {x: 0, y: -20, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -590,7 +590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xBound: {x: -50, y: 50}
-  yBound: {x: -30, y: 60}
+  yBound: {x: -30, y: 30}
   zBound: {x: -100, y: 100}
 --- !u!114 &11495374
 MonoBehaviour:

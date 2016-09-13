@@ -118,8 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 3
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!198 &19808648
@@ -211,7 +211,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 20
+      scalar: 60
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1652,7 +1652,7 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: 0.04
+  m_VelocityScale: -0.08
   m_LengthScale: 1
   m_SortingFudge: 0
   m_NormalDirection: 1

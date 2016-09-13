@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 	private MeshRenderer PlayerMesh; 						  // MeshRenderer for the player
 	private AudioSourcePitchByTimescale BGMPitchScript; 	  // Pitch Script for the main music.
 	public ColorCorrectionCurves ColorCorrectionCurvesScript; // Color Corrections image effect.
+	private Bloom bloomScript;
+	public float normalBloomAmount = 0.1f;
+	public float powerupBloomAmount = 0.3f;
 	private bool playedGameOverSound; 						  // Has the game over sound been played?
 	private CameraShake camShakeScrpt; 						  // Camera shake attached to the main camera.
 	public float shakeTime = 0.5f;							  // Time to shake the camera.
@@ -138,6 +141,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
+		bloomScript.bloomIntensity = normalBloomAmount;
+
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
 
@@ -251,6 +257,7 @@ public class PlayerController : MonoBehaviour
 			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
 			{
+				bloomScript.bloomIntensity = normalBloomAmount;
 				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 				//ThreeDCamera.enabled = false;
@@ -297,6 +304,7 @@ public class PlayerController : MonoBehaviour
 			// Double shot.
 			if (CurrentPowerup == powerup.DoubleShot) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				shot = DoubleShot; // Assigns free double shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
@@ -309,6 +317,7 @@ public class PlayerController : MonoBehaviour
 			// WIFI shot.
 			if (CurrentPowerup == powerup.wifi) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				shot = WifiShot; // Assigns free wifi shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
@@ -320,6 +329,7 @@ public class PlayerController : MonoBehaviour
 			// Tri shot.
 			if (CurrentPowerup == powerup.TriShot) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				shot = TriShot; // Assigns free triple shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
@@ -331,6 +341,7 @@ public class PlayerController : MonoBehaviour
 			// Beam shot.
 			if (CurrentPowerup == powerup.BeamShot) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				BeamShot.SetActive (true); // Turns on vertical beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
@@ -369,6 +380,7 @@ public class PlayerController : MonoBehaviour
 			// Shield.
 			if (CurrentPowerup == powerup.shield) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				Shield.SetActive (true); // Turns on the shield.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
@@ -391,7 +403,8 @@ public class PlayerController : MonoBehaviour
 
 			// Horizontal beam.
 			if (CurrentPowerup == powerup.horizontalBeam) 
-			{		
+			{	
+				bloomScript.bloomIntensity = powerupBloomAmount;	
 				HorizontalBeamIcon.SetActive (true);
 				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
@@ -408,6 +421,7 @@ public class PlayerController : MonoBehaviour
 			// Clone player.
 			if (CurrentPowerup == powerup.Clone) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				ClonedPlayer.SetActive (true); // Turns on the clones!
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CLONES!"; // UI display clones.
@@ -425,6 +439,7 @@ public class PlayerController : MonoBehaviour
 			// Helix bullets.
 			if (CurrentPowerup == powerup.helix) 
 			{
+				bloomScript.bloomIntensity = powerupBloomAmount;
 				HelixObject.SetActive (true);
 
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.

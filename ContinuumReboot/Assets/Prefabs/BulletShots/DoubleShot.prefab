@@ -775,7 +775,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.05
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!96 &9651526
 TrailRenderer:
@@ -822,7 +822,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.05
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!96 &9652464
 TrailRenderer:
@@ -916,7 +916,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.05
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!96 &9673842
 TrailRenderer:
@@ -963,7 +963,7 @@ TrailRenderer:
     m_Color[4]:
       serializedVersion: 2
       rgba: 4294901980
-  m_MinVertexDistance: 0.05
+  m_MinVertexDistance: 0.01
   m_Autodestruct: 0
 --- !u!96 &9687064
 TrailRenderer:
@@ -1186,7 +1186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -90, z: 0}
+    value: {x: 0, y: -60, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}
@@ -1218,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveUnitsPerSecond:
-    value: {x: 0, y: -90, z: 0}
+    value: {x: 0, y: -60, z: 0}
     space: 1
   rotateDegreesPerSecond:
     value: {x: 0, y: 0, z: 0}

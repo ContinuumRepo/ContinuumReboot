@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 2
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!198 &19830664
@@ -248,7 +248,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 170
+      scalar: 70
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -377,7 +377,7 @@ ParticleSystem:
         rgba: 4278255614
       minMaxState: 0
     startSize:
-      scalar: 0.1
+      scalar: 0.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -517,8 +517,8 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    gravityModifier: 0
-    maxNumParticles: 50
+    gravityModifier: 4
+    maxNumParticles: 160
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -579,11 +579,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 30
+    cnt0: 160
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 30
+    cntmax0: 160
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -1659,7 +1659,7 @@ ParticleSystemRenderer:
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
   m_CameraVelocityScale: 0
-  m_VelocityScale: -0.03
+  m_VelocityScale: -0.05
   m_LengthScale: 0.01
   m_SortingFudge: 0
   m_NormalDirection: 1

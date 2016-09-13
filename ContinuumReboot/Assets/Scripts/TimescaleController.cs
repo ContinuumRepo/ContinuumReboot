@@ -17,6 +17,7 @@ public class TimescaleController : MonoBehaviour
 	private Transform playerThree;
 	private Transform playerFour;
 	private Transform referencePoint;
+	public AudioSource Music;
 
 	public enum mode
 	{
@@ -88,6 +89,31 @@ public class TimescaleController : MonoBehaviour
 		if (Time.timeScale > highestTimeScale) 
 		{
 			highestTimeScale = Time.timeScale;
+		}
+
+		if (Time.timeScale < 0.5f) 
+		{
+			Music.pitch = 0.25f;
+		}
+
+		if (Time.timeScale >= 0.5f && Time.timeScale < 0.75f) 
+		{
+			Music.pitch = 0.75f;
+		}
+
+		if (Time.timeScale >= 0.75f && Time.timeScale < 1.25f) 
+		{
+			Music.pitch = 1.0f;
+		}
+
+		if (Time.timeScale >= 1.25f && Time.timeScale < 1.5f) 
+		{
+			Music.pitch = 1.25f;
+		}
+
+		if (Time.timeScale >= 1.5f) 
+		{
+			Music.pitch = 1.5f;
 		}
 
 	}
