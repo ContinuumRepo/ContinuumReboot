@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
 	public Animator PlayerAnim; // Player enter animation.
 	public GameObject BottomBarrier; // The bottom barrier of the play space.
 	public GameObject ControlsUI;
+	public bool twoPlayerMode;
 
 	[Header ("Spawning Objects")]
 	public GameObject[] Hazards; // Array of different hazards to spawn.
@@ -157,8 +158,17 @@ public class GameController : MonoBehaviour
 			TimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
 
 			// Sets score and shows on UI.
-			CurrentScore += Time.deltaTime * ScoreSpeed;
 			ScoreText.text = "" + Mathf.Round (CurrentScore) + "";
+
+			if (twoPlayerMode == false) 
+			{
+				CurrentScore += Time.deltaTime * ScoreSpeed;
+			}
+
+			if (twoPlayerMode == true) 
+			{
+				CurrentScore += Time.deltaTime * (ScoreSpeed * 2);
+			}
 		}
 
 		// If the game is not in pre-game mode, and the player's is at game over condition.
