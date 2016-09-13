@@ -45,6 +45,15 @@ public class GameController : MonoBehaviour
 	public int powerupCount; // The amountof hazards to be spawned before a new wave of powerups.
 	public Text PowerupText; // Powerup label for the player.
 
+	[Header ("Spawning Rare Items")]
+	public GameObject[] Rareitems; // Array of different powerups to spawn.
+	public Vector3 rareitemSpawnValues; // Spawn X, Y, Z values.
+	public float rareitemStartWait; // Start powerup spawn wait.
+	public float rareitemSpawnWait; // Time between new spawned powerups.
+	public float rareitemWaveWait; // Time between powerup waves.
+	public int rareitemCount; // The amountof hazards to be spawned before a new wave of powerups.
+	//public Text rareitemText; // Powerup label for the player.
+
 	[Header ("Pausing")]
 	public bool isPaused; // Is the game paused right now?
 	public GameObject PauseUI; // Pause UI object.
@@ -79,6 +88,7 @@ public class GameController : MonoBehaviour
 		StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (PowerupSpawnWaves ());
 		StartCoroutine (CountDown ());
+		StartCoroutine (RareitemSpawnWaves ());
 
 		isPreGame = true; // We are in pre-game mode.
 		ShowFpsText.SetActive (false); // Turns off showing FPS object.
@@ -409,6 +419,21 @@ public class GameController : MonoBehaviour
 				//Quaternion powerupSpawnRotation = Quaternion.identity;
 				Instantiate (powerup, powerupSpawnPos, Quaternion.Euler(0, 0, 45));
 				yield return new WaitForSeconds (powerupSpawnWait);
+			}
+		}
+	}
+
+	IEnumerator RareitemSpawnWaves ()
+	{
+		yield return new WaitForSeconds (rareitemStartWait);
+		while (true)
+		{
+			for (int i = 0; i < rareitemCount; i++) 
+			{
+				GameObject rareitem = Rareitems [Random.Range (0, Rareitems.Length)];
+				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
+				Instantiate (rareitem, rareitemSpawnPos, Quaternion.Euler(0, 0, 45));
+				yield return new WaitForSeconds (rareitemSpawnWait);
 			}
 		}
 	}

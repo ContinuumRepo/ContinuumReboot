@@ -14,7 +14,8 @@ public class PowerupScript : MonoBehaviour
 		horizontalBeam, 
 		clone, 
 		helix, 
-		wifi 
+		wifi,
+		health
 		//ThreeD
 	} 
 	public poweruptype PowerupType; // To show the above enum.
@@ -44,6 +45,14 @@ public class PowerupScript : MonoBehaviour
 			/// Turn on powerup particles on player
 			/// Destroy this gameObject
 			/// End Summary ///
+
+			if (PowerupType == poweruptype.health) 
+			{
+				playerControllerScript.Health += 25;
+				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
+				Debug.Log ("Collected rare health woo!");
+				Destroy (gameObject);
+			}
 
 			if (PowerupType == poweruptype.doubleShot) 
 			{

@@ -64,8 +64,7 @@ public class PlayerController : MonoBehaviour
   		horizontalBeam, 
 		Clone, 
 		helix, 
-		wifi 
-		//threeD
+		wifi
 	}
 	public float powerupTime = 0; // The current powerup time left.
 
@@ -93,12 +92,9 @@ public class PlayerController : MonoBehaviour
 	public GameObject ThreeDIcon; 				// The UI for the 3D perspective powerup.
 	public AudioLowPassFilter BgmLowFilter;		// Low pass filter for the main music.
 	public AudioHighPassFilter BgmHighFilter;	// High pass filter for the main music.
-	//public GameObject ThreeDCam;				// The GameObject where the perspective camera for the powerup is.
-	//public Camera ThreeDCamera;					// The perspective camera for the powerup.
 	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
 
 	public Lens LensScript; 	  // The Lens script that is attached to the main camera.
-
 
 	// The powerup durations.
 	public float powerupDurationA = 10.0f;
@@ -146,12 +142,6 @@ public class PlayerController : MonoBehaviour
 
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
-
-		/*
-		if (isClone == false) 
-		{
-			ThreeDCam.SetActive (false);
-		}*/
 
 		// Turns off powerup icons.
 		DoubleShotIcon.SetActive (false);
@@ -583,75 +573,25 @@ public class PlayerController : MonoBehaviour
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
 			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
-			   (Input.GetKeyDown ("joystick 1 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
+			if ((Input.GetAxisRaw ("Fire P1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
+			{
 				nextFire = Time.time + fireRate;
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if (Input.GetKeyDown ("joystick 1 button 0") && (Time.time > nextFire / 100) && gameControllerScript.CurrentScore > 0 && Health > minHealth) 
+			{
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			}
 
 			if ((Input.GetAxisRaw ("Alt Fire P1") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-			   (Input.GetKeyDown ("joystick 1 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+			   (Input.GetKeyDown ("joystick 1 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+			{
 				altnextFire = Time.time + altfireRate;
 				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
 				AltFireImage.fillAmount = 0;
-				//AltFireIndicator.SetActive (false);
 			}
 		}
-
-		if (PlayerNumber == playerNumber.PlayerTwo) 
-		{
-			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P2") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
-				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
-				nextFire = Time.time + fireRate;
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if ((Input.GetAxisRaw ("Alt Fire P2") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
-				altnextFire = Time.time + altfireRate;
-				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-				AltFireImage.fillAmount = 0;
-				//AltFireIndicator.SetActive (false);
-			}
-		}
-
-		if (PlayerNumber == playerNumber.PlayerThree) 
-		{
-			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P3") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
-				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
-				nextFire = Time.time + fireRate;
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if ((Input.GetAxisRaw ("Alt Fire P3") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
-				altnextFire = Time.time + altfireRate;
-				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-				AltFireImage.fillAmount = 0;
-				//AltFireIndicator.SetActive (false);
-			}
-		}
-
-		if (PlayerNumber == playerNumber.PlayerFour) 
-		{
-			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P4") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) || // Using Trigger.
-				(Input.GetKeyDown ("joystick 2 button 0") && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) { // Using A button.
-				nextFire = Time.time + fireRate;
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if ((Input.GetAxisRaw ("Alt Fire P4") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 2 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
-				altnextFire = Time.time + altfireRate;
-				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-				AltFireImage.fillAmount = 0;
-				//AltFireIndicator.SetActive (false);
-			}
-		}
-
 	}
 
 	void OnTriggerEnter (Collider other)
