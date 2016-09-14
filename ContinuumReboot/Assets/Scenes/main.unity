@@ -5300,48 +5300,6 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
---- !u!1001 &49265549
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0.38268346
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.9238795
-      objectReference: {fileID: 0}
-    - target: {fileID: 435904, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &64973468
 GameObject:
   m_ObjectHideFlags: 0
@@ -19376,10 +19334,10 @@ MonoBehaviour:
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   rareitemSpawnValues: {x: 30, y: 30, z: 0}
-  rareitemStartWait: 45
-  rareitemSpawnWait: 20
+  rareitemStartWait: 30
+  rareitemSpawnWait: 30
   rareitemWaveWait: 5
-  rareitemCount: 5
+  rareitemCount: 10
   isPaused: 0
   PauseUI: {fileID: 862326352}
   PauseSound: {fileID: 0}

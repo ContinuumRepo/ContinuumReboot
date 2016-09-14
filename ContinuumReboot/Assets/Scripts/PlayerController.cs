@@ -240,6 +240,11 @@ public class PlayerController : MonoBehaviour
 			HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
 			HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
 
+			if (Health > 100) 
+			{
+				Health = 100;
+			}
+
 			/// POWERUPS ///
 			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
 			PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
@@ -344,28 +349,6 @@ public class PlayerController : MonoBehaviour
 					shot = RegularShotNoCost; // Make it the free version.
 				}
 			}
-
-			/*
-			// 3D
-			if (CurrentPowerup == powerup.threeD) 
-			{
-				ThreeDIcon.SetActive (true);
-				ThreeDCam.SetActive (true); // Turns on vertical beam.
-				ThreeDCamera.enabled = true;
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "3D!"; // UI displays vertical beam text.
-				//BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
-				//BgmHighFilter.enabled = true;
-				BgmLowFilter.enabled = true;
-				MainCanvas.worldCamera = ThreeDCamera;
-				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = false;
-				LensScript.enabled = false;
-				// If shot is the regular shot.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; // Make it the free version.
-				}
-			}*/
 
 			// Shield.
 			if (CurrentPowerup == powerup.shield) 
