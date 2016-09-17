@@ -96,22 +96,22 @@ public class TimescaleController : MonoBehaviour
 			Music.pitch = 0.25f;
 		}
 
-		if (Time.timeScale >= 0.5f && Time.timeScale < 0.75f) 
+		if (Time.timeScale >= 1f && Time.timeScale < 1.25f) 
 		{
 			Music.pitch = 0.75f;
 		}
 
-		if (Time.timeScale >= 0.75f && Time.timeScale < 1.25f) 
+		if (Time.timeScale >= 1.25f && Time.timeScale < 1.5f) 
 		{
 			Music.pitch = 1.0f;
 		}
 
-		if (Time.timeScale >= 1.25f && Time.timeScale < 1.5f) 
+		if (Time.timeScale >= 1.5f && Time.timeScale < 1.75f) 
 		{
 			Music.pitch = 1.25f;
 		}
 
-		if (Time.timeScale >= 1.5f) 
+		if (Time.timeScale >= 1.75f) 
 		{
 			Music.pitch = 1.5f;
 		}

@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody rb; 		// The attached rigidbody component.
 	public float speed = 10.0f; // The overall speed the player can move (sensitivity).
 	public float tilt = 0.0f;   // The amount the player can tilt (default = 0).
+	public bool useKeyboardControls;
 
 	[Header ("Bounds")]
 	public float xBoundLower = -20.0f;
@@ -501,7 +502,16 @@ public class PlayerController : MonoBehaviour
 	
 		if (gameControllerScript.isPreGame == false) 
 		{
-			if (PlayerNumber == playerNumber.PlayerOne) 
+			// PC player movement
+			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
+			{
+				float moveHorizontal = Input.GetAxis ("Horizontal");
+				float moveVertical = Input.GetAxis ("Vertical");
+				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
+				rb.velocity = movement * speed;
+			}
+
+			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
 			{
 				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
 				float moveVerticalA = Input.GetAxis ("Vertical P1");

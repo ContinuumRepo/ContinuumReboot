@@ -417,7 +417,7 @@ public class GameController : MonoBehaviour
 				GameObject powerup = Powerups [Random.Range (0, Powerups.Length)];
 				Vector3 powerupSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-powerupSpawnValues.x, powerupSpawnValues.x)), powerupSpawnValues.y, powerupSpawnValues.z);
 				//Quaternion powerupSpawnRotation = Quaternion.identity;
-				Instantiate (powerup, powerupSpawnPos, Quaternion.Euler(0, 0, 45));
+				Instantiate (powerup, powerupSpawnPos, Quaternion.Euler(0, 0, 180));
 				yield return new WaitForSeconds (powerupSpawnWait);
 			}
 		}
