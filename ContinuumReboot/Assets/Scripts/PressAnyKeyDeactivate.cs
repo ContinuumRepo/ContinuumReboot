@@ -19,7 +19,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 
 	void Update () 
 	{
-		if (Input.anyKeyDown && useInput == true) 
+		if (Input.anyKeyDown && useInput == true)
 		{
 			Enabler.SetActive (true);
 			SocialMedia.SetActive (true);
