@@ -22,38 +22,54 @@ public class InputScrollMenu : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		PlayerPrefs.SetString ("Menu", "main");
 		buttonIndex = buttons.Length;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (buttonIndex > 0 && !waiting)
+		if (PlayerPrefs.GetString ("Menu") == "main")
 		{
-			float value = Input.GetAxis ("Vertical");
-
-			if (value < -dead || value > dead)
+			if (buttonIndex > 0 && !waiting)
 			{
-				resetForMouse = false;
-				StartCoroutine (CheckScroll (value));
+				float valueJoy = Input.GetAxis ("Vertical P1");
+				float valueKey = Input.GetAxis ("Vertical");
+
+				if (valueJoy < -dead || valueJoy > dead)
+				{
+					resetForMouse = false;
+					CheckScroll (valueJoy);
+				}
+				else if (valueKey < -dead || valueKey > dead)
+				{
+					resetForMouse = false;
+					CheckScroll (valueKey);
+				}
+			}
+
+			if (Input.GetAxis ("FireButton") > 0)
+			{
+				RunOnClick (indexLocation);
+			}
+
+			if (resetForMouse == false)
+			{
+				if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0)
+				{
+					RunOnExit (indexLocation);
+					resetForMouse = true;
+					Debug.Log ("Resetting for mouse movement");
+				}
 			}
 		}
-		/*
-		if (resetForMouse == false)
-		{
-			if (Input.GetAxis ("Mouse X") > dead || Input.GetAxis ("Mouse X") > -dead || Input.GetAxis ("Mouse Y") > dead || Input.GetAxis ("Mouse Y") > -dead)
-			{
-				RunOnExit (indexLocation);
-				resetForMouse = true;
-			}
-		}*/
 	}
 
-	IEnumerator CheckScroll (float value)
+	private void CheckScroll (float value)
 	{
 		waiting = true;
 
-		if (value < -dead) // Select button above
+		if (value > dead) // Select button above
 		{
 			if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
@@ -68,7 +84,7 @@ public class InputScrollMenu : MonoBehaviour
 				SetHighlighted (indexLocation - 1);
 			}
 		}
-		else if (value > dead) // Select button below
+		else if (value < -dead) // Select button below
 		{
 			if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
@@ -83,13 +99,14 @@ public class InputScrollMenu : MonoBehaviour
 				SetHighlighted (indexLocation + 1);
 			}
 		}
-		yield return StartCoroutine (ScrollWait());
-		waiting = false;
+
+		StartCoroutine (ScrollWait());
 	}
 
 	IEnumerator ScrollWait()
 	{
 		yield return new WaitForSeconds (timeBuffer);
+		waiting = false;
 	}
 
 	private void SetHighlighted (int newIndex)
@@ -106,6 +123,31 @@ public class InputScrollMenu : MonoBehaviour
 	public int HighlightedButton
 	{
 		set {indexLocation = value;}
+	}
+
+	private void RunOnClick (int index)
+	{
+		switch (index)
+		{
+		case 0: // 1 Player
+			buttonScript.P1Click();
+			break;
+		case 1: // 2 Player
+			buttonScript.P2Click();
+			break;
+		case 2: // Leaderboards
+			buttonScript.LeaderboardsClick();
+			break;
+		case 3: // Settings
+			buttonScript.SettingsClick();
+			break;
+		case 4: // Credits
+			buttonScript.CreditsClick();
+			break;
+		case 5: // Quit
+			buttonScript.QuitClick();
+			break;
+		}
 	}
 
 	private void RunOnEnter (int index)

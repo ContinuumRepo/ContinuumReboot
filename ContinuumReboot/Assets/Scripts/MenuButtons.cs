@@ -38,6 +38,7 @@ public class MenuButtons : MonoBehaviour
 	public float p1ParticleShortSpeedExit;
 
 	[Header("Play 2P Button")]
+	public GameObject multiplayer;
 	public Animator p2Animator;
 	public GameObject p2Mesh;
 	public Material p2Material;
@@ -84,6 +85,7 @@ public class MenuButtons : MonoBehaviour
 	#region Play 1P Button Functions
 	public void P1Click()
 	{
+		PlayerPrefs.SetString ("Menu", "controls");
 		controls.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();
@@ -95,6 +97,7 @@ public class MenuButtons : MonoBehaviour
 			scrollScript.HighlightedButton = 0;
 		p1Animator.enabled = true;
 		p1Animator.Play ("Play1PPointerEnter");
+		oneShot.Play();
 		p1Mesh.SetActive (true);
 		menuPlayer1.material = p1Material;
 		engineLcyan.Play();
@@ -120,7 +123,8 @@ public class MenuButtons : MonoBehaviour
 	#region Play 2P Button Functions
 	public void P2Click()
 	{
-		controls.SetActive (true);
+		PlayerPrefs.SetString ("Menu", "multiplayer");
+		multiplayer.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();
 	}
@@ -160,6 +164,7 @@ public class MenuButtons : MonoBehaviour
 	#region View Leaderboards Button Functions
 	public void LeaderboardsClick()
 	{
+		PlayerPrefs.SetString ("Menu", "leaderboards");
 		leaderboards.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();
@@ -193,6 +198,7 @@ public class MenuButtons : MonoBehaviour
 	#region Settings Button Functions
 	public void SettingsClick()
 	{
+		PlayerPrefs.SetString ("Menu", "settings");
 		settings.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();
@@ -226,6 +232,7 @@ public class MenuButtons : MonoBehaviour
 	#region Credits Button Functions
 	public void CreditsClick()
 	{
+		PlayerPrefs.SetString ("Menu", "credits");
 		credits.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();
@@ -261,6 +268,7 @@ public class MenuButtons : MonoBehaviour
 	#region Quit Button Functions
 	public void QuitClick()
 	{
+		PlayerPrefs.SetString ("Menu", "quit");
 		quit.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		bgMenuMusicHigh.enabled = true;
