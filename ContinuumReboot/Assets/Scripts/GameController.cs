@@ -64,6 +64,7 @@ public class GameController : MonoBehaviour
 	public GameObject ControlsScreen; // Controls screen.
 
 	[Header ("Scoring")]
+	public float displayedScore;
 	public float CurrentScore; // The current score in the playthrough.
 	public int LevelOneScore = 1000; // Reach this score so TWO types of hazards are able to be spawned.
 	public int LevelTwoScore = 10000; // Reach this score so THREE types of hazards are able to be spawned.
@@ -168,7 +169,8 @@ public class GameController : MonoBehaviour
 			TimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
 
 			// Sets score and shows on UI.
-			ScoreText.text = "" + Mathf.Round (CurrentScore) + "";
+			ScoreText.text = "" + Mathf.Round (displayedScore) + "";
+			displayedScore = Mathf.Lerp (displayedScore, CurrentScore, Time.deltaTime);
 
 			if (twoPlayerMode == false) 
 			{
@@ -300,7 +302,6 @@ public class GameController : MonoBehaviour
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.7f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = false; // Turns off low pass filter.
-		//Cursor.lockState = CursorLockMode.Locked; // Locks the cursor.
 		Cursor.visible = false; // Makes cursor invisible.
 		isPaused = false;
 
@@ -330,8 +331,7 @@ public class GameController : MonoBehaviour
 			int randomColumn;
 			for (int i = 0; i < hazardCount; i++) 
 			{
-				// Spawn element 0 if less than level one score
-				if (CurrentScore > 0 && CurrentScore < LevelOneScore)
+				if (wave >= 0 && wave <= 2)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 1)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -340,9 +340,8 @@ public class GameController : MonoBehaviour
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
-
-				// Spawn element 0 and 1 if less than level 2 score.
-				if (CurrentScore > LevelOneScore && CurrentScore < LevelTwoScore)
+					
+				if (wave > 2 && wave <= 3)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 2)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -351,9 +350,8 @@ public class GameController : MonoBehaviour
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
-
-
-				if (CurrentScore > LevelTwoScore && CurrentScore < LevelThreeScore)
+					
+				if (wave > 3 && wave <= 4)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 3)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -363,7 +361,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (CurrentScore > LevelThreeScore && CurrentScore < LevelFourScore)
+				if (wave > 4 && wave <= 5)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 4)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -373,7 +371,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (CurrentScore > LevelFourScore && CurrentScore < LevelFiveScore)
+				if (wave > 5 && wave <= 6)
 				{
 					GameObject hazard = Hazards [Random.Range (0, 5)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -383,7 +381,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (CurrentScore > LevelFiveScore)
+				if (wave > 6)
 				{
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
 					randomColumn = Random.Range (0, columnLocations.Length -1);
@@ -398,12 +396,9 @@ public class GameController : MonoBehaviour
 			WaveLabel.SetActive (true);
 			WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
 			WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
-
-			//WaveLabel.GetComponentInChildren<Text> ().text = "LEVEL " + (wave + 2) + "";
 			wave += 1;
 			hazardCount += 2;
 			yield return new WaitForSeconds (waveWait / 2);
-
 		}
 	}
 

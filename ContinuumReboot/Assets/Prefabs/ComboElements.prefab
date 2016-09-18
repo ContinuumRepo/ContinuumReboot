@@ -510,7 +510,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 0dce7d303edaea84ebb8e24356f47d6f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.4
-  m_Pitch: 0.6
+  m_Pitch: 0.8
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -880,8 +880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11427248
@@ -896,8 +896,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11432626
@@ -912,8 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11433856
@@ -928,8 +928,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11454592
@@ -944,8 +944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11464994
@@ -960,8 +960,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11490488
@@ -976,8 +976,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11493226
@@ -992,8 +992,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 1
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!1001 &100100000

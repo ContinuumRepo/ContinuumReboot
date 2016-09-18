@@ -15,7 +15,7 @@ public class PointObject : MonoBehaviour
 	public ParticleSystem MainEngineParticles; // Engine Particle system.
 	public GameObject PlayerExplosion; // The explosion when the player hits it.
 	public float Damage = 25.0f; // Damage amount to player.
-
+	public Animator ScoreText;
 	public Material normalMaterial;
 	public Material orangeMaterial;
 	public Material yellowMaterial;
@@ -33,6 +33,7 @@ public class PointObject : MonoBehaviour
 
 	void Start ()
 	{
+		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
 		playerMesh = GameObject.Find ("PlayerMesh").GetComponent<MeshRenderer> ();
 
 		// Finding the main engine particle system GameObject.
@@ -59,6 +60,7 @@ public class PointObject : MonoBehaviour
 		{
 			// Creates explosion.
 			Instantiate (Explosion, transform.position, transform.rotation);
+			ScoreText.Play (0);
 
 			// Orange brick.
 			if (PointType == type.Orange) 

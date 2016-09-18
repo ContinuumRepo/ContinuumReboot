@@ -19,6 +19,14 @@ public class TimescaleController : MonoBehaviour
 	private Transform referencePoint;
 	public AudioSource Music;
 
+	public enum calcMode
+	{
+		Distance,
+		timeScale
+	}
+
+	public calcMode CalculationMode;
+
 	public enum mode
 	{
 		onePlayer, twoPlayers, threePlayers, fourPlayers
@@ -85,35 +93,70 @@ public class TimescaleController : MonoBehaviour
 			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y + playerThree.transform.position.y + playerFour.transform.position.y) / 4) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
 		}
 
-		// Stores the highest timescale value for stats.
-		if (Time.timeScale > highestTimeScale) 
-		{
-			highestTimeScale = Time.timeScale;
+		if (CalculationMode == calcMode.timeScale) {
+
+			// Stores the highest timescale value for stats.
+			if (Time.timeScale > highestTimeScale) {
+				highestTimeScale = Time.timeScale;
+			}
+
+			if (Time.timeScale < 0.5f) {
+				Music.pitch = 0.25f;
+			}
+
+			if (Time.timeScale >= 1f && Time.timeScale < 1.25f) {
+				Music.pitch = 0.75f;
+			}
+
+			if (Time.timeScale >= 1.25f && Time.timeScale < 1.5f) {
+				Music.pitch = 1.0f;
+			}
+
+			if (Time.timeScale >= 1.5f && Time.timeScale < 1.75f) {
+				Music.pitch = 1.25f;
+			}
+
+			if (Time.timeScale >= 1.75f) {
+				Music.pitch = 1.5f;
+			}
 		}
 
-		if (Time.timeScale < 0.5f) 
+		if (CalculationMode == calcMode.Distance) 
 		{
-			Music.pitch = 0.25f;
-		}
+			if (distance < 5)
+			{
+				Music.pitch = 0.25f;
+			}
 
-		if (Time.timeScale >= 1f && Time.timeScale < 1.25f) 
-		{
-			Music.pitch = 0.75f;
-		}
+			if (distance >= 5 && distance < 10) 
+			{
+				Music.pitch = 0.5f;
+			}
 
-		if (Time.timeScale >= 1.25f && Time.timeScale < 1.5f) 
-		{
-			Music.pitch = 1.0f;
-		}
+			if (distance >= 10 && distance < 15) 
+			{
+				Music.pitch = 0.75f;
+			}
 
-		if (Time.timeScale >= 1.5f && Time.timeScale < 1.75f) 
-		{
-			Music.pitch = 1.25f;
-		}
+			if (distance >= 15 && distance < 20) 
+			{
+				Music.pitch = 1.0f;
+			}
 
-		if (Time.timeScale >= 1.75f) 
-		{
-			Music.pitch = 1.5f;
+			if (distance >= 20 && distance < 25) 
+			{
+				Music.pitch = 1.25f;
+			}
+
+			if (distance >= 25 && distance < 30) 
+			{
+				Music.pitch = 1.5f;
+			}
+
+			if (distance >= 30) 
+			{
+				Music.pitch = 2.0f;
+			}
 		}
 
 	}

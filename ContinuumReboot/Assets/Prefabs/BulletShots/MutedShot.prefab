@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletType: 2
+  BulletType: 1
   newSpeed: -70
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 6
-  deactivateOnly: 0
-  activateOnly: 0
+  timeLeft: 0
+  DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11464538

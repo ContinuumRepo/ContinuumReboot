@@ -6,7 +6,7 @@ using XInputDotNetPure;
 public class BulletScript : MonoBehaviour 
 {
 	public bulletType BulletType;
-	private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
+	//private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
 	public float newSpeed = -70.0f; 						// New speed when ricoshet.
 	private CameraShake camShakeScript; 					// The camera shake component.
 	public float InitialShakeDuration = 0.25f;				// Shake time.
@@ -34,6 +34,12 @@ public class BulletScript : MonoBehaviour
 
 	void Start () 
 	{
+		if (BulletType == bulletType.mutedShot) 
+		{
+			GetComponent<BoxCollider> ().enabled = false;
+			StartCoroutine (ActivateCollider ());
+		}
+
 		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
 		{
 			camShakeScript = Camera.main.GetComponent<CameraShake> ();
@@ -50,10 +56,8 @@ public class BulletScript : MonoBehaviour
 		{
 			GetComponent<AudioSource> ().volume = 0;
 		}
-
-	
+			
 		VibrationTime = 0.04f;
-		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
 	
@@ -180,5 +184,12 @@ public class BulletScript : MonoBehaviour
 			}
 
 		}
+	}
+
+	IEnumerator ActivateCollider ()
+	{
+		//GetComponent<BoxCollider> ().enabled = false;
+		yield return new WaitForSeconds (0.25f);
+		GetComponent<BoxCollider> ().enabled = true;
 	}
 }

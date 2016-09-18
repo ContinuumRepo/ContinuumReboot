@@ -188,15 +188,6 @@ public class PlayerController : MonoBehaviour
 			camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
 			LensScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Lens> ();
 		}
-		/*
-		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == false && isClone == false) 
-		{
-			camShakeScrpt = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<CameraShake> ();
-			LensScript = GameObject.FindGameObjectWithTag ("ThreeDCam").GetComponent<Lens> ();
-		}*/
-
-		// Finds main camera's lens script.
-		// LensScript = Camera.main.GetComponent<Lens> ();
 
 		// Start powerup conditions.
 		CurrentPowerup = powerup.RegularShot;
@@ -277,8 +268,6 @@ public class PlayerController : MonoBehaviour
 				CloneIcon.SetActive (false);
 				HelixIcon.SetActive (false);
 				LensScript.enabled = true;
-				//FlashIndicator.enabled = false;
-
 				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
@@ -306,7 +295,7 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
 				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
 
-				BgmHighFilter.enabled = true;
+				//BgmHighFilter.enabled = true;
 				//BgmLowFilter.enabled = true;
 			}
 
@@ -318,7 +307,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
 				WifiIcon.SetActive (true); // Turns on the wifi shot icon.
-				BgmHighFilter.enabled = true;
+				//BgmHighFilter.enabled = true;
 				//BgmLowFilter.enabled = true;
 			}
 
@@ -330,7 +319,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
 				TriShotIcon.SetActive (true); // Turns on double shot icon.
-				BgmHighFilter.enabled = true;
+				//BgmHighFilter.enabled = true;
 				//BgmLowFilter.enabled = true;
 			}
 
@@ -343,7 +332,7 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
 				BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
 				//BgmHighFilter.enabled = true;
-				BgmLowFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -384,7 +373,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
 				//BgmHighFilter.enabled = true;
-				BgmLowFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -420,7 +409,7 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
 				HelixIcon.SetActive (true); // Turns on clone icon.
 				//PlayerCollider.enabled = false; // Turns off player collider.
-				BgmHighFilter.enabled = true;
+				//BgmHighFilter.enabled = true;
 				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
@@ -509,6 +498,13 @@ public class PlayerController : MonoBehaviour
 				float moveVertical = Input.GetAxis ("Vertical");
 				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
 				rb.velocity = movement * speed;
+			}
+
+			if (Input.GetKeyDown (KeyCode.LeftAlt) && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
+			{
+				altnextFire = Time.time + altfireRate;
+				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
+				AltFireImage.fillAmount = 0;
 			}
 
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
