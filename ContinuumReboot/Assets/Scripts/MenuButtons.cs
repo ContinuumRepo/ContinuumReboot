@@ -42,7 +42,6 @@ public class MenuButtons : MonoBehaviour
 	public GameObject p2Mesh;
 	public Material p2Material;
 	public float p2ParticleShortSpeedEnter;
-	public float p2ParticleShortSpeedExit;
 	public GameObject menuPlayer2;
 	public SmoothFollowOrig smoothFollowOrig;
 	public SmoothFollowClone smoothFollowClone;
@@ -75,6 +74,13 @@ public class MenuButtons : MonoBehaviour
 	public GameObject quitMesh;
 	public Material quitMaterial;
 
+	private InputScrollMenu scrollScript;
+
+	void Start()
+	{
+		scrollScript = this.gameObject.GetComponent <InputScrollMenu>();
+	}
+
 	#region Play 1P Button Functions
 	public void P1Click()
 	{
@@ -85,6 +91,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void P1Enter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 0;
 		p1Animator.enabled = true;
 		p1Animator.Play ("Play1PPointerEnter");
 		p1Mesh.SetActive (true);
@@ -119,6 +127,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void P2Enter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 1;
 		p2Animator.enabled = true;
 		p2Animator.Play ("Play2PPointerEnter");
 		oneShot.Play();
@@ -157,6 +167,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void LeaderboardsEnter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 2;
 		leadAnimator.enabled = true;
 		leadAnimator.Play ("LeaderboardsPointerEnter");
 		oneShot.Play();
@@ -188,6 +200,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void SettingsEnter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 3;
 		settingsAnimator.enabled = true;
 		settingsAnimator.Play ("CreditsPointerEnter");
 		oneShot.Play();
@@ -221,6 +235,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void CreditsEnter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 4;
 		creditsAnimator.enabled = true;
 		creditsAnimator.Play ("CreditsPointerEnter");
 		oneShot.Play();
@@ -253,6 +269,8 @@ public class MenuButtons : MonoBehaviour
 
 	public void QuitEnter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = 5;
 		quitAnimator.enabled = true;
 		quitAnimator.Play ("QuitPointerEnter");
 		oneShot.Play();
@@ -266,7 +284,7 @@ public class MenuButtons : MonoBehaviour
 
 	public void QuitExit()
 	{
-		quitAnimator.Play ("CreditsPointerExit");
+		quitAnimator.Play ("QuitPointerExit");
 		quitMesh.SetActive (false);
 		menuPlayer1.material = playerMaterial;
 		engineLred.Stop();
