@@ -553,7 +553,7 @@ public class PlayerController : MonoBehaviour
 
 		// PC Controller Input.
 		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) ||
-			(Input.GetKey (KeyCode.LeftControl) && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth))
+			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth))
 		{
 			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -562,15 +562,16 @@ public class PlayerController : MonoBehaviour
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
 			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P1") > 0 && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
+			if ((Input.GetAxisRaw ("Fire P1") > 0.1f && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
 			{
 				nextFire = Time.time + fireRate;
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			}
 
-			if (Input.GetKeyDown ("joystick 1 button 0") && (Time.time > nextFire / 100) && gameControllerScript.CurrentScore > 0 && Health > minHealth) 
+			if (Input.GetButtonDown ("FireButton") && (Time.unscaledTime > (nextFire)) && gameControllerScript.CurrentScore > 0 && Health > minHealth) 
 			{
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
 			if ((Input.GetAxisRaw ("Alt Fire P1") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||

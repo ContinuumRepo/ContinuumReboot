@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.ImageEffects;
 
 public class TimescaleController : MonoBehaviour 
 {
@@ -33,6 +34,10 @@ public class TimescaleController : MonoBehaviour
 	}
 
 	public mode PlayerMode;
+
+	public ParticleSystem DistantStars;
+	public VignetteAndChromaticAberration vignetteScript;
+	public MeshRenderer PlayerMat;
 
 	public void Start () 
 	{
@@ -69,6 +74,8 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{
+		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
+		vignetteScript.intensity = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
 		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
 		currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
@@ -125,36 +132,43 @@ public class TimescaleController : MonoBehaviour
 		{
 			if (distance < 5)
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 0.0f;
 				Music.pitch = 0.25f;
 			}
 
 			if (distance >= 5 && distance < 10) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 0.5f;
 				Music.pitch = 0.5f;
 			}
 
 			if (distance >= 10 && distance < 15) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 1f;
 				Music.pitch = 0.75f;
 			}
 
 			if (distance >= 15 && distance < 20) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 1.5f;
 				Music.pitch = 1.0f;
 			}
 
 			if (distance >= 20 && distance < 25) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 2f;
 				Music.pitch = 1.25f;
 			}
 
 			if (distance >= 25 && distance < 30) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 2.5f;
 				Music.pitch = 1.5f;
 			}
 
 			if (distance >= 30) 
 			{
+				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 3f;
 				Music.pitch = 2.0f;
 			}
 		}
