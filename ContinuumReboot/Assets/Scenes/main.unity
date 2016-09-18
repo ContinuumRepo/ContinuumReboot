@@ -133058,15 +133058,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 407130, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 407130, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
-      propertyPath: m_LocalPosition.y
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 407130, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407130, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.53
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 407130, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: m_LocalRotation.x
@@ -133098,7 +133098,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: EmissionModule.rate.scalar
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: InitialModule.maxNumParticles
@@ -133106,7 +133106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: ForceModule.z.maxCurve.m_Curve.Array.data[0].value
-      value: 0.6
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: ForceModule.z.scalar
@@ -133251,6 +133251,10 @@ Prefab:
     - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
       propertyPath: InitialModule.gravityModifier
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19854202, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 77b5a793caab17743b6fbc365ae5d73b, type: 2}
@@ -140301,10 +140305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c708c7ebad6fb8e48a4ac5166d28ae13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalBrickColumns: 24
+  totalBrickColumns: 22
   totalBrickRows: 13
   brickWidth: 2
-  gameAreaWidth: 74
+  gameAreaWidth: 72
   gameAreaHeight: 40
 --- !u!1 &1720939876
 GameObject:

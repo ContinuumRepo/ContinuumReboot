@@ -523,22 +523,6 @@ public class PlayerController : MonoBehaviour
 				rb.velocity = movementB * speed;
 			}
 
-			if (PlayerNumber == playerNumber.PlayerThree) 
-			{
-				float moveHorizontalC = Input.GetAxis ("Horizontal P3");
-				float moveVerticalC = Input.GetAxis ("Vertical P3");
-				Vector3 movementC = new Vector3 (moveHorizontalC * (1/Time.timeScale), moveVerticalC * (1/Time.timeScale), 0.0f);
-				rb.velocity = movementC * speed;
-			}
-
-			if (PlayerNumber == playerNumber.PlayerFour) 
-			{
-				float moveHorizontalD = Input.GetAxis ("Horizontal P4");
-				float moveVerticalD = Input.GetAxis ("Vertical P4");
-				Vector3 movementD = new Vector3 (moveHorizontalD * (1/Time.timeScale), moveVerticalD * (1/Time.timeScale), 0.0f);
-				rb.velocity = movementD * speed;
-			}
-
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
 			// Player boundaries
