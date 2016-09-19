@@ -6,7 +6,7 @@ using XInputDotNetPure;
 public class BulletScript : MonoBehaviour 
 {
 	public bulletType BulletType;
-	//private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
+	private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
 	public float newSpeed = -70.0f; 						// New speed when ricoshet.
 	private CameraShake camShakeScript; 					// The camera shake component.
 	public float InitialShakeDuration = 0.25f;				// Shake time.
@@ -36,8 +36,9 @@ public class BulletScript : MonoBehaviour
 	{
 		if (BulletType == bulletType.mutedShot) 
 		{
-			GetComponent<BoxCollider> ().enabled = false;
-			StartCoroutine (ActivateCollider ());
+			//GetComponent<BoxCollider> ().enabled = false;
+			GetComponent<BoxCollider> ().enabled = true;
+			//StartCoroutine (ActivateCollider ());
 		}
 
 		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
@@ -60,7 +61,7 @@ public class BulletScript : MonoBehaviour
 		VibrationTime = 0.04f;
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
-	
+		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		RicoshetParticle[0] = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[1] = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
 		RicoshetParticle[2] = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
@@ -79,6 +80,11 @@ public class BulletScript : MonoBehaviour
 
 	void Update ()
 	{
+		if (BulletType == bulletType.regularShot) 
+		{
+			MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0, -30 * Time.timeScale, 0);
+		}
+
 		if (VibrationTime > 0) 
 		{
 			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f); // Sets vibration amount ot 25%.
@@ -185,11 +191,11 @@ public class BulletScript : MonoBehaviour
 
 		}
 	}
-
+	/*
 	IEnumerator ActivateCollider ()
 	{
 		//GetComponent<BoxCollider> ().enabled = false;
-		yield return new WaitForSeconds (0.25f);
+		//yield return new WaitForSeconds (0.25f);
 		GetComponent<BoxCollider> ().enabled = true;
-	}
+	}*/
 }

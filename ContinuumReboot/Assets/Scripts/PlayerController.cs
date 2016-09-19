@@ -135,9 +135,11 @@ public class PlayerController : MonoBehaviour
 	public AudioSource GameOverSound; 			// The GameOver Sound effect.
 	public AudioSource GameOverLoop; 			// The defeated Game Over music loop.
 	public GameObject gameOverExplosion; 		// The Awesome particle system for the Game Over.
+	public GameObject GameOverCam;
 
 	void Start () 
 	{
+		GameOverCam.SetActive (false);
 		bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
 		bloomScript.bloomIntensity = normalBloomAmount;
 
@@ -545,8 +547,7 @@ public class PlayerController : MonoBehaviour
 
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
-			// XBox 360 controller input for Windows.
-			if ((Input.GetAxisRaw ("Fire P1") > 0.1f && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
+			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
 			{
 				nextFire = Time.time + fireRate;
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
@@ -558,7 +559,7 @@ public class PlayerController : MonoBehaviour
 				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
-			if ((Input.GetAxisRaw ("Alt Fire P1") > 0 && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			if (((Input.GetAxisRaw ("Alt Fire P1") > 0 || Input.GetMouseButton (1)) && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
 			   (Input.GetKeyDown ("joystick 1 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
 				altnextFire = Time.time + altfireRate;
@@ -589,26 +590,26 @@ public class PlayerController : MonoBehaviour
 	{
 		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
 		BGMMusic.Stop (); // Stops main music.
-
-		// if slow motion time is more than 0.5 seconds.
-		if (slowTimeRemaining > 0.5f) 
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		if (slowTimeRemaining > 2.0f) 
 		{
-			Time.timeScale = 0.01f; // Make time scale 1%.
+			Time.timeScale = 0.05f;
 		}
-
-		// if slow motion time is less than 0.5 but greater than 0.
-		if (slowTimeRemaining < 0.5f && slowTimeRemaining > 0) 
+			
+		if (slowTimeRemaining < 2f && slowTimeRemaining > 0 && Time.timeScale < 1) 
 		{
-			Time.timeScale = 1; // Sets time scale to 1.
+			Time.timeScale += 5f * Time.unscaledDeltaTime;
+			GameOverCam.SetActive(true);
 		}
-
-		// if slow motion time is less than/equal to 0, and time scale is greater than/equal to 1%.
+			
 		if (slowTimeRemaining <= 0) 
 		{
 			if (Time.timeScale >= 0.01f)
 			{
-				slowTimeRemaining = 0; // Stops decrementing slow time remaining.
-				Time.timeScale -= 0.25f * Time.unscaledDeltaTime; // Has time scale back to normal.
+				slowTimeRemaining = 0;
+				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;
+
 				timeScaleControllerScript.enabled = false; // Turns off timescale controller.
 				PressToContinue.SetActive (true); // Activates "Press A to continue" text.
 
@@ -619,7 +620,7 @@ public class PlayerController : MonoBehaviour
 				}
 
 				// Player presses A button or space during this time.
-				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown ("space")) 
+				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown (KeyCode.R)) 
 				{
 					SceneManager.LoadScene ("main");				
 				}
@@ -680,6 +681,7 @@ public class PlayerController : MonoBehaviour
 			{
 				Time.timeScale = 0.0165f;
 				PressToContinue.SetActive (false); // Turns off press to continue UI.
+
 			}
 		}
 	}
