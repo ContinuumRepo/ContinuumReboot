@@ -248,7 +248,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 70
+      scalar: 150
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -371,7 +371,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4279769343
+        rgba: 4278205183
       maxColor:
         serializedVersion: 2
         rgba: 4278202367
@@ -518,7 +518,7 @@ ParticleSystem:
       minMaxState: 0
     randomizeRotationDirection: 0
     gravityModifier: 0
-    maxNumParticles: 160
+    maxNumParticles: 150
     rotation3D: 0
   ShapeModule:
     serializedVersion: 2
@@ -579,11 +579,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 160
+    cnt0: 150
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 160
+    cntmax0: 150
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -1494,7 +1494,7 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 2
     type: 1
     collisionMode: 0

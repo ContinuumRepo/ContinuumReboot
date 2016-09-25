@@ -19,6 +19,8 @@ public class TimescaleController : MonoBehaviour
 	private Transform playerFour;
 	private Transform referencePoint;
 	public AudioSource Music;
+	public float AudibleMaxTime = 1;
+	public float AudibleTimeRemaining;
 
 	public enum calcMode
 	{
@@ -74,8 +76,22 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{
+		if (AudibleTimeRemaining > 0) 
+		{
+			Music.volume = Mathf.Clamp (AudibleTimeRemaining, 0.3f, 1);
+			AudibleTimeRemaining -= Time.deltaTime;
+		}
+			
+		if (AudibleTimeRemaining <= 0) 
+		{
+			Music.volume = 0.3f;
+			AudibleTimeRemaining = 0;
+		}
+
+	
+
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
-		vignetteScript.intensity = 0.3f - (Time.timeScale / 10);
+		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
 		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
 		currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.

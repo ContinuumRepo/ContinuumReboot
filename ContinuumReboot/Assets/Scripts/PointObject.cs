@@ -31,6 +31,8 @@ public class PointObject : MonoBehaviour
 	public ParticleSystem ComboFour;
 	public ParticleSystem ComboFive;
 
+	public TimescaleController timeController;
+
 	void Start ()
 	{
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
@@ -46,6 +48,8 @@ public class PointObject : MonoBehaviour
 		// Finds GameController script and assigns to private variable.
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 
+		timeController = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
+
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
 		ComboOne = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
 		ComboTwo = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
@@ -58,6 +62,7 @@ public class PointObject : MonoBehaviour
 	{
 		if (other.tag == "Bullet") 
 		{
+			timeController.AudibleTimeRemaining = timeController.AudibleMaxTime;
 			// Creates explosion.
 			Instantiate (Explosion, transform.position, transform.rotation);
 			ScoreText.Play (0);

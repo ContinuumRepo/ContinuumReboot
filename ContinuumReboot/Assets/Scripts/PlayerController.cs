@@ -246,6 +246,7 @@ public class PlayerController : MonoBehaviour
 			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
 			{
+				fireRate = 0.15f;
 				bloomScript.bloomIntensity = normalBloomAmount;
 				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
@@ -304,6 +305,7 @@ public class PlayerController : MonoBehaviour
 			// WIFI shot.
 			if (CurrentPowerup == powerup.wifi) 
 			{
+				fireRate = 0.5f;
 				bloomScript.bloomIntensity = powerupBloomAmount;
 				shot = WifiShot; // Assigns free wifi shot powerup.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
