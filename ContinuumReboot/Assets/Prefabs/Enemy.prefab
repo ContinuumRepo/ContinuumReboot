@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 200
   Explosion: {fileID: 113200, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
-  bombRate: 1
+  bombRate: 0.8
   Bombs:
   - {fileID: 156088, guid: 22e6ff05b09ae834c8054a815e108a6a, type: 2}
   - {fileID: 188294, guid: 536f38899ec02d94a8ccd5946222798c, type: 2}

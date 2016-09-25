@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.UI;
 
 public class TimescaleController : MonoBehaviour 
 {
@@ -11,7 +12,7 @@ public class TimescaleController : MonoBehaviour
 	public float addMinTime = 0.1f; // Minimum time scale.
 	public float timeSpeedSens; // Dampens change in timescale as the distance between player and reference point increase.
 	public float distance; // y-distance from Reference point to player.
-
+	public Text MultiplierText;
 	private float currentTimeScale; // Stores calculation of timescale here.
 	private Transform playerOne;
 	private Transform playerTwo;
@@ -84,11 +85,11 @@ public class TimescaleController : MonoBehaviour
 			
 		if (AudibleTimeRemaining <= 0) 
 		{
-			Music.volume = 0.5f;
+			Music.volume = 0.2f;
 			AudibleTimeRemaining = 0;
 		}
 
-	
+		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
 		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
