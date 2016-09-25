@@ -44,8 +44,8 @@ public class BulletScript : MonoBehaviour
 		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
 		{
 			camShakeScript = Camera.main.GetComponent<CameraShake> ();
-			camShakeScript.shakeDuration = InitialShakeDuration;
-			camShakeScript.shakeAmount = InitialShakeStrength;
+			camShakeScript.shakeDuration = InitialShakeDuration / 3;
+			camShakeScript.shakeAmount = InitialShakeStrength / 3;
 		}
 
 		if (BulletType == bulletType.regularShot) 

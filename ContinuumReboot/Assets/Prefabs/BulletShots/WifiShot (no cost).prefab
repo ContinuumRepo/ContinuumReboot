@@ -139,10 +139,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8d68c3b6c63c0174aba7776c1a1854ba, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 59b6d223b8193e74fb3219032a7a6567, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
-  m_Pitch: 1
+  m_Volume: 0.135
+  m_Pitch: 0.34
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletType: 4
   newSpeed: 0
-  InitialShakeDuration: 0.13
-  InitialShakeStrength: 0.15
+  InitialShakeDuration: 0.26
+  InitialShakeStrength: 0.3
   timeScaleControllerScript: {fileID: 0}
   RicoshetParticle:
   - {fileID: 0}

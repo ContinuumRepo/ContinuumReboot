@@ -115,7 +115,7 @@ RectTransform:
   - {fileID: 1563463494}
   - {fileID: 933696329}
   m_Father: {fileID: 580723267}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -458}
@@ -10630,7 +10630,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1 &109640326
 GameObject:
   m_ObjectHideFlags: 0
@@ -10743,7 +10743,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b219eb8d3744c8242858505006394700, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8a947497b8c90904394ba04360067d88, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1.2
@@ -10814,7 +10814,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110665898}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
   m_Name: 
@@ -18910,10 +18910,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b219eb8d3744c8242858505006394700, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8a947497b8c90904394ba04360067d88, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.4
-  m_Pitch: 0.7
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -18981,7 +18981,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143456707}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
   m_Name: 
@@ -19143,6 +19143,54 @@ TrailRenderer:
       rgba: 16777215
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!1 &155249410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 155249411}
+  - 114: {fileID: 155249412}
+  m_Layer: 10
+  m_Name: EnemyRestPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &155249411
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155249410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 516519781}
+  m_RootOrder: 0
+--- !u!114 &155249412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155249410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc91d93ad64caa54ab46539853d4cd77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbingSpeed: 0.04
+  bobbingAmount: 10
+  midpoint: 0
+  horizontal: 0
+  vertical: 0
+  X: 1
+  Y: 0
+  Z: 0
 --- !u!1 &156460789
 GameObject:
   m_ObjectHideFlags: 0
@@ -19415,8 +19463,8 @@ MonoBehaviour:
   - {fileID: 136928, guid: 1d2b776478a98af45b55204ee196fbaa, type: 2}
   - {fileID: 135816, guid: 459dbb892254f4544ad4cb95c4759e7a, type: 2}
   - {fileID: 138806, guid: aff7a2eec8e862d4695178c6a11db6e8, type: 2}
-  - {fileID: 165412, guid: db695505ca53c5648acc64e7354bccbd, type: 2}
-  - {fileID: 165412, guid: db695505ca53c5648acc64e7354bccbd, type: 2}
+  - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
+  - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
   spawnValues: {x: 35, y: 30, z: 0}
   startWait: 4
   spawnWait: 1.5
@@ -19450,8 +19498,10 @@ MonoBehaviour:
   PowerupText: {fileID: 2041953062}
   Rareitems:
   - {fileID: 170230, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
+  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
+  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
+  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   rareitemSpawnValues: {x: 30, y: 30, z: 0}
@@ -29199,12 +29249,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311685625}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -100}
+  m_LocalPosition: {x: 0, y: -4, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 1226859555}
-  m_RootOrder: 14
+  m_Father: {fileID: 864279380}
+  m_RootOrder: 5
 --- !u!114 &311685627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29566,15 +29616,15 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
-  orthographic: 1
+  field of view: 22.8
+  orthographic: 0
   orthographic size: 25
   m_Depth: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4294946505
   m_RenderingPath: 3
-  m_TargetTexture: {fileID: 8400000, guid: 946710c024d61aa45b8e1863434f02f0, type: 2}
+  m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -29594,7 +29644,7 @@ GameObject:
   - 114: {fileID: 322631914}
   - 95: {fileID: 322631913}
   m_Layer: 0
-  m_Name: Alt Fire Image (1)
+  m_Name: LTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31670,7 +31720,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: -90, y: -180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &356986081
 GameObject:
   m_ObjectHideFlags: 0
@@ -31743,6 +31793,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCam: {fileID: 538907853}
+  sensRot: 0.1
   ColorCorrectionCurvesScript: {fileID: 0}
   normalBloomAmount: 0.1
   powerupBloomAmount: 0.3
@@ -31766,6 +31818,7 @@ MonoBehaviour:
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
+  LTriggerAnim: {fileID: 322631913}
   Powerups: []
   powerupTime: 10
   CurrentPowerup: 0
@@ -33412,7 +33465,7 @@ Transform:
   - {fileID: 960315932}
   - {fileID: 252001406}
   m_Father: {fileID: 634708997}
-  m_RootOrder: 12
+  m_RootOrder: 9
 --- !u!114 &367883752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42089,7 +42142,7 @@ Transform:
   m_GameObject: {fileID: 435392050}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 71, z: 0}
+  m_LocalScale: {x: 100, y: 71, z: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_Children: []
   m_Father: {fileID: 1226859555}
@@ -45612,6 +45665,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &516519780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 516519781}
+  m_Layer: 10
+  m_Name: Enemy Hover Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &516519781
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516519780}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 155249411}
+  m_Father: {fileID: 864279380}
+  m_RootOrder: 6
 --- !u!1 &533073588
 GameObject:
   m_ObjectHideFlags: 0
@@ -48047,74 +48129,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 566549651}
---- !u!1 &566730795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 566730796}
-  - 222: {fileID: 566730798}
-  - 114: {fileID: 566730797}
-  m_Layer: 0
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &566730796
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 566730795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.37174103, y: 0.3717411, z: 0.3717411}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 580723267}
-  m_RootOrder: 5
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -83}
-  m_SizeDelta: {x: 1920, y: 1080}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &566730797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 566730795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 1651c9da65cb8814f9ee202859d976b2, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &566730798
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 566730795}
 --- !u!1 &571314196
 GameObject:
   m_ObjectHideFlags: 0
@@ -51628,7 +51642,6 @@ RectTransform:
   - {fileID: 2017548994}
   - {fileID: 554538059}
   - {fileID: 774825830}
-  - {fileID: 566730796}
   - {fileID: 344084}
   m_Father: {fileID: 601646023}
   m_RootOrder: 3
@@ -53515,11 +53528,11 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4285267712
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
-      minMaxState: 0
+        rgba: 4294959104
+      minMaxState: 2
     startSize:
       scalar: 0.05
       maxCurve:
@@ -56405,15 +56418,15 @@ Transform:
   - {fileID: 1063942342}
   - {fileID: 1358174329}
   - {fileID: 1484625764}
-  - {fileID: 683608842}
   - {fileID: 353225749}
+  - {fileID: 683608842}
   - {fileID: 1540288344}
   - {fileID: 766750762}
   - {fileID: 1814519605}
+  - {fileID: 367883751}
   - {fileID: 876698962}
   - {fileID: 107156134}
   - {fileID: 2043040997}
-  - {fileID: 367883751}
   - {fileID: 713919742}
   - {fileID: 1194031672}
   - {fileID: 2022941127}
@@ -62042,7 +62055,7 @@ Transform:
   - {fileID: 27620410}
   - {fileID: 7978727}
   m_Father: {fileID: 634708997}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &683608843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73182,6 +73195,8 @@ Transform:
   - {fileID: 224025760}
   - {fileID: 1717470044}
   - {fileID: 1692096743}
+  - {fileID: 311685626}
+  - {fileID: 516519781}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!54 &864279381
@@ -73210,9 +73225,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCam: {fileID: 538907853}
+  sensRot: 0.2
   ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.35
-  powerupBloomAmount: 0.5
+  normalBloomAmount: 0.3
+  powerupBloomAmount: 0.4
   shakeTime: 0.4
   shakeAmount: 1
   PlayerNumber: 0
@@ -73233,6 +73250,7 @@ MonoBehaviour:
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
+  LTriggerAnim: {fileID: 322631913}
   Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
@@ -74969,7 +74987,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!199 &876698963
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -91058,7 +91076,6 @@ Transform:
   - {fileID: 1226682931}
   - {fileID: 435392051}
   - {fileID: 2023782148}
-  - {fileID: 311685626}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &1233867350
@@ -93237,6 +93254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCam: {fileID: 538907853}
+  sensRot: 0.1
   ColorCorrectionCurvesScript: {fileID: 0}
   normalBloomAmount: 0.1
   powerupBloomAmount: 0.3
@@ -93260,6 +93279,7 @@ MonoBehaviour:
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
+  LTriggerAnim: {fileID: 322631913}
   Powerups: []
   powerupTime: 10
   CurrentPowerup: 0
@@ -95871,7 +95891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12567593, b: 0.19117647, a: 1}
+  m_Color: {r: 0, g: 0.07250533, b: 0.1102941, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -96106,7 +96126,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11407570, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: sepBlurSpread
-      value: 4
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 11407330, guid: f7bb8df8dcd27704d9dd9a7f56abe1fb, type: 2}
       propertyPath: m_Enabled
@@ -129405,6 +129425,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCam: {fileID: 538907853}
+  sensRot: 0.1
   ColorCorrectionCurvesScript: {fileID: 0}
   normalBloomAmount: 0.1
   powerupBloomAmount: 0.3
@@ -129428,6 +129450,7 @@ MonoBehaviour:
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
+  LTriggerAnim: {fileID: 322631913}
   Powerups: []
   powerupTime: 10
   CurrentPowerup: 0
@@ -130541,6 +130564,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainCam: {fileID: 538907853}
+  sensRot: 0.1
   ColorCorrectionCurvesScript: {fileID: 0}
   normalBloomAmount: 0.1
   powerupBloomAmount: 0.3
@@ -130564,6 +130589,7 @@ MonoBehaviour:
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
+  LTriggerAnim: {fileID: 322631913}
   Powerups: []
   powerupTime: 10
   CurrentPowerup: 0
@@ -136561,11 +136587,11 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4294953472
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
-      minMaxState: 0
+        rgba: 4283236096
+      minMaxState: 2
     startSize:
       scalar: 0.03
       maxCurve:
@@ -141069,7 +141095,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!199 &2043040998
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -156479,27 +156505,27 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294813440
+          rgba: 4294961664
         key1:
           serializedVersion: 2
-          rgba: 4294966528
+          rgba: 4281859840
         key2:
           serializedVersion: 2
-          rgba: 3669760
+          rgba: 65531
         key3:
           serializedVersion: 2
-          rgba: 65531
+          rgba: 31231
         key4:
           serializedVersion: 2
-          rgba: 31231
+          rgba: 255
         key5:
           serializedVersion: 2
-          rgba: 31231
+          rgba: 255
         key6:
           serializedVersion: 2
           rgba: 255
@@ -156507,11 +156533,11 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 14649
-        ctime1: 39514
-        ctime2: 41827
-        ctime3: 50308
-        ctime4: 53585
-        ctime5: 53585
+        ctime1: 33346
+        ctime2: 41634
+        ctime3: 53585
+        ctime4: 65342
+        ctime5: 65342
         ctime6: 65535
         ctime7: 0
         atime0: 0

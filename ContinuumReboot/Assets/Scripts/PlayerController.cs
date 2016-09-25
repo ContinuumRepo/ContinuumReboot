@@ -7,6 +7,8 @@ using XInputDotNetPure;
 
 public class PlayerController : MonoBehaviour 
 {
+	public GameObject MainCam;
+	public float sensRot = 0.1f;
 	private GameController gameControllerScript; 			  // GameController component.
 	private TimescaleController timeScaleControllerScript;    // TimeScale Controller component.
 	private MeshCollider PlayerCollider; 					  // Collider for the player.
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
 	public Image AltFireImage;
 	public GameObject AltFireIndicator;
 	public Animator FlashIndicator;
+	public Animator LTriggerAnim;
 
 	[Header ("Powerups")]
 	// An array of powerup objects to spawn for the player.
@@ -139,6 +142,10 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		if (isClone == false) 
+		{
+			MainCam.transform.rotation = Quaternion.identity;
+		}
 		GameOverCam.SetActive (false);
 		bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
 		bloomScript.bloomIntensity = normalBloomAmount;
@@ -157,8 +164,9 @@ public class PlayerController : MonoBehaviour
 		WifiIcon.SetActive (false);
 		ThreeDIcon.SetActive (false);
 		FlashIndicator.enabled = false;
+		LTriggerAnim.enabled = false;
 		MainCanvas.worldCamera = Camera.main;
-		//Camera.main.enabled = true;
+
 		// Finds the rigidbody this script is attached to.
 		rb = GetComponent<Rigidbody> ();
 
@@ -207,6 +215,11 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		if (isClone == false) 
+		{
+			MainCam.transform.rotation = Quaternion.Euler (0, 0, sensRot * gameObject.transform.position.x);
+		}
+
 		if (isClone) 
 		{
 			shot = MutedRegularShot;
@@ -482,6 +495,7 @@ public class PlayerController : MonoBehaviour
 			AltFireImage.fillAmount += Time.deltaTime / altfireRate;
 			AltFireIndicator.GetComponent<Image> ().color = Color.red;
 			FlashIndicator.enabled = false;
+			LTriggerAnim.enabled = false;
 		}
 			
 		if (AltFireImage.fillAmount >= 1) 
@@ -489,6 +503,7 @@ public class PlayerController : MonoBehaviour
 			AltFireImage.fillAmount = 1;
 			AltFireIndicator.GetComponent<Image> ().color = Color.green;
 			FlashIndicator.enabled = true;
+			LTriggerAnim.enabled = true;
 		}
 
 		/// Movement ///

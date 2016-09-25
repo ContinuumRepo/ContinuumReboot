@@ -213,6 +213,16 @@ public class GameController : MonoBehaviour
 			MouseScript.enabled = false; // Turns off mouse visibility script.
 		}
 
+		if (Input.GetKeyDown (KeyCode.K)) 
+		{
+			playerControllerScript.useKeyboardControls = true;
+		}
+
+		if (Input.GetKeyDown (KeyCode.G)) 
+		{
+			playerControllerScript.useKeyboardControls = false;
+		}
+
 		// Pause via controller input.
 		if (Input.GetButtonDown ("Pause") && isPaused == false)
 		{

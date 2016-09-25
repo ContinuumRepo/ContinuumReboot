@@ -43009,7 +43009,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11424742, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1148102072
@@ -60357,6 +60358,36 @@ AudioHighPassFilter:
   m_PrefabParentObject: {fileID: 16544768, guid: 2b37861cab6bcca48a7ffe8eedb17067,
     type: 2}
   m_PrefabInternal: {fileID: 1518807817}
+--- !u!1 &2004401514 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 194526, guid: e459f42c5cfa20d42b2cee799781c1f1, type: 2}
+  m_PrefabInternal: {fileID: 1128300116}
+--- !u!114 &2004401516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2004401514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -98529514, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Texture: {fileID: 2800000, guid: 6fe6690b7dbc06142ac33af5f732f8d7, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &2005068329
 GameObject:
   m_ObjectHideFlags: 0
