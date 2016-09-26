@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
 	public AudioSource GameOverSound; 			// The GameOver Sound effect.
 	public AudioSource GameOverLoop; 			// The defeated Game Over music loop.
 	public GameObject gameOverExplosion; 		// The Awesome particle system for the Game Over.
-	public GameObject GameOverCam;
+	//public GameObject GameOverCam;
 
 	void Start () 
 	{
@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour
 		{
 			MainCam.transform.rotation = Quaternion.identity;
 		}
-		GameOverCam.SetActive (false);
+			
 		bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
 		bloomScript.bloomIntensity = normalBloomAmount;
 
@@ -217,7 +217,8 @@ public class PlayerController : MonoBehaviour
 	{
 		if (isClone == false) 
 		{
-			MainCam.transform.rotation = Quaternion.Euler (0, 0, sensRot * gameObject.transform.position.x);
+			float rotated = sensRot * gameObject.transform.position.x;
+			MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
 		}
 
 		if (isClone) 
@@ -617,7 +618,7 @@ public class PlayerController : MonoBehaviour
 		if (slowTimeRemaining < 2f && slowTimeRemaining > 0 && Time.timeScale < 1) 
 		{
 			Time.timeScale += 5f * Time.unscaledDeltaTime;
-			GameOverCam.SetActive(true);
+			//GameOverCam.SetActive(true);
 		}
 			
 		if (slowTimeRemaining <= 0) 

@@ -43,7 +43,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7ca080333e03c8a4eb3e19c9a35e6b6d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -507,7 +507,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    gravityModifier: 0
+    gravityModifier: 1
     maxNumParticles: 160
     rotation3D: 0
   ShapeModule:
@@ -1238,7 +1238,7 @@ ParticleSystem:
       minMaxState: 0
     separateAxis: 0
     inWorldSpace: 0
-    dampen: 1
+    dampen: 0.8
   SizeBySpeedModule:
     enabled: 0
     curve:

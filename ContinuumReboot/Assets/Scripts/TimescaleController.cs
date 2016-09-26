@@ -76,19 +76,24 @@ public class TimescaleController : MonoBehaviour
 	}
 
 	public void Update () 
-	{
-		if (AudibleTimeRemaining > 0) 
+	{	
+		/*
+		if (AudibleTimeRemaining > 0.25f) 
 		{
-			Music.volume = Mathf.Clamp (AudibleTimeRemaining, 0.5f, 1);
+			Music.volume = 1;
 			AudibleTimeRemaining -= Time.deltaTime;
 		}
 			
-		if (AudibleTimeRemaining <= 0) 
+		if (AudibleTimeRemaining <= 0.25f && AudibleTimeRemaining > 0) 
 		{
-			Music.volume = 0.2f;
-			AudibleTimeRemaining = 0;
+			Music.volume = AudibleTimeRemaining;
 		}
 
+		if (AudibleTimeRemaining <= 0) 
+		{
+			AudibleTimeRemaining = 0;
+		}
+		*/
 		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;

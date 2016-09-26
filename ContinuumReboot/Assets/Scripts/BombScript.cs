@@ -10,6 +10,7 @@ public class BombScript : MonoBehaviour
 	private PlayerController PlayerControllerScript;
 	public int Damage = 25;
 	public GameObject PlayerExplosion;
+	public GameObject BombExplosion;
 
 	void Start () 
 	{
@@ -63,7 +64,7 @@ public class BombScript : MonoBehaviour
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}
 		}
-
+		Instantiate (BombExplosion, gameObject.transform.position, gameObject.transform.rotation);
 		Destroy (gameObject);
 	}
 }

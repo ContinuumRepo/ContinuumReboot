@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
 	public float rareitemWaveWait; // Time between powerup waves.
 	public int rareitemCount; // The amountof hazards to be spawned before a new wave of powerups.
 	//public Text rareitemText; // Powerup label for the player.
+	public int bossScore;
 
 	[Header ("Pausing")]
 	public bool isPaused; // Is the game paused right now?
@@ -83,6 +84,8 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+		Cursor.lockState = CursorLockMode.Locked;
+		bossScore = 100000;
 		ControlsUI.SetActive (false);
 
 		// Starts coroutines.
@@ -196,6 +199,12 @@ public class GameController : MonoBehaviour
 		if (CurrentScore < 0) 
 		{
 			CurrentScore = 0; // Make it equal to 0.
+		}
+
+		if (CurrentScore >= bossScore) 
+		{
+			Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 45));
+			bossScore += 100000;
 		}
 
 		// HOTKEYS //
@@ -435,7 +444,7 @@ public class GameController : MonoBehaviour
 		{
 			for (int i = 0; i < rareitemCount; i++) 
 			{
-				GameObject rareitem = Rareitems [Random.Range (0, Rareitems.Length)];
+				GameObject rareitem = Rareitems [Random.Range (2, Rareitems.Length)];
 				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
 				Instantiate (rareitem, rareitemSpawnPos, Quaternion.Euler(0, 0, 45));
 				yield return new WaitForSeconds (rareitemSpawnWait);
