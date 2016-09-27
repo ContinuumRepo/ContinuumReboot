@@ -89,7 +89,7 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 				ActiveObject.SetActive (true);
 				PressAnyKeyScript.useInput = true;
 				GetComponent<DestroyOrDeactivateByTime> ().enabled = false;
-				gameObject.SetActive (false);
+				//gameObject.SetActive (false);
 			}
 		}
 			

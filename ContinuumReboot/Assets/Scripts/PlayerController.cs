@@ -517,11 +517,13 @@ public class PlayerController : MonoBehaviour
 				float moveHorizontal;
 				float moveVertical;
 
+				// Keyboard input
 				if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)
 				{
 					moveHorizontal = Input.GetAxis ("Horizontal");
 					moveVertical = Input.GetAxis ("Vertical");	
-				}else
+				}
+				else // Mouse input
 				{
 					moveHorizontal = Input.GetAxis ("Mouse X");
 					moveVertical = Input.GetAxis ("Mouse Y");					
