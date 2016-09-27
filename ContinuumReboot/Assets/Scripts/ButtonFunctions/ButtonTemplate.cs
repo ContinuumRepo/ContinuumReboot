@@ -6,6 +6,9 @@ public class ButtonTemplate : ButtonEvents
 {
 
 
+	public InputScroll scrollScript;
+	public int buttonIndex;
+
 	public override void OnClick()
 	{
 
@@ -13,6 +16,8 @@ public class ButtonTemplate : ButtonEvents
 
 	public override void OnEnter()
 	{
+		if (scrollScript != null)
+			scrollScript.HighlightedButton = buttonIndex;
 
 	}
 

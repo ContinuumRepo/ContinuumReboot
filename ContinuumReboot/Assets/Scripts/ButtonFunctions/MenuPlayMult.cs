@@ -10,7 +10,8 @@ public class MenuPlayMult : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
-	private InputScroll scrollScript;
+	public InputScroll scrollScript;
+	public int buttonIndex;
 
 	[Header("Menu Player 1")]
 	public MeshRenderer menuPlayer1;
@@ -53,7 +54,7 @@ public class MenuPlayMult : ButtonEvents
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
-			scrollScript.HighlightedButton = 1;
+			scrollScript.HighlightedButton = buttonIndex;
 		ComingSoonText.SetActive (true);
 		p2Animator.enabled = true;
 		p2Animator.Play ("Play2PPointerEnter");

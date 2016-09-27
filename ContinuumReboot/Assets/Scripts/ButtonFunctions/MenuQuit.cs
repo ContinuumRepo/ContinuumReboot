@@ -13,7 +13,8 @@ public class MenuQuit : ButtonEvents
 
 	public ParticleSystem menuParticleShort;
 
-	private InputScroll scrollScript;
+	public InputScroll scrollScript;
+	public int buttonIndex;
 
 	[Header("Menu Player 1")]
 	public MeshRenderer menuPlayer1;
@@ -40,7 +41,7 @@ public class MenuQuit : ButtonEvents
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
-			scrollScript.HighlightedButton = 5;
+			scrollScript.HighlightedButton = buttonIndex;
 		quitAnimator.enabled = true;
 		quitAnimator.Play ("QuitPointerEnter");
 		oneShot.Play();

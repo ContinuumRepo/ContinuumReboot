@@ -11,7 +11,8 @@ public class MenuPlay1P : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
-	private InputScroll scrollScript;
+	public InputScroll scrollScript;
+	public int buttonIndex;
 
 	[Header("Menu Player 1")]
 	public MeshRenderer menuPlayer1;
@@ -38,7 +39,7 @@ public class MenuPlay1P : ButtonEvents
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
-			scrollScript.HighlightedButton = 0;
+			scrollScript.HighlightedButton = buttonIndex;
 		p1Animator.enabled = true;
 		p1Animator.Play ("Play1PPointerEnter");
 		oneShot.Play();

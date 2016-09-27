@@ -10,7 +10,8 @@ public class MenuLeaderboards : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
-	private InputScroll scrollScript;
+	public InputScroll scrollScript;
+	public int buttonIndex;
 
 	[Header("Menu Player 1")]
 	public MeshRenderer menuPlayer1;
@@ -36,7 +37,7 @@ public class MenuLeaderboards : ButtonEvents
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
-			scrollScript.HighlightedButton = 2;
+			scrollScript.HighlightedButton = buttonIndex;
 		leadAnimator.enabled = true;
 		leadAnimator.Play ("LeaderboardsPointerEnter");
 		oneShot.Play();

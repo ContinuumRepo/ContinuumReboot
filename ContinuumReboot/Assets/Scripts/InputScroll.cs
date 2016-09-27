@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class InputScroll : MonoBehaviour
 {
 	public ButtonEvents[] buttons;
-	public float dead = 0.1f;
 	public float timeBuffer; // Time between button scroll
 	public string inputLocPrefsValue;
 
@@ -35,23 +34,25 @@ public class InputScroll : MonoBehaviour
 				float valueJoy = Input.GetAxis ("Vertical P1");
 				float valueKey = Input.GetAxis ("Vertical");
 
-				if (valueJoy < -dead || valueJoy > dead)
+				if (valueJoy != 0)
 				{
 					resetForMouse = false;
 					CheckScroll (valueJoy);
 				}
-				else if (valueKey < -dead || valueKey > dead)
+				else if (valueKey != 0)
 				{
 					resetForMouse = false;
 					CheckScroll (valueKey);
 				}
 			}
 
-			if (Input.GetAxis ("FireButton") > 0)
+			if (Input.GetKeyDown ("space") == true ||Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("return") == true)
 			{
+				Debug.Log ("Click");
 				buttons[indexLocation].OnClick();
 			}
 
+			// If mouse is moved, call onExit on last selected button
 			if (resetForMouse == false)
 			{
 				if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0)
@@ -68,7 +69,7 @@ public class InputScroll : MonoBehaviour
 	{
 		waiting = true;
 
-		if (value > dead) // Select button above
+		if (value > 0) // Select button above
 		{
 			if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
@@ -83,7 +84,7 @@ public class InputScroll : MonoBehaviour
 				SetHighlighted (indexLocation - 1);
 			}
 		}
-		else if (value < -dead) // Select button below
+		else if (value < 0) // Select button below
 		{
 			if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
@@ -104,8 +105,18 @@ public class InputScroll : MonoBehaviour
 
 	IEnumerator ScrollWait()
 	{
-		yield return new WaitForSeconds (timeBuffer);
+		yield return WaitForUnscaledSeconds (timeBuffer);
 		waiting = false;
+	}
+
+	IEnumerator WaitForUnscaledSeconds (float time)
+	{
+		float ttl = 0;
+		while(time > ttl)
+		{
+			ttl += Time.unscaledDeltaTime;
+			yield return null;
+		}
 	}
 
 	private void SetHighlighted (int newIndex)
