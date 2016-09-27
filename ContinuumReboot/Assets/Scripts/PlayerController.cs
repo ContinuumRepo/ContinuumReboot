@@ -514,8 +514,19 @@ public class PlayerController : MonoBehaviour
 			// PC player movement
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
 			{
-				float moveHorizontal = Input.GetAxis ("Horizontal");
-				float moveVertical = Input.GetAxis ("Vertical");
+				float moveHorizontal;
+				float moveVertical;
+
+				if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)
+				{
+					moveHorizontal = Input.GetAxis ("Horizontal");
+					moveVertical = Input.GetAxis ("Vertical");	
+				}else
+				{
+					moveHorizontal = Input.GetAxis ("Mouse X");
+					moveVertical = Input.GetAxis ("Mouse Y");					
+				}
+
 				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
 				rb.velocity = movement * speed;
 			}

@@ -8,7 +8,7 @@ public class InputScroll : MonoBehaviour
 	public ButtonEvents[] buttons;
 	public float dead = 0.1f;
 	public float timeBuffer; // Time between button scroll
-	public string locationPrefsValue;
+	public string inputLocPrefsValue;
 
 	private bool idxSet = false;
 	private int buttonIndex;
@@ -22,14 +22,13 @@ public class InputScroll : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		PlayerPrefs.SetString ("Menu", locationPrefsValue);
 		buttonIndex = buttons.Length;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (PlayerPrefs.GetString ("Menu") == locationPrefsValue)
+		if (PlayerPrefs.GetString ("InputMenu") == inputLocPrefsValue)
 		{
 			if (buttonIndex > 0 && !waiting)
 			{

@@ -30,7 +30,7 @@ public class MenuQuit : ButtonEvents
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("Menu", "quit");
+		PlayerPrefs.SetString ("InputMenu", "quit");
 		quit.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		bgMenuMusicHigh.enabled = true;

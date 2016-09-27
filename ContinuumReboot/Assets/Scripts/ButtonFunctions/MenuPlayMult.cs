@@ -44,7 +44,7 @@ public class MenuPlayMult : ButtonEvents
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("Menu", "multiplayer");
+		PlayerPrefs.SetString ("InputMenu", "multiplayer");
 		multiplayer.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();

@@ -9,6 +9,8 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 	public AudioSource PressStartSound;
 	public bool useInput;
 	public Animator TitleAnim;
+	public float timeBuffer;
+	public string inputLocPrefsValue;
 
 	void Start ()
 	{
@@ -26,7 +28,14 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 			Deactivator.SetActive (false);
 			PressStartSound.Play ();
 			TitleAnim.Play ("MoveUp");
+			StartCoroutine (AllowInput());
 			GetComponent<PressAnyKeyDeactivate> ().enabled = false;
 		}
+	}
+
+	IEnumerator AllowInput()
+	{
+		yield return new WaitForSeconds (timeBuffer);
+		PlayerPrefs.SetString ("InputMenu", inputLocPrefsValue);
 	}
 }

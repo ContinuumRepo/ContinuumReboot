@@ -30,7 +30,7 @@ public class MenuCredits : ButtonEvents
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("Menu", "credits");
+		PlayerPrefs.SetString ("InputMenu", "credits");
 		credits.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();

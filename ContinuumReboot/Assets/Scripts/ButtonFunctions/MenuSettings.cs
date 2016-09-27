@@ -27,7 +27,7 @@ public class MenuSettings : ButtonEvents
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("Menu", "settings");
+		PlayerPrefs.SetString ("InputMenu", "settings");
 		settings.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();

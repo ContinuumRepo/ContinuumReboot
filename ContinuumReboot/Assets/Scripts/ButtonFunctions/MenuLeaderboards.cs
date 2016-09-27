@@ -27,7 +27,7 @@ public class MenuLeaderboards : ButtonEvents
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("Menu", "leaderboards");
+		PlayerPrefs.SetString ("InputMenu", "leaderboards");
 		leaderboards.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		oneShot.Play();

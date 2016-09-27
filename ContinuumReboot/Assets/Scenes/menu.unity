@@ -11244,7 +11244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneShot: {fileID: 979868345}
   bgMenuMusicLow: {fileID: 1987986091}
-  controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
   menuPlayer1: {fileID: 1017165465}
@@ -19822,7 +19821,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneShot: {fileID: 979868345}
   bgMenuMusicLow: {fileID: 1987986091}
-  controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
   menuPlayer1: {fileID: 1017165465}
@@ -34706,7 +34704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneShot: {fileID: 979868345}
   bgMenuMusicLow: {fileID: 1987986091}
-  controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
   menuPlayer1: {fileID: 1017165465}
@@ -48398,7 +48395,8 @@ MonoBehaviour:
   - {fileID: 605414838}
   dead: 0.3
   timeBuffer: 0.1
-  locationPrefsValue: main
+  inputLocPrefsValue: main
+  indexLocation: 0
 --- !u!1 &1426047046
 GameObject:
   m_ObjectHideFlags: 0
@@ -50187,7 +50185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneShot: {fileID: 979868345}
   bgMenuMusicLow: {fileID: 1987986091}
-  controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
   menuPlayer1: {fileID: 1017165465}
@@ -58960,6 +58957,8 @@ MonoBehaviour:
   PressStartSound: {fileID: 1791353179}
   useInput: 0
   TitleAnim: {fileID: 1696477860}
+  timeBuffer: 1
+  inputLocPrefsValue: main
 --- !u!1 &1788876982
 GameObject:
   m_ObjectHideFlags: 0
