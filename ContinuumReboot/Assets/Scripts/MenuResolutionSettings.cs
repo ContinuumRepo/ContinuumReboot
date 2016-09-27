@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuSettings: MonoBehaviour 
+public class MenuResolutionSettings: MonoBehaviour 
 {
 	public int WindowWidth;
 	public int WindowHeight;
