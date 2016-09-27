@@ -12,6 +12,7 @@ public class InputScroll : MonoBehaviour
 
 	private bool idxSet = false;
 	private int buttonIndex;
+	[SerializeField]
 	private int indexLocation; // What button the player currently has selected
 	private int lastIndex;
 

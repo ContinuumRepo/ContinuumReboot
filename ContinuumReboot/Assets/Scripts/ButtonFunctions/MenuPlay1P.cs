@@ -9,7 +9,6 @@ public class MenuPlay1P : ButtonEvents
 
 	public GameObject controls;
 	public Material playerMaterial;
-
 	public ParticleSystem menuParticleShort;
 
 	private InputScroll scrollScript;

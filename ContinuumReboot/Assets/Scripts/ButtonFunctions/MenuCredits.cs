@@ -7,7 +7,6 @@ public class MenuCredits : ButtonEvents
 	public AudioSource oneShot;
 	public AudioLowPassFilter bgMenuMusicLow;
 
-	public GameObject controls;
 	public Material playerMaterial;
 
 	public ParticleSystem menuParticleShort;
