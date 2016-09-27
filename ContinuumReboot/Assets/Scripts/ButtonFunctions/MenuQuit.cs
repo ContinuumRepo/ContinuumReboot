@@ -13,7 +13,7 @@ public class MenuQuit : ButtonEvents
 
 	public ParticleSystem menuParticleShort;
 
-	private InputScrollMenu scrollScript;
+	private InputScroll scrollScript;
 
 	[Header("Menu Player 1")]
 	public MeshRenderer menuPlayer1;

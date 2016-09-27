@@ -11053,6 +11053,7 @@ GameObject:
   - 114: {fileID: 300336747}
   - 95: {fileID: 300336746}
   - 114: {fileID: 300336745}
+  - 114: {fileID: 300336750}
   m_Layer: 0
   m_Name: View Leaderboards Button
   m_TagString: Untagged
@@ -11097,8 +11098,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: LeaderboardsEnter
+        - m_Target: {fileID: 300336750}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11114,8 +11115,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: LeaderboardsExit
+        - m_Target: {fileID: 300336750}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11184,8 +11185,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: LeaderboardsClick
+      - m_Target: {fileID: 300336750}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11230,6 +11231,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 300336743}
+--- !u!114 &300336750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300336743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ac6c33e7d1c3b142b4482186b870596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLblue: {fileID: 929247598}
+  engineRblue: {fileID: 41020146}
+  leaderboards: {fileID: 1591084795}
+  leadAnimator: {fileID: 300336746}
+  leadMesh: {fileID: 2074426650}
+  leadMaterial: {fileID: 2100000, guid: 6c81ca1c5530c0849a318692366e1628, type: 2}
 --- !u!1 &310002391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11390,11 +11416,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d54c605c45188e4290c70b8fe62d822, type: 2}
   m_IsPrefabParent: 0
---- !u!198 &318066440 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 19863968, guid: 3d54c605c45188e4290c70b8fe62d822,
-    type: 2}
-  m_PrefabInternal: {fileID: 318066439}
 --- !u!1 &318344626
 GameObject:
   m_ObjectHideFlags: 0
@@ -19421,6 +19442,7 @@ GameObject:
   - 114: {fileID: 551592802}
   - 95: {fileID: 551592806}
   - 114: {fileID: 551592805}
+  - 114: {fileID: 551592807}
   m_Layer: 0
   m_Name: Play Multiplayer Button
   m_TagString: Untagged
@@ -19490,8 +19512,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: P2Click
+      - m_Target: {fileID: 551592807}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19552,8 +19574,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: P2Enter
+        - m_Target: {fileID: 551592807}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19679,8 +19701,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: P2Exit
+        - m_Target: {fileID: 551592807}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -19787,6 +19809,46 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &551592807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551592800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea9ed17d4def7a14396dea5801393e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLorange: {fileID: 522015979}
+  engineRorange: {fileID: 876328191}
+  ComingSoonText: {fileID: 318344626}
+  multiplayer: {fileID: 2073083731}
+  p2Animator: {fileID: 551592806}
+  p2Mesh: {fileID: 772482358}
+  p2Material: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
+  p2ParticleShortSpeedEnter: 200
+  menuPlayer2: {fileID: 1234729182}
+  smoothFollowOrig2: {fileID: 1234729188}
+  smoothFollowClone2: {fileID: 1234729189}
+  p2AudioIn: {fileID: 1170441602}
+  p2AudioOut: {fileID: 1662770319}
+  p3ParticleShortSpeedEnter: 200
+  menuPlayer3: {fileID: 1671258155}
+  smoothFollowOrig3: {fileID: 1671258157}
+  smoothFollowClone3: {fileID: 1671258156}
+  p4ParticleShortSpeedEnter: 200
+  menuPlayer4: {fileID: 541697836}
+  smoothFollowOrig4: {fileID: 541697838}
+  smoothFollowClone4: {fileID: 541697837}
 --- !u!1 &560950726
 GameObject:
   m_ObjectHideFlags: 0
@@ -21428,6 +21490,7 @@ GameObject:
   - 114: {fileID: 605414833}
   - 95: {fileID: 605414837}
   - 114: {fileID: 605414836}
+  - 114: {fileID: 605414838}
   m_Layer: 0
   m_Name: Quit Button
   m_TagString: Untagged
@@ -21495,8 +21558,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: QuitClick
+      - m_Target: {fileID: 605414838}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21557,8 +21620,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: QuitEnter
+        - m_Target: {fileID: 605414838}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -21574,8 +21637,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: QuitExit
+        - m_Target: {fileID: 605414838}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -21605,6 +21668,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &605414838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605414831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61f0f0317b8b5414baaa3802965c4fc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  bgMenuMusicHigh: {fileID: 1987986092}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLred: {fileID: 698102104}
+  engineRred: {fileID: 962747896}
+  quit: {fileID: 1621393778}
+  quitAnimator: {fileID: 605414837}
+  quitMesh: {fileID: 448801535}
+  quitMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
 --- !u!1 &620818911
 GameObject:
   m_ObjectHideFlags: 0
@@ -34425,6 +34514,7 @@ GameObject:
   - 114: {fileID: 908717793}
   - 95: {fileID: 908717792}
   - 114: {fileID: 908717791}
+  - 114: {fileID: 908717796}
   m_Layer: 0
   m_Name: Settings Button
   m_TagString: Untagged
@@ -34470,8 +34560,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: SettingsEnter
+        - m_Target: {fileID: 908717796}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -34487,8 +34577,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: SettingsExit
+        - m_Target: {fileID: 908717796}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -34557,8 +34647,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: SettingsClick
+      - m_Target: {fileID: 908717796}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -34603,6 +34693,31 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 908717789}
+--- !u!114 &908717796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908717789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca75c044940577b4d8f39bb62eedb8ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLpurple: {fileID: 953942316}
+  engineRpurple: {fileID: 890009983}
+  settings: {fileID: 1252126875}
+  settingsAnimator: {fileID: 908717792}
+  settingsMesh: {fileID: 560950726}
+  settingsMaterial: {fileID: 2100000, guid: 84cf375f6863c0b4bb460b339c61ffd1, type: 2}
 --- !u!1 &924227667
 GameObject:
   m_ObjectHideFlags: 0
@@ -48215,7 +48330,6 @@ GameObject:
   - 224: {fileID: 1423367114}
   - 95: {fileID: 1423367115}
   - 114: {fileID: 1423367116}
-  - 114: {fileID: 1423367117}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -48275,92 +48389,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9b70436ae92144892999bca8382514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonScript: {fileID: 1423367117}
   buttons:
-  - {fileID: 2136549862}
-  - {fileID: 551592800}
-  - {fileID: 300336743}
-  - {fileID: 908717789}
-  - {fileID: 1636964230}
-  - {fileID: 605414831}
+  - {fileID: 2136549869}
+  - {fileID: 551592807}
+  - {fileID: 300336750}
+  - {fileID: 908717796}
+  - {fileID: 1636964237}
+  - {fileID: 605414838}
   dead: 0.3
   timeBuffer: 0.1
-  indexLocation: 0
---- !u!114 &1423367117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423367113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e4005d3c598f940b6b73a05a3885ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  oneShot: {fileID: 979868345}
-  bgMenuMusicLow: {fileID: 1987986091}
-  bgMenuMusicHigh: {fileID: 1987986092}
-  controls: {fileID: 694996838}
-  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
-  menuParticleShort: {fileID: 429509255}
-  menuParticleLong: {fileID: 318066440}
-  menuPlayer1: {fileID: 1017165465}
-  engineLnone: {fileID: 658445502}
-  engineRnone: {fileID: 651053416}
-  engineLorange: {fileID: 522015979}
-  engineRorange: {fileID: 876328191}
-  engineLcyan: {fileID: 1683482789}
-  engineRcyan: {fileID: 3260626}
-  engineLpurple: {fileID: 953942316}
-  engineRpurple: {fileID: 890009983}
-  engineLred: {fileID: 698102104}
-  engineRred: {fileID: 962747896}
-  engineLblue: {fileID: 929247598}
-  engineRblue: {fileID: 41020146}
-  engineLpink: {fileID: 1070405760}
-  engineRpink: {fileID: 545476022}
-  p1Animator: {fileID: 2136549868}
-  p1Mesh: {fileID: 1951292842}
-  p1Material: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
-  p1ParticleShortSpeedEnter: 400
-  p1ParticleShortSpeedExit: 200
-  ComingSoonText: {fileID: 318344626}
-  multiplayer: {fileID: 2073083731}
-  p2Animator: {fileID: 551592806}
-  p2Mesh: {fileID: 772482358}
-  p2Material: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
-  p2ParticleShortSpeedEnter: 200
-  menuPlayer2: {fileID: 1234729182}
-  smoothFollowOrig2: {fileID: 1234729188}
-  smoothFollowClone2: {fileID: 1234729189}
-  p2AudioIn: {fileID: 1170441602}
-  p2AudioOut: {fileID: 1662770319}
-  p3ParticleShortSpeedEnter: 200
-  menuPlayer3: {fileID: 1671258155}
-  smoothFollowOrig3: {fileID: 1671258157}
-  smoothFollowClone3: {fileID: 1671258156}
-  p4ParticleShortSpeedEnter: 200
-  menuPlayer4: {fileID: 541697836}
-  smoothFollowOrig4: {fileID: 541697838}
-  smoothFollowClone4: {fileID: 541697837}
-  leaderboards: {fileID: 1591084795}
-  leadAnimator: {fileID: 300336746}
-  leadMesh: {fileID: 2074426650}
-  leadMaterial: {fileID: 2100000, guid: 6c81ca1c5530c0849a318692366e1628, type: 2}
-  settings: {fileID: 1252126875}
-  settingsAnimator: {fileID: 908717792}
-  settingsMesh: {fileID: 560950726}
-  settingsMaterial: {fileID: 2100000, guid: 84cf375f6863c0b4bb460b339c61ffd1, type: 2}
-  credits: {fileID: 2134306240}
-  creditsAnimator: {fileID: 1636964236}
-  creditsMesh: {fileID: 822665080}
-  creditsMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
-  creditsAudio: {fileID: 470206262}
-  backgroundMenuAudio: {fileID: 1075776782}
-  quit: {fileID: 1621393778}
-  quitAnimator: {fileID: 605414837}
-  quitMesh: {fileID: 448801535}
-  quitMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
+  locationPrefsValue: main
 --- !u!1 &1426047046
 GameObject:
   m_ObjectHideFlags: 0
@@ -49957,6 +49995,7 @@ GameObject:
   - 114: {fileID: 1636964232}
   - 95: {fileID: 1636964236}
   - 114: {fileID: 1636964235}
+  - 114: {fileID: 1636964237}
   m_Layer: 0
   m_Name: Credits Button
   m_TagString: Untagged
@@ -50025,8 +50064,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: CreditsClick
+      - m_Target: {fileID: 1636964237}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50087,8 +50126,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: CreditsEnter
+        - m_Target: {fileID: 1636964237}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -50104,8 +50143,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: CreditsExit
+        - m_Target: {fileID: 1636964237}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -50135,6 +50174,33 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1636964237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1636964230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b499319b9179f34892eb1f030ad9a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLpink: {fileID: 545476022}
+  engineRpink: {fileID: 1070405760}
+  credits: {fileID: 2134306240}
+  creditsAnimator: {fileID: 1636964236}
+  creditsMesh: {fileID: 822665080}
+  creditsMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
+  creditsAudio: {fileID: 470206262}
+  backgroundMenuAudio: {fileID: 1075776782}
 --- !u!1 &1641660885
 GameObject:
   m_ObjectHideFlags: 0
@@ -63315,6 +63381,7 @@ GameObject:
   - 114: {fileID: 2136549864}
   - 95: {fileID: 2136549868}
   - 114: {fileID: 2136549867}
+  - 114: {fileID: 2136549869}
   m_Layer: 0
   m_Name: Play 1P Button
   m_TagString: Untagged
@@ -63382,8 +63449,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1423367117}
-        m_MethodName: P1Click
+      - m_Target: {fileID: 2136549869}
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -63456,8 +63523,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: P1Enter
+        - m_Target: {fileID: 2136549869}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -63485,8 +63552,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1423367117}
-          m_MethodName: P1Exit
+        - m_Target: {fileID: 2136549869}
+          m_MethodName: OnExit
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -63516,6 +63583,32 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2136549869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2136549862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c3f787e3c4c0540a8f6f15284938f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oneShot: {fileID: 979868345}
+  bgMenuMusicLow: {fileID: 1987986091}
+  controls: {fileID: 694996838}
+  playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
+  menuParticleShort: {fileID: 429509255}
+  menuPlayer1: {fileID: 1017165465}
+  engineLnone: {fileID: 658445502}
+  engineRnone: {fileID: 651053416}
+  engineLcyan: {fileID: 1683482789}
+  engineRcyan: {fileID: 3260626}
+  p1Animator: {fileID: 2136549868}
+  p1Mesh: {fileID: 1951292842}
+  p1Material: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  p1ParticleShortSpeedEnter: 400
+  p1ParticleShortSpeedExit: 200
 --- !u!1 &2145349690
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,17 +3,16 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InputScrollMenu : MonoBehaviour
+public class InputScroll : MonoBehaviour
 {
-	public MenuButtons buttonScript;
-	public GameObject[] buttons;
+	public ButtonEvents[] buttons;
 	public float dead = 0.1f;
-	public float timeBuffer;
+	public float timeBuffer; // Time between button scroll
+	public string locationPrefsValue;
 
 	private bool idxSet = false;
 	private int buttonIndex;
-	[SerializeField]
-	private int indexLocation; //What button the player currently has selected
+	private int indexLocation; // What button the player currently has selected
 	private int lastIndex;
 
 	private bool waiting = false;
@@ -22,14 +21,14 @@ public class InputScrollMenu : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		PlayerPrefs.SetString ("Menu", "main");
+		PlayerPrefs.SetString ("Menu", locationPrefsValue);
 		buttonIndex = buttons.Length;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (PlayerPrefs.GetString ("Menu") == "main")
+		if (PlayerPrefs.GetString ("Menu") == locationPrefsValue)
 		{
 			if (buttonIndex > 0 && !waiting)
 			{
@@ -50,14 +49,14 @@ public class InputScrollMenu : MonoBehaviour
 
 			if (Input.GetAxis ("FireButton") > 0)
 			{
-				RunOnClick (indexLocation);
+				buttons[indexLocation].OnClick();
 			}
 
 			if (resetForMouse == false)
 			{
 				if (Input.GetAxis ("Mouse X") != 0 || Input.GetAxis ("Mouse Y") != 0)
 				{
-					RunOnExit (indexLocation);
+					buttons[indexLocation].OnExit();
 					resetForMouse = true;
 					Debug.Log ("Resetting for mouse movement");
 				}
@@ -114,8 +113,8 @@ public class InputScrollMenu : MonoBehaviour
 		indexLocation = newIndex;
 		idxSet = true;
 
-		RunOnExit (lastIndex);
-		RunOnEnter (newIndex);
+		buttons[lastIndex].OnExit();
+		buttons[newIndex].OnEnter();
 
 		lastIndex = newIndex;
 	}
@@ -125,6 +124,7 @@ public class InputScrollMenu : MonoBehaviour
 		set {indexLocation = value;}
 	}
 
+	/*
 	private void RunOnClick (int index)
 	{
 		switch (index)
@@ -199,4 +199,5 @@ public class InputScrollMenu : MonoBehaviour
 			break;
 		}
 	}
+	*/
 }

@@ -86,11 +86,11 @@ public class MenuButtons : MonoBehaviour
 	public GameObject quitMesh;
 	public Material quitMaterial;
 
-	private InputScrollMenu scrollScript;
+	private InputScroll scrollScript;
 
 	void Start()
 	{
-		scrollScript = this.gameObject.GetComponent <InputScrollMenu>();
+		scrollScript = this.gameObject.GetComponent <InputScroll>();
 		ComingSoonText.SetActive (false);
 	}
 
