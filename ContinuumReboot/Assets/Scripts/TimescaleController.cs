@@ -77,23 +77,6 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{	
-		/*
-		if (AudibleTimeRemaining > 0.25f) 
-		{
-			Music.volume = 1;
-			AudibleTimeRemaining -= Time.deltaTime;
-		}
-			
-		if (AudibleTimeRemaining <= 0.25f && AudibleTimeRemaining > 0) 
-		{
-			Music.volume = AudibleTimeRemaining;
-		}
-
-		if (AudibleTimeRemaining <= 0) 
-		{
-			AudibleTimeRemaining = 0;
-		}
-		*/
 		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
@@ -170,28 +153,22 @@ public class TimescaleController : MonoBehaviour
 				Music.pitch = 0.75f;
 			}
 
-			if (distance >= 15 && distance < 20) 
+			if (distance >= 15 && distance < 25) 
 			{
 				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 1.5f;
 				Music.pitch = 1.0f;
 			}
 
-			if (distance >= 20 && distance < 25) 
+			if (distance >= 25 && distance < 30) 
 			{
 				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 2f;
 				Music.pitch = 1.25f;
 			}
 
-			if (distance >= 25 && distance < 30) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 2.5f;
-				Music.pitch = 1.5f;
-			}
-
 			if (distance >= 30) 
 			{
 				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 3f;
-				Music.pitch = 2.0f;
+				Music.pitch = 1.5f;
 			}
 		}
 

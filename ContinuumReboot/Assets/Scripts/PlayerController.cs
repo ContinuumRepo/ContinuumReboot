@@ -533,11 +533,40 @@ public class PlayerController : MonoBehaviour
 				rb.velocity = movement * speed;
 			}
 
-			if (Input.GetKeyDown (KeyCode.LeftAlt) && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
+			if (Input.GetKey (KeyCode.LeftAlt) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
 			{
-				altnextFire = Time.time + altfireRate;
-				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-				AltFireImage.fillAmount = 0;
+				// When the player presses altfire while bar is greater than 0
+				if (AltFireImage.fillAmount > 0.0f && AltFire.activeSelf == true) 
+				{
+					//AltFire.SetActive (true);
+					AltFireImage.fillAmount -= 0.25f * Time.deltaTime;
+				}
+
+				// ""							"" while bar is greater than 0.9.
+				if (AltFireImage.fillAmount >= 1 && AltFire.activeSelf == false) 
+				{
+					AltFire.SetActive (true);
+				}
+
+				// ""							"" while bar is at 0.
+				if (AltFireImage.fillAmount <= 0 && AltFire.activeSelf == true) 
+				{
+					AltFire.SetActive (false);
+				}
+			}
+
+			if (Input.GetKeyUp (KeyCode.LeftAlt) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
+			{
+				if (AltFireImage.fillAmount <= 1) 
+				{
+					AltFire.SetActive (false);
+					AltFireImage.fillAmount += Time.deltaTime;
+				}
+
+				if (AltFireImage.fillAmount > 1) 
+				{
+					return;
+				}
 			}
 
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
@@ -590,13 +619,43 @@ public class PlayerController : MonoBehaviour
 				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
-			if (((Input.GetAxisRaw ("Alt Fire P1") > 0 || Input.GetMouseButton (1)) && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-			   (Input.GetKeyDown ("joystick 1 button 2") && Time.time > altnextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+			if (((Input.GetAxisRaw ("Alt Fire P1") > 0 || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
-				altnextFire = Time.time + altfireRate;
-				Instantiate (AltFire, shotSpawn.position, shotSpawn.rotation);
-				AltFireImage.fillAmount = 0;
+				// When the player presses altfire while bar is greater than 0
+				if (AltFireImage.fillAmount > 0.0f && AltFire.activeSelf == true) 
+				{
+					//AltFire.SetActive (true);
+					AltFireImage.fillAmount -= 0.25f * Time.deltaTime;
+				}
+
+				// ""							"" while bar is greater than 0.9.
+				if (AltFireImage.fillAmount >= 1 && AltFire.activeSelf == false) 
+				{
+					AltFire.SetActive (true);
+				}
+
+				// ""							"" while bar is at 0.
+				if (AltFireImage.fillAmount <= 0 && AltFire.activeSelf == true) 
+				{
+					AltFire.SetActive (false);
+				}
 			}
+			/*
+			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+			{
+				if (AltFireImage.fillAmount <= 1) 
+				{
+					AltFire.SetActive (false);
+					AltFireImage.fillAmount += Time.deltaTime;
+				}
+
+				if (AltFireImage.fillAmount > 1) 
+				{
+					return;
+				}
+			}*/
 		}
 	}
 
