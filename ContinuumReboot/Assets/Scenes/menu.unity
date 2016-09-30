@@ -26097,7 +26097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &694996839
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49377,8 +49377,8 @@ RectTransform:
   m_RootOrder: 10
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 689, y: -130}
-  m_SizeDelta: {x: 500, y: 217}
+  m_AnchoredPosition: {x: 428, y: -75}
+  m_SizeDelta: {x: 492, y: 422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1459273828
 MonoBehaviour:
@@ -49392,14 +49392,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.43921572, b: 0.5803922, a: 0.391}
+  m_Color: {r: 0.5, g: 0.8783784, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 9d0b29cecf2678b41982d2173d3670ff, type: 3}
+  m_Texture: {fileID: 2800000, guid: b1d7fee26e54cc3498f6267f072a45b9, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -50114,7 +50114,7 @@ RectTransform:
   m_RootOrder: 11
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 131, y: -60}
+  m_AnchoredPosition: {x: 15, y: 10}
   m_SizeDelta: {x: -0.00024414062, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1616278557
@@ -63498,7 +63498,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: main
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 1
       - m_Target: {fileID: 0}
         m_MethodName: Play
         m_Mode: 5
