@@ -619,7 +619,7 @@ public class PlayerController : MonoBehaviour
 				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
-			if (((Input.GetAxisRaw ("Alt Fire P1") > 0 || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
 			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
 				// When the player presses altfire while bar is greater than 0
@@ -630,7 +630,7 @@ public class PlayerController : MonoBehaviour
 				}
 
 				// ""							"" while bar is greater than 0.9.
-				if (AltFireImage.fillAmount >= 1 && AltFire.activeSelf == false) 
+				if (AltFireImage.fillAmount >= 0.95f && AltFire.activeSelf == false) 
 				{
 					AltFire.SetActive (true);
 				}
@@ -640,6 +640,11 @@ public class PlayerController : MonoBehaviour
 				{
 					AltFire.SetActive (false);
 				}
+			}
+
+			if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) 
+			{
+				AltFire.SetActive (false);
 			}
 			/*
 			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||

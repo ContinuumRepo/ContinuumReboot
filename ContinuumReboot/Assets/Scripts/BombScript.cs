@@ -5,7 +5,7 @@ using UnityStandardAssets.Utility;
 public class BombScript : MonoBehaviour 
 {
 	private AutoMoveAndRotate moveScript;
-	public enum bombMode {left, right}
+	public enum bombMode {left, right, slowLeft, slowRight}
 	public bombMode BombMode;
 	private PlayerController PlayerControllerScript;
 	public int Damage = 25;
@@ -25,6 +25,16 @@ public class BombScript : MonoBehaviour
 		if (BombMode == bombMode.right) 
 		{
 			moveScript.moveUnitsPerSecond.value = new Vector3 (1, 0, 0);
+		}
+
+		if (BombMode == bombMode.slowLeft) 
+		{
+			moveScript.moveUnitsPerSecond.value = new Vector3 (-2, 1, 0);
+		}
+
+		if (BombMode == bombMode.slowRight) 
+		{
+			moveScript.moveUnitsPerSecond.value = new Vector3 (2, 1, 0);
 		}
 	}
 		
