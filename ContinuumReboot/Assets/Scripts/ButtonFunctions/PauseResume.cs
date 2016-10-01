@@ -24,7 +24,7 @@ public class PauseResume : ButtonEvents
 		PlayerPrefs.SetString ("InputMenu", "");
 		pauseUI.SetActive (false);
 		clickSound.Play();
-		bgmPitch.enabled = true;
+		//bgmPitch.enabled = true;
 		bgmSource.volume = bgmVolume;
 		timeCont.enabled = true;
 		timeCont.Start();
