@@ -177,7 +177,10 @@ public class PlayerController : MonoBehaviour
 		PlayerCollider = GameObject.Find ("Collider").GetComponent<MeshCollider>();
 
 		// Finds Player Mesh Renderer
-		PlayerMesh = GameObject.Find ("PlayerMesh").GetComponent<MeshRenderer>();
+		if (isClone == false) 
+		{
+			PlayerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
+		}
 
 		// Gives health starting health amount.
 		Health = startingHealth;
@@ -215,10 +218,15 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
-		if (isClone == false) 
+		if (isClone == false && Health >= 25) 
 		{
 			float rotated = sensRot * gameObject.transform.position.x;
 			MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
+		}
+
+		if (Health < 25)
+		{
+			MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
 		}
 
 		if (isClone) 
@@ -426,10 +434,6 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
 				HelixIcon.SetActive (true); // Turns on clone icon.
-				//PlayerCollider.enabled = false; // Turns off player collider.
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
-				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
 					shot = RegularShotNoCost; // Make it the free version.
@@ -478,10 +482,10 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.StopAllCoroutines (); // Stops spawning objects and powerups.
 				GameOver (); // Triggers game Over method.
 				timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
-				BGMPitchScript.addPitch = 0; // Resets the add pitch variable with the main music.
+				//BGMPitchScript.addPitch = 0; // Resets the add pitch variable with the main music.
 			}
 
-			// if collor correction saturation is less than 1
+			// if color correction saturation is less than 1
 			if (ColorCorrectionCurvesScript.saturation < 1) 
 			{
 				ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime; // Increase saturation.
@@ -509,9 +513,6 @@ public class PlayerController : MonoBehaviour
 
 		/// Movement ///
 	
-		if (gameControllerScript.isPreGame == false) 
-		{
-			// PC player movement
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
 			{
 				float moveHorizontal;
@@ -593,13 +594,12 @@ public class PlayerController : MonoBehaviour
 				Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
 				zBound		
 			);
-		}
 
 		/// Shooting functionality ///
 
 		// PC Controller Input.
-		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth) ||
-			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth))
+		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth))
 		{
 			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
@@ -607,19 +607,19 @@ public class PlayerController : MonoBehaviour
 
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
-			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.time > nextFire && gameControllerScript.CurrentScore > 0 && Health > minHealth)) 
+			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.time > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
 			{
 				nextFire = Time.time + fireRate;
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			}
 
-			if (Input.GetButtonDown ("FireButton") && (Time.unscaledTime > (nextFire)) && gameControllerScript.CurrentScore > 0 && Health > minHealth) 
+			if (Input.GetButtonDown ("FireButton") && (Time.unscaledTime > (nextFire)) && gameControllerScript.CurrentScore > -1 && Health > minHealth) 
 			{
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
-			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
 			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
 				// When the player presses altfire while bar is greater than 0
@@ -646,7 +646,7 @@ public class PlayerController : MonoBehaviour
 			{
 				AltFire.SetActive (false);
 			}
-			/*
+
 			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
 				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
@@ -660,7 +660,7 @@ public class PlayerController : MonoBehaviour
 				{
 					return;
 				}
-			}*/
+			}
 		}
 	}
 

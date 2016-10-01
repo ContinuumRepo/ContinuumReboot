@@ -81,6 +81,8 @@ public class GameController : MonoBehaviour
 
 	[Header ("Misc")]
 	public GameObject ShowFpsText; // The UI text to display frames per second.
+	public AudioSource CheatSound;
+	public Animator CheatActivatedAnim;
 
 	void Start () 
 	{
@@ -89,7 +91,7 @@ public class GameController : MonoBehaviour
 		ControlsUI.SetActive (false);
 
 		// Starts coroutines.
-		StartCoroutine (BrickSpawnWaves ());
+		//StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (PowerupSpawnWaves ());
 		StartCoroutine (CountDown ());
 		StartCoroutine (RareitemSpawnWaves ());
@@ -290,6 +292,47 @@ public class GameController : MonoBehaviour
 		{
 			ShowFpsText.SetActive (true); // Turns off FPS Game Object.
 		}
+
+		// CHEATS //
+
+		if (Input.GetKeyDown (KeyCode.C)) 
+		{
+			CurrentScore += 10000;
+			CheatSound.Play ();
+			CheatActivatedAnim.Play ("CheatActivated");
+			Debug.Log ("You pressed 'C' and added 10000 points, you cheating pirate!");
+		}
+
+		if (Input.GetKeyDown (KeyCode.V)) 
+		{
+			wave += 1;
+			CheatSound.Play ();
+			CheatActivatedAnim.Play ("CheatActivated");
+			Debug.Log ("You pressed 'V' and increased your wave, you cheater!");
+		}
+
+		if (Input.GetKeyDown (KeyCode.N) && spawnWait > 0.09f) 
+		{
+			spawnWait -= 0.1f;
+			CheatSound.Play ();
+			CheatActivatedAnim.Play ("CheatActivated");
+			Debug.Log ("You pressed 'N' and decreased 'spawnwait', I can't even...!");
+		}
+
+		if (Input.GetKeyDown (KeyCode.N) && spawnWait < 0.09f) 
+		{
+			spawnWait = 0.016f;
+		}
+
+		if (Input.GetKeyDown (KeyCode.Z)) 
+		{
+			hazardCount += 1;
+			CheatSound.Play ();
+			CheatActivatedAnim.Play ("CheatActivated");
+			Debug.Log ("You pressed 'Z' and increased 'hazards', OMG run!");
+		}
+
+		// END CHEATS //
 	}
 
 	public void StartSpawningBricks ()
@@ -304,7 +347,7 @@ public class GameController : MonoBehaviour
 		PauseUI.SetActive (true); // Activates pause UI.
 		PlayerPrefs.SetString ("InputMenu", "gamepause");
 		Debug.Log ("Paused game.");
-		AudioPitchScript.enabled = false; // Turns off audio pitch by timescale script on the audio.
+		//AudioPitchScript.enabled = false; // Turns off audio pitch by timescale script on the audio.
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.25f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = true; // Turns on low pass audio filter.
@@ -329,13 +372,13 @@ public class GameController : MonoBehaviour
 
 	IEnumerator CountDown ()
 	{
-		WaveLabel.SetActive (true);
-		WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
-		WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + (wave + 1)  + "";
+		//WaveLabel.SetActive (true);
+		//WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+		//WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + (wave + 1)  + "";
 		PreGameUI.SetActive (true); // Turns on PreGame UI.
 		yield return new WaitForSeconds (CountDownDelay); 
 		BottomBarrier.GetComponent<BoxCollider>().enabled = true;
-		isPreGame = false; // Takes out of pre game mode.
+		//isPreGame = false; // Takes out of pre game mode.
 		PreGameUI.SetActive (false); // Turns off PreGame UI.
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
@@ -343,68 +386,60 @@ public class GameController : MonoBehaviour
 		ControlsUI.SetActive (true);
 	}
 
-	IEnumerator BrickSpawnWaves ()
+	public IEnumerator BrickSpawnWaves ()
 	{
 		yield return new WaitForSeconds (startWait);
-		while (true) 
-		{
+		while (true) {
 			int randomColumn;
-			for (int i = 0; i < hazardCount; i++) 
-			{
-				if (wave >= 0 && wave <= 2)
-				{
+			for (int i = 0; i < hazardCount; i++) {
+				if (wave >= 0 && wave <= 2) {
 					GameObject hazard = Hazards [Random.Range (0, 1)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
-					
-				if (wave > 2 && wave <= 3)
-				{
+				
+				if (wave > 2 && wave <= 3) {
 					GameObject hazard = Hazards [Random.Range (0, 2)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
-					
-				if (wave > 3 && wave <= 4)
-				{
+				
+				if (wave > 3 && wave <= 4) {
 					GameObject hazard = Hazards [Random.Range (0, 3)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 4 && wave <= 5)
-				{
+				if (wave > 4 && wave <= 5) {
 					GameObject hazard = Hazards [Random.Range (0, 4)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 5 && wave <= 6)
-				{
+				if (wave > 5 && wave <= 6) {
 					GameObject hazard = Hazards [Random.Range (0, 5)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 6)
-				{
+				if (wave > 6) {
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
-					randomColumn = Random.Range (0, columnLocations.Length -1);
+					randomColumn = Random.Range (0, columnLocations.Length - 1);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);

@@ -36,7 +36,7 @@ public class PointObject : MonoBehaviour
 	void Start ()
 	{
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
-		playerMesh = GameObject.Find ("PlayerMesh").GetComponent<MeshRenderer> ();
+		playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
 
 		// Finding the main engine particle system GameObject.
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
@@ -168,8 +168,11 @@ public class PointObject : MonoBehaviour
 			// Gives damage to player.
 			PlayerControllerScript.Health -= Damage;
 
+			if (PlayerControllerScript.Health > 25)
+			{
 			// Desaturates screen.
-			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+				PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+			}
 
 			// If player health is less than 10.
 			if (PlayerControllerScript.Health <= 10) 

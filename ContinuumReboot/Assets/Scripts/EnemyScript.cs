@@ -30,7 +30,11 @@ public class EnemyScript : MonoBehaviour
 
 		if (EnemyType == enemyType.Normal)
 		{
-			Music.clip = NormalMusic;
+			if (GameObject.Find ("Boss") == null) 
+			{
+				Music.clip = NormalMusic;
+			}
+
 			EnemyTrans = GameObject.Find ("EnemyRestPoint").GetComponent<Transform>(); // Finds the transform the enemy will follow.
 		}
 
@@ -51,8 +55,7 @@ public class EnemyScript : MonoBehaviour
 		
 		if (EnemyType == enemyType.Normal) 
 		{
-			
-
+			EnemyHealthBar.fillAmount = (float)Health / 200.0f;
 			if (Health > 0 && Time.time > nextBomb) 
 			{
 				//EnemyHealthBar.fillAmount = ;
@@ -68,7 +71,7 @@ public class EnemyScript : MonoBehaviour
 
 			if (Health <= 0) 
 			{
-				Music.UnPause ();
+				//Music.UnPause ();
 				Instantiate (EnemyExplosion, gameObject.transform.position, Quaternion.Euler (60, 90, 0));
 				Destroy (gameObject);
 				Debug.Log ("Destroyed an enemy");
@@ -77,6 +80,7 @@ public class EnemyScript : MonoBehaviour
 
 		if (EnemyType == enemyType.Boss) 
 		{
+			Music.pitch = 1;
 			EnemyHealthBar.fillAmount = (float)Health / 800.0f;
 			if (Health > 0 && Time.time > nextBomb) 
 			{
@@ -108,7 +112,7 @@ public class EnemyScript : MonoBehaviour
 		if (other.tag == "Bullet") 
 		{
 			Health -= 25;
-			Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
+			Instantiate (Explosion, other.gameObject.transform.position, gameObject.transform.rotation);
 			gameControllerScript.CurrentScore += PointReward;
 		}
 	}
