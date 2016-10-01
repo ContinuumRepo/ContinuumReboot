@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
 	public AudioSource Music;
 	public AudioClip NormalMusic;
 	public AudioClip BossMusic;
-	//public Image EnemyHealthBar;
+	public Image EnemyHealthBar;
 
 	void Start () 
 	{
@@ -77,9 +77,9 @@ public class EnemyScript : MonoBehaviour
 
 		if (EnemyType == enemyType.Boss) 
 		{
+			EnemyHealthBar.fillAmount = (float)Health / 800.0f;
 			if (Health > 0 && Time.time > nextBomb) 
 			{
-				//EnemyHealthBar.fillAmount = Health / 2500;
 				nextBomb = Time.time + bombRate;
 				Instantiate (Bombs [CurrentBomb], gameObject.transform.position, gameObject.transform.rotation);
 				CurrentBomb += 1;

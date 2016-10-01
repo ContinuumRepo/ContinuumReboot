@@ -1015,7 +1015,7 @@ ParticleSystem:
   ForceModule:
     enabled: 1
     x:
-      scalar: 100
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1040,7 +1040,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     y:
-      scalar: 100
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1065,7 +1065,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     z:
-      scalar: 100
+      scalar: 50
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1628,7 +1628,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: e99db8785452bc04c898114cb0e9ec24, type: 2}
+  - {fileID: 2100000, guid: e65d5487de0d7924a811979e711ef337, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

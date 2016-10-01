@@ -197,7 +197,7 @@ MonoBehaviour:
   EnemyTrans: {fileID: 0}
   EnemyType: 0
   Music: {fileID: 0}
-  NormalMusic: {fileID: 8300000, guid: 6b09e9dfdf7dd584aa7f4eaeba8ca851, type: 3}
+  NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
   BossMusic: {fileID: 8300000, guid: e070c979a5bf5aa4cb4aa7476576e74c, type: 3}
 --- !u!114 &11456238
 MonoBehaviour:
@@ -284,7 +284,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.8
+      scalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -438,7 +438,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 0.7
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -654,7 +654,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
@@ -807,7 +807,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 253
+          rgba: 16777215
         key2:
           serializedVersion: 2
           rgba: 3669760
@@ -827,14 +827,14 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 26407
+        ctime1: 65535
         ctime2: 33731
         ctime3: 53777
         ctime4: 53585
         ctime5: 65342
         ctime6: 0
         ctime7: 0
-        atime0: 46646
+        atime0: 0
         atime1: 65535
         atime2: 32189
         atime3: 38743
@@ -1743,7 +1743,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 1.4
+      scalar: 0.6
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1897,7 +1897,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 1.2
+      scalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2263,10 +2263,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 704643071
+          rgba: 687867133
         key1:
           serializedVersion: 2
-          rgba: 4278190333
+          rgba: 4278191357
         key2:
           serializedVersion: 2
           rgba: 3669760
@@ -2286,7 +2286,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 26407
+        ctime1: 65535
         ctime2: 33731
         ctime3: 53777
         ctime4: 53585
@@ -3202,7 +3202,7 @@ ParticleSystem:
     serializedVersion: 2
     enabled: 1
     startLifetime:
-      scalar: 0.8
+      scalar: 0.7
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3356,7 +3356,7 @@ ParticleSystem:
         rgba: 4294967295
       minMaxState: 0
     startSize:
-      scalar: 0.7
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -3572,7 +3572,7 @@ ParticleSystem:
     time3: 0
     m_BurstCount: 0
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       scalar: 1
       maxCurve:
@@ -3725,7 +3725,7 @@ ParticleSystem:
           rgba: 4294967295
         key1:
           serializedVersion: 2
-          rgba: 253
+          rgba: 16777215
         key2:
           serializedVersion: 2
           rgba: 3669760
@@ -3745,14 +3745,14 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 26407
+        ctime1: 65535
         ctime2: 33731
         ctime3: 53777
         ctime4: 53585
         ctime5: 65342
         ctime6: 0
         ctime7: 0
-        atime0: 46646
+        atime0: 0
         atime1: 65535
         atime2: 32189
         atime3: 38743

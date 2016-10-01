@@ -7,12 +7,12 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ClonedPlayer
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: _ALPHATEST_ON _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: 3000
   stringTagMap:
-    RenderType: Transparent
+    RenderType: TransparentCutout
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -20,7 +20,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: a25460762ba3a5d419c8e821d3abbd9c, type: 3}
+          m_Texture: {fileID: 2800000, guid: 498afbafa60d4fb4dbf41cd167c2ec09, type: 3}
           m_Scale: {x: 3.5, y: 1.2}
           m_Offset: {x: 0, y: 0.9}
       data:
@@ -174,15 +174,15 @@ Material:
       data:
         first:
           name: _SrcBlend
-        second: 5
+        second: 1
       data:
         first:
           name: _DstBlend
-        second: 10
+        second: 0
       data:
         first:
           name: _Cutoff
-        second: 0.9
+        second: 0
       data:
         first:
           name: _Shininess
@@ -198,7 +198,7 @@ Material:
       data:
         first:
           name: _ZWrite
-        second: 0
+        second: 1
       data:
         first:
           name: _Glossiness
@@ -222,15 +222,15 @@ Material:
       data:
         first:
           name: _Mode
-        second: 2
+        second: 1
       data:
         first:
           name: _Metallic
-        second: 0.133
+        second: 0
       data:
         first:
           name: _InvFade
-        second: 0.01
+        second: 1
       data:
         first:
           name: _Dist
@@ -283,7 +283,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 0.03698098, g: 0.08399358, b: 0.08823532, a: 0.628}
+        second: {r: 0.24264705, g: 0.24264705, b: 0.24264705, a: 0.628}
       data:
         first:
           name: _QOffset

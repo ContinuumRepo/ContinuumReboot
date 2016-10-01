@@ -13,10 +13,10 @@ public class BulletScript : MonoBehaviour
 	public float InitialShakeStrength = 0.5f; 				// Shake strength.
 	private GameController gameControllerScript; 			// Game Controller component.
 	public TimescaleController timeScaleControllerScript; 	// Time scale controller component.
-	public ParticleSystem[] RicoshetParticle;   // Particle combos, should be children of the Player GameObject.
+	public ParticleSystem[] RicoshetParticle;   			// Particle combos, should be children of the Player GameObject.
 	public AudioSource[] ComboAudio;
-	public float VibrationTime = 0.04f;  		// How long should the vibrationh occur
-	public bool useMutedBullet;					// Is the bullet (no cost) without sound?
+	public float VibrationTime = 0.04f;  					// How long should the vibrationh occur
+	public bool useMutedBullet;								// Is the bullet (no cost) without sound?
 	public int ricoshetNumber;
 	public int ricoshetMax;
 
@@ -36,9 +36,7 @@ public class BulletScript : MonoBehaviour
 	{
 		if (BulletType == bulletType.mutedShot) 
 		{
-			//GetComponent<BoxCollider> ().enabled = false;
 			GetComponent<BoxCollider> ().enabled = true;
-			//StartCoroutine (ActivateCollider ());
 		}
 
 		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
@@ -87,14 +85,14 @@ public class BulletScript : MonoBehaviour
 
 		if (VibrationTime > 0) 
 		{
-			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f); // Sets vibration amount ot 25%.
-			VibrationTime -= Time.fixedDeltaTime; // Continuously decreases vibration time left.
+			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f); 
+			VibrationTime -= Time.fixedDeltaTime;
 		}
 
 		if (VibrationTime <= 0) 
 		{
-			GamePad.SetVibration (PlayerIndex.One, 0, 0); // Sets controller to not vibrate.
-			VibrationTime = 0; // Make it equal to 0.
+			GamePad.SetVibration (PlayerIndex.One, 0, 0);
+			VibrationTime = 0;
 		}
 
 		if (ricoshetNumber > ricoshetMax) 
@@ -107,7 +105,7 @@ public class BulletScript : MonoBehaviour
 	{
 		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam)
 		{
-			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (-360, 360));
+			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 		}
 
 		if (other.tag == "Barrier" && BulletType == bulletType.horizontalBeam) 
@@ -133,13 +131,13 @@ public class BulletScript : MonoBehaviour
 				}
 
 				BulletType = bulletType.ricoshetShot;
-				transform.rotation = Quaternion.Euler (0, 0, Random.Range (-360, 360));
+				transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 			}
 
 			if (BulletType == bulletType.mutedShot) 
 			{
 				BulletType = bulletType.ricoshetShot;
-				transform.rotation = Quaternion.Euler (0, 0, Random.Range (-360, 360));
+				transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 			}
 
 			if (BulletType == bulletType.ricoshetShot) 
@@ -149,7 +147,6 @@ public class BulletScript : MonoBehaviour
 					RicoshetParticle [Mathf.Clamp(ricoshetNumber, 0, 5)].Play ();
 					ComboAudio [ricoshetNumber].Play ();
 					ricoshetNumber += 1;
-					//Instantiate (gameObject, gameObject.transform.position, Quaternion.Euler (0, 0, Random.Range (-360, 360)));
 				}
 
 				if (ricoshetNumber >= ricoshetMax) 
@@ -188,14 +185,6 @@ public class BulletScript : MonoBehaviour
 				ComboAudio [2].Play ();
 				Destroy (other.gameObject);
 			}
-
 		}
 	}
-	/*
-	IEnumerator ActivateCollider ()
-	{
-		//GetComponent<BoxCollider> ().enabled = false;
-		//yield return new WaitForSeconds (0.25f);
-		GetComponent<BoxCollider> ().enabled = true;
-	}*/
 }

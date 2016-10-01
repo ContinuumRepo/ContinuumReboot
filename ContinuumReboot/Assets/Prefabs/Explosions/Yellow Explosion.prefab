@@ -364,8 +364,8 @@ ParticleSystem:
         rgba: 4281532209
       maxColor:
         serializedVersion: 2
-        rgba: 4278244863
-      minMaxState: 2
+        rgba: 4294967295
+      minMaxState: 0
     startSize:
       scalar: 0.25
       maxCurve:
@@ -1013,7 +1013,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 100
       maxCurve:
@@ -1628,7 +1628,7 @@ ParticleSystemRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: e99db8785452bc04c898114cb0e9ec24, type: 2}
+  - {fileID: 2100000, guid: 4aa96babef490b34f8711396d850e118, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
