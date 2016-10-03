@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
 	public int rareitemCount; // The amountof hazards to be spawned before a new wave of powerups.
 	//public Text rareitemText; // Powerup label for the player.
 	public int bossScore;
+	public int bossWave;
 
 	[Header ("Pausing")]
 	public bool isPaused; // Is the game paused right now?
@@ -86,6 +87,7 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+		bossWave = 5;
 		Cursor.lockState = CursorLockMode.Locked;
 		bossScore = 100000;
 		ControlsUI.SetActive (false);
@@ -448,11 +450,19 @@ public class GameController : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds (waveWait / 2);
-			WaveLabel.SetActive (true);
-			WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
-			WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
-			wave += 1;
-			hazardCount += 2;
+
+			if (wave != bossWave) 
+			{
+				GameObject rareitem = Rareitems [Random.Range (0, 4)];
+				Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
+			}
+
+			if (wave == bossWave) 
+			{
+				GameObject rareitem = Rareitems [Random.Range (5, 5)];
+				Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
+				bossWave += bossWave;
+			}
 			yield return new WaitForSeconds (waveWait / 2);
 		}
 	}
@@ -466,7 +476,6 @@ public class GameController : MonoBehaviour
 			{
 				GameObject powerup = Powerups [Random.Range (0, Powerups.Length)];
 				Vector3 powerupSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-powerupSpawnValues.x, powerupSpawnValues.x)), powerupSpawnValues.y, powerupSpawnValues.z);
-				//Quaternion powerupSpawnRotation = Quaternion.identity;
 				Instantiate (powerup, powerupSpawnPos, Quaternion.Euler(0, 0, 180));
 				yield return new WaitForSeconds (powerupSpawnWait);
 			}
@@ -480,7 +489,7 @@ public class GameController : MonoBehaviour
 		{
 			for (int i = 0; i < rareitemCount; i++) 
 			{
-				GameObject rareitem = Rareitems [Random.Range (2, Rareitems.Length)];
+				GameObject rareitem = Rareitems [Random.Range (6, Rareitems.Length)];
 				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
 				Instantiate (rareitem, rareitemSpawnPos, Quaternion.Euler(0, 0, 45));
 				yield return new WaitForSeconds (rareitemSpawnWait);

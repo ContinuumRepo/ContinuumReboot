@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
 	public AudioClip NormalMusic;
 	public AudioClip BossMusic;
 	public Image EnemyHealthBar;
+	public bool dontuseEnemyTrans;
 
 	void Start () 
 	{
@@ -45,7 +46,11 @@ public class EnemyScript : MonoBehaviour
 			EnemyTrans = GameObject.Find ("EnemyBossRestPoint").GetComponent<Transform>(); // Finds the transform the enemy will follow.
 		}
 
-		GetComponent<SmoothFollowOrig> ().target = EnemyTrans.transform; // Finds the smooth following script.
+		if (dontuseEnemyTrans == false)
+		{
+			GetComponent<SmoothFollowOrig> ().target = EnemyTrans.transform; // Finds the smooth following script.
+		}
+
 		BombNumberMax = Bombs.Length; // MAkes bomb number max equal to the length of the bombs array.
 		gameObject.transform.rotation = Quaternion.Euler (-90, 0, 0); // Sets custom rotation of the gameObject.
 	}
@@ -73,6 +78,11 @@ public class EnemyScript : MonoBehaviour
 			{
 				//Music.UnPause ();
 				Instantiate (EnemyExplosion, gameObject.transform.position, Quaternion.Euler (60, 90, 0));
+				gameControllerScript.WaveLabel.SetActive (true);
+				gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
+				gameControllerScript.WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+				gameControllerScript.wave += 1;
+				gameControllerScript.hazardCount += 2;
 				Destroy (gameObject);
 				Debug.Log ("Destroyed an enemy");
 			}
@@ -100,9 +110,13 @@ public class EnemyScript : MonoBehaviour
 				Music.UnPause ();
 				Music.Play ();
 				Instantiate (EnemyExplosion, gameObject.transform.position, Quaternion.Euler (60, 90, 0));
-
+				gameControllerScript.WaveLabel.SetActive (true);
+				gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
+				gameControllerScript.WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+				gameControllerScript.wave += 1;
+				gameControllerScript.hazardCount += 2;
 				Destroy (gameObject);
-				Debug.Log ("Destroyed an enemy");
+				Debug.Log ("Destroyed a boss");
 			}
 		}
 	}

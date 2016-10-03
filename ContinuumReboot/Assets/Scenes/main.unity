@@ -19706,32 +19706,32 @@ MonoBehaviour:
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupSpawnValues: {x: 30, y: 30, z: 0}
-  powerupStartWait: 30
-  powerupSpawnWait: 25
-  powerupWaveWait: 7
-  powerupCount: 7
+  powerupStartWait: 32
+  powerupSpawnWait: 35
+  powerupWaveWait: 10
+  powerupCount: 6
   PowerupText: {fileID: 2041953062}
   Rareitems:
-  - {fileID: 138540, guid: 99e865d5b334e314298a5217c0566785, type: 2}
-  - {fileID: 138540, guid: 99e865d5b334e314298a5217c0566785, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
+  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
   - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
   - {fileID: 170230, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
-  rareitemSpawnValues: {x: 30, y: 22, z: 0}
+  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
+  rareitemSpawnValues: {x: 30, y: 28, z: 0}
   rareitemStartWait: 30
-  rareitemSpawnWait: 30
-  rareitemWaveWait: 5
+  rareitemSpawnWait: 45
+  rareitemWaveWait: 20
   rareitemCount: 10
   bossScore: 100000
+  bossWave: 0
   isPaused: 0
   PauseUI: {fileID: 862326352}
   PauseSound: {fileID: 0}
@@ -45529,6 +45529,60 @@ ParticleSystem:
 GameObject:
   m_PrefabParentObject: {fileID: 174162, guid: 9f535a5b78c79b147be179bc4b5ad291, type: 2}
   m_PrefabInternal: {fileID: 1058754422}
+--- !u!1001 &481185195
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 431398, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 22357164, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1858121599}
+    - target: {fileID: 11417826, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: EnemyTrans
+      value: 
+      objectReference: {fileID: 864279380}
+    - target: {fileID: 11417826, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+      propertyPath: Music
+      value: 
+      objectReference: {fileID: 339966602}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &491745267
 GameObject:
   m_ObjectHideFlags: 0
@@ -77456,8 +77510,8 @@ MonoBehaviour:
   MainCam: {fileID: 538907853}
   sensRot: 0.2
   ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.3
-  powerupBloomAmount: 0.4
+  normalBloomAmount: 0.26
+  powerupBloomAmount: 0.35
   shakeTime: 0.4
   shakeAmount: 1
   PlayerNumber: 0
