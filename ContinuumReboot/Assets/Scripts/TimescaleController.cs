@@ -125,72 +125,36 @@ public class TimescaleController : MonoBehaviour
 			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
 			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
 
-
 			// Stores the highest timescale value for stats.
 			if (Time.timeScale > highestTimeScale) {
 				highestTimeScale = Time.timeScale;
 			}
 
-			if (Time.timeScale < 1f) {
+			if (Time.timeScale < 0.5f) 
+			{
 				Music.pitch = 0.25f;
 			}
 
-			if (Time.timeScale >= 1f && Time.timeScale < 4f) {
-				Music.pitch = 0.67f;
-			}
-
-			if (Time.timeScale >= 4f && Time.timeScale < 6f) {
-				Music.pitch = 1.0f;
-			}
-
-			if (Time.timeScale >= 6f && Time.timeScale < 8f) {
-				Music.pitch = 1.2f;
-			}
-
-			if (Time.timeScale >= 5f) {
-				Music.pitch = 1.4f;
-			}
-		}
-
-		if (CalculationMode == calcMode.Distance) 
-		{
-			if (distance < 5)
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 0.0f;
-				Music.pitch = 0.25f;
-			}
-
-			if (distance >= 5 && distance < 10) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 0.5f;
+			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) {
 				Music.pitch = 0.5f;
 			}
 
-			if (distance >= 10 && distance < 15) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 1f;
-				Music.pitch = 0.75f;
+			if (Time.timeScale >= 1f && Time.timeScale < 4f) {
+				Music.pitch = 1f;
 			}
 
-			if (distance >= 15 && distance < 25) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 1.5f;
-				Music.pitch = 1.0f;
+			if (Time.timeScale >= 4f && Time.timeScale < 6f) {
+				Music.pitch = 1.3f;
 			}
 
-			if (distance >= 25 && distance < 30) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 2f;
-				Music.pitch = 1.25f;
+			if (Time.timeScale >= 6f && Time.timeScale < 8f) {
+				Music.pitch = 1.6f;
 			}
 
-			if (distance >= 30) 
-			{
-				//DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = 3f;
-				Music.pitch = 1.5f;
+			if (Time.timeScale >= 8f) {
+				Music.pitch = 1.8f;
 			}
 		}
-
 	}
 }
 

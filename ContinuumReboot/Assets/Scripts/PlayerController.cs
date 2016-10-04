@@ -220,8 +220,9 @@ public class PlayerController : MonoBehaviour
 	{
 		if (isClone == false && Health >= 25) 
 		{
-			float rotated = sensRot * gameObject.transform.position.x;
-			//float rotated = sensRot * Input.GetAxis("Horizontal P1");
+			//float rotated = sensRot * gameObject.transform.position.x;
+			float rotated = sensRot * Input.GetAxis("Horizontal P1");
+
 			MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
 		}
 
