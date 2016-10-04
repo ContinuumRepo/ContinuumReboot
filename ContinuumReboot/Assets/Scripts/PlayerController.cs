@@ -221,6 +221,7 @@ public class PlayerController : MonoBehaviour
 		if (isClone == false && Health >= 25) 
 		{
 			float rotated = sensRot * gameObject.transform.position.x;
+			//float rotated = sensRot * Input.GetAxis("Horizontal P1");
 			MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
 		}
 
@@ -605,18 +606,19 @@ public class PlayerController : MonoBehaviour
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 		}
 
+		if (Input.GetKeyUp (KeyCode.LeftAlt)) 
+		{
+			AltFire.SetActive (false);
+			AltFireImage.fillAmount += Time.deltaTime;
+		}
+
+		// Controller Input.
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
-			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.time > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
+			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
 			{
-				nextFire = Time.time + fireRate;
+				nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if (Input.GetButtonDown ("FireButton") && (Time.unscaledTime > (nextFire)) && gameControllerScript.CurrentScore > -1 && Health > minHealth) 
-			{
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-				nextFire = Time.unscaledTime + (fireRate / 2);
 			}
 
 			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
@@ -653,7 +655,7 @@ public class PlayerController : MonoBehaviour
 				if (AltFireImage.fillAmount <= 1) 
 				{
 					AltFire.SetActive (false);
-					AltFireImage.fillAmount += Time.deltaTime;
+					AltFireImage.fillAmount += 0.1f * Time.deltaTime;
 				}
 
 				if (AltFireImage.fillAmount > 1) 

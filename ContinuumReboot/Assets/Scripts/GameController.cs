@@ -207,7 +207,7 @@ public class GameController : MonoBehaviour
 
 		if (CurrentScore >= bossScore) 
 		{
-			Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 45));
+			Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 0));
 			bossScore += 100000;
 		}
 
@@ -374,13 +374,9 @@ public class GameController : MonoBehaviour
 
 	IEnumerator CountDown ()
 	{
-		//WaveLabel.SetActive (true);
-		//WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
-		//WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + (wave + 1)  + "";
 		PreGameUI.SetActive (true); // Turns on PreGame UI.
 		yield return new WaitForSeconds (CountDownDelay); 
 		BottomBarrier.GetComponent<BoxCollider>().enabled = true;
-		//isPreGame = false; // Takes out of pre game mode.
 		PreGameUI.SetActive (false); // Turns off PreGame UI.
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
@@ -454,7 +450,7 @@ public class GameController : MonoBehaviour
 			if (wave != bossWave) 
 			{
 				GameObject rareitem = Rareitems [Random.Range (0, 4)];
-				Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
+				Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
 			}
 
 			if (wave == bossWave) 

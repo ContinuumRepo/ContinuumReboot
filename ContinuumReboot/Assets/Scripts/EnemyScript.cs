@@ -29,26 +29,35 @@ public class EnemyScript : MonoBehaviour
 		Music = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSource> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>(); // Finds the Game Controller.
 
+		GameObject ParentObject = GameObject.FindGameObjectWithTag ("Enemy");
+
 		if (EnemyType == enemyType.Normal)
 		{
 			if (GameObject.Find ("Boss") == null) 
 			{
 				Music.clip = NormalMusic;
 			}
-
-			EnemyTrans = GameObject.Find ("EnemyRestPoint").GetComponent<Transform>(); // Finds the transform the enemy will follow.
+			//GetComponent<SmoothFollowOrig> ().target = EnemyTrans.transform; // Finds the smooth following script.
+			EnemyTrans = GameObject.FindGameObjectWithTag ("EnemyTrans").transform; // Finds the transform the enemy will follow.
+			ParentObject.GetComponent<SmoothFollowOrig>().target = EnemyTrans;
 		}
 
 		if (EnemyType == enemyType.Boss) 
 		{
 			Music.clip = BossMusic;
 			Music.Play ();
-			EnemyTrans = GameObject.Find ("EnemyBossRestPoint").GetComponent<Transform>(); // Finds the transform the enemy will follow.
+			EnemyTrans = GameObject.FindGameObjectWithTag ("EnemyTrans").transform; // Finds the transform the enemy will follow.
 		}
 
 		if (dontuseEnemyTrans == false)
 		{
-			GetComponent<SmoothFollowOrig> ().target = EnemyTrans.transform; // Finds the smooth following script.
+			EnemyTrans = GameObject.FindGameObjectWithTag ("Player").transform;
+		}
+
+		if (dontuseEnemyTrans == true) 
+		{
+			ParentObject.GetComponent<SmoothFollowOrig> ().target = EnemyTrans.transform;
+			//EnemyTrans = GameObject.FindGameObjectWithTag ("EnemyTrans").transform;
 		}
 
 		BombNumberMax = Bombs.Length; // MAkes bomb number max equal to the length of the bombs array.
@@ -76,13 +85,13 @@ public class EnemyScript : MonoBehaviour
 
 			if (Health <= 0) 
 			{
-				//Music.UnPause ();
 				Instantiate (EnemyExplosion, gameObject.transform.position, Quaternion.Euler (60, 90, 0));
 				gameControllerScript.WaveLabel.SetActive (true);
 				gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
 				gameControllerScript.WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
 				gameControllerScript.wave += 1;
 				gameControllerScript.hazardCount += 2;
+				//Destroy (GameObject.FindGameObjectWithTag("Enemy"));
 				Destroy (gameObject);
 				Debug.Log ("Destroyed an enemy");
 			}

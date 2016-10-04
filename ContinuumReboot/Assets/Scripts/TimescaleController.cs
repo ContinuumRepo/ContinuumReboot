@@ -26,7 +26,8 @@ public class TimescaleController : MonoBehaviour
 	public enum calcMode
 	{
 		Distance,
-		timeScale
+		timeScale,
+		none
 	}
 
 	public calcMode CalculationMode;
@@ -45,6 +46,8 @@ public class TimescaleController : MonoBehaviour
 	public void Start () 
 	{
 		Time.timeScale = startTimeScale; // Sets timescale to 1
+
+		CalculationMode = calcMode.none;
 
 		if (PlayerMode == mode.onePlayer)
 		{
@@ -77,13 +80,25 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{	
+		if (CalculationMode == calcMode.none) 
+		{
+			if (Time.timeScale < 1) 
+			{
+				Time.timeScale += 0.2f * Time.unscaledDeltaTime;
+				Music.pitch = Time.timeScale;
+			}
+
+			if (Time.timeScale >= 1) 
+			{
+				CalculationMode = calcMode.timeScale;
+			}
+		}
+
 		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
 		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
-		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
-		currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
 
 		if (PlayerMode == mode.onePlayer) 
 		{
@@ -106,6 +121,10 @@ public class TimescaleController : MonoBehaviour
 		}
 
 		if (CalculationMode == calcMode.timeScale) {
+
+			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
+			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
+
 
 			// Stores the highest timescale value for stats.
 			if (Time.timeScale > highestTimeScale) {

@@ -24,6 +24,7 @@ public class GameStarter : MonoBehaviour
 			GetComponent<GameController> ().WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
 			GetComponent<GameController> ().WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
 			tsControl.enabled = true;
+			Time.timeScale = 0.1f;
 			GetComponent<GameStarter>().enabled = false;
 		}
 	}
@@ -31,5 +32,6 @@ public class GameStarter : MonoBehaviour
 	void StartGame ()
 	{
 		StartCoroutine (GetComponent<GameController> ().BrickSpawnWaves ());
+
 	}
 }

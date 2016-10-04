@@ -8,16 +8,12 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 444544}
-  - 65: {fileID: 6505490}
   - 54: {fileID: 5497176}
-  - 114: {fileID: 11489210}
   - 82: {fileID: 8227294}
-  - 114: {fileID: 11417054}
-  - 114: {fileID: 11441238}
   - 114: {fileID: 11439826}
-  - 114: {fileID: 11445932}
   - 95: {fileID: 9574088}
   - 135: {fileID: 13573128}
+  - 114: {fileID: 11461736}
   m_Layer: 13
   m_Name: AltFire (no cost)
   m_TagString: Bullet
@@ -116,20 +112,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 8
   m_CollisionDetection: 2
---- !u!65 &6505490
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161744}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.07, z: 2}
-  m_Center: {x: 0, y: -0.73, z: 0}
 --- !u!82 &8227294
 AudioSource:
   m_ObjectHideFlags: 1
@@ -141,7 +125,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 59b6d223b8193e74fb3219032a7a6567, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.6
+  m_Volume: 0.9
   m_Pitch: 0.34
   Loop: 0
   Mute: 0
@@ -239,22 +223,6 @@ MonoBehaviour:
     value: {x: 0, y: 180, z: 0}
     space: 1
   ignoreTimescale: 0
---- !u!114 &11417054
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 6
-  timeLeft: 0
-  DestroyType: 0
-  ActiveObject: {fileID: 0}
-  PressAnyKeyScript: {fileID: 0}
 --- !u!114 &11439826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,33 +258,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
---- !u!114 &11441238
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  xBound: {x: -50, y: 50}
-  yBound: {x: -30, y: 60}
-  zBound: {x: -100, y: 100}
---- !u!114 &11445932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 161744}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 1
---- !u!114 &11489210
+--- !u!114 &11461736
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -324,16 +266,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 161744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
+  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveUnitsPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  rotateDegreesPerSecond:
-    value: {x: 0, y: 0, z: 0}
-    space: 1
-  ignoreTimescale: 0
+  OnlyInStart: 0
+  SMOOTH_TIME: 0.3
+  LockX: 0
+  LockY: 0
+  LockZ: 0
+  useSmoothing: 0
+  target: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  useRB: 0
+  lockedPos: 0
+  hasLockedPos: 0
+  isMainCam: 0
+  camRotationX: 10
+  PlayerM: 0
 --- !u!135 &13573128
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -341,7 +296,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 161744}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
