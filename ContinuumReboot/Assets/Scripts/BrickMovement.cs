@@ -3,10 +3,16 @@ using System.Collections;
 
 public class BrickMovement : MonoBehaviour
 {
+	[Header ("Single-Column Brick")]
 	public float moveSpeed;
 	public float rotationSpeed;
 	public float tweenRate = 0.1f; // The speed at which the brick will move between cells in the stack
 
+	[Header ("Multi-Column Brick Group")]
+	public bool isSourceBrick; // must be the leftmost brick
+	public int groupWidth; // how many bricks wide the group is
+
+	// Private Variables
 	private int column = 0; // The column this brick is in
 	private bool cellSet = false; // If the cube is stacked
 	private int[] stackLocation = null; // This brick's location in the brick stack - column, row
@@ -44,7 +50,10 @@ public class BrickMovement : MonoBehaviour
 		{
 			transform.Translate ( 0, moveSpeed * Time.deltaTime, 0, Space.Self);
 			transform.Rotate (0, rotationSpeed * Time.deltaTime, 0);
-		}/*
+		}
+
+		/*
+		 * // This else statement shuffled the bricks down when those beneath were destroyed
 		else
 		{
 			// If enemy is not in bottom cell and the cell below it is empty
@@ -96,7 +105,7 @@ public class BrickMovement : MonoBehaviour
 		}
 	}*/
 
-	void setStackPosition ()
+	private void setStackPosition ()
 	{
 		for (int i = yPos.Length-1; i >= 0; i--)
 		{

@@ -58,7 +58,7 @@ GameObject:
   - 114: {fileID: 11429740}
   - 114: {fileID: 11488854}
   m_Layer: 9
-  m_Name: Orange Brick
+  m_Name: Green Brick
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ GameObject:
   - 114: {fileID: 11488114}
   - 114: {fileID: 11460504}
   m_Layer: 9
-  m_Name: Purple Brick
+  m_Name: Green Brick
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ GameObject:
   - 114: {fileID: 11472820}
   - 114: {fileID: 11443076}
   m_Layer: 9
-  m_Name: Cyan Brick
+  m_Name: Green Brick
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ GameObject:
   - 114: {fileID: 11432346}
   - 114: {fileID: 11497456}
   m_Layer: 9
-  m_Name: Yellow Brick
+  m_Name: Green Brick
   m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 158326}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.37, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -156,12 +156,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 175622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.63, z: 0}
+  m_LocalPosition: {x: 0, y: 12, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 427918}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!4 &427918
 Transform:
   m_ObjectHideFlags: 1
@@ -173,10 +173,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 414888}
+  - {fileID: 440586}
   - {fileID: 477764}
   - {fileID: 432702}
-  - {fileID: 440586}
-  - {fileID: 414888}
   - {fileID: 413566}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -187,12 +187,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.63, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 427918}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!4 &440586
 Transform:
   m_ObjectHideFlags: 1
@@ -200,12 +200,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 181628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.63, z: 0}
+  m_LocalPosition: {x: 0, y: 9, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 427918}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!4 &477764
 Transform:
   m_ObjectHideFlags: 1
@@ -213,12 +213,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.63, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 427918}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!23 &2304082
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -658,6 +658,7 @@ MonoBehaviour:
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ScoreText: {fileID: 0}
   normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
@@ -670,6 +671,7 @@ MonoBehaviour:
   ComboThree: {fileID: 0}
   ComboFour: {fileID: 0}
   ComboFive: {fileID: 0}
+  timeController: {fileID: 0}
 --- !u!114 &11404380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -684,6 +686,8 @@ MonoBehaviour:
   moveSpeed: -16
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11412920
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -698,6 +702,8 @@ MonoBehaviour:
   moveSpeed: -16
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11421608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -712,6 +718,8 @@ MonoBehaviour:
   moveSpeed: -16
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11429740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -730,6 +738,7 @@ MonoBehaviour:
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ScoreText: {fileID: 0}
   normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
@@ -742,6 +751,7 @@ MonoBehaviour:
   ComboThree: {fileID: 0}
   ComboFour: {fileID: 0}
   ComboFive: {fileID: 0}
+  timeController: {fileID: 0}
 --- !u!114 &11432346
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -760,6 +770,7 @@ MonoBehaviour:
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ScoreText: {fileID: 0}
   normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
@@ -772,6 +783,7 @@ MonoBehaviour:
   ComboThree: {fileID: 0}
   ComboFour: {fileID: 0}
   ComboFive: {fileID: 0}
+  timeController: {fileID: 0}
 --- !u!114 &11436808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,6 +838,8 @@ MonoBehaviour:
   moveSpeed: -16
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11457504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -872,6 +886,8 @@ MonoBehaviour:
   moveSpeed: -16
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11472820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,6 +906,7 @@ MonoBehaviour:
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ScoreText: {fileID: 0}
   normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
@@ -902,6 +919,7 @@ MonoBehaviour:
   ComboThree: {fileID: 0}
   ComboFour: {fileID: 0}
   ComboFive: {fileID: 0}
+  timeController: {fileID: 0}
 --- !u!114 &11487080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -956,6 +974,7 @@ MonoBehaviour:
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
+  ScoreText: {fileID: 0}
   normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
@@ -968,6 +987,7 @@ MonoBehaviour:
   ComboThree: {fileID: 0}
   ComboFour: {fileID: 0}
   ComboFive: {fileID: 0}
+  timeController: {fileID: 0}
 --- !u!114 &11488854
 MonoBehaviour:
   m_ObjectHideFlags: 1
