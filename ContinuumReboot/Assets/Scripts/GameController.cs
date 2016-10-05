@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
 		bossWave = 5;
 		Cursor.lockState = CursorLockMode.Locked;
 		bossScore = 100000;
-		ControlsUI.SetActive (false);
+		//ControlsUI.SetActive (false);
 
 		// Starts coroutines.
 		//StartCoroutine (BrickSpawnWaves ());
@@ -207,8 +207,8 @@ public class GameController : MonoBehaviour
 
 		if (CurrentScore >= bossScore) 
 		{
-			Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 0));
-			bossScore += 100000;
+			//Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 0));
+			//bossScore += 100000;
 		}
 
 		// HOTKEYS //
@@ -384,7 +384,7 @@ public class GameController : MonoBehaviour
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
 		yield return new WaitForSeconds (2);
-		ControlsUI.SetActive (true);
+		//ControlsUI.SetActive (true);
 	}
 
 	public IEnumerator BrickSpawnWaves ()
@@ -459,9 +459,9 @@ public class GameController : MonoBehaviour
 
 			if (wave == bossWave) 
 			{
-				GameObject rareitem = Rareitems [Random.Range (5, 5)];
-				Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
-				bossWave += bossWave;
+				//GameObject rareitem = Rareitems [Random.Range (5, 5)];
+				//Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
+				//bossWave += bossWave;
 			}
 			yield return new WaitForSeconds (waveWait / 2);
 		}
