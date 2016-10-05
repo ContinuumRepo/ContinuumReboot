@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class InputScroll : MonoBehaviour
+public class GameOverController : MonoBehaviour
 {
 	public ButtonEvents[] buttons;
 	public float timeBuffer; // Time between button scroll
@@ -23,7 +23,7 @@ public class InputScroll : MonoBehaviour
 	{
 		buttonIndex = buttons.Length;
 	}
-	
+
 	// Update is called once per frame
 	void Update ()
 	{
