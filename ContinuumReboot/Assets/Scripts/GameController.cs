@@ -392,7 +392,7 @@ public class GameController : MonoBehaviour
 			for (int i = 0; i < hazardCount; i++) {
 				if (wave >= 0 && wave <= 2) {
 					GameObject hazard = Hazards [Random.Range (0, 1)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
@@ -401,7 +401,7 @@ public class GameController : MonoBehaviour
 				
 				if (wave > 2 && wave <= 3) {
 					GameObject hazard = Hazards [Random.Range (0, 2)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
@@ -410,7 +410,7 @@ public class GameController : MonoBehaviour
 				
 				if (wave > 3 && wave <= 4) {
 					GameObject hazard = Hazards [Random.Range (0, 3)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
@@ -419,7 +419,7 @@ public class GameController : MonoBehaviour
 
 				if (wave > 4 && wave <= 5) {
 					GameObject hazard = Hazards [Random.Range (0, 4)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
@@ -428,16 +428,17 @@ public class GameController : MonoBehaviour
 
 				if (wave > 5 && wave <= 6) {
 					GameObject hazard = Hazards [Random.Range (0, 5)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
 					yield return new WaitForSeconds (spawnWait);
 				}
 
+				// Can spawn multi-column brick groups
 				if (wave > 6) {
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
-					randomColumn = Random.Range (0, columnLocations.Length - 1);
+					randomColumn = GetRandomForBrickGroup (hazard);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 					Quaternion spawnRotation = Quaternion.identity;
 					Instantiate (hazard, spawnPosition, spawnRotation);
@@ -461,6 +462,25 @@ public class GameController : MonoBehaviour
 			}
 			yield return new WaitForSeconds (waveWait / 2);
 		}
+	}
+
+	private int GetRandomForBrickGroup (GameObject hazard)
+	{
+		if(transform.childCount > 0) // if hazard is a brick group
+		{
+			Transform firstChild = hazard.transform.GetChild(0);
+			BrickMovement sourceBrickMove = firstChild.gameObject.GetComponent <BrickMovement>();
+
+			if (sourceBrickMove.isSourceBrick) // if hazard is a multi-column brick group
+			{
+				int groupWidth = sourceBrickMove.groupWidth;
+				int stackWidth = brickStackControllerScript.GetTotalColumns;
+
+				return Random.Range (0, stackWidth - groupWidth);
+			}
+		}
+
+		return Random.Range (0, columnLocations.Length);
 	}
 
 	IEnumerator PowerupSpawnWaves ()
