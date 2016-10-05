@@ -176,6 +176,7 @@ GameObject:
   - 114: {fileID: 11415830}
   - 114: {fileID: 11496840}
   - 114: {fileID: 11479448}
+  - 114: {fileID: 11489264}
   m_Layer: 13
   m_Name: TriShot Bullet (1)
   m_TagString: Bullet
@@ -198,6 +199,7 @@ GameObject:
   - 114: {fileID: 11470484}
   - 114: {fileID: 11414892}
   - 114: {fileID: 11473198}
+  - 114: {fileID: 11431116}
   m_Layer: 13
   m_Name: TriShot Bullet (2)
   m_TagString: Bullet
@@ -284,6 +286,7 @@ GameObject:
   - 114: {fileID: 11426850}
   - 114: {fileID: 11444766}
   - 114: {fileID: 11418320}
+  - 114: {fileID: 11425680}
   m_Layer: 13
   m_Name: TriShot Bullet
   m_TagString: Bullet
@@ -1563,17 +1566,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1586,6 +1586,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 5
+  ComboNN: 0
 --- !u!114 &11422354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1622,6 +1623,24 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
+--- !u!114 &11425680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11426850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1638,6 +1657,24 @@ MonoBehaviour:
   DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
+--- !u!114 &11431116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 153024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11437386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1750,17 +1787,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1773,6 +1807,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 5
+  ComboNN: 0
 --- !u!114 &11474812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1797,17 +1832,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1820,6 +1852,25 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 5
+  ComboNN: 0
+--- !u!114 &11489264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11496840
 MonoBehaviour:
   m_ObjectHideFlags: 1

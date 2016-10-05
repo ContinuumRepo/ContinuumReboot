@@ -288,7 +288,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a947497b8c90904394ba04360067d88, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -540,17 +540,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -562,7 +559,8 @@ MonoBehaviour:
   VibrationTime: 0.04
   useMutedBullet: 0
   ricoshetNumber: 0
-  ricoshetMax: 5
+  ricoshetMax: 1
+  ComboNN: 0
 --- !u!114 &11479480
 MonoBehaviour:
   m_ObjectHideFlags: 1

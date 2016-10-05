@@ -18,13 +18,12 @@ public class GameStarter : MonoBehaviour
 		if (PowerupOne == null && PowerupTwo == null && OrangeBox == null && YellowBox == null && GreenBox == null && BlueBox == null && PurpleBox == null) 
 		{
 			GetComponent<GameController> ().isPreGame = false;
-			//GetComponent<GameController> ().startWait = 1;
 			StartGame ();
 			GetComponent<GameController> ().WaveLabel.SetActive (true);
 			GetComponent<GameController> ().WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
 			GetComponent<GameController> ().WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
 			tsControl.enabled = true;
-			//Time.timeScale = 0.1f;
+			Time.timeScale = 0.2f;
 			GetComponent<GameStarter>().enabled = false;
 		}
 	}

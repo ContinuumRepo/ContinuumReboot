@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
 	public GameObject AltFireIndicator;
 	public Animator FlashIndicator;
 	public Animator LTriggerAnim;
+	public Text ComboText;
+	public float ComboTime;
+	public int ComboN;
+	public Animator ComboAnimation;
+	public bool isFiring;
+	public Image ComboImage;
 
 	[Header ("Powerups")]
 	// An array of powerup objects to spawn for the player.
@@ -138,10 +144,11 @@ public class PlayerController : MonoBehaviour
 	public AudioSource GameOverSound; 			// The GameOver Sound effect.
 	public AudioSource GameOverLoop; 			// The defeated Game Over music loop.
 	public GameObject gameOverExplosion; 		// The Awesome particle system for the Game Over.
-	//public GameObject GameOverCam;
 
 	void Start () 
 	{
+		ComboTime = 0;
+
 		if (isClone == false) 
 		{
 			MainCam.transform.rotation = Quaternion.identity;
@@ -218,6 +225,21 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		ComboN = Mathf.RoundToInt (ComboTime);
+		ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
+		ComboImage.color = new Color (0, 150, 150, (ComboTime / 10) - 0.1f);
+		ComboImage.GetComponent<RectTransform> ().sizeDelta = new Vector2 ((5 * (ComboTime)), 684.3f); 
+
+		if (ComboTime > 11) 
+		{
+			ComboTime = 11;
+		}
+
+		if (ComboTime < 0) 
+		{
+			ComboTime = 0;
+		}
+
 		if (isClone == false && Health >= 25) 
 		{
 			//float rotated = sensRot * gameObject.transform.position.x;
@@ -484,7 +506,6 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.StopAllCoroutines (); // Stops spawning objects and powerups.
 				GameOver (); // Triggers game Over method.
 				timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
-				//BGMPitchScript.addPitch = 0; // Resets the add pitch variable with the main music.
 			}
 
 			// if color correction saturation is less than 1
@@ -497,6 +518,29 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		ComboText.text = "x" + ComboN;
+
+		if (isFiring == false) 
+		{
+			if (ComboTime >= 0) 
+			{
+				ComboTime -= 3 * Time.deltaTime;
+			}
+
+			if (ComboTime < 1) 
+			{
+				ComboTime = 1;
+			}
+		}
+
+		if (isFiring == true) 
+		{
+			if (ComboN > 10) 
+			{
+				ComboN = 10;
+			}
+		}
+
 		if (AltFireImage.fillAmount < 1) 
 		{
 			AltFireImage.fillAmount += Time.deltaTime / altfireRate;
@@ -605,6 +649,14 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			ComboTime += 10 * Time.deltaTime;
+			isFiring = true;
+		}
+
+		if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+			(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
+		{
+			isFiring = false;
 		}
 
 		if (Input.GetKeyUp (KeyCode.LeftAlt)) 

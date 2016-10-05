@@ -128,6 +128,7 @@ GameObject:
   - 114: {fileID: 11420604}
   - 114: {fileID: 11478118}
   - 114: {fileID: 11439488}
+  - 114: {fileID: 11402244}
   m_Layer: 13
   m_Name: RegularShot
   m_TagString: Bullet
@@ -213,6 +214,7 @@ GameObject:
   - 114: {fileID: 11420876}
   - 114: {fileID: 11414480}
   - 114: {fileID: 11438682}
+  - 114: {fileID: 11460884}
   m_Layer: 13
   m_Name: RegularShot (1)
   m_TagString: Bullet
@@ -593,7 +595,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8a947497b8c90904394ba04360067d88, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1012,6 +1014,24 @@ TrailRenderer:
       rgba: 4294901980
   m_MinVertexDistance: 0.005
   m_Autodestruct: 0
+--- !u!114 &11402244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 131258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11406548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1098,17 +1118,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1121,6 +1138,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 5
+  ComboNN: 0
 --- !u!114 &11439488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1133,17 +1151,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
+  playerControllerScript: {fileID: 0}
   newSpeed: -70
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1156,6 +1171,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 5
+  ComboNN: 0
 --- !u!114 &11454648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1192,6 +1208,24 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
+--- !u!114 &11460884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11478118
 MonoBehaviour:
   m_ObjectHideFlags: 1

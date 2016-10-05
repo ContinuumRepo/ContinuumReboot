@@ -235,17 +235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 3
+  playerControllerScript: {fileID: 0}
   newSpeed: 0
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.3
   timeScaleControllerScript: {fileID: 0}
-  RicoshetParticle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -258,6 +255,7 @@ MonoBehaviour:
   useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
+  ComboNN: 0
 --- !u!114 &11461736
 MonoBehaviour:
   m_ObjectHideFlags: 1
