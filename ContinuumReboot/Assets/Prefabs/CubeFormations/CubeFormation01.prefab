@@ -249,9 +249,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 481148}
   - 114: {fileID: 11441440}
-  - 114: {fileID: 11460906}
   - 114: {fileID: 11471726}
-  - 114: {fileID: 11461630}
   m_Layer: 0
   m_Name: CubeFormation01
   m_TagString: Untagged
@@ -346,7 +344,6 @@ GameObject:
   - 114: {fileID: 11417366}
   - 95: {fileID: 9590030}
   - 114: {fileID: 11460074}
-  - 114: {fileID: 11494086}
   - 114: {fileID: 11471682}
   - 114: {fileID: 11437152}
   m_Layer: 9
@@ -3395,6 +3392,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11400856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3436,6 +3434,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11401112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3463,6 +3462,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11401432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3590,6 +3590,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11407184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3701,6 +3702,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11411208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3744,6 +3746,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11413070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3933,6 +3936,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11426880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3960,6 +3964,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11427516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4051,6 +4056,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11435384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4127,7 +4133,7 @@ MonoBehaviour:
   Music: {fileID: 0}
   NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
   BossMusic: {fileID: 8300000, guid: e070c979a5bf5aa4cb4aa7476576e74c, type: 3}
-  EnemyHealthBar: {fileID: 11483144, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  EnemyHealthBar: {fileID: 0}
   dontuseEnemyTrans: 1
 --- !u!114 &11438436
 MonoBehaviour:
@@ -4188,6 +4194,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11439580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4215,6 +4222,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11440908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4260,6 +4268,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11441440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4412,6 +4421,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11445098
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4439,6 +4449,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11445138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4626,6 +4637,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11453152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4653,6 +4665,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11453226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4680,6 +4693,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11454702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4721,6 +4735,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11455394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4748,6 +4763,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11456022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4839,6 +4855,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11459602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4918,32 +4935,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
---- !u!114 &11460906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138612}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559156675d4cac64c80d99f862cdb628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 200
-  Explosion: {fileID: 0}
-  EnemyExplosion: {fileID: 0}
-  PointReward: 250
-  bombRate: 2
-  Bombs: []
-  BombNumberMax: 0
-  CurrentBomb: 0
-  EnemyTrans: {fileID: 0}
-  EnemyType: 0
-  Music: {fileID: 0}
-  NormalMusic: {fileID: 0}
-  BossMusic: {fileID: 0}
-  EnemyHealthBar: {fileID: 0}
-  dontuseEnemyTrans: 0
+  ComboText: {fileID: 0}
 --- !u!114 &11461082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4958,18 +4950,6 @@ MonoBehaviour:
   xBound: {x: -100, y: 100}
   yBound: {x: -50, y: 100}
   zBound: {x: -100, y: 100}
---- !u!114 &11461630
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 138612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a20e1e9243214548a54f4f150360469, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
 --- !u!114 &11462252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4997,6 +4977,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11462558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5040,6 +5021,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11462846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5133,6 +5115,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11469738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5160,6 +5143,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11470940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5203,6 +5187,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11471682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5305,6 +5290,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11475758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5576,6 +5562,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &11493312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5590,33 +5577,6 @@ MonoBehaviour:
   xBound: {x: -100, y: 100}
   yBound: {x: -50, y: 100}
   zBound: {x: -100, y: 100}
---- !u!114 &11494086
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 151074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
-  PointType: 4
-  PointReward: 50
-  MainEngineParticles: {fileID: 0}
-  PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
-  ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
-  orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
-  yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
-  greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
-  cyanMaterial: {fileID: 2100000, guid: 4ec17934465affa458f5d99065889eca, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
-  redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
-  timeController: {fileID: 0}
 --- !u!114 &11494400
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -52,9 +52,6 @@ public class GameController : MonoBehaviour
 	public float rareitemSpawnWait; // Time between new spawned powerups.
 	public float rareitemWaveWait; // Time between powerup waves.
 	public int rareitemCount; // The amountof hazards to be spawned before a new wave of powerups.
-	//public Text rareitemText; // Powerup label for the player.
-	public int bossScore;
-	public int bossWave;
 
 	[Header ("Pausing")]
 	public bool isPaused; // Is the game paused right now?
@@ -62,7 +59,7 @@ public class GameController : MonoBehaviour
 	public AudioSource PauseSound; // The pause sound.
 	public AudioSource MainSound; // The main music.
 	public AudioSource ResumeSound; // The resume sound.
-	public AudioSourcePitchByTimescale AudioPitchScript; // The audio pitch by timescale component.
+	//public AudioSourcePitchByTimescale AudioPitchScript; // The audio pitch by timescale component.
 	public GameObject ControlsScreen; // Controls screen.
 
 	[Header ("Scoring")]
@@ -78,7 +75,6 @@ public class GameController : MonoBehaviour
 	public Text ScoreText; // The score text to display current score as an integer.
 	public Text TimeScaleText; // The current time scale multiplier text.
 	public Text GameOverScoreText; // The game over text to display final score.
-	//public Text HighestTimeScaleText; // The game over text to display the highest time scale achieved.
 
 	[Header ("Misc")]
 	public GameObject ShowFpsText; // The UI text to display frames per second.
@@ -87,11 +83,6 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
-		bossWave = 5;
-		Cursor.lockState = CursorLockMode.Locked;
-		bossScore = 100000;
-		//ControlsUI.SetActive (false);
-
 		// Starts coroutines.
 		StartCoroutine (PowerupSpawnWaves ());
 		StartCoroutine (CountDown ());
@@ -101,15 +92,14 @@ public class GameController : MonoBehaviour
 		ShowFpsText.SetActive (false); // Turns off showing FPS object.
 		PauseUI.SetActive (false); // Disables Pause UI.
 
-
 		// Start score.
 		CurrentScore = 0;
 		ScoreText.text = "" + 0 + "";
 		wave = 1;
 
 		// Start cursor lock state.
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Locked;
 		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
 
 		// turns off bottom barrier so the player can safely translate into the play space.
@@ -202,10 +192,6 @@ public class GameController : MonoBehaviour
 			CurrentScore = 0; // Make it equal to 0.
 		}
 
-		if (CurrentScore >= bossScore) 
-		{
-		}
-
 		// HOTKEYS //
 
 		// Pauses game and enables mouse pointer.
@@ -279,9 +265,9 @@ public class GameController : MonoBehaviour
 		// Right click to enable mouse pointer
 		if (Input.GetMouseButtonDown (1)) 
 		{
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
-			MouseScript.visibleTime = MouseScript.visibleDuration;
+			//Cursor.visible = true;
+			//Cursor.lockState = CursorLockMode.None;
+			//MouseScript.visibleTime = MouseScript.visibleDuration;
 		}
 
 		// Show FPS.
@@ -348,8 +334,8 @@ public class GameController : MonoBehaviour
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.25f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = true; // Turns on low pass audio filter.
-		Cursor.lockState = CursorLockMode.None; // Unlocks the cursor.
-		Cursor.visible = true; // Makes cursor visible.
+		//Cursor.lockState = CursorLockMode.None; // Unlocks the cursor.
+		//Cursor.visible = true; // Makes cursor visible.
 	}
 
 	public void UnPauseGame ()
@@ -358,13 +344,12 @@ public class GameController : MonoBehaviour
 		PauseUI.SetActive (false); // Deactivates Pause UI.
 		Time.timeScale = 1; // Sets timescale to 1.
 		Debug.Log ("Unpaused game.");
-		AudioPitchScript.enabled = true; // Enables audio pich script.
+		//AudioPitchScript.enabled = true; // Enables audio pich script.
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.7f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = false; // Turns off low pass filter.
-		Cursor.visible = false; // Makes cursor invisible.
+		//Cursor.visible = false; // Makes cursor invisible.
 		isPaused = false;
-
 	}
 
 	IEnumerator CountDown ()
@@ -376,7 +361,6 @@ public class GameController : MonoBehaviour
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
 		yield return new WaitForSeconds (2);
-		//ControlsUI.SetActive (true);
 	}
 
 	public IEnumerator BrickSpawnWaves ()
@@ -442,19 +426,8 @@ public class GameController : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds (waveWait / 2);
-
-			if (wave != bossWave) 
-			{
-				GameObject rareitem = Rareitems [Random.Range (0, 4)];
-				Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
-			}
-
-			if (wave == bossWave) 
-			{
-				//GameObject rareitem = Rareitems [Random.Range (5, 5)];
-				//Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
-				//bossWave += bossWave;
-			}
+			GameObject rareitem = Rareitems [Random.Range (0, 4)];
+			Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
 			yield return new WaitForSeconds (waveWait / 2);
 		}
 	}
@@ -502,7 +475,7 @@ public class GameController : MonoBehaviour
 			{
 				GameObject rareitem = Rareitems [Random.Range (6, Rareitems.Length)];
 				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
-				Instantiate (rareitem, rareitemSpawnPos, Quaternion.Euler(0, 0, 45));
+				Instantiate (rareitem, rareitemSpawnPos, Quaternion.identity);
 				yield return new WaitForSeconds (rareitemSpawnWait);
 			}
 		}

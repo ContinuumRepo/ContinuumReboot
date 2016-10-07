@@ -12,7 +12,7 @@ public class BulletScript : MonoBehaviour
 	private CameraShake camShakeScript; 					// The camera shake component.
 	public float InitialShakeDuration = 0.25f;				// Shake time.
 	public float InitialShakeStrength = 0.5f; 				// Shake strength.
-	private GameController gameControllerScript; 			// Game Controller component.
+	//private GameController gameControllerScript; 			// Game Controller component.
 	public TimescaleController timeScaleControllerScript; 	// Time scale controller component.
 	//public ParticleSystem[] RicoshetParticle;   			// Particle combos, should be children of the Player GameObject.
 	public AudioSource[] ComboAudio;
@@ -29,7 +29,8 @@ public class BulletScript : MonoBehaviour
 		rippleShot,
 		helix,
 		horizontalBeam,
-		verticalBeam
+		verticalBeam,
+		shield
 	}
 
 	void Start () 
@@ -56,7 +57,7 @@ public class BulletScript : MonoBehaviour
 		}
 			
 		VibrationTime = 0.04f;
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
 
 		ComboAudio[0] = GameObject.FindGameObjectWithTag ("ComboAudioZero").GetComponent<AudioSource>();
@@ -99,6 +100,21 @@ public class BulletScript : MonoBehaviour
 		{
 			Destroy (gameObject);
 		}
+
+		if (ComboNN > 10) 
+		{
+			ComboNN = 10;
+		}
+
+		if (playerControllerScript.ComboN > 10) 
+		{
+			playerControllerScript.ComboN = 10;
+		}
+
+		if (playerControllerScript.ComboTime > 10) 
+		{
+			playerControllerScript.ComboTime = 10;
+		}
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -115,9 +131,18 @@ public class BulletScript : MonoBehaviour
 
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
-			playerControllerScript.ComboTime += 0.25f;
-			//ComboAudio [ComboNN].Play ();
-			ComboAudio [playerControllerScript.ComboN].Play ();
+			playerControllerScript.ComboTime += 0.4f;
+
+			if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
+			{
+				ComboAudio [Mathf.Clamp(playerControllerScript.ComboN, 0, 9)].Play ();
+			}
+
+			if (playerControllerScript.ComboN > 10 || ComboNN > 10 || playerControllerScript.ComboTime > 10) 
+			{
+				ComboAudio [9].Play ();
+			}
+
 			camShakeScript.shakeDuration = InitialShakeDuration;
 			camShakeScript.shakeAmount = InitialShakeStrength;
 
@@ -132,10 +157,13 @@ public class BulletScript : MonoBehaviour
 					Destroy (gameObject);
 				}
 
-				//ComboAudio [ComboNN - 1].Play ();
-
 				ricoshetNumber += 1;
 				transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
+			}
+
+			if (BulletType == bulletType.shield) 
+			{
+				
 			}
 
 			if (BulletType == bulletType.mutedShot) 
@@ -173,6 +201,11 @@ public class BulletScript : MonoBehaviour
 				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
+		}
+
+		if (ComboNN > 10) 
+		{
+			ComboNN = 10;
 		}
 	}
 }

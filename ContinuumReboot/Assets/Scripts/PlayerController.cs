@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	private TimescaleController timeScaleControllerScript;    // TimeScale Controller component.
 	private MeshCollider PlayerCollider; 					  // Collider for the player.
 	private MeshRenderer PlayerMesh; 						  // MeshRenderer for the player
-	private AudioSourcePitchByTimescale BGMPitchScript; 	  // Pitch Script for the main music.
+	//private AudioSourcePitchByTimescale BGMPitchScript; 	  // Pitch Script for the main music.
 	public ColorCorrectionCurves ColorCorrectionCurvesScript; // Color Corrections image effect.
 	private Bloom bloomScript;
 	public float normalBloomAmount = 0.1f;
@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 	public float ComboTime;
 	public int ComboN;
 	public Animator ComboAnimation;
-	public bool isFiring;
 	public Image ComboImage;
 
 	[Header ("Powerups")]
@@ -197,7 +196,7 @@ public class PlayerController : MonoBehaviour
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
 
 		// Background music pitch by timescale script.
-		BGMPitchScript = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSourcePitchByTimescale>();
+		//BGMPitchScript = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSourcePitchByTimescale>();
 
 		// Finds color correction curves script.
 		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
@@ -227,7 +226,7 @@ public class PlayerController : MonoBehaviour
 	{
 		ComboN = Mathf.RoundToInt (ComboTime);
 		ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
-		ComboImage.color = new Color (0, 150, 150, (ComboTime / 10) - 0.1f);
+		ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
 		ComboImage.GetComponent<RectTransform> ().sizeDelta = new Vector2 ((5 * (ComboTime)), 684.3f); 
 
 		if (ComboTime > 11) 
@@ -238,6 +237,11 @@ public class PlayerController : MonoBehaviour
 		if (ComboTime < 0) 
 		{
 			ComboTime = 0;
+		}
+			
+		if (ComboN > 10) 
+		{
+			ComboN = 10;
 		}
 
 		if (isClone == false && Health >= 25) 
@@ -520,25 +524,24 @@ public class PlayerController : MonoBehaviour
 	{
 		ComboText.text = "x" + ComboN;
 
-		if (isFiring == false) 
+		if (ComboTime >= 0) 
 		{
-			if (ComboTime >= 0) 
-			{
-				ComboTime -= 1.5f * Time.deltaTime;
-			}
-
-			if (ComboTime < 1) 
-			{
-				ComboTime = 1;
-			}
+			ComboTime -= 1.5f * Time.deltaTime;
 		}
 
-		if (isFiring == true) 
+		if (ComboTime < 1f) 
 		{
-			if (ComboN > 10) 
-			{
-				ComboN = 10;
-			}
+			ComboTime = 1;
+		}
+
+		if (ComboN < 1) 
+		{
+			ComboN = 1;
+		}
+
+		if (ComboN > 10) 
+		{
+			ComboN = 10;
 		}
 
 		if (AltFireImage.fillAmount < 1) 
@@ -649,14 +652,11 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-
-			isFiring = true;
 		}
 
 		if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
 			(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
 		{
-			isFiring = false;
 		}
 
 		if (Input.GetKeyUp (KeyCode.LeftAlt)) 

@@ -23,7 +23,7 @@ public class EnemyController : MonoBehaviour
 
 	void Update () 
 	{
-		if (Brain == null) 
+		if (Brain == null || Brain.GetComponent<EnemyScript>().Health <= 0) 
 		{
 			gameControllerScript.WaveLabel.SetActive (true);
 			gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;

@@ -14327,6 +14327,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &134523180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19601,7 +19602,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 162497496}
   - 114: {fileID: 162497497}
-  - 114: {fileID: 162497498}
   - 114: {fileID: 162497499}
   m_Layer: 0
   m_Name: Game Controller
@@ -19669,9 +19669,9 @@ MonoBehaviour:
   - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
   - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
   spawnValues: {x: 35, y: 30, z: 0}
-  startWait: 2
+  startWait: 4
   spawnWait: 1.5
-  waveWait: 8
+  waveWait: 12
   hazardCount: 15
   speedupSpawnRate: 0.002
   minSpawnWait: 0.02
@@ -19701,11 +19701,11 @@ MonoBehaviour:
   PowerupText: {fileID: 2041953062}
   Rareitems:
   - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
   - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
   - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
-  - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
-  - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
   - {fileID: 170230, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
@@ -19718,14 +19718,11 @@ MonoBehaviour:
   rareitemSpawnWait: 45
   rareitemWaveWait: 20
   rareitemCount: 10
-  bossScore: 100000
-  bossWave: 0
   isPaused: 0
   PauseUI: {fileID: 862326352}
   PauseSound: {fileID: 0}
   MainSound: {fileID: 339966602}
   ResumeSound: {fileID: 0}
-  AudioPitchScript: {fileID: 0}
   ControlsScreen: {fileID: 106968, guid: d54f479d96d99c0478bd4e67003b7344, type: 2}
   displayedScore: 0
   CurrentScore: 0
@@ -19742,19 +19739,6 @@ MonoBehaviour:
   ShowFpsText: {fileID: 1895155896}
   CheatSound: {fileID: 2113772651}
   CheatActivatedAnim: {fileID: 371871069}
---- !u!114 &162497498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 162497495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b66700f0321f6644b11e23e3d7534d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hideMouse: 0
-  CursorLockModeType: 2
 --- !u!114 &162497499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23870,7 +23854,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240054772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e90da84e02bca914ebcba235b4353a9c, type: 3}
   m_Name: 
@@ -29749,7 +29733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
-  PointType: 0
+  PointType: 2
   PointReward: 30
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
@@ -29763,6 +29747,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &295395460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33697,7 +33682,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -42639,6 +42623,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &416970078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46096,6 +46081,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &463133393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75329,9 +75315,9 @@ GameObject:
   - 135: {fileID: 766750764}
   - 23: {fileID: 766750763}
   - 114: {fileID: 766750768}
-  - 114: {fileID: 766750769}
   - 82: {fileID: 766750767}
   - 114: {fileID: 766750766}
+  - 114: {fileID: 766750769}
   m_Layer: 13
   m_Name: Shield
   m_TagString: Bullet
@@ -75516,26 +75502,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 766750761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ccf7347ce6e304bbc15162abc50dcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialShakeDuration: 0.25
-  InitialShakeStrength: 0.5
+  BulletType: 7
+  playerControllerScript: {fileID: 0}
+  newSpeed: 0
+  InitialShakeDuration: 1
+  InitialShakeStrength: 1.5
   timeScaleControllerScript: {fileID: 0}
-  DecrementPortion: 0
-  DecrementAmount: 0
-  PlayElement: 0
-  Oneshots:
-  - {fileID: 1115232238}
-  BulletNoCost: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
-  Explosion: {fileID: 8210012, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
-  RicoshetParticle:
-  - {fileID: 1013753588}
-  - {fileID: 443119758}
-  - {fileID: 657662739}
-  - {fileID: 1486054472}
-  - {fileID: 2073842998}
+  ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   VibrationTime: 0.04
+  useMutedBullet: 0
+  ricoshetNumber: 0
+  ricoshetMax: 2147483647
+  ComboNN: 1
 --- !u!1 &772125112
 GameObject:
   m_ObjectHideFlags: 0
@@ -78099,7 +78090,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -93755,11 +93745,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1115116163}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &1115232238 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 8262856, guid: 4667f6cc18c5cfa4284cb5f65b1c39ba,
-    type: 2}
-  m_PrefabInternal: {fileID: 290525605}
 --- !u!1 &1124104975
 GameObject:
   m_ObjectHideFlags: 0
@@ -98843,7 +98828,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -107191,6 +107175,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &1508172358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137067,7 +137052,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -138044,7 +138028,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
