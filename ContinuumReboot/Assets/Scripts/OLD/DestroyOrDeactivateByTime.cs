@@ -13,33 +13,12 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 	}
 
 	public destroyType DestroyType;
-	//public bool deactivateOnly;
-	//public bool activateOnly;
 	public GameObject ActiveObject;
 	public PressAnyKeyDeactivate PressAnyKeyScript;
 
 	void Start () 
 	{
 		timeLeft = delay;
-		/*
-		if (deactivateOnly == true) 
-		{
-			StartCoroutine (Deactivate ());
-		}
-
-		if (activateOnly == true) 
-		{
-			ActiveObject.SetActive (false);
-			PressAnyKeyScript.useInput = false;
-			StartCoroutine (Activate ());
-		}
-
-		if (deactivateOnly == false && activateOnly == false) 
-		{
-			Destroy (gameObject, delay);
-		}*/
-
-
 	}
 
 	void Update () 
@@ -89,30 +68,7 @@ public class DestroyOrDeactivateByTime : MonoBehaviour
 				ActiveObject.SetActive (true);
 				PressAnyKeyScript.useInput = true;
 				GetComponent<DestroyOrDeactivateByTime> ().enabled = false;
-				//gameObject.SetActive (false);
 			}
 		}
-			
-	
 	}
-
-	/*
-	IEnumerator Deactivate ()
-	{
-		yield return new WaitForSeconds (delay);
-		gameObject.SetActive (false);
-		GetComponent<DestroyOrDeactivateByTime> ().enabled = false;
-		StopCoroutine (Deactivate ());
-	}
-
-
-	IEnumerator Activate ()
-	{
-		yield return new WaitForSeconds (delay);
-		ActiveObject.SetActive (true);
-		PressAnyKeyScript.useInput = true;
-		//gameObject.GetComponent<DestroyOrDeactivateByTime> ().enabled = false;
-	
-	}
-	*/
 }

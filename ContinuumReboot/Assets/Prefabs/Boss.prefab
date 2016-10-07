@@ -102,7 +102,7 @@ GameObject:
   - 64: {fileID: 6405982}
   m_Layer: 9
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,6 +265,7 @@ MonoBehaviour:
   LockZ: 0
   useSmoothing: 0
   target: {fileID: 493420}
+  thisTransform: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   xMin: 0
   xMax: 0
@@ -366,6 +367,7 @@ MonoBehaviour:
   LockZ: 0
   useSmoothing: 0
   target: {fileID: 493420}
+  thisTransform: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   xMin: 0
   xMax: 0
@@ -394,6 +396,8 @@ MonoBehaviour:
   Explosion: {fileID: 113200, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
   EnemyExplosion: {fileID: 196682, guid: 37f24fd5b56a8634cb4a6f8a7ede1777, type: 2}
   PointReward: 40
+  gameControllerScript: {fileID: 0}
+  nextBomb: 0
   bombRate: 0.4
   Bombs:
   - {fileID: 156088, guid: 22e6ff05b09ae834c8054a815e108a6a, type: 2}
@@ -410,6 +414,7 @@ MonoBehaviour:
   NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
   BossMusic: {fileID: 8300000, guid: e070c979a5bf5aa4cb4aa7476576e74c, type: 3}
   EnemyHealthBar: {fileID: 11432866}
+  dontuseEnemyTrans: 0
 --- !u!114 &11493064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -428,6 +433,7 @@ MonoBehaviour:
   LockZ: 0
   useSmoothing: 1
   target: {fileID: 0}
+  thisTransform: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   xMin: 0
   xMax: 0

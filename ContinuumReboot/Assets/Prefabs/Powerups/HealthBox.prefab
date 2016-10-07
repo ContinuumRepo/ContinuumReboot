@@ -61,10 +61,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170230}
-  m_LocalRotation: {x: 0, y: 0, z: 0.38268346, w: 0.9238795}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 20, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 6}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 404484}
   m_Father: {fileID: 0}
@@ -237,6 +237,8 @@ MonoBehaviour:
   moveSpeed: -10
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!198 &19809116
 ParticleSystem:
   m_ObjectHideFlags: 1

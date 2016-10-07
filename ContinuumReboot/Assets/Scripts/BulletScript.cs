@@ -117,7 +117,7 @@ public class BulletScript : MonoBehaviour
 		{
 			playerControllerScript.ComboTime += 0.25f;
 			//ComboAudio [ComboNN].Play ();
-			ComboAudio [playerControllerScript.ComboN - 1].Play ();
+			ComboAudio [playerControllerScript.ComboN].Play ();
 			camShakeScript.shakeDuration = InitialShakeDuration;
 			camShakeScript.shakeAmount = InitialShakeStrength;
 
