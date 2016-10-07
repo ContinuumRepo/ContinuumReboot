@@ -93,7 +93,6 @@ public class GameController : MonoBehaviour
 		//ControlsUI.SetActive (false);
 
 		// Starts coroutines.
-		//StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (PowerupSpawnWaves ());
 		StartCoroutine (CountDown ());
 		StartCoroutine (RareitemSpawnWaves ());
@@ -195,8 +194,6 @@ public class GameController : MonoBehaviour
 		{
 			// Sets game over score text.
 			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
-			// Sets game over highest itme scale text.
-			//HighestTimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.highestTimeScale * 100f)) + "%";
 		}
 
 		// If the game's score is less than 0.
@@ -207,8 +204,6 @@ public class GameController : MonoBehaviour
 
 		if (CurrentScore >= bossScore) 
 		{
-			//Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 0));
-			//bossScore += 100000;
 		}
 
 		// HOTKEYS //
@@ -390,7 +385,7 @@ public class GameController : MonoBehaviour
 		while (true) {
 			int randomColumn;
 			for (int i = 0; i < hazardCount; i++) {
-				if (wave >= 0 && wave <= 2) {
+				if (wave >= 0 && wave <= 1) {
 					GameObject hazard = Hazards [Random.Range (0, 1)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -399,7 +394,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 				
-				if (wave > 2 && wave <= 3) {
+				if (wave > 1 && wave <= 2) {
 					GameObject hazard = Hazards [Random.Range (0, 2)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -408,7 +403,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 				
-				if (wave > 3 && wave <= 4) {
+				if (wave > 2 && wave <= 3) {
 					GameObject hazard = Hazards [Random.Range (0, 3)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -417,7 +412,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 4 && wave <= 5) {
+				if (wave > 3 && wave <= 4) {
 					GameObject hazard = Hazards [Random.Range (0, 4)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -426,7 +421,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 5 && wave <= 6) {
+				if (wave > 4 && wave <= 5) {
 					GameObject hazard = Hazards [Random.Range (0, 5)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -436,7 +431,7 @@ public class GameController : MonoBehaviour
 				}
 
 				// Can spawn multi-column brick groups
-				if (wave > 6) {
+				if (wave > 5) {
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
 					randomColumn = GetRandomForBrickGroup (hazard);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);

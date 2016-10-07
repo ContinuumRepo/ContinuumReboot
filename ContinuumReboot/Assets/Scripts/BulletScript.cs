@@ -69,6 +69,11 @@ public class BulletScript : MonoBehaviour
 		ComboAudio[7] = GameObject.FindGameObjectWithTag ("ComboAudioSeven").GetComponent<AudioSource>();
 		ComboAudio[8] = GameObject.FindGameObjectWithTag ("ComboAudioEight").GetComponent<AudioSource>();
 		ComboAudio[9] = GameObject.FindGameObjectWithTag ("ComboAudioNine").GetComponent<AudioSource>();
+
+		if (playerControllerScript.ComboTime > 0.1f) 
+		{
+			playerControllerScript.ComboTime -= 0.1f;
+		}
 	}
 
 	void Update ()
@@ -110,6 +115,9 @@ public class BulletScript : MonoBehaviour
 
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
+			playerControllerScript.ComboTime += 0.25f;
+			//ComboAudio [ComboNN].Play ();
+			ComboAudio [playerControllerScript.ComboN - 1].Play ();
 			camShakeScript.shakeDuration = InitialShakeDuration;
 			camShakeScript.shakeAmount = InitialShakeStrength;
 
@@ -124,34 +132,33 @@ public class BulletScript : MonoBehaviour
 					Destroy (gameObject);
 				}
 
-				ComboAudio [ComboNN - 1].Play ();
-				//BulletType = bulletType.ricoshetShot;
+				//ComboAudio [ComboNN - 1].Play ();
+
 				ricoshetNumber += 1;
 				transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 			}
 
 			if (BulletType == bulletType.mutedShot) 
 			{
-				//BulletType = bulletType.ricoshetShot;
 				transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 			}
 
 			if (BulletType == bulletType.verticalBeam) 
 			{
-				ComboAudio [playerControllerScript.ComboN].Play ();
+				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 
 			if (BulletType == bulletType.horizontalBeam) 
 			{
-				ComboAudio [playerControllerScript.ComboN].Play ();
+				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 				gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
 
 			if (BulletType == bulletType.helix) 
 			{
-				ComboAudio [playerControllerScript.ComboN].Play ();
+				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 
@@ -163,7 +170,7 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.altFire) 
 			{
-				ComboAudio [playerControllerScript.ComboN].Play ();
+				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 		}

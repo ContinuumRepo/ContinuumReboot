@@ -524,7 +524,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (ComboTime >= 0) 
 			{
-				ComboTime -= 3 * Time.deltaTime;
+				ComboTime -= 1.5f * Time.deltaTime;
 			}
 
 			if (ComboTime < 1) 
@@ -649,7 +649,7 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			ComboTime += 10 * Time.deltaTime;
+
 			isFiring = true;
 		}
 
