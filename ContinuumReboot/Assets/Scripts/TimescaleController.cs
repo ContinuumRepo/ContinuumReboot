@@ -45,7 +45,7 @@ public class TimescaleController : MonoBehaviour
 
 	public void Start () 
 	{
-		Time.timeScale = startTimeScale; // Sets timescale to 1
+		Time.timeScale = startTimeScale;
 
 		CalculationMode = calcMode.none;
 
@@ -106,9 +106,6 @@ public class TimescaleController : MonoBehaviour
 		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
 
-		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
-		currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
-
 		if (PlayerMode == mode.onePlayer) 
 		{
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
@@ -131,6 +128,9 @@ public class TimescaleController : MonoBehaviour
 
 		if (CalculationMode == calcMode.Distance) 
 		{
+			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
+			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
+
 			if (distance < 7) 
 			{
 				Music.pitch = 0.05f;
@@ -138,7 +138,15 @@ public class TimescaleController : MonoBehaviour
 
 			if (distance < 14 && distance >= 7) 
 			{
-				Music.pitch = Time.timeScale - 0.4f;
+				if (Time.timeScale < 1 || Music.pitch < 1)
+				{
+					Music.pitch = Time.timeScale - 0.4f;
+				}
+
+				if (Time.timeScale >= 1 || Music.pitch > 1) 
+				{
+					Music.pitch = 1;
+				}
 			}
 
 			if (distance >= 14 && distance < 24) 

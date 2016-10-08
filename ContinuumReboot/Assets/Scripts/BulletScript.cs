@@ -131,7 +131,15 @@ public class BulletScript : MonoBehaviour
 
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
-			playerControllerScript.ComboTime += 0.4f;
+			if (playerControllerScript != null)
+			{
+				playerControllerScript.ComboTime += 0.4f;
+			}
+
+			if (playerControllerScript == null) 
+			{
+				Debug.Log ("Cannot find player controller script: Could be that this is a muted bullet spawning right in front of a cube.");
+			}
 
 			if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
 			{
