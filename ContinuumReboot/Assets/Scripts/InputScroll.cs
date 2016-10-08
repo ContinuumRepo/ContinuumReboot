@@ -56,7 +56,7 @@ public class InputScroll : MonoBehaviour
 			}
 
 			// If enabled, allow player to cancel to close the current menu (B, Start, escape)
-			if ((bToClose && (Input.GetKeyDown ("joystick button 1") == true) || (!startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("escape") == true))
+			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || (!startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("escape") == true))
 			{
 				PlayerPrefs.SetString ("InputMenu", bPrefsValue);
 				if (bBackButton != null)

@@ -346,6 +346,7 @@ public class GameController : MonoBehaviour
 		timeScaleControllerScript.enabled = true; // Turns on Timescale controller script.
 		PauseUI.SetActive (false); // Deactivates Pause UI.
 		Time.timeScale = 1; // Sets timescale to 1.
+		PlayerPrefs.SetString ("InputMenu", "");
 		Debug.Log ("Unpaused game.");
 		//AudioPitchScript.enabled = true; // Enables audio pich script.
 		MainSound.pitch = 1; // Sets custom pitch.
