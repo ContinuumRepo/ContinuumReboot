@@ -33028,6 +33028,7 @@ MonoBehaviour:
   vibrationDuration: 0.4
   vibrationTime: 0
   HealthText: {fileID: 1831119741}
+  collisionCooldown: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -76967,6 +76968,7 @@ MonoBehaviour:
   vibrationDuration: 0.4
   vibrationTime: 0
   HealthText: {fileID: 1831119741}
+  collisionCooldown: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 6
@@ -92765,7 +92767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1170026200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -97397,6 +97399,7 @@ MonoBehaviour:
   vibrationDuration: 0.4
   vibrationTime: 0
   HealthText: {fileID: 1831119741}
+  collisionCooldown: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -134975,6 +134978,7 @@ MonoBehaviour:
   vibrationDuration: 0.4
   vibrationTime: 0
   HealthText: {fileID: 1831119741}
+  collisionCooldown: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -135951,6 +135955,7 @@ MonoBehaviour:
   vibrationDuration: 0.4
   vibrationTime: 0
   HealthText: {fileID: 1831119741}
+  collisionCooldown: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -142968,7 +142973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2034280895
 RectTransform:
   m_ObjectHideFlags: 0
