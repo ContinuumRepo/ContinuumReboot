@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/MenuLeaderboards")]
 public class MenuLeaderboards : ButtonEvents
@@ -10,6 +11,7 @@ public class MenuLeaderboards : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -38,6 +40,7 @@ public class MenuLeaderboards : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		leadAnimator.enabled = true;
 		leadAnimator.Play ("LeaderboardsPointerEnter");
 		oneShot.Play();

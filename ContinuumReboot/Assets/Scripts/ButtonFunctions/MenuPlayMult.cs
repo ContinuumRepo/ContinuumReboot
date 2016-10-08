@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/MenuPlayMult")]
 public class MenuPlayMult : ButtonEvents
@@ -10,6 +11,7 @@ public class MenuPlayMult : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -55,6 +57,7 @@ public class MenuPlayMult : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		ComingSoonText.SetActive (true);
 		p2Animator.enabled = true;
 		p2Animator.Play ("Play2PPointerEnter");

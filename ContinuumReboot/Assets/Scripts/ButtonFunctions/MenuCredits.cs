@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/MenuCredits")]
 public class MenuCredits : ButtonEvents
@@ -11,6 +12,7 @@ public class MenuCredits : ButtonEvents
 
 	public ParticleSystem menuParticleShort;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -43,6 +45,7 @@ public class MenuCredits : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		creditsAnimator.enabled = true;
 		creditsAnimator.Play ("CreditsPointerEnter");
 		oneShot.Play();

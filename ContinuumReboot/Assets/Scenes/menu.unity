@@ -11133,8 +11133,9 @@ MonoBehaviour:
   bgMenuMusicLow: {fileID: 1987986091}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
-  buttonIndex: 0
+  thisButton: {fileID: 300336747}
+  scrollScript: {fileID: 1423367116}
+  buttonIndex: 2
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}
   engineRnone: {fileID: 651053416}
@@ -20072,8 +20073,9 @@ MonoBehaviour:
   bgMenuMusicLow: {fileID: 1987986091}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
-  buttonIndex: 0
+  thisButton: {fileID: 551592802}
+  scrollScript: {fileID: 1423367116}
+  buttonIndex: 1
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}
   engineRnone: {fileID: 651053416}
@@ -22088,8 +22090,9 @@ MonoBehaviour:
   controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
-  buttonIndex: 0
+  thisButton: {fileID: 605414833}
+  scrollScript: {fileID: 1423367116}
+  buttonIndex: 5
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}
   engineRnone: {fileID: 651053416}
@@ -37053,8 +37056,9 @@ MonoBehaviour:
   bgMenuMusicLow: {fileID: 1987986091}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
-  buttonIndex: 0
+  thisButton: {fileID: 908717793}
+  scrollScript: {fileID: 1423367116}
+  buttonIndex: 3
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}
   engineRnone: {fileID: 651053416}
@@ -51112,7 +51116,11 @@ MonoBehaviour:
   - {fileID: 605414838}
   timeBuffer: 0.1
   inputLocPrefsValue: main
-  indexLocation: 0
+  startToSelect: 1
+  bToClose: 0
+  bDeactivate: {fileID: 0}
+  bBackButton: {fileID: 0}
+  bPrefsValue: 
 --- !u!1 &1426047046
 GameObject:
   m_ObjectHideFlags: 0
@@ -52502,8 +52510,9 @@ MonoBehaviour:
   bgMenuMusicLow: {fileID: 1987986091}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
-  buttonIndex: 0
+  thisButton: {fileID: 1636964232}
+  scrollScript: {fileID: 1423367116}
+  buttonIndex: 4
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}
   engineRnone: {fileID: 651053416}
@@ -66272,7 +66281,8 @@ MonoBehaviour:
   controls: {fileID: 694996838}
   playerMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   menuParticleShort: {fileID: 429509255}
-  scrollScript: {fileID: 0}
+  thisButton: {fileID: 2136549864}
+  scrollScript: {fileID: 1423367116}
   buttonIndex: 0
   menuPlayer1: {fileID: 1017165465}
   engineLnone: {fileID: 658445502}

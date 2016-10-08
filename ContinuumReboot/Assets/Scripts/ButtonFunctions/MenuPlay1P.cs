@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/MenuPlay1P")]
 public class MenuPlay1P : ButtonEvents
@@ -11,6 +12,7 @@ public class MenuPlay1P : ButtonEvents
 	public Material playerMaterial;
 	public ParticleSystem menuParticleShort;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -40,6 +42,7 @@ public class MenuPlay1P : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		p1Animator.enabled = true;
 		p1Animator.Play ("Play1PPointerEnter");
 		oneShot.Play();

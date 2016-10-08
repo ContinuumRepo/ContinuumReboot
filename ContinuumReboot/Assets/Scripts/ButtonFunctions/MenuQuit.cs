@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/MenuQuit")]
 public class MenuQuit : ButtonEvents
@@ -13,6 +14,7 @@ public class MenuQuit : ButtonEvents
 
 	public ParticleSystem menuParticleShort;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -42,6 +44,7 @@ public class MenuQuit : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		quitAnimator.enabled = true;
 		quitAnimator.Play ("QuitPointerEnter");
 		oneShot.Play();

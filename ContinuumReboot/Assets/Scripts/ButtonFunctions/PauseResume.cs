@@ -39,6 +39,7 @@ public class PauseResume : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
 		resumeAnim.enabled = true;
 		resumeAnim.Play ("Play2PPointerEnter");
 		thisButton.Select();
