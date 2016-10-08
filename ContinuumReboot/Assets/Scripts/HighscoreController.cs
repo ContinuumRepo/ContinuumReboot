@@ -7,8 +7,8 @@ public class HighscoreController : MonoBehaviour
 {
 	public int maxNoHS = 10;
 
-	private List<string> hsNames;
-	private List<int> hsScores;
+	private List<string> hsNames = new List<string>();
+	private List<int> hsScores = new List<int>();
 
 	/// <summary>
 	/// Gets all names and scores for highscores
