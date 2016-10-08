@@ -429,7 +429,7 @@ public class GameController : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds (waveWait / 2);
-			GameObject rareitem = Rareitems [Random.Range (0, 4)];
+			GameObject rareitem = Rareitems [Random.Range (7, Rareitems.Length)];
 			Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
 			yield return new WaitForSeconds (waveWait / 2);
 		}
@@ -469,6 +469,7 @@ public class GameController : MonoBehaviour
 		}
 	}
 
+	// For Health
 	IEnumerator RareitemSpawnWaves ()
 	{
 		yield return new WaitForSeconds (rareitemStartWait);
@@ -476,7 +477,7 @@ public class GameController : MonoBehaviour
 		{
 			for (int i = 0; i < rareitemCount; i++) 
 			{
-				GameObject rareitem = Rareitems [Random.Range (6, Rareitems.Length)];
+				GameObject rareitem = Rareitems [Random.Range (0, 4)];
 				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
 				Instantiate (rareitem, rareitemSpawnPos, Quaternion.identity);
 				yield return new WaitForSeconds (rareitemSpawnWait);

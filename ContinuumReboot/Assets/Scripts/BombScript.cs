@@ -45,11 +45,18 @@ public class BombScript : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		// When a brick hits the player.
-		if (other.tag == "Player") {	
-			//playerScript.playerMesh.material = normalMaterial;
-			// If player health is greater than 25.
-			if (PlayerControllerScript.Health > 25) {
+		Instantiate (BombExplosion, gameObject.transform.position, gameObject.transform.rotation);
+
+		if (other.tag == "Cube") 
+		{
+			Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
+			Destroy (other.gameObject);
+		}
+			
+		if (other.tag == "Player") 
+		{	
+			if (PlayerControllerScript.Health > 25) 
+			{
 				// Finds Points to destroy.
 				GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
 				for (int i = Destroyers.Length - 1; i > 0; i--) {
@@ -74,7 +81,7 @@ public class BombScript : MonoBehaviour
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}
 		}
-		Instantiate (BombExplosion, gameObject.transform.position, gameObject.transform.rotation);
+
 		Destroy (gameObject);
 	}
 }
