@@ -8,8 +8,12 @@ public class InputScroll : MonoBehaviour
 	public ButtonEvents[] buttons;
 	public float timeBuffer; // Time between button scroll
 	public string inputLocPrefsValue;
+	public bool bToClose;
+	public GameObject bDeactivate; // Will call if bBackButton is 999
+	public int bBackButton = 999; // Calls OnClick for this button if not 999
+	public string bPrefsValue;
 
-	private bool idxSet = false;
+	//private bool idxSet = false;
 	private int buttonIndex;
 	[SerializeField]
 	private int indexLocation; // What button the player currently has selected
@@ -46,10 +50,25 @@ public class InputScroll : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKeyDown ("space") == true ||Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("return") == true)
+			// When selecting a button run that button's OnClick method
+			if (Input.GetKeyDown ("space") == true || Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("return") == true)
 			{
 				Debug.Log ("Click");
 				buttons[indexLocation].OnClick();
+			}
+
+			// If enabled, allow player to cancel to close the current menu
+			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || Input.GetKeyDown ("joystick button 7") == true || Input.GetKeyDown ("escape") == true))
+			{
+				PlayerPrefs.SetString ("InputMenu", bPrefsValue);
+				if (bBackButton != 999)
+				{
+					buttons [bBackButton].OnClick();
+				}
+				else
+				{
+					bDeactivate.SetActive (false);
+				}
 			}
 
 			// If mouse is moved, call onExit on last selected button
@@ -65,17 +84,23 @@ public class InputScroll : MonoBehaviour
 		}
 	}
 
+	void OnEnable ()
+	{
+		indexLocation = 0;
+		SetHighlighted (0);
+	}
+
 	private void CheckScroll (float value)
 	{
 		waiting = true;
 
 		if (value > 0) // Select button above
 		{
-			if (idxSet == false) // When the player first inputs, set highlighted to be first button
+			/*if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
 				SetHighlighted (0);
 			}
-			else if (indexLocation == 0) // If current highlighted button is last, set first button to be highlighted
+			else */if (indexLocation == 0) // If current highlighted button is last, set first button to be highlighted
 			{
 				SetHighlighted (buttonIndex - 1);
 			}
@@ -86,11 +111,11 @@ public class InputScroll : MonoBehaviour
 		}
 		else if (value < 0) // Select button below
 		{
-			if (idxSet == false) // When the player first inputs, set highlighted to be first button
+			/*if (idxSet == false) // When the player first inputs, set highlighted to be first button
 			{
 				SetHighlighted (0);
 			}
-			else if (indexLocation == buttonIndex - 1) // If current highlighted button is last, set first button to be highlighted
+			else */if (indexLocation == buttonIndex - 1) // If current highlighted button is last, set first button to be highlighted
 			{
 				SetHighlighted (0);
 			}
@@ -122,7 +147,7 @@ public class InputScroll : MonoBehaviour
 	private void SetHighlighted (int newIndex)
 	{
 		indexLocation = newIndex;
-		idxSet = true;
+		//idxSet = true;
 
 		buttons[lastIndex].OnExit();
 		buttons[newIndex].OnEnter();
