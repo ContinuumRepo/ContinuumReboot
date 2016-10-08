@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/// <summary>
+/// 
+/// This script is still in use
+/// 
+/// However, it is slowly being replaced as the menu evolves
+/// 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 
 public class MenuAB : MonoBehaviour

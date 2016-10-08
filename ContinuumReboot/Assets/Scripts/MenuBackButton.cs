@@ -13,7 +13,7 @@ public class MenuBackButton : MonoBehaviour
 
 	public void BackToMainButton()
 	{
-		PlayerPrefs.SetString ("InputMenu", "main");
+		PlayerPrefs.SetString ("InputMenu", "mainmenu");
 		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = false;
 		title.SetActive (true);
@@ -23,7 +23,7 @@ public class MenuBackButton : MonoBehaviour
 
 	public void BackFromCreditsButton()
 	{
-		PlayerPrefs.SetString ("InputMenu", "main");
+		PlayerPrefs.SetString ("InputMenu", "mainmenu");
 		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = false;
 		title.SetActive (true);
