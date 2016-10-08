@@ -43,8 +43,8 @@ public class HighscoreInput : MonoBehaviour
 			}
 		}
 
-		// Confirm to move to next initial input or confirm submit (A, enter/return)
-		if (Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("return") == true)
+		// Confirm to move to next initial input or confirm submit (A, space, enter/return)
+		if (Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("space") == true || Input.GetKeyDown ("return") == true)
 		{
 			if (nameIdxLoc != nameLength - 1)
 			{
@@ -61,8 +61,8 @@ public class HighscoreInput : MonoBehaviour
 			}
 		}
 
-		// Cancel to move back an initial input (B, escape)
-		if (Input.GetKeyDown ("joystick button 1") == true || Input.GetKeyDown ("escape") == true)
+		// Cancel to move back an initial input (B, escape, backspace)
+		if (Input.GetKeyDown ("joystick button 1") == true || Input.GetKeyDown ("escape") == true || Input.GetKeyDown (KeyCode.Backspace))
 		{
 			if (nameIdxLoc != 0)
 			{

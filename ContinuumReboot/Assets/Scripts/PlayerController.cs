@@ -771,6 +771,10 @@ public class PlayerController : MonoBehaviour
 					GameOverLoop.PlayDelayed (4.0f); // Delays.
 				}
 
+
+				// These controlls conflict with those in the game over screen
+				// If needed, check if PlayerPrefs.GetString ("InputMenu") is not = to "gameover" or "highscoreinput" or "gamepause"
+				/*
 				// Player presses A button or space during this time.
 				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown (KeyCode.R)) 
 				{
@@ -780,12 +784,15 @@ public class PlayerController : MonoBehaviour
 				if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Backspace)) 
 				{
 					SceneManager.LoadScene ("disclaimer");			
-				}
+				}*/
 			}
 
+			// These controlls conflict with those in the game over screen
+			// If needed, check if PlayerPrefs.GetString ("InputMenu") is not = to "gameover" or "highscoreinput" or "gamepause"
+			/*
 			if (Time.timeScale < 0.01f) 
 			{
-				if (/*Input.GetKeyDown ("joystick button 0") || */Input.GetKeyDown ("space"))
+				if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
 				{
 					Time.timeScale = initialTimeScale; // sets timescale to this.
 					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
@@ -807,7 +814,7 @@ public class PlayerController : MonoBehaviour
 				{
 					SceneManager.LoadScene ("disclaimer");			
 				}
-			}
+			}*/
 		}
 
 		// if health is below 0 and the Game Over UI is active.
