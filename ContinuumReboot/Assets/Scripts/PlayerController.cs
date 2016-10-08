@@ -128,6 +128,7 @@ public class PlayerController : MonoBehaviour
 	public float vibrationDuration = 0.4f; // The vibration duration as the player loses some health.
 	public float vibrationTime; 		   // The actual vibration time left.
 	public Text HealthText; 			   // The health text value which will be in percentage.
+	public float collisionCooldown;
 
 	[Header ("Game Over")]
 	public bool initialPart; 					// Is the GameOver state in its initial sequence.
@@ -147,6 +148,7 @@ public class PlayerController : MonoBehaviour
 	void Start () 
 	{
 		ComboTime = 0;
+		collisionCooldown = 0;
 
 		if (isClone == false) 
 		{
@@ -195,9 +197,6 @@ public class PlayerController : MonoBehaviour
 		// Timescale controller script.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
 
-		// Background music pitch by timescale script.
-		//BGMPitchScript = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSourcePitchByTimescale>();
-
 		// Finds color correction curves script.
 		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
 
@@ -242,6 +241,18 @@ public class PlayerController : MonoBehaviour
 		if (ComboN > 10) 
 		{
 			ComboN = 10;
+		}
+
+		if (collisionCooldown > 0) 
+		{
+			collisionCooldown -= Time.unscaledDeltaTime;
+			PlayerCollider.enabled = false;
+		}
+
+		if (collisionCooldown <= 0) 
+		{
+			collisionCooldown = 0;
+			PlayerCollider.enabled = true;
 		}
 
 		if (isClone == false && Health >= 25) 
@@ -324,7 +335,7 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
-				PlayerCollider.enabled = true; // Turns the player collider on.
+				//PlayerCollider.enabled = true; // Turns the player collider on.
 			
 				// if the lens script radius is greater than 0.
 				if (LensScript.radius > 0) 
@@ -401,7 +412,7 @@ public class PlayerController : MonoBehaviour
 				Shield.SetActive (true); // Turns on the shield.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-				PlayerCollider.enabled = false; // Turns off the player collider.
+				//PlayerCollider.enabled = false; // Turns off the player collider.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
 				//BgmHighFilter.enabled = true;
 				BgmLowFilter.enabled = true;
@@ -723,6 +734,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (other.tag == "Brick" || other.tag == "Cube")
 		{
+			collisionCooldown = 3;
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.
@@ -787,12 +799,6 @@ public class PlayerController : MonoBehaviour
 				{
 					Time.timeScale = initialTimeScale; // sets timescale to this.
 					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
-
-					/*// Turns on Game over UI.
-					if (GameOverUI.activeInHierarchy == false) 
-					{
-						GameOverUI.SetActive (true);
-					}*/
 
 					// Plays game over loop.
 					if (!GameOverLoop.isPlaying) 
