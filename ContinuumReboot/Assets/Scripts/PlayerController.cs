@@ -260,7 +260,7 @@ public class PlayerController : MonoBehaviour
 			//float rotated = sensRot * gameObject.transform.position.x;
 			float rotated = sensRot * Input.GetAxis("Horizontal P1");
 
-			MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
+			//MainCam.transform.rotation = Quaternion.Euler (0, 0, rotated);
 		}
 
 		if (Health < 25)
@@ -335,7 +335,6 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 				BeamShot.SetActive (false); // Turns off the beam shot.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
-				//PlayerCollider.enabled = true; // Turns the player collider on.
 			
 				// if the lens script radius is greater than 0.
 				if (LensScript.radius > 0) 
@@ -358,9 +357,6 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
 				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
-
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
 			}
 
 			// WIFI shot.
@@ -384,8 +380,6 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
 				TriShotIcon.SetActive (true); // Turns on double shot icon.
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
 			}
 
 			// Beam shot.
@@ -396,8 +390,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
 				BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
+
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -412,9 +405,7 @@ public class PlayerController : MonoBehaviour
 				Shield.SetActive (true); // Turns on the shield.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-				//PlayerCollider.enabled = false; // Turns off the player collider.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
-				//BgmHighFilter.enabled = true;
 				BgmLowFilter.enabled = true;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
 				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
@@ -437,8 +428,6 @@ public class PlayerController : MonoBehaviour
 				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -454,9 +443,8 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CLONES!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
-				//PlayerCollider.enabled = false; // Turns off player collider.
 				BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
+
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
@@ -597,10 +585,10 @@ public class PlayerController : MonoBehaviour
 			if (Input.GetKey (KeyCode.LeftAlt) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
 			{
 				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount > 0.0f && AltFire.activeSelf == true) 
+				if (AltFireImage.fillAmount > 0.0f) 
 				{
-					//AltFire.SetActive (true);
-					AltFireImage.fillAmount -= 0.25f * Time.deltaTime;
+					AltFire.SetActive (true);
+					AltFireImage.fillAmount -= 0.1f * Time.deltaTime;
 				}
 
 				// ""							"" while bar is greater than 0.9.
@@ -620,8 +608,8 @@ public class PlayerController : MonoBehaviour
 			{
 				if (AltFireImage.fillAmount <= 1) 
 				{
-					AltFire.SetActive (false);
-					AltFireImage.fillAmount += Time.deltaTime;
+					//AltFire.SetActive (false);
+					//AltFireImage.fillAmount += 0.1f * Time.deltaTime;
 				}
 
 				if (AltFireImage.fillAmount > 1) 
@@ -672,8 +660,8 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyUp (KeyCode.LeftAlt)) 
 		{
-			AltFire.SetActive (false);
-			AltFireImage.fillAmount += Time.deltaTime;
+			//AltFire.SetActive (false);
+			//AltFireImage.fillAmount += Time.deltaTime;
 		}
 
 		// Controller Input.
@@ -688,11 +676,12 @@ public class PlayerController : MonoBehaviour
 			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
 			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
+				AltFire.GetComponent<SmoothFollowOrig> ().enabled = true;
 				// When the player presses altfire while bar is greater than 0
 				if (AltFireImage.fillAmount > 0.0f && AltFire.activeSelf == true) 
 				{
 					//AltFire.SetActive (true);
-					AltFireImage.fillAmount -= 0.25f * Time.deltaTime;
+					AltFireImage.fillAmount -= 0.1f * Time.unscaledDeltaTime;
 				}
 
 				// ""							"" while bar is greater than 0.9.
@@ -716,10 +705,11 @@ public class PlayerController : MonoBehaviour
 			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
 				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
+				AltFire.GetComponent<SmoothFollowOrig> ().enabled = false;
 				if (AltFireImage.fillAmount <= 1) 
 				{
 					AltFire.SetActive (false);
-					AltFireImage.fillAmount += 0.1f * Time.deltaTime;
+					AltFireImage.fillAmount += 0.01f * Time.unscaledDeltaTime;
 				}
 
 				if (AltFireImage.fillAmount > 1) 
