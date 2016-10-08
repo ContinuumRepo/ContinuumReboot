@@ -3333,10 +3333,10 @@ RectTransform:
   - {fileID: 674340990}
   - {fileID: 694996839}
   - {fileID: 2073083733}
+  - {fileID: 1591084796}
   - {fileID: 1252126876}
   - {fileID: 2134306241}
   - {fileID: 1621393779}
-  - {fileID: 1591084796}
   - {fileID: 998628446}
   - {fileID: 1401081640}
   - {fileID: 356615526}
@@ -11599,8 +11599,8 @@ GameObject:
   - 222: {fileID: 323376879}
   - 114: {fileID: 323376878}
   - 114: {fileID: 323376877}
-  - 114: {fileID: 323376881}
   - 114: {fileID: 323376880}
+  - 114: {fileID: 323376881}
   m_Layer: 0
   m_Name: No Button
   m_TagString: Untagged
@@ -11668,7 +11668,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 323376881}
-        m_MethodName: BackToMainButton
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11751,7 +11751,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 323376875}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500c3d7a53dc46641a143db5e67ad20f, type: 3}
+  m_Script: {fileID: 11500000, guid: 15150aba664b07e49bc385a0133ff1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentMenu: {fileID: 1621393778}
@@ -11759,8 +11759,13 @@ MonoBehaviour:
   bgMenuMusicHigh: {fileID: 1987986092}
   title: {fileID: 1696477858}
   backAudio: {fileID: 1954470400}
-  bgMenuAudio: {fileID: 0}
-  creditsAudio: {fileID: 0}
+  oneShot: {fileID: 979868345}
+  backAnimator: {fileID: 0}
+  renameWait: 0.1
+  backToScrollScript: {fileID: 1423367116}
+  thisButton: {fileID: 323376877}
+  scrollScript: {fileID: 0}
+  buttonIndex: 0
 --- !u!1 &356615525
 GameObject:
   m_ObjectHideFlags: 0
@@ -26386,7 +26391,6 @@ GameObject:
   m_Component:
   - 224: {fileID: 694996839}
   - 95: {fileID: 694996840}
-  - 114: {fileID: 694996841}
   m_Layer: 0
   m_Name: Controls
   m_TagString: Untagged
@@ -26430,20 +26434,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &694996841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 694996838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefsBackToName: main
-  currentPrefsName: controls
-  backButtonScript: {fileID: 1517351108}
 --- !u!1 &698102101
 GameObject:
   m_ObjectHideFlags: 0
@@ -46866,7 +46856,7 @@ RectTransform:
   - {fileID: 1148102073}
   - {fileID: 418064980}
   m_Father: {fileID: 49800830}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000061035156, y: -0.000015258789}
@@ -46900,7 +46890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefsBackToName: main
+  prefsBackToName: mainmenu
   currentPrefsName: settings
   backButtonScript: {fileID: 984154584}
 --- !u!1 &1276802460
@@ -51114,13 +51104,14 @@ MonoBehaviour:
   - {fileID: 908717796}
   - {fileID: 1636964237}
   - {fileID: 605414838}
-  timeBuffer: 0.1
-  inputLocPrefsValue: main
+  timeBuffer: 0.2
+  inputLocPrefsValue: mainmenu
   startToSelect: 1
   bToClose: 0
   bDeactivate: {fileID: 0}
   bBackButton: {fileID: 0}
   bPrefsValue: 
+  firstIndex: 0
 --- !u!1 &1426047046
 GameObject:
   m_ObjectHideFlags: 0
@@ -51536,9 +51527,9 @@ GameObject:
   - 114: {fileID: 1517351104}
   - 114: {fileID: 1517351103}
   - 114: {fileID: 1517351102}
-  - 114: {fileID: 1517351108}
   - 114: {fileID: 1517351106}
   - 95: {fileID: 1517351107}
+  - 114: {fileID: 1517351108}
   m_Layer: 0
   m_Name: Back Button
   m_TagString: Untagged
@@ -51616,7 +51607,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1517351108}
-        m_MethodName: BackToMainButton
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -51677,31 +51668,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 979868345}
-          m_MethodName: Play
+        - m_Target: {fileID: 1517351108}
+          m_MethodName: OnEnter
           m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1517351107}
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 1517351107}
-          m_MethodName: Play
-          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -51716,9 +51685,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1517351107}
-          m_MethodName: Play
-          m_Mode: 5
+        - m_Target: {fileID: 1517351108}
+          m_MethodName: OnExit
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -51755,7 +51724,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1517351100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 500c3d7a53dc46641a143db5e67ad20f, type: 3}
+  m_Script: {fileID: 11500000, guid: 15150aba664b07e49bc385a0133ff1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentMenu: {fileID: 694996838}
@@ -51763,8 +51732,13 @@ MonoBehaviour:
   bgMenuMusicHigh: {fileID: 1987986092}
   title: {fileID: 1696477858}
   backAudio: {fileID: 1954470400}
-  bgMenuAudio: {fileID: 0}
-  creditsAudio: {fileID: 0}
+  oneShot: {fileID: 979868345}
+  backAnimator: {fileID: 1517351107}
+  renameWait: 0.1
+  backToScrollScript: {fileID: 1423367116}
+  thisButton: {fileID: 1517351103}
+  scrollScript: {fileID: 1890838349}
+  buttonIndex: 0
 --- !u!1001 &1518807817
 Prefab:
   m_ObjectHideFlags: 0
@@ -51991,7 +51965,7 @@ RectTransform:
   m_Children:
   - {fileID: 1334648677}
   m_Father: {fileID: 49800830}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000061035156, y: -0.000015258789}
@@ -52025,7 +51999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefsBackToName: main
+  prefsBackToName: mainmenu
   currentPrefsName: leaderboards
   backButtonScript: {fileID: 1720270363}
 --- !u!1 &1611042942
@@ -52266,7 +52240,7 @@ RectTransform:
   - {fileID: 323376876}
   - {fileID: 1788876983}
   m_Father: {fileID: 49800830}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -52297,12 +52271,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1621393778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
+  m_Script: {fileID: 11500000, guid: c7ece267a8cb77b49875f67d7be7895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefsBackToName: main
-  currentPrefsName: quit
-  backButtonScript: {fileID: 323376881}
+  noButton: {fileID: 323376881}
 --- !u!1 &1636964230
 GameObject:
   m_ObjectHideFlags: 0
@@ -61354,7 +61326,7 @@ MonoBehaviour:
   useInput: 0
   TitleAnim: {fileID: 1696477860}
   timeBuffer: 1
-  inputLocPrefsValue: main
+  inputLocPrefsValue: mainmenu
 --- !u!1 &1788876982
 GameObject:
   m_ObjectHideFlags: 0
@@ -61366,7 +61338,6 @@ GameObject:
   - 222: {fileID: 1788876986}
   - 114: {fileID: 1788876985}
   - 114: {fileID: 1788876984}
-  - 114: {fileID: 1788876987}
   - 114: {fileID: 1788876988}
   m_Layer: 0
   m_Name: Yes Button
@@ -61434,58 +61405,14 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1788876987}
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 1621393778}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_cutoffFrequency
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 600
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_cutoffFrequency
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 500
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_cutoffFrequency
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 500
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -61524,17 +61451,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1788876982}
---- !u!114 &1788876987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1788876982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7ece267a8cb77b49875f67d7be7895b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1788876988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62531,6 +62447,7 @@ GameObject:
   - 224: {fileID: 1890838346}
   - 222: {fileID: 1890838348}
   - 114: {fileID: 1890838347}
+  - 114: {fileID: 1890838349}
   m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
@@ -62601,6 +62518,28 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1890838345}
+--- !u!114 &1890838349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1890838345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9b70436ae92144892999bca8382514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1517351108}
+  - {fileID: 2082553349}
+  timeBuffer: 0.2
+  inputLocPrefsValue: controls
+  startToSelect: 1
+  bToClose: 1
+  bDeactivate: {fileID: 0}
+  bBackButton: {fileID: 1517351108}
+  bPrefsValue: mainmenu
+  firstIndex: 1
 --- !u!1 &1893921205
 GameObject:
   m_ObjectHideFlags: 0
@@ -65321,7 +65260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefsBackToName: main
+  prefsBackToName: mainmenu
   currentPrefsName: multiplayer
   backButtonScript: {fileID: 535445974}
 --- !u!1 &2074426650
@@ -65420,6 +65359,7 @@ GameObject:
   - 114: {fileID: 2082553345}
   - 114: {fileID: 2082553344}
   - 114: {fileID: 2082553348}
+  - 114: {fileID: 2082553349}
   m_Layer: 0
   m_Name: Play Button
   m_TagString: Untagged
@@ -65496,9 +65436,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2082553344}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 2082553349}
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -65507,28 +65447,6 @@ MonoBehaviour:
           m_StringArgument: main
           m_BoolArgument: 0
         m_CallState: 1
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: PanelFadeIn
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2082553346
@@ -65580,8 +65498,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 979868345}
-          m_MethodName: Play
+        - m_Target: {fileID: 2082553349}
+          m_MethodName: OnEnter
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -65594,6 +65512,22 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &2082553349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2082553342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94abe6b25349cc74494c29711eb0592c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuScript: {fileID: 2082553344}
+  oneShot: {fileID: 979868345}
+  thisButton: {fileID: 2082553345}
+  scrollScript: {fileID: 1890838349}
+  buttonIndex: 1
 --- !u!1 &2088515077
 GameObject:
   m_ObjectHideFlags: 0
@@ -66013,7 +65947,7 @@ RectTransform:
   m_Children:
   - {fileID: 57614916}
   m_Father: {fileID: 49800830}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -66047,7 +65981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c529f4bcfe1a40c4cac829aef018de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefsBackToName: main
+  prefsBackToName: mainmenu
   currentPrefsName: credits
   backButtonScript: {fileID: 198898560}
 --- !u!1 &2136549862

@@ -2,13 +2,11 @@
 using System.Collections;
 using UnityEngine.UI;
 
-[AddComponentMenu("ButtonEvents/GameOverMenu")]
-public class GameOverMenu : ButtonEvents
+[AddComponentMenu("ButtonEvents/MenuControlsPlay")]
+public class MenuControlsPlay : ButtonEvents
 {
-	public AudioSource hoverSound;
-
 	public MenuScript menuScript;
-	public Animator menuAnim;
+	public AudioSource oneShot;
 
 	public Button thisButton;
 	public InputScroll scrollScript;
@@ -16,7 +14,7 @@ public class GameOverMenu : ButtonEvents
 
 	public override void OnClick()
 	{
-		menuScript.LoadScene ("menu");
+		menuScript.LoadScene ("main");
 	}
 
 	public override void OnEnter()
@@ -25,12 +23,11 @@ public class GameOverMenu : ButtonEvents
 			scrollScript.HighlightedButton = buttonIndex;
 		thisButton.Select();
 
-		menuAnim.Play ("Play2PPointerEnter");
-		hoverSound.Play();
+		oneShot.Play();
 	}
 
 	public override void OnExit()
 	{
-		menuAnim.Play ("Play2PPointerExit");
+
 	}
 }

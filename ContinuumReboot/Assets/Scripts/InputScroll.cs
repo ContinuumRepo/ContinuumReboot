@@ -15,6 +15,7 @@ public class InputScroll : MonoBehaviour
 	public string bPrefsValue;
 
 	private int buttonIndex;
+	public int firstIndex = 0; // What button is auto-selected
 	private int indexLocation; // What button the player currently has selected
 	private int lastIndex = 0;
 
@@ -58,13 +59,13 @@ public class InputScroll : MonoBehaviour
 			// If enabled, allow player to cancel to close the current menu (B, Start, escape)
 			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || (!startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("escape") == true))
 			{
-				PlayerPrefs.SetString ("InputMenu", bPrefsValue);
 				if (bBackButton != null)
 				{
 					bBackButton.OnClick();
 				}
 				else
 				{
+					PlayerPrefs.SetString ("InputMenu", bPrefsValue);
 					bDeactivate.SetActive (false);
 				}
 			}
@@ -84,8 +85,12 @@ public class InputScroll : MonoBehaviour
 
 	void OnEnable ()
 	{
-		indexLocation = 0;
-		SetHighlighted (0);
+		indexLocation = firstIndex;
+		for (int i = 0; i < buttonIndex; i++)
+		{
+			buttons[i].OnExit();
+		}
+		SetHighlighted (indexLocation);
 	}
 
 	private void CheckScroll (float value)
@@ -156,5 +161,16 @@ public class InputScroll : MonoBehaviour
 	public int HighlightedButton
 	{
 		set {indexLocation = value;}
+	}
+
+	public void WaitToRenameInputMenu (float wait, string newName)
+	{
+		StartCoroutine (RenameWait (wait, newName));
+	}
+
+	IEnumerator RenameWait (float wait, string newName)
+	{
+		yield return new WaitForSeconds (wait);
+		PlayerPrefs.SetString ("InputMenu", newName);
 	}
 }
