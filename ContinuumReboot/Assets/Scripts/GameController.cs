@@ -197,7 +197,6 @@ public class GameController : MonoBehaviour
 		// Pauses game and enables mouse pointer.
 		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
-			isPaused = true; // Paused boolean.
 			PauseGame (); // Calls PauseGame method.
 
 			Cursor.lockState = CursorLockMode.None; // Unlocks mouse cursor.
@@ -220,7 +219,6 @@ public class GameController : MonoBehaviour
 		// Pause via controller input.
 		if (Input.GetButtonDown ("Pause") && isPaused == false)
 		{
-			isPaused = true;
 			PauseGame ();
 
 			Cursor.lockState = CursorLockMode.None;
@@ -232,7 +230,6 @@ public class GameController : MonoBehaviour
 
 		if (Input.GetKeyDown ("joystick button 1") && isPaused == true && ControlsScreen.activeInHierarchy == false) 
 		{
-			isPaused = false;
 			UnPauseGame ();
 
 			MouseScript.enabled = true;
@@ -240,8 +237,13 @@ public class GameController : MonoBehaviour
 			
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
-			isPaused = false;
-			UnPauseGame ();
+			Debug.Log ("isPaused = " + isPaused);
+			/*
+			if (isPaused)
+				UnPauseGame ();
+			else
+				PauseGame ();
+			*/
 		}
 
 		if (Input.GetKeyDown (KeyCode.R)) 
@@ -325,6 +327,7 @@ public class GameController : MonoBehaviour
 
 	public void PauseGame ()
 	{
+		isPaused = true;
 		timeScaleControllerScript.enabled = false; // Turns off Timescale controller script.
 		Time.timeScale = 0; // Sets timescale to 0.
 		PauseUI.SetActive (true); // Activates pause UI.

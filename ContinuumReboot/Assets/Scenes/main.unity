@@ -46965,7 +46965,7 @@ MonoBehaviour:
   confirmExit: {fileID: 109640326}
   exitAnim: {fileID: 509033873}
   scrollScript: {fileID: 745027555}
-  buttonIndex: 3
+  buttonIndex: 2
 --- !u!1 &516519780
 GameObject:
   m_ObjectHideFlags: 0
@@ -70737,11 +70737,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 541505252}
-  - {fileID: 0}
   - {fileID: 1290782231}
   - {fileID: 509033874}
   timeBuffer: 0.1
   inputLocPrefsValue: gamepause
+  bToClose: 1
+  bDeactivate: {fileID: 0}
+  bBackButton: 0
+  bPrefsValue: 
   indexLocation: 0
 --- !u!1 &745078445
 GameObject:
@@ -99573,7 +99576,7 @@ MonoBehaviour:
   menuScript: {fileID: 1290782225}
   restartAnim: {fileID: 1290782230}
   scrollScript: {fileID: 745027555}
-  buttonIndex: 2
+  buttonIndex: 1
 --- !u!1 &1299446205
 GameObject:
   m_ObjectHideFlags: 0

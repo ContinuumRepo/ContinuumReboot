@@ -9,12 +9,12 @@ InputManager:
     m_Name: Horizontal P1
     descriptiveName: Joystick for P1
     descriptiveNegativeName: 
-    negativeButton: left
-    positiveButton: right
-    altNegativeButton: a
-    altPositiveButton: d
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
-    dead: 0.1
+    dead: 0.19
     sensitivity: 1
     snap: 1
     invert: 0
@@ -25,12 +25,12 @@ InputManager:
     m_Name: Vertical P1
     descriptiveName: Joystick for P1
     descriptiveNegativeName: 
-    negativeButton: down
-    positiveButton: up
-    altNegativeButton: s
-    altPositiveButton: w
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: 
     gravity: 0
-    dead: 0.1
+    dead: 0.19
     sensitivity: 1
     snap: 1
     invert: 1
