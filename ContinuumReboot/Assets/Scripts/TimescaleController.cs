@@ -80,6 +80,12 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{	
+		if (Time.timeScale <= 0) 
+		{
+			Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
+			Time.timeScale = 0.05f;
+		}
+
 		if (CalculationMode == calcMode.none) 
 		{
 			if (Time.timeScale < 1) 
@@ -90,7 +96,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 1) 
 			{
-				CalculationMode = calcMode.timeScale;
+				CalculationMode = calcMode.Distance;
 			}
 		}
 
@@ -99,6 +105,9 @@ public class TimescaleController : MonoBehaviour
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
 		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
+
+		Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
+		currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
 
 		if (PlayerMode == mode.onePlayer) 
 		{
@@ -120,11 +129,41 @@ public class TimescaleController : MonoBehaviour
 			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y + playerThree.transform.position.y + playerFour.transform.position.y) / 4) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
 		}
 
-		if (CalculationMode == calcMode.timeScale) {
+		if (CalculationMode == calcMode.Distance) 
+		{
+			if (distance < 7) 
+			{
+				Music.pitch = 0.05f;
+			}
 
-			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
-			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
+			if (distance < 14 && distance >= 7) 
+			{
+				Music.pitch = Time.timeScale - 0.4f;
+			}
 
+			if (distance >= 14 && distance < 24) 
+			{
+				Music.pitch = 1f;
+			}
+
+			if (distance >= 24 && distance < 34) 
+			{
+				Music.pitch = 1.25f;
+			}
+
+			if (distance >= 34 && distance < 44) 
+			{
+				Music.pitch = 1.5f;
+			}
+
+			if (distance >= 44) 
+			{
+				Music.pitch = 2f;
+			}
+		}
+
+		if (CalculationMode == calcMode.timeScale) 
+		{
 			// Stores the highest timescale value for stats.
 			if (Time.timeScale > highestTimeScale) {
 				highestTimeScale = Time.timeScale;
@@ -132,27 +171,28 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale < 0.5f) 
 			{
-				Music.pitch = 0.25f;
+				Music.pitch = 0.15f;
 			}
 
 			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) {
-				Music.pitch = 0.5f;
+				Music.pitch = 0.4f;
 			}
 
-			if (Time.timeScale >= 1f && Time.timeScale < 3f) {
+			if (Time.timeScale >= 1f && Time.timeScale < 2f) {
 				Music.pitch = 1f;
 			}
 
+			if (Time.timeScale >= 2f && Time.timeScale < 3f) {
+				Music.pitch = 1.25f;
+			}
+
 			if (Time.timeScale >= 3f && Time.timeScale < 4f) {
-				Music.pitch = 1.3f;
+				Music.pitch = 1.5f;
 			}
 
-			if (Time.timeScale >= 4f && Time.timeScale < 5f) {
-				Music.pitch = 1.6f;
-			}
-
-			if (Time.timeScale >= 5f) {
-				Music.pitch = 1.8f;
+			if (Time.timeScale >= 4f) 
+			{
+				Music.pitch = 2f;
 			}
 		}
 	}

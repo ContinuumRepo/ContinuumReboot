@@ -8,6 +8,7 @@ public class ShieldScript : MonoBehaviour
 	public float InitialShakeDuration = 0.25f;
 	public float InitialShakeStrength = 0.5f;
 	//private GameController gameControllerScript;
+	private PlayerController playerControllerScript;
 	public TimescaleController timeScaleControllerScript;
 	public float DecrementPortion = 0.1f;
 	public float DecrementAmount = 100.0f;

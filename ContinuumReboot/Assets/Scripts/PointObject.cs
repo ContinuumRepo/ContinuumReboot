@@ -2,6 +2,7 @@
 using System.Collections;
 using XInputDotNetPure;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.UI;
 
 public class PointObject : MonoBehaviour 
 {
@@ -23,18 +24,12 @@ public class PointObject : MonoBehaviour
 	public Material cyanMaterial;
 	public Material pinkMaterial;
 	public Material redMaterial;
-
-	// Combo particle systems.
-	/*public ParticleSystem ComboOne;
-	public ParticleSystem ComboTwo;
-	public ParticleSystem ComboThree;
-	public ParticleSystem ComboFour;
-	public ParticleSystem ComboFive;*/
-
 	public TimescaleController timeController;
+	public Text ComboText;
 
 	void Start ()
 	{
+		ComboText = GameObject.Find ("ComboText").GetComponent<Text> ();
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
 		playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
 
@@ -49,23 +44,15 @@ public class PointObject : MonoBehaviour
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 
 		timeController = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
-
-		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
-		//ComboOne = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
-		//ComboTwo = GameObject.FindGameObjectWithTag ("ComboYellowParticles").GetComponent<ParticleSystem>();
-		//ComboThree = GameObject.FindGameObjectWithTag ("ComboGreenParticles").GetComponent<ParticleSystem>();
-		//ComboFour = GameObject.FindGameObjectWithTag ("ComboCyanParticles").GetComponent<ParticleSystem>();
-		//ComboFive = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
 	}
 
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Bullet") 
 		{
-			timeController.AudibleTimeRemaining = timeController.AudibleMaxTime;
 			// Creates explosion.
 			Instantiate (Explosion, transform.position, transform.rotation);
-			ScoreText.Play (0);
+			ScoreText.Play ("Scoretext");
 
 			// Orange brick.
 			if (PointType == type.Orange) 
@@ -75,11 +62,7 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (0.78f, 0.33f, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboOne.startColor = new Color (0.78f, 0.33f, 0, 1);
-				//ComboTwo.startColor = new Color (0.78f, 0.33f, 0, 1);
-				//ComboThree.startColor = new Color (0.78f, 0.33f, 0, 1);
-				//ComboFour.startColor = new Color (0.78f, 0.33f, 0, 1);
-				//ComboFive.startColor = new Color (0.78f, 0.33f, 0, 1);
+				ComboText.color = new Color (1, 0.5f, 0);
 			}
 
 			// Yellow brick.
@@ -90,11 +73,7 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (1, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 2 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
-				/*ComboOne.startColor = new Color (1, 1, 0, 1);
-				ComboTwo.startColor = new Color (1, 1, 0, 1);
-				ComboThree.startColor = new Color (1, 1, 0, 1);
-				ComboFour.startColor = new Color (1, 1, 0, 1);
-				ComboFive.startColor = new Color (1, 1, 0, 1);*/
+				ComboText.color = new Color (1, 1, 0);
 			}
 
 			// Green brick.
@@ -105,11 +84,7 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (0, 1, 0, 1);
 				gameControllerScript.CurrentScore += PointReward * 3 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
-				/*ComboOne.startColor = new Color (0, 1, 0, 1);
-				ComboTwo.startColor = new Color (0, 1, 0, 1);
-				ComboThree.startColor = new Color (0, 1, 0, 1);
-				ComboFour.startColor = new Color (0, 1, 0, 1);
-				ComboFive.startColor = new Color (0, 1, 0, 1);*/
+				ComboText.color = new Color (0, 1, 0);
 			}
 
 			// Cyan brick.
@@ -120,11 +95,8 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (0, 1, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 4 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
-				/*ComboOne.startColor = new Color (0, 1, 1, 1);
-				ComboTwo.startColor = new Color (0, 1, 1, 1);
-				ComboThree.startColor = new Color (0, 1, 1, 1);
-				ComboFour.startColor = new Color (0, 1, 1, 1);
-				ComboFive.startColor = new Color (0, 1, 1, 1);*/
+				ComboText.color = new Color (0, 1, 1);
+
 			}
 
 			// Purple brick.
@@ -135,12 +107,9 @@ public class PointObject : MonoBehaviour
 				MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
 				gameControllerScript.CurrentScore += PointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
-				/*ComboOne.startColor = new Color (0.5f, 0, 1, 1);
-				ComboTwo.startColor = new Color (0.5f, 0, 1, 1);
-				ComboThree.startColor = new Color (0.5f, 0, 1, 1);
-				ComboFour.startColor = new Color (0.5f, 0, 1, 1);
-				ComboFive.startColor = new Color (0.5f, 0, 1, 1);*/
+				ComboText.color = new Color (0.9f, 0.2f, 1);
 			}
+
 			Destroy (gameObject); // Destroys the gameObject.
 		}
 

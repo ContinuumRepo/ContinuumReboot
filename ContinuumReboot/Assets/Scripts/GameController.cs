@@ -52,9 +52,6 @@ public class GameController : MonoBehaviour
 	public float rareitemSpawnWait; // Time between new spawned powerups.
 	public float rareitemWaveWait; // Time between powerup waves.
 	public int rareitemCount; // The amountof hazards to be spawned before a new wave of powerups.
-	//public Text rareitemText; // Powerup label for the player.
-	public int bossScore;
-	public int bossWave;
 
 	[Header ("Pausing")]
 	public bool isPaused; // Is the game paused right now?
@@ -62,7 +59,7 @@ public class GameController : MonoBehaviour
 	public AudioSource PauseSound; // The pause sound.
 	public AudioSource MainSound; // The main music.
 	public AudioSource ResumeSound; // The resume sound.
-	public AudioSourcePitchByTimescale AudioPitchScript; // The audio pitch by timescale component.
+	//public AudioSourcePitchByTimescale AudioPitchScript; // The audio pitch by timescale component.
 	public GameObject ControlsScreen; // Controls screen.
 
 	[Header ("Scoring")]
@@ -78,7 +75,6 @@ public class GameController : MonoBehaviour
 	public Text ScoreText; // The score text to display current score as an integer.
 	public Text TimeScaleText; // The current time scale multiplier text.
 	public Text GameOverScoreText; // The game over text to display final score.
-	//public Text HighestTimeScaleText; // The game over text to display the highest time scale achieved.
 
 	[Header ("Misc")]
 	public GameObject ShowFpsText; // The UI text to display frames per second.
@@ -87,13 +83,7 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
-		bossWave = 5;
-		Cursor.lockState = CursorLockMode.Locked;
-		bossScore = 100000;
-		//ControlsUI.SetActive (false);
-
 		// Starts coroutines.
-		//StartCoroutine (BrickSpawnWaves ());
 		StartCoroutine (PowerupSpawnWaves ());
 		StartCoroutine (CountDown ());
 		StartCoroutine (RareitemSpawnWaves ());
@@ -102,15 +92,14 @@ public class GameController : MonoBehaviour
 		ShowFpsText.SetActive (false); // Turns off showing FPS object.
 		PauseUI.SetActive (false); // Disables Pause UI.
 
-
 		// Start score.
 		CurrentScore = 0;
 		ScoreText.text = "" + 0 + "";
 		wave = 1;
 
 		// Start cursor lock state.
-		Cursor.visible = false;
-		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.Locked;
 		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
 
 		// turns off bottom barrier so the player can safely translate into the play space.
@@ -195,20 +184,12 @@ public class GameController : MonoBehaviour
 		{
 			// Sets game over score text.
 			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
-			// Sets game over highest itme scale text.
-			//HighestTimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.highestTimeScale * 100f)) + "%";
 		}
 
 		// If the game's score is less than 0.
 		if (CurrentScore < 0) 
 		{
 			CurrentScore = 0; // Make it equal to 0.
-		}
-
-		if (CurrentScore >= bossScore) 
-		{
-			//Instantiate (Rareitems [0], new Vector3 (0, 30, 0), Quaternion.Euler(0, 0, 0));
-			//bossScore += 100000;
 		}
 
 		// HOTKEYS //
@@ -286,9 +267,9 @@ public class GameController : MonoBehaviour
 		// Right click to enable mouse pointer
 		if (Input.GetMouseButtonDown (1)) 
 		{
-			Cursor.visible = true;
-			Cursor.lockState = CursorLockMode.None;
-			MouseScript.visibleTime = MouseScript.visibleDuration;
+			//Cursor.visible = true;
+			//Cursor.lockState = CursorLockMode.None;
+			//MouseScript.visibleTime = MouseScript.visibleDuration;
 		}
 
 		// Show FPS.
@@ -356,8 +337,8 @@ public class GameController : MonoBehaviour
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.25f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = true; // Turns on low pass audio filter.
-		Cursor.lockState = CursorLockMode.None; // Unlocks the cursor.
-		Cursor.visible = true; // Makes cursor visible.
+		//Cursor.lockState = CursorLockMode.None; // Unlocks the cursor.
+		//Cursor.visible = true; // Makes cursor visible.
 	}
 
 	public void UnPauseGame ()
@@ -366,13 +347,12 @@ public class GameController : MonoBehaviour
 		PauseUI.SetActive (false); // Deactivates Pause UI.
 		Time.timeScale = 1; // Sets timescale to 1.
 		Debug.Log ("Unpaused game.");
-		AudioPitchScript.enabled = true; // Enables audio pich script.
+		//AudioPitchScript.enabled = true; // Enables audio pich script.
 		MainSound.pitch = 1; // Sets custom pitch.
 		MainSound.volume = 0.7f; // Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = false; // Turns off low pass filter.
-		Cursor.visible = false; // Makes cursor invisible.
+		//Cursor.visible = false; // Makes cursor invisible.
 		isPaused = false;
-
 	}
 
 	IEnumerator CountDown ()
@@ -384,7 +364,6 @@ public class GameController : MonoBehaviour
 		timeScaleControllerScript.enabled = true;
 		PlayerAnim.enabled = false;
 		yield return new WaitForSeconds (2);
-		//ControlsUI.SetActive (true);
 	}
 
 	public IEnumerator BrickSpawnWaves ()
@@ -393,7 +372,7 @@ public class GameController : MonoBehaviour
 		while (true) {
 			int randomColumn;
 			for (int i = 0; i < hazardCount; i++) {
-				if (wave >= 0 && wave <= 2) {
+				if (wave >= 0 && wave <= 1) {
 					GameObject hazard = Hazards [Random.Range (0, 1)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -402,7 +381,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 				
-				if (wave > 2 && wave <= 3) {
+				if (wave > 1 && wave <= 2) {
 					GameObject hazard = Hazards [Random.Range (0, 2)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -411,7 +390,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 				
-				if (wave > 3 && wave <= 4) {
+				if (wave > 2 && wave <= 3) {
 					GameObject hazard = Hazards [Random.Range (0, 3)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -420,7 +399,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 4 && wave <= 5) {
+				if (wave > 3 && wave <= 4) {
 					GameObject hazard = Hazards [Random.Range (0, 4)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -429,7 +408,7 @@ public class GameController : MonoBehaviour
 					yield return new WaitForSeconds (spawnWait);
 				}
 
-				if (wave > 5 && wave <= 6) {
+				if (wave > 4 && wave <= 5) {
 					GameObject hazard = Hazards [Random.Range (0, 5)];
 					randomColumn = Random.Range (0, columnLocations.Length);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -439,7 +418,7 @@ public class GameController : MonoBehaviour
 				}
 
 				// Can spawn multi-column brick groups
-				if (wave > 6) {
+				if (wave > 5) {
 					GameObject hazard = Hazards [Random.Range (0, Hazards.Length)];
 					randomColumn = GetRandomForBrickGroup (hazard);
 					Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
@@ -450,19 +429,8 @@ public class GameController : MonoBehaviour
 			}
 
 			yield return new WaitForSeconds (waveWait / 2);
-
-			if (wave != bossWave) 
-			{
-				GameObject rareitem = Rareitems [Random.Range (0, 4)];
-				Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
-			}
-
-			if (wave == bossWave) 
-			{
-				//GameObject rareitem = Rareitems [Random.Range (5, 5)];
-				//Instantiate (rareitem, new Vector3 (0, 16, 0), Quaternion.Euler(0, 0, 0));
-				//bossWave += bossWave;
-			}
+			GameObject rareitem = Rareitems [Random.Range (0, 4)];
+			Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
 			yield return new WaitForSeconds (waveWait / 2);
 		}
 	}
@@ -510,7 +478,7 @@ public class GameController : MonoBehaviour
 			{
 				GameObject rareitem = Rareitems [Random.Range (6, Rareitems.Length)];
 				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
-				Instantiate (rareitem, rareitemSpawnPos, Quaternion.Euler(0, 0, 45));
+				Instantiate (rareitem, rareitemSpawnPos, Quaternion.identity);
 				yield return new WaitForSeconds (rareitemSpawnWait);
 			}
 		}

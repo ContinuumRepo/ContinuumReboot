@@ -94,7 +94,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 344084}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - 222: {fileID: 1437535}
   - 114: {fileID: 1437534}
   - 95: {fileID: 1437533}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1757,7 @@ GameObject:
   - 222: {fileID: 8844943}
   - 114: {fileID: 8844942}
   - 95: {fileID: 8844944}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ShieldIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1842,7 +1842,7 @@ GameObject:
   - 224: {fileID: 12318577}
   - 222: {fileID: 12318579}
   - 114: {fileID: 12318578}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1916,7 +1916,7 @@ GameObject:
   - 224: {fileID: 17113928}
   - 222: {fileID: 17113930}
   - 114: {fileID: 17113929}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Right Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1984,7 +1984,7 @@ GameObject:
   - 224: {fileID: 19377722}
   - 222: {fileID: 19377724}
   - 114: {fileID: 19377723}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5161,7 +5161,7 @@ GameObject:
   - 222: {fileID: 27727170}
   - 114: {fileID: 27727169}
   - 95: {fileID: 27727171}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TriShotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5328,7 +5328,7 @@ GameObject:
   - 224: {fileID: 38132554}
   - 222: {fileID: 38132556}
   - 114: {fileID: 38132555}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5465,7 +5465,7 @@ GameObject:
   - 224: {fileID: 48743990}
   - 222: {fileID: 48743992}
   - 114: {fileID: 48743991}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeIcon (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9028,7 +9028,7 @@ GameObject:
   - 222: {fileID: 89779199}
   - 114: {fileID: 89779198}
   - 95: {fileID: 89779200}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ClonePlayerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10781,11 +10781,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!224 &103508190 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 22480874, guid: d25067ca6a52d754e84efa677b095203,
-    type: 2}
-  m_PrefabInternal: {fileID: 1918200054}
 --- !u!1 &107156132
 GameObject:
   m_ObjectHideFlags: 0
@@ -10898,7 +10893,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 109640327}
   - 95: {fileID: 109640328}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Confirmation Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12523,7 +12518,7 @@ GameObject:
   - 224: {fileID: 123369689}
   - 222: {fileID: 123369691}
   - 114: {fileID: 123369690}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14332,6 +14327,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &134523180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19209,7 +19205,7 @@ GameObject:
   - 224: {fileID: 146589301}
   - 222: {fileID: 146589303}
   - 114: {fileID: 146589302}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19606,7 +19602,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 162497496}
   - 114: {fileID: 162497497}
-  - 114: {fileID: 162497498}
   - 114: {fileID: 162497499}
   m_Layer: 0
   m_Name: Game Controller
@@ -19674,9 +19669,9 @@ MonoBehaviour:
   - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
   - {fileID: 131150, guid: 18f03fd59cb8e3046b80cc9834da8dc9, type: 2}
   spawnValues: {x: 35, y: 30, z: 0}
-  startWait: 2
+  startWait: 4
   spawnWait: 1.5
-  waveWait: 8
+  waveWait: 12
   hazardCount: 15
   speedupSpawnRate: 0.002
   minSpawnWait: 0.02
@@ -19705,12 +19700,12 @@ MonoBehaviour:
   powerupCount: 6
   PowerupText: {fileID: 2041953062}
   Rareitems:
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
-  - {fileID: 192334, guid: 8369c33caea9d16488924a6443e32441, type: 2}
-  - {fileID: 148938, guid: 04a366073c9e6cf4c97af5c48c2856d2, type: 2}
+  - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
+  - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
+  - {fileID: 138612, guid: 395e1546d72620f418d882aec86d4dfb, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
+  - {fileID: 162422, guid: 8369c33caea9d16488924a6443e32441, type: 2}
   - {fileID: 170230, guid: 1811ad3ccb991554893d52f9854cd86f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   - {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
@@ -19723,14 +19718,11 @@ MonoBehaviour:
   rareitemSpawnWait: 45
   rareitemWaveWait: 20
   rareitemCount: 10
-  bossScore: 100000
-  bossWave: 0
   isPaused: 0
   PauseUI: {fileID: 862326352}
   PauseSound: {fileID: 0}
   MainSound: {fileID: 339966602}
   ResumeSound: {fileID: 0}
-  AudioPitchScript: {fileID: 0}
   ControlsScreen: {fileID: 106968, guid: d54f479d96d99c0478bd4e67003b7344, type: 2}
   displayedScore: 0
   CurrentScore: 0
@@ -19747,19 +19739,6 @@ MonoBehaviour:
   ShowFpsText: {fileID: 1895155896}
   CheatSound: {fileID: 2113772651}
   CheatActivatedAnim: {fileID: 371871069}
---- !u!114 &162497498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 162497495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b66700f0321f6644b11e23e3d7534d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hideMouse: 0
-  CursorLockModeType: 2
 --- !u!114 &162497499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19789,7 +19768,7 @@ GameObject:
   - 224: {fileID: 168308358}
   - 222: {fileID: 168308360}
   - 114: {fileID: 168308359}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21447,7 +21426,7 @@ GameObject:
   - 222: {fileID: 198857710}
   - 114: {fileID: 198857709}
   - 114: {fileID: 198857708}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21684,7 +21663,7 @@ GameObject:
   - 222: {fileID: 211911169}
   - 114: {fileID: 211911168}
   - 95: {fileID: 211911170}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RippleIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23353,7 +23332,7 @@ GameObject:
   - 222: {fileID: 223823096}
   - 114: {fileID: 223823095}
   - 95: {fileID: 223823097}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HelixIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23466,7 +23445,7 @@ GameObject:
   - 224: {fileID: 225595886}
   - 222: {fileID: 225595888}
   - 114: {fileID: 225595887}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23544,7 +23523,7 @@ GameObject:
   - 224: {fileID: 233349222}
   - 222: {fileID: 233349224}
   - 114: {fileID: 233349223}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23621,7 +23600,7 @@ GameObject:
   - 224: {fileID: 234341490}
   - 222: {fileID: 234341492}
   - 114: {fileID: 234341491}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23759,7 +23738,7 @@ GameObject:
   - 222: {fileID: 237916413}
   - 114: {fileID: 237916412}
   - 95: {fileID: 237916414}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GAME OVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23875,7 +23854,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 240054772}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e90da84e02bca914ebcba235b4353a9c, type: 3}
   m_Name: 
@@ -24273,7 +24252,7 @@ GameObject:
   - 224: {fileID: 252019979}
   - 222: {fileID: 252019981}
   - 114: {fileID: 252019980}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26014,7 +25993,7 @@ GameObject:
   - 224: {fileID: 256742851}
   - 222: {fileID: 256742853}
   - 114: {fileID: 256742852}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Reatart Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27632,7 +27611,7 @@ GameObject:
   - 95: {fileID: 281701033}
   - 114: {fileID: 281701032}
   - 114: {fileID: 281701031}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27884,7 +27863,7 @@ GameObject:
   - 222: {fileID: 283724136}
   - 114: {fileID: 283724135}
   - 114: {fileID: 283724137}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Multiplier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29754,7 +29733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
-  PointType: 0
+  PointType: 2
   PointReward: 30
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
@@ -29768,6 +29747,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &295395460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31467,7 +31447,7 @@ GameObject:
   - 222: {fileID: 322631915}
   - 114: {fileID: 322631914}
   - 95: {fileID: 322631913}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31824,7 +31804,7 @@ GameObject:
   - 224: {fileID: 340809888}
   - 222: {fileID: 340809890}
   - 114: {fileID: 340809889}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33702,7 +33682,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -35378,7 +35357,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 371871068}
   - 95: {fileID: 371871069}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CheatActivated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36990,7 +36969,7 @@ GameObject:
   - 224: {fileID: 381884091}
   - 222: {fileID: 381884093}
   - 114: {fileID: 381884092}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41967,7 +41946,7 @@ GameObject:
   - 114: {fileID: 395221385}
   - 114: {fileID: 395221388}
   - 114: {fileID: 395221389}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42144,7 +42123,7 @@ GameObject:
   - 114: {fileID: 400890646}
   - 95: {fileID: 400890645}
   - 114: {fileID: 400890644}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ViewLeaderBoardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42450,7 +42429,7 @@ GameObject:
   - 222: {fileID: 413306266}
   - 114: {fileID: 413306265}
   - 95: {fileID: 413306267}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: ScoreText
   m_Icon: {fileID: 0}
@@ -42644,6 +42623,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &416970078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42772,7 +42752,7 @@ GameObject:
   - 224: {fileID: 417386791}
   - 222: {fileID: 417386793}
   - 114: {fileID: 417386792}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControlStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46101,6 +46081,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &463133393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47952,7 +47933,7 @@ GameObject:
   - 95: {fileID: 509033873}
   - 114: {fileID: 509033872}
   - 114: {fileID: 509033874}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48231,7 +48212,7 @@ GameObject:
   - 224: {fileID: 525879906}
   - 222: {fileID: 525879907}
   - 114: {fileID: 525879908}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ComboImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48782,7 +48763,7 @@ GameObject:
   - 95: {fileID: 541505251}
   - 114: {fileID: 541505250}
   - 114: {fileID: 541505252}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48990,7 +48971,7 @@ GameObject:
   - 224: {fileID: 554538059}
   - 222: {fileID: 554538062}
   - 114: {fileID: 554538061}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameOverScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50702,7 +50683,7 @@ GameObject:
   - 224: {fileID: 566549652}
   - 222: {fileID: 566549654}
   - 114: {fileID: 566549653}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54542,7 +54523,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 579110154}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Powerup Icons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54587,7 +54568,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 580723267}
   - 222: {fileID: 580723269}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54634,7 +54615,7 @@ GameObject:
   - 224: {fileID: 592819860}
   - 222: {fileID: 592819862}
   - 114: {fileID: 592819861}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54704,7 +54685,7 @@ GameObject:
   - 224: {fileID: 592836046}
   - 222: {fileID: 592836048}
   - 114: {fileID: 592836047}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeIcon (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56332,7 +56313,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 601646023}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Press A to view stats Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61645,7 +61626,7 @@ GameObject:
   - 224: {fileID: 645571428}
   - 222: {fileID: 645571430}
   - 114: {fileID: 645571429}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63310,7 +63291,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 663811994}
   - 114: {fileID: 663811995}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63364,7 +63345,7 @@ GameObject:
   - 224: {fileID: 675799868}
   - 222: {fileID: 675799870}
   - 114: {fileID: 675799869}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69753,7 +69734,7 @@ GameObject:
   - 224: {fileID: 696882820}
   - 222: {fileID: 696882822}
   - 114: {fileID: 696882821}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69827,7 +69808,7 @@ GameObject:
   - 224: {fileID: 700529412}
   - 222: {fileID: 700529414}
   - 114: {fileID: 700529413}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70001,7 +69982,7 @@ GameObject:
   - 223: {fileID: 713919745}
   - 114: {fileID: 713919744}
   - 114: {fileID: 713919743}
-  m_Layer: 10
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70092,7 +70073,7 @@ GameObject:
   - 224: {fileID: 715322103}
   - 222: {fileID: 715322105}
   - 114: {fileID: 715322104}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71749,7 +71730,7 @@ GameObject:
   - 224: {fileID: 727007273}
   - 222: {fileID: 727007275}
   - 114: {fileID: 727007274}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health ImageR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71818,7 +71799,7 @@ GameObject:
   - 224: {fileID: 735259521}
   - 222: {fileID: 735259523}
   - 114: {fileID: 735259522}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71889,7 +71870,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 745027554}
   - 114: {fileID: 745027555}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75334,9 +75315,9 @@ GameObject:
   - 135: {fileID: 766750764}
   - 23: {fileID: 766750763}
   - 114: {fileID: 766750768}
-  - 114: {fileID: 766750769}
   - 82: {fileID: 766750767}
   - 114: {fileID: 766750766}
+  - 114: {fileID: 766750769}
   m_Layer: 13
   m_Name: Shield
   m_TagString: Bullet
@@ -75521,26 +75502,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 766750761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7ccf7347ce6e304bbc15162abc50dcd, type: 3}
+  m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialShakeDuration: 0.25
-  InitialShakeStrength: 0.5
+  BulletType: 7
+  playerControllerScript: {fileID: 0}
+  newSpeed: 0
+  InitialShakeDuration: 1
+  InitialShakeStrength: 1.5
   timeScaleControllerScript: {fileID: 0}
-  DecrementPortion: 0
-  DecrementAmount: 0
-  PlayElement: 0
-  Oneshots:
-  - {fileID: 1115232238}
-  BulletNoCost: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
-  Explosion: {fileID: 8210012, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
-  RicoshetParticle:
-  - {fileID: 1013753588}
-  - {fileID: 443119758}
-  - {fileID: 657662739}
-  - {fileID: 1486054472}
-  - {fileID: 2073842998}
+  ComboAudio:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   VibrationTime: 0.04
+  useMutedBullet: 0
+  ricoshetNumber: 0
+  ricoshetMax: 2147483647
+  ComboNN: 1
 --- !u!1 &772125112
 GameObject:
   m_ObjectHideFlags: 0
@@ -77134,7 +77120,7 @@ GameObject:
   - 224: {fileID: 772426439}
   - 222: {fileID: 772426441}
   - 114: {fileID: 772426440}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77208,7 +77194,7 @@ GameObject:
   - 224: {fileID: 774825830}
   - 222: {fileID: 774825832}
   - 114: {fileID: 774825831}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Name Label
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77282,7 +77268,7 @@ GameObject:
   - 224: {fileID: 792510155}
   - 222: {fileID: 792510157}
   - 114: {fileID: 792510156}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77353,7 +77339,7 @@ GameObject:
   - 224: {fileID: 804844905}
   - 222: {fileID: 804844907}
   - 114: {fileID: 804844906}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ComboLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77460,7 +77446,7 @@ GameObject:
   - 224: {fileID: 819686235}
   - 222: {fileID: 819686237}
   - 114: {fileID: 819686236}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77559,7 +77545,7 @@ GameObject:
   - 224: {fileID: 829208105}
   - 222: {fileID: 829208107}
   - 114: {fileID: 829208106}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77628,7 +77614,7 @@ GameObject:
   - 224: {fileID: 843472821}
   - 222: {fileID: 843472823}
   - 114: {fileID: 843472822}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77864,7 +77850,7 @@ GameObject:
   - 223: {fileID: 862057650}
   - 114: {fileID: 862057649}
   - 114: {fileID: 862057648}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77954,7 +77940,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 862326353}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pause UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78104,7 +78090,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -79736,7 +79721,7 @@ GameObject:
   - 222: {fileID: 870658253}
   - 114: {fileID: 870658252}
   - 95: {fileID: 870658254}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81471,7 +81456,7 @@ GameObject:
   - 224: {fileID: 882693377}
   - 222: {fileID: 882693379}
   - 114: {fileID: 882693378}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81545,7 +81530,7 @@ GameObject:
   - 224: {fileID: 895818081}
   - 114: {fileID: 895818082}
   - 95: {fileID: 895818083}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControlsUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81654,7 +81639,7 @@ GameObject:
   - 222: {fileID: 906555288}
   - 114: {fileID: 906555287}
   - 95: {fileID: 906555289}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Alt Fire Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81789,7 +81774,7 @@ GameObject:
   - 224: {fileID: 927081043}
   - 222: {fileID: 927081045}
   - 114: {fileID: 927081044}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Collect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81863,7 +81848,7 @@ GameObject:
   - 224: {fileID: 927327982}
   - 222: {fileID: 927327984}
   - 114: {fileID: 927327983}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -81935,7 +81920,7 @@ GameObject:
   - 114: {fileID: 933696330}
   - 95: {fileID: 933696334}
   - 114: {fileID: 933696335}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82143,7 +82128,7 @@ GameObject:
   - 224: {fileID: 939236312}
   - 222: {fileID: 939236314}
   - 114: {fileID: 939236313}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControlsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82216,7 +82201,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 945433345}
   - 96: {fileID: 945433346}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85638,7 +85623,7 @@ GameObject:
   - 224: {fileID: 977334731}
   - 222: {fileID: 977334733}
   - 114: {fileID: 977334732}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85712,7 +85697,7 @@ GameObject:
   - 224: {fileID: 993985863}
   - 222: {fileID: 993985865}
   - 114: {fileID: 993985864}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89400,7 +89385,7 @@ GameObject:
   - 224: {fileID: 1032454308}
   - 222: {fileID: 1032454310}
   - 114: {fileID: 1032454309}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89478,7 +89463,7 @@ GameObject:
   - 114: {fileID: 1036483996}
   - 95: {fileID: 1036483995}
   - 114: {fileID: 1036483994}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89720,7 +89705,7 @@ GameObject:
   - 114: {fileID: 1037068239}
   - 114: {fileID: 1037068241}
   - 95: {fileID: 1037068242}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89940,7 +89925,7 @@ GameObject:
   - 223: {fileID: 1039742782}
   - 114: {fileID: 1039742781}
   - 114: {fileID: 1039742780}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90045,7 +90030,7 @@ GameObject:
   - 224: {fileID: 1059354114}
   - 222: {fileID: 1059354116}
   - 114: {fileID: 1059354115}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Paused Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90153,7 +90138,7 @@ GameObject:
   - 223: {fileID: 1082494267}
   - 114: {fileID: 1082494266}
   - 114: {fileID: 1082494265}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Main Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90251,7 +90236,7 @@ GameObject:
   - 224: {fileID: 1084239217}
   - 222: {fileID: 1084239219}
   - 114: {fileID: 1084239218}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Start button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93760,11 +93745,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1115116163}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &1115232238 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 8262856, guid: 4667f6cc18c5cfa4284cb5f65b1c39ba,
-    type: 2}
-  m_PrefabInternal: {fileID: 290525605}
 --- !u!1 &1124104975
 GameObject:
   m_ObjectHideFlags: 0
@@ -93878,7 +93858,7 @@ GameObject:
   - 224: {fileID: 1127390231}
   - 222: {fileID: 1127390233}
   - 114: {fileID: 1127390232}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: A button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93947,7 +93927,7 @@ GameObject:
   - 222: {fileID: 1129063201}
   - 114: {fileID: 1129063200}
   - 95: {fileID: 1129063199}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94030,7 +94010,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1143042373}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Combo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94070,7 +94050,7 @@ GameObject:
   - 224: {fileID: 1164336928}
   - 222: {fileID: 1164336930}
   - 114: {fileID: 1164336929}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Collect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94360,7 +94340,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1183792739}
   - 114: {fileID: 1183792740}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Rotator (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96355,7 +96335,7 @@ GameObject:
   - 224: {fileID: 1206422717}
   - 222: {fileID: 1206422719}
   - 114: {fileID: 1206422718}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96426,7 +96406,7 @@ GameObject:
   - 224: {fileID: 1210114425}
   - 222: {fileID: 1210114427}
   - 114: {fileID: 1210114426}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96499,7 +96479,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1222043882}
   - 222: {fileID: 1222043884}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AltFireIndicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96542,7 +96522,7 @@ GameObject:
   - 224: {fileID: 1224113771}
   - 222: {fileID: 1224113773}
   - 114: {fileID: 1224113772}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96795,7 +96775,7 @@ GameObject:
   - 224: {fileID: 1235969740}
   - 222: {fileID: 1235969742}
   - 114: {fileID: 1235969741}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97008,7 +96988,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1246668649}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControlsPage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98848,7 +98828,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -98952,7 +98931,7 @@ GameObject:
   - 222: {fileID: 1265303976}
   - 114: {fileID: 1265303975}
   - 95: {fileID: 1265303977}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BeamShotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100621,7 +100600,7 @@ GameObject:
   - 222: {fileID: 1272269064}
   - 114: {fileID: 1272269063}
   - 95: {fileID: 1272269065}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DoubleShotIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100874,7 +100853,7 @@ GameObject:
   - 95: {fileID: 1290782230}
   - 114: {fileID: 1290782229}
   - 114: {fileID: 1290782231}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101209,7 +101188,7 @@ GameObject:
   - 224: {fileID: 1308606943}
   - 222: {fileID: 1308606945}
   - 114: {fileID: 1308606944}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101279,7 +101258,7 @@ GameObject:
   - 114: {fileID: 1324359893}
   - 95: {fileID: 1324359892}
   - 114: {fileID: 1324359895}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel Fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101380,7 +101359,7 @@ GameObject:
   - 224: {fileID: 1332223340}
   - 222: {fileID: 1332223342}
   - 114: {fileID: 1332223341}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101455,7 +101434,7 @@ GameObject:
   - 223: {fileID: 1346888106}
   - 114: {fileID: 1346888105}
   - 114: {fileID: 1346888104}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Pre game canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101547,7 +101526,7 @@ GameObject:
   - 222: {fileID: 1348581752}
   - 114: {fileID: 1348581751}
   - 95: {fileID: 1348581753}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101712,7 +101691,7 @@ GameObject:
   - 224: {fileID: 1417307744}
   - 222: {fileID: 1417307746}
   - 114: {fileID: 1417307745}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101781,7 +101760,7 @@ GameObject:
   - 224: {fileID: 1419085609}
   - 114: {fileID: 1419085610}
   - 114: {fileID: 1419085611}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101922,7 +101901,7 @@ GameObject:
   - 224: {fileID: 1435723134}
   - 222: {fileID: 1435723136}
   - 114: {fileID: 1435723135}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HighScore!
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101996,7 +101975,7 @@ GameObject:
   - 224: {fileID: 1454055043}
   - 222: {fileID: 1454055045}
   - 114: {fileID: 1454055044}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103636,7 +103615,7 @@ GameObject:
   - 224: {fileID: 1465813333}
   - 222: {fileID: 1465813335}
   - 114: {fileID: 1465813334}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106998,7 +106977,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1503868212}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107035,7 +107014,7 @@ GameObject:
   - 222: {fileID: 1506866138}
   - 114: {fileID: 1506866137}
   - 95: {fileID: 1506866136}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GAME OVER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107196,6 +107175,7 @@ MonoBehaviour:
   pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
+  ComboText: {fileID: 0}
 --- !u!114 &1508172358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108895,7 +108875,7 @@ GameObject:
   - 223: {fileID: 1533407598}
   - 114: {fileID: 1533407597}
   - 114: {fileID: 1533407596}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FPS Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109379,7 +109359,7 @@ GameObject:
   - 224: {fileID: 1555689974}
   - 222: {fileID: 1555689976}
   - 114: {fileID: 1555689975}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109449,7 +109429,7 @@ GameObject:
   - 114: {fileID: 1556092445}
   - 114: {fileID: 1556092444}
   - 114: {fileID: 1556092443}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Press to restart button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114309,7 +114289,7 @@ GameObject:
   - 114: {fileID: 1563463495}
   - 95: {fileID: 1563463500}
   - 114: {fileID: 1563463499}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116091,7 +116071,7 @@ GameObject:
   - 224: {fileID: 1574134261}
   - 222: {fileID: 1574134263}
   - 114: {fileID: 1574134262}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116401,7 +116381,7 @@ GameObject:
   - 223: {fileID: 1581780847}
   - 114: {fileID: 1581780846}
   - 114: {fileID: 1581780845}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Game Over Canvas (ScreenSpace)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116494,7 +116474,7 @@ GameObject:
   - 224: {fileID: 1584842162}
   - 222: {fileID: 1584842164}
   - 114: {fileID: 1584842163}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Controller (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116565,7 +116545,7 @@ GameObject:
   - 223: {fileID: 1621884759}
   - 114: {fileID: 1621884758}
   - 114: {fileID: 1621884757}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116664,7 +116644,7 @@ GameObject:
   - 222: {fileID: 1626007783}
   - 114: {fileID: 1626007782}
   - 114: {fileID: 1626007784}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PowerupPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116764,7 +116744,7 @@ GameObject:
   - 224: {fileID: 1627362246}
   - 222: {fileID: 1627362247}
   - 114: {fileID: 1627362248}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: AltFireImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116832,7 +116812,7 @@ GameObject:
   - 224: {fileID: 1647599369}
   - 222: {fileID: 1647599371}
   - 114: {fileID: 1647599370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ControlStick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118649,7 +118629,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1654132008}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Container (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118748,7 +118728,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1666885105}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelUpObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120349,7 +120329,7 @@ GameObject:
   - 224: {fileID: 1669764992}
   - 222: {fileID: 1669764994}
   - 114: {fileID: 1669764993}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122338,7 +122318,7 @@ GameObject:
   - 224: {fileID: 1692825856}
   - 222: {fileID: 1692825858}
   - 114: {fileID: 1692825857}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122409,7 +122389,7 @@ GameObject:
   - 224: {fileID: 1693430647}
   - 222: {fileID: 1693430649}
   - 114: {fileID: 1693430648}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124119,7 +124099,7 @@ GameObject:
   - 224: {fileID: 1718615432}
   - 222: {fileID: 1718615434}
   - 114: {fileID: 1718615433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124192,7 +124172,7 @@ GameObject:
   - 114: {fileID: 1719108514}
   - 114: {fileID: 1719108513}
   - 114: {fileID: 1719108517}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Exit Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127636,7 +127616,7 @@ GameObject:
   - 224: {fileID: 1760133556}
   - 222: {fileID: 1760133558}
   - 114: {fileID: 1760133557}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127695,98 +127675,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1760133555}
---- !u!1 &1761853584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 224: {fileID: 1761853585}
-  - 222: {fileID: 1761853587}
-  - 114: {fileID: 1761853586}
-  - 95: {fileID: 1761853588}
-  m_Layer: 0
-  m_Name: Get Ready Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1761853585
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1761853584}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 103508190}
-  m_RootOrder: 2
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 289.00018}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1761853586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1761853584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 6415d417c88e77f47a3994ee36bf47f4, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: GET READY
---- !u!222 &1761853587
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1761853584}
---- !u!95 &1761853588
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1761853584}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dac3f2d26ce2cb34890f806ed6a93827, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1764722480
 GameObject:
   m_ObjectHideFlags: 0
@@ -127830,7 +127718,7 @@ GameObject:
   - 224: {fileID: 1765619171}
   - 222: {fileID: 1765619173}
   - 114: {fileID: 1765619172}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129446,7 +129334,7 @@ GameObject:
   - 114: {fileID: 1770043269}
   - 114: {fileID: 1770043268}
   - 114: {fileID: 1770043267}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Press to restart button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129577,7 +129465,7 @@ GameObject:
   - 224: {fileID: 1772476381}
   - 222: {fileID: 1772476383}
   - 114: {fileID: 1772476382}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: StatusPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129650,7 +129538,7 @@ GameObject:
   - 224: {fileID: 1774663994}
   - 222: {fileID: 1774663996}
   - 114: {fileID: 1774663995}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Reatart Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131298,7 +131186,7 @@ GameObject:
   - 224: {fileID: 1779899977}
   - 222: {fileID: 1779899979}
   - 114: {fileID: 1779899978}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RawImage (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132942,7 +132830,7 @@ GameObject:
   - 224: {fileID: 1801435307}
   - 222: {fileID: 1801435309}
   - 114: {fileID: 1801435308}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Left Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134882,7 +134770,7 @@ GameObject:
   - 224: {fileID: 1829345734}
   - 222: {fileID: 1829345736}
   - 114: {fileID: 1829345735}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134950,7 +134838,7 @@ GameObject:
   - 224: {fileID: 1831119740}
   - 222: {fileID: 1831119742}
   - 114: {fileID: 1831119741}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136642,7 +136530,7 @@ GameObject:
   - 224: {fileID: 1869040195}
   - 222: {fileID: 1869040197}
   - 114: {fileID: 1869040196}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Powerup Meter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136710,7 +136598,7 @@ GameObject:
   - 224: {fileID: 1882460866}
   - 222: {fileID: 1882460868}
   - 114: {fileID: 1882460867}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: TimeIcon (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136984,7 +136872,7 @@ GameObject:
   - 222: {fileID: 1895155900}
   - 114: {fileID: 1895155899}
   - 114: {fileID: 1895155898}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FPS Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137164,7 +137052,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -137266,7 +137153,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1915242726}
   - 96: {fileID: 1915242727}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Trail (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137381,78 +137268,6 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1858121599}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: deactivateOnly
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 174862, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: ActiveObject
-      value: 
-      objectReference: {fileID: 1918200056}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: activateOnly
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: delay
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11455102, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: DestroyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_Text
-      value: LEVEL ___
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_LineSpacing
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22430494, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22430494, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 1869
-      objectReference: {fileID: 0}
-    - target: {fileID: 22430494, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 22315686, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_PlaneDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_BestFit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_HorizontalOverflow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_VerticalOverflow
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_FontSize
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 11485518, guid: d25067ca6a52d754e84efa677b095203, type: 2}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d25067ca6a52d754e84efa677b095203, type: 2}
   m_IsPrefabParent: 0
@@ -137464,98 +137279,6 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 174862, guid: d25067ca6a52d754e84efa677b095203, type: 2}
   m_PrefabInternal: {fileID: 1918200054}
---- !u!82 &1918200059
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918200056}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 748da40a0ee898949b98c8ac8cc264c2, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.95
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!114 &1918200060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918200056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingPitch: 1
-  multiplierPitch: 1
-  minimumPitch: 0.0001
-  maximumPitch: 20
-  addPitch: 0
-  reachedMinPitch: 0
-  reachedMaxPitch: 0
 --- !u!1 &1926069216
 GameObject:
   m_ObjectHideFlags: 0
@@ -137792,7 +137515,7 @@ GameObject:
   - 224: {fileID: 1934449585}
   - 222: {fileID: 1934449587}
   - 114: {fileID: 1934449586}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138305,7 +138028,6 @@ MonoBehaviour:
   ComboTime: 0
   ComboN: 0
   ComboAnimation: {fileID: 2011414362}
-  isFiring: 0
   ComboImage: {fileID: 525879908}
   Powerups: []
   powerupTime: 0
@@ -138457,7 +138179,7 @@ GameObject:
   - 114: {fileID: 1975114667}
   - 114: {fileID: 1975114666}
   - 114: {fileID: 1975114669}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143385,7 +143107,7 @@ GameObject:
   - 224: {fileID: 2001708742}
   - 222: {fileID: 2001708744}
   - 114: {fileID: 2001708743}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143514,7 +143236,7 @@ GameObject:
   - 222: {fileID: 2011414361}
   - 114: {fileID: 2011414363}
   - 95: {fileID: 2011414362}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ComboText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143605,7 +143327,7 @@ GameObject:
   - 224: {fileID: 2017548994}
   - 222: {fileID: 2017548997}
   - 114: {fileID: 2017548996}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: FinalScoreLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148576,7 +148298,7 @@ GameObject:
   - 222: {fileID: 2041953063}
   - 114: {fileID: 2041953062}
   - 95: {fileID: 2041953064}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: PowerupText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159773,7 +159495,7 @@ GameObject:
   - 224: {fileID: 2082735245}
   - 222: {fileID: 2082735247}
   - 114: {fileID: 2082735246}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161480,7 +161202,7 @@ GameObject:
   - 224: {fileID: 2106261564}
   - 222: {fileID: 2106261566}
   - 114: {fileID: 2106261565}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161561,7 +161283,7 @@ GameObject:
   - 224: {fileID: 2113323284}
   - 222: {fileID: 2113323286}
   - 114: {fileID: 2113323285}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161738,7 +161460,7 @@ GameObject:
   - 224: {fileID: 2114196956}
   - 222: {fileID: 2114196958}
   - 114: {fileID: 2114196957}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 3DIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161805,7 +161527,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 2114330363}
   - 95: {fileID: 2114330364}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161862,7 +161584,7 @@ GameObject:
   - 222: {fileID: 2118340502}
   - 114: {fileID: 2118340501}
   - 95: {fileID: 2118340503}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: HorizontalBeamIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163530,7 +163252,7 @@ GameObject:
   - 224: {fileID: 2133940045}
   - 222: {fileID: 2133940047}
   - 114: {fileID: 2133940046}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
