@@ -1,53 +1,115 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class HighscoreController : MonoBehaviour
 {
-	public Text P1Name;
-	public Text P1Score;
+	public int maxNoHS = 10;
 
-	public Text P2Name;
-	public Text P2Score;
+	private List<string> hsNames;
+	private List<int> hsScores;
 
-	public Text P3Name;
-	public Text P3Score;
-
-	public Text P4Name;
-	public Text P4Score;
-
-	public Text P5Name;
-	public Text P5Score;
-
+	/// <summary>
+	/// Gets all names and scores for highscores
+	/// from PlayerPrefs and sets them to lists.
+	/// These are used to check for and update
+	/// highscores at Game Over.
+	/// </summary>
 	void Start()
 	{
-		if( PlayerPrefs.HasKey( "Player1Name" ) )
+		string prefsNameBase = "HSName";
+		string prefsScoreBase = "HSScore";
+
+		for (int i = 0; i < maxNoHS; i++)
 		{
-			P1Name.text = PlayerPrefs.GetString ("Player1Name");
-			P1Score.text = PlayerPrefs.GetString ("Player1Score");
+			string keyName = prefsNameBase + i.ToString();
+			string keyScore = prefsScoreBase + i.ToString();
 
-			if( PlayerPrefs.HasKey( "Player2Name" ) )
+			if (PlayerPrefs.HasKey (keyName))
 			{
-				P2Name.text = PlayerPrefs.GetString ("Player2Name");
-				P2Score.text = PlayerPrefs.GetString ("Player2Score");
+				hsNames[i] = PlayerPrefs.GetString (keyName);
+				hsScores[i] = PlayerPrefs.GetInt (keyScore);
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
 
-				if( PlayerPrefs.HasKey( "Player3Name" ) )
+	/// <summary>
+	/// Checks if 'score' is a larger value than the scores already saved.
+	/// Returns true if it one of the top 10 scores.
+	/// Returns false if it is not larger than any saved.
+	/// </summary>
+	public bool CheckForHighScore (int score)
+	{
+		// If there are no highscores set, score is a new highscore
+		if (hsScores.Count <= 0)
+		{
+			return true;
+		}
+
+		// Loop through set highscores, if score is greater than any set, return true
+		for (int i = 0; i < hsNames.Count; i++)
+		{
+			if (score > hsScores[i])
+				return true;
+		}
+
+		// Looped and none were true, then return false
+		return false;
+	}
+
+	/// <summary>
+	/// Calculates the score against those already saved and
+	/// inserts the score and name into the appropriate index.
+	/// </summary>
+	public void InsertNewHighScore (string name, int score)
+	{
+		// If there are no highscores set, add as the first index
+		if (hsScores.Count <= 0)
+		{
+			hsNames.Add (name);
+			hsScores.Add (score);
+		}
+		else
+		{
+			for (int i = 0; i < hsNames.Count; i++)
+			{
+				if (score > hsScores[i])
 				{
-					P3Name.text = PlayerPrefs.GetString ("Player3Name");
-					P3Score.text = PlayerPrefs.GetString ("Player3Score");
-
-					if( PlayerPrefs.HasKey( "Player4Name" ) )
-					{
-						P4Name.text = PlayerPrefs.GetString ("Player4Name");
-						P4Score.text = PlayerPrefs.GetString ("Player4Score");
-
-						if( PlayerPrefs.HasKey( "Player5Name" ) )
-						{
-							P5Name.text = PlayerPrefs.GetString ("Player5Name");
-							P5Score.text = PlayerPrefs.GetString ("Player5Score");
-						}
-					}
+					hsNames.Insert (i, name);
+					hsScores.Insert (i, score);
+					UpdatePrefs();
+					break;
 				}
+			}
+		}
+	}
+
+	/// <summary>
+	/// Updates the Highscore PlayerPrefs after the lists have been changed
+	/// </summary>
+	private void UpdatePrefs()
+	{
+		if (hsNames.Count != hsScores.Count)
+		{
+			Debug.LogWarning ("Number of Highscore names do not match the number of Highscore scores! Highscores not saved!");
+		}
+		else
+		{
+			string prefsNameBase = "HSName";
+			string prefsScoreBase = "HSScore";
+
+			for (int i = 0; i < hsNames.Count; i++)
+			{
+				string keyName = prefsNameBase + i.ToString();
+				string keyScore = prefsScoreBase + i.ToString();
+
+				PlayerPrefs.SetString (keyName, hsNames[i]);
+				PlayerPrefs.SetInt (keyScore, hsScores[i]);
 			}
 		}
 	}

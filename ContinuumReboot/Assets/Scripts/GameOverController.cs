@@ -8,6 +8,7 @@ public class GameOverController : MonoBehaviour
 	public GameObject highscoreText;
 	public Text gameOverScoreText;
 	public GameController gameController;
+	public HighscoreController hsController;
 
 	public InputScroll gameOverScroll;
 	public float gameOverInputWait;
@@ -18,7 +19,7 @@ public class GameOverController : MonoBehaviour
 
 		gameOverScoreText.text = score.ToString();
 
-		if (CheckForHighScore (score))
+		if (hsController.CheckForHighScore (score))
 		{
 			highscoreText.SetActive (true);
 			// Enable highscore input
@@ -29,12 +30,5 @@ public class GameOverController : MonoBehaviour
 			gameOverScroll.WaitToRenameInputMenu (gameOverInputWait, "gameover");
 		}
 
-	}
-
-	private bool CheckForHighScore (int score)
-	{
-
-
-		return false;
 	}
 }
