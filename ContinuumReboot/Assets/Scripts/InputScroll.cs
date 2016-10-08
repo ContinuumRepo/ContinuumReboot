@@ -8,16 +8,15 @@ public class InputScroll : MonoBehaviour
 	public ButtonEvents[] buttons;
 	public float timeBuffer; // Time between button scroll
 	public string inputLocPrefsValue;
+	public bool startToSelect = true; // If true, start will behave like the A button
 	public bool bToClose;
-	public GameObject bDeactivate; // Will call if bBackButton is 999
-	public int bBackButton = 999; // Calls OnClick for this button if not 999
+	public GameObject bDeactivate; // Will call if bBackButton is null
+	public ButtonEvents bBackButton; // Calls OnClick for this button if set
 	public string bPrefsValue;
 
-	//private bool idxSet = false;
 	private int buttonIndex;
-	[SerializeField]
 	private int indexLocation; // What button the player currently has selected
-	private int lastIndex;
+	private int lastIndex = 0;
 
 	private bool waiting = false;
 	private bool resetForMouse = false;
@@ -50,20 +49,19 @@ public class InputScroll : MonoBehaviour
 				}
 			}
 
-			// When selecting a button run that button's OnClick method
-			if (Input.GetKeyDown ("space") == true || Input.GetKeyDown ("joystick button 0") == true || Input.GetKeyDown ("return") == true)
+			// When selecting a button run that button's OnClick method (A, Start, space, enter/return)
+			if (Input.GetKeyDown ("joystick button 0") == true || (startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("space") == true || Input.GetKeyDown ("return") == true)
 			{
-				Debug.Log ("Click");
 				buttons[indexLocation].OnClick();
 			}
 
-			// If enabled, allow player to cancel to close the current menu
-			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || Input.GetKeyDown ("joystick button 7") == true || Input.GetKeyDown ("escape") == true))
+			// If enabled, allow player to cancel to close the current menu (B, Start, escape)
+			if ((bToClose && (Input.GetKeyDown ("joystick button 1") == true) || (!startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("escape") == true))
 			{
 				PlayerPrefs.SetString ("InputMenu", bPrefsValue);
-				if (bBackButton != 999)
+				if (bBackButton != null)
 				{
-					buttons [bBackButton].OnClick();
+					bBackButton.OnClick();
 				}
 				else
 				{

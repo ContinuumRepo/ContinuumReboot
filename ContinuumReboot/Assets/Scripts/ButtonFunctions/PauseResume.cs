@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/PauseResume")]
 public class PauseResume : ButtonEvents
@@ -16,6 +17,7 @@ public class PauseResume : ButtonEvents
 	public GameController gameCont;
 	public Animator resumeAnim;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -39,6 +41,7 @@ public class PauseResume : ButtonEvents
 			scrollScript.HighlightedButton = buttonIndex;
 		resumeAnim.enabled = true;
 		resumeAnim.Play ("Play2PPointerEnter");
+		thisButton.Select();
 		hoverSound.Play();
 	}
 

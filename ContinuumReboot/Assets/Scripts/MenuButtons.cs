@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿/// <summary>'
+/// 
+/// CURRENTLY UNUSED
+/// 
+/// To find the event handlers for the menu buttons,
+/// the ButtonFunctions folder holds each individual
+/// scrip for each button.
+/// 
+/// </summary>
+
+using UnityEngine;
 using System.Collections;
 
 public class MenuButtons : MonoBehaviour
