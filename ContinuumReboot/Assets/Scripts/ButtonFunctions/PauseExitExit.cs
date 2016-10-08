@@ -1,39 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-[AddComponentMenu("ButtonEvents/PauseRestart")]
-public class PauseRestart : ButtonEvents
+[AddComponentMenu("ButtonEvents/PauseExitExit")]
+public class PauseExitExit : ButtonEvents
 {
 	public AudioSource clickSound;
 	public AudioSource hoverSound;
-
-	public MenuScript menuScript;
-	public Animator restartAnim;
 
 	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
+	void Start ()
+	{
+		thisButton = this.gameObject.GetComponent <Button>();
+	}
+
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("InputMenu", "");
-		menuScript.LoadScene ("main");
 		clickSound.Play();
+		Application.Quit ();
 	}
 
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
-		restartAnim.enabled = true;
-		restartAnim.Play ("Play2PPointerEnter");
 		thisButton.Select();
 		hoverSound.Play();
 	}
 
 	public override void OnExit()
 	{
-		restartAnim.Play ("Play2PPointerExit");
+		
 	}
 }

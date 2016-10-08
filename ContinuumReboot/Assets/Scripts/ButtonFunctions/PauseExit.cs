@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/PauseExit")]
 public class PauseExit : ButtonEvents
@@ -10,13 +11,22 @@ public class PauseExit : ButtonEvents
 	public GameObject confirmExit;
 	public Animator exitAnim;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("InputMenu", "exitConfirm");
-		confirmExit.SetActive (true);
+		if (PlayerPrefs.GetString ("InputMenu") == "exitconfirm")
+		{
+			PlayerPrefs.SetString ("InputMenu", "gamepause");
+			confirmExit.SetActive (false);
+		}
+		else
+		{
+			PlayerPrefs.SetString ("InputMenu", "exitconfirm");
+			confirmExit.SetActive (true);
+		}
 		clickSound.Play();
 	}
 
@@ -26,6 +36,7 @@ public class PauseExit : ButtonEvents
 			scrollScript.HighlightedButton = buttonIndex;
 		exitAnim.enabled = true;
 		exitAnim.Play ("Play2PPointerEnter");
+		thisButton.Select();
 		hoverSound.Play();
 	}
 
