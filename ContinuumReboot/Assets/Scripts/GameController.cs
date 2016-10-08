@@ -179,12 +179,14 @@ public class GameController : MonoBehaviour
 			}
 		}
 
+		// Game Over scoring functionality has been moved to GameOverController.cs - Claire
+		/*
 		// If the game is not in pre-game mode, and the player's is at game over condition.
 		if (!isPreGame && playerControllerScript.Health <= playerControllerScript.minHealth) 
 		{
 			// Sets game over score text.
 			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
-		}
+		}*/
 
 		// If the game's score is less than 0.
 		if (CurrentScore < 0) 

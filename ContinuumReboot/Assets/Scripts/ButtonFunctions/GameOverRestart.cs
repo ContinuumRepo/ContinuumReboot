@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/GameOverRestart")]
 public class GameOverRestart : ButtonEvents
@@ -9,6 +10,7 @@ public class GameOverRestart : ButtonEvents
 	public MenuScript menuScript;
 	public Animator restartAnim;
 
+	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
@@ -21,6 +23,8 @@ public class GameOverRestart : ButtonEvents
 	{
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
+		thisButton.Select();
+
 		restartAnim.Play ("Play1PPointerEnter");
 		hoverSound.Play();
 	}

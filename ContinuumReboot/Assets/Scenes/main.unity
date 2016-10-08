@@ -94,6 +94,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 344084}
+  - 114: {fileID: 344085}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -112,8 +113,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1563463494}
   - {fileID: 933696329}
+  - {fileID: 1563463494}
   m_Father: {fileID: 580723267}
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -121,6 +122,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -458}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &344085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 344083}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9b70436ae92144892999bca8382514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 933696336}
+  - {fileID: 1563463501}
+  timeBuffer: 0.2
+  inputLocPrefsValue: gameover
+  startToSelect: 1
+  bToClose: 0
+  bDeactivate: {fileID: 0}
+  bBackButton: {fileID: 0}
+  bPrefsValue: 
+  firstIndex: 0
 --- !u!1 &1437531
 GameObject:
   m_ObjectHideFlags: 0
@@ -10787,6 +10810,7 @@ MonoBehaviour:
   bDeactivate: {fileID: 0}
   bBackButton: {fileID: 575170817}
   bPrefsValue: gamepause
+  firstIndex: 0
 --- !u!1 &115577025
 GameObject:
   m_ObjectHideFlags: 0
@@ -55234,13 +55258,14 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 601646023}
+  - 114: {fileID: 601646024}
   m_Layer: 5
   m_Name: Press A to view stats Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &601646023
 RectTransform:
   m_ObjectHideFlags: 0
@@ -55264,6 +55289,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &601646024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 601646022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e92ffc4cddd7bc4d85e40c502386230, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highscoreText: {fileID: 1435723133}
+  gameOverScoreText: {fileID: 554538061}
+  gameController: {fileID: 162497497}
+  gameOverScroll: {fileID: 344085}
+  gameOverInputWait: 0.1
 --- !u!1 &602010981
 GameObject:
   m_ObjectHideFlags: 0
@@ -70826,6 +70867,7 @@ MonoBehaviour:
   bDeactivate: {fileID: 0}
   bBackButton: {fileID: 541505252}
   bPrefsValue: 
+  firstIndex: 0
 --- !u!1 &745078445
 GameObject:
   m_ObjectHideFlags: 0
@@ -80759,6 +80801,7 @@ GameObject:
   - 114: {fileID: 933696330}
   - 95: {fileID: 933696334}
   - 114: {fileID: 933696335}
+  - 114: {fileID: 933696336}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -80780,7 +80823,7 @@ RectTransform:
   - {fileID: 1770043266}
   - {fileID: 1774663994}
   m_Father: {fileID: 344084}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -80836,9 +80879,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 933696330}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 933696336}
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -80915,9 +80958,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 933696334}
-          m_MethodName: Play
-          m_Mode: 5
+        - m_Target: {fileID: 933696336}
+          m_MethodName: OnEnter
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -80926,26 +80969,15 @@ MonoBehaviour:
             m_StringArgument: Play1PPointerEnter
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1235494378}
-          m_MethodName: Play
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 933696334}
-          m_MethodName: Play
-          m_Mode: 5
+        - m_Target: {fileID: 933696336}
+          m_MethodName: OnExit
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -80957,6 +80989,23 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+--- !u!114 &933696336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 933696328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfc5617ba64cb7e47a04df3f0c699d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1235494378}
+  menuScript: {fileID: 933696330}
+  restartAnim: {fileID: 933696334}
+  thisButton: {fileID: 933696331}
+  scrollScript: {fileID: 344085}
+  buttonIndex: 0
 --- !u!1 &945433344
 GameObject:
   m_ObjectHideFlags: 0
@@ -100364,7 +100413,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1435723134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112551,6 +112600,7 @@ GameObject:
   - 114: {fileID: 1563463495}
   - 95: {fileID: 1563463500}
   - 114: {fileID: 1563463499}
+  - 114: {fileID: 1563463501}
   m_Layer: 5
   m_Name: Menu Button
   m_TagString: Untagged
@@ -112572,7 +112622,7 @@ RectTransform:
   - {fileID: 1556092442}
   - {fileID: 256742851}
   m_Father: {fileID: 344084}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -95}
@@ -112628,9 +112678,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1563463495}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1563463501}
+        m_MethodName: OnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -112690,9 +112740,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1563463500}
-          m_MethodName: Play
-          m_Mode: 5
+        - m_Target: {fileID: 1563463501}
+          m_MethodName: OnEnter
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -112701,26 +112751,15 @@ MonoBehaviour:
             m_StringArgument: Play2PPointerEnter
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1235494378}
-          m_MethodName: Play
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1563463500}
-          m_MethodName: Play
-          m_Mode: 5
+        - m_Target: {fileID: 1563463501}
+          m_MethodName: OnExit
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -112749,6 +112788,23 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1563463501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563463493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172d48b62810f7941aa1fdd32acf53cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 1235494378}
+  menuScript: {fileID: 1563463495}
+  menuAnim: {fileID: 1563463500}
+  thisButton: {fileID: 1563463496}
+  scrollScript: {fileID: 344085}
+  buttonIndex: 1
 --- !u!1 &1569773028
 GameObject:
   m_ObjectHideFlags: 0
@@ -122304,6 +122360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ece267a8cb77b49875f67d7be7895b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noButton: {fileID: 0}
 --- !u!114 &1719108514
 MonoBehaviour:
   m_ObjectHideFlags: 0
