@@ -5516,9 +5516,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!114 &64973471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9037,9 +9034,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!33 &96605539
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -23558,9 +23552,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!114 &252001408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27521,9 +27512,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!1001 &290525605
 Prefab:
   m_ObjectHideFlags: 0
@@ -76977,7 +76965,7 @@ MonoBehaviour:
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   shotSpawn: {fileID: 353225749}
   fireRate: 0.2
-  altfireRate: 20
+  altfireRate: 40
   EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 658689108}
   AltFireImage: {fileID: 1627362248}
@@ -115148,9 +115136,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!1 &1627362245
 GameObject:
   m_ObjectHideFlags: 0
@@ -141450,9 +141435,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!4 &2005018562
 Transform:
   m_ObjectHideFlags: 0
@@ -141786,9 +141768,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!1 &2027218722
 GameObject:
   m_ObjectHideFlags: 0
@@ -148347,9 +148326,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!1 &2053637664
 GameObject:
   m_ObjectHideFlags: 0
@@ -161605,9 +161581,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!33 &2133944675
 MeshFilter:
   m_ObjectHideFlags: 0
