@@ -795,7 +795,7 @@ public class PlayerController : MonoBehaviour
 
 			if (Time.timeScale < 0.01f) 
 			{
-				if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
+				if (/*Input.GetKeyDown ("joystick button 0") || */Input.GetKeyDown ("space"))
 				{
 					Time.timeScale = initialTimeScale; // sets timescale to this.
 					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.

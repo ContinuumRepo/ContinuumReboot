@@ -9,26 +9,41 @@ public class GameOverController : MonoBehaviour
 	public Text gameOverScoreText;
 	public GameController gameController;
 	public HighscoreController hsController;
+	public HighscoreInput hsInput;
 
 	public InputScroll gameOverScroll;
 	public float gameOverInputWait;
 
+	private int score;
+
 	void OnEnable ()
 	{
-		int score = (int) Mathf.Round (gameController.CurrentScore);
+		score = (int) Mathf.Round (gameController.CurrentScore);
 
 		gameOverScoreText.text = score.ToString();
 
 		if (hsController.CheckForHighScore (score))
 		{
 			highscoreText.SetActive (true);
-			// Enable highscore input
+			hsInput.enabled = true;
 		}
 		else
 		{
-			gameOverScroll.enabled = true;
-			gameOverScroll.WaitToRenameInputMenu (gameOverInputWait, "gameover");
+			EnableGameOverScroll();
 		}
 
+	}
+
+	public void SubmitHighscore (string name)
+	{
+		hsController.InsertNewHighScore (name, score);
+		hsInput.enabled = false;
+		EnableGameOverScroll();
+	}
+
+	private void EnableGameOverScroll ()
+	{
+		gameOverScroll.enabled = true;
+		gameOverScroll.WaitToRenameInputMenu (gameOverInputWait, "gameover");
 	}
 }

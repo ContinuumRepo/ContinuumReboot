@@ -8,6 +8,13 @@ public class TextBlink : MonoBehaviour
 	public float blinkSpeed;
 
 	private bool blink = false;
+
+	void OnEnable ()
+	{
+		StopCoroutine (BlinkOn());
+		StopCoroutine (BlinkOff());
+		blink = false;
+	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -20,14 +27,24 @@ public class TextBlink : MonoBehaviour
 	{
 		blink = true;
 		blinkingText.enabled = false;
-		yield return new WaitForSeconds (blinkSpeed);
+		yield return WaitForUnscaledSeconds (blinkSpeed);
 		StartCoroutine (BlinkOn());
 	}
 
 	IEnumerator BlinkOn()
 	{
 		blinkingText.enabled = true;
-		yield return new WaitForSeconds (blinkSpeed);
+		yield return WaitForUnscaledSeconds (blinkSpeed);
 		blink = false;
+	}
+
+	IEnumerator WaitForUnscaledSeconds (float time)
+	{
+		float ttl = 0;
+		while(time > ttl)
+		{
+			ttl += Time.unscaledDeltaTime;
+			yield return null;
+		}
 	}
 }
