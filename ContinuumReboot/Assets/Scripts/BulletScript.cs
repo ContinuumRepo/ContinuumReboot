@@ -121,7 +121,7 @@ public class BulletScript : MonoBehaviour
 		}
 
 		// When bullet is not a horizontal beam.
-		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam)
+		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam && BulletType == bulletType.verticalBeam && BulletType == bulletType.shield)
 		{
 			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
 		}
