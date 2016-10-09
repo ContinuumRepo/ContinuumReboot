@@ -5,22 +5,8 @@ using XInputDotNetPure;
 
 public class BulletScript : MonoBehaviour 
 {
-	public bulletType BulletType;
-	private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
-	public PlayerController playerControllerScript;
-	public float newSpeed = -70.0f; 						// New speed when ricoshet.
-	private CameraShake camShakeScript; 					// The camera shake component.
-	public float InitialShakeDuration = 0.25f;				// Shake time.
-	public float InitialShakeStrength = 0.5f; 				// Shake strength.
-	//private GameController gameControllerScript; 			// Game Controller component.
-	public TimescaleController timeScaleControllerScript; 	// Time scale controller component.
-	//public ParticleSystem[] RicoshetParticle;   			// Particle combos, should be children of the Player GameObject.
-	public AudioSource[] ComboAudio;
-	public float VibrationTime = 0.04f;  					// How long should the vibrationh occur
-	public bool useMutedBullet;								// Is the bullet (no cost) without sound?
-	public int ricoshetNumber;
-	public int ricoshetMax;
-	public int ComboNN;
+	public bulletType BulletType;							// What type of bullet is this?
+
 	public enum bulletType 
 	{
 		regularShot,
@@ -32,33 +18,47 @@ public class BulletScript : MonoBehaviour
 		verticalBeam,
 		shield
 	}
+		
+	[Header ("Camera Shake")]
+	public float InitialShakeDuration = 0.25f;				// Shake time.
+	public float InitialShakeStrength = 0.5f; 				// Shake strength.
+
+	[Header ("Combos")]
+	public int ComboNN;										// Current combo.
+	public AudioSource[] ComboAudio;						// Array of audio to play depnding on the combo.
+	public int ricoshetNumber;								// The current ricoshet.
+	public int ricoshetMax;									// How many ricochets until destroy.
+	public float newSpeed = -70.0f; 						// New speed when ricoshet.
+
+	[Header ("Misc")]
+	public float VibrationTime = 0.04f;  					// How long should the vibrationh occur
+	public bool useMutedBullet;								// Is the bullet (no cost) without sound?
+
+	private PlayerController playerControllerScript;		// Player Controller script component.
+	private AutoMoveAndRotate MoveAndRotateScript; 			// Auto Move and Rotate component.
+	private CameraShake camShakeScript; 					// The camera shake component.
 
 	void Start () 
 	{
+		// Finds scripts.
 		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+		camShakeScript = Camera.main.GetComponent<CameraShake> ();
+
+		camShakeScript.shakeDuration = InitialShakeDuration / 3;
+		camShakeScript.shakeAmount = InitialShakeStrength / 3;
 		ComboNN = playerControllerScript.ComboN;
+		VibrationTime = 0.04f;
 
 		if (BulletType == bulletType.mutedShot) 
 		{
 			GetComponent<BoxCollider> ().enabled = true;
 		}
-
-		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true) 
-		{
-			camShakeScript = Camera.main.GetComponent<CameraShake> ();
-			camShakeScript.shakeDuration = InitialShakeDuration / 3;
-			camShakeScript.shakeAmount = InitialShakeStrength / 3;
-		}
-
-		if (BulletType == bulletType.regularShot) 
-		{
-			//GetComponent<AudioSource> ().volume = 0.5f;
-		}
 			
-		VibrationTime = 0.04f;
-		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
-		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
+		if (playerControllerScript.ComboTime > 0.1f) 
+		{
+			playerControllerScript.ComboTime -= 0.1f;
+		}
 
 		ComboAudio[0] = GameObject.FindGameObjectWithTag ("ComboAudioZero").GetComponent<AudioSource>();
 		ComboAudio[1] = GameObject.FindGameObjectWithTag ("ComboAudioOne").GetComponent<AudioSource>();
@@ -70,11 +70,6 @@ public class BulletScript : MonoBehaviour
 		ComboAudio[7] = GameObject.FindGameObjectWithTag ("ComboAudioSeven").GetComponent<AudioSource>();
 		ComboAudio[8] = GameObject.FindGameObjectWithTag ("ComboAudioEight").GetComponent<AudioSource>();
 		ComboAudio[9] = GameObject.FindGameObjectWithTag ("ComboAudioNine").GetComponent<AudioSource>();
-
-		if (playerControllerScript.ComboTime > 0.1f) 
-		{
-			playerControllerScript.ComboTime -= 0.1f;
-		}
 	}
 
 	void Update ()
@@ -119,17 +114,20 @@ public class BulletScript : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam)
-		{
-			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
-		}
-
+		// When bullet is a horizontal beam.
 		if (other.tag == "Barrier" && BulletType == bulletType.horizontalBeam) 
 		{
 			gameObject.transform.rotation = Quaternion.identity;
 		}
 
-		if (other.tag == "Brick" || other.tag == "Cube")
+		// When bullet is not a horizontal beam.
+		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam)
+		{
+			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
+		}
+
+		// When bullet hits a brick.
+		if (other.tag == "BossPart" || other.tag == "Cube")
 		{
 			if (playerControllerScript != null)
 			{
@@ -138,7 +136,7 @@ public class BulletScript : MonoBehaviour
 
 			if (playerControllerScript == null) 
 			{
-				Debug.Log ("Cannot find player controller script: Could be that this is a muted bullet spawning right in front of a cube.");
+				//Debug.Log ("Cannot find player controller script: Could be that this is a muted bullet spawning right in front of a cube.");
 			}
 
 			if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
@@ -171,7 +169,7 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.shield) 
 			{
-				
+				//Destroy (other.gameObject);
 			}
 
 			if (BulletType == bulletType.mutedShot) 

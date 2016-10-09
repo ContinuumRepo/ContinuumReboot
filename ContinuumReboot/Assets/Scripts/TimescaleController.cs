@@ -5,55 +5,63 @@ using UnityEngine.UI;
 
 public class TimescaleController : MonoBehaviour 
 {
-	public float highestTimeScale; // For stats screen.
-	public float timeScaleReadOnly; // The actual value of time.timeScale.
-	public float startTimeScale = 1.0f; // So there is no runtime error that timescale is below 0 at the start of the game.
-	public float timeSpeedIncreaseSens; // Multipler to minimum time increase per frame.
-	public float addMinTime = 0.1f; // Minimum time scale.
-	public float timeSpeedSens; // Dampens change in timescale as the distance between player and reference point increase.
-	public float distance; // y-distance from Reference point to player.
-	public Text MultiplierText;
-	private float currentTimeScale; // Stores calculation of timescale here.
-	private Transform playerOne;
-	private Transform playerTwo;
-	private Transform playerThree;
-	private Transform playerFour;
-	private Transform referencePoint;
-	public AudioSource Music;
-	public float AudibleMaxTime = 1;
-	public float AudibleTimeRemaining;
+	public float highestTimeScale; 			// For stats screen.
+	public float timeScaleReadOnly;			// The actual value of time.timeScale.
+	public float startTimeScale = 1.0f; 	// So there is no runtime error that timescale is below 0 at the start of the game.
+	public float timeSpeedIncreaseSens;		// Multipler to minimum time increase per frame.
+	public float addMinTime = 0.1f; 		// Minimum time scale.
+	public float timeSpeedSens; 			// Dampens change in timescale as the distance between player and reference point increase.
+	public float distance;					// y-distance from Reference point to player.
+	public Text MultiplierText;				// Multipler text UI in %.
+	private float currentTimeScale; 		// Stores calculation of timescale here.
+	private Transform referencePoint;		// Needs this to calculate.
+	public AudioSource Music;				// The main game music.
 
 	public enum calcMode
 	{
-		Distance,
-		timeScale,
-		none
+		Distance, 							// Calculates music pitch by via distance
+		timeScale,							// Calculates music pitch by Time.timeScale directly
+		none								// Does nothing to the music pitch.
 	}
 
 	public calcMode CalculationMode;
 
 	public enum mode
 	{
-		onePlayer, twoPlayers, threePlayers, fourPlayers
+		onePlayer, 
+		//twoPlayers, 
+		//threePlayers, 
+		//fourPlayers
 	}
 
 	public mode PlayerMode;
+	public ParticleSystem DistantStars;		// The star field particles.
+	public MeshRenderer PlayerMat; 			// The player material.
 
-	public ParticleSystem DistantStars;
-	public VignetteAndChromaticAberration vignetteScript;
-	public MeshRenderer PlayerMat;
+
+	private Transform playerOne;		// Player one transform.
+		
+	/*
+	private Transform playerTwo;		// Player two transform.
+	private Transform playerThree;		// Player three transform.
+	private Transform playerFour;		// Player four transform.
+	*/
 
 	public void Start () 
 	{
-		Time.timeScale = startTimeScale;
+		Time.timeScale = startTimeScale; // Sets start Time.timeScale.
+		CalculationMode = calcMode.none; // Starts music pitch mode on none.
 
-		CalculationMode = calcMode.none;
+		// Finds reference point gameObject.transform.
+		referencePoint = GameObject.FindGameObjectWithTag ("ReferencePoint").transform; 
 
 		if (PlayerMode == mode.onePlayer)
 		{
+			// Finds player transform.
 			playerOne = GameObject.Find ("Player").transform; 
 		}
 
+		/*
 		if (PlayerMode == mode.twoPlayers) 
 		{
 			playerOne = GameObject.Find ("Player").transform; 
@@ -73,17 +81,15 @@ public class TimescaleController : MonoBehaviour
 			playerTwo = GameObject.Find ("PlayerTwo").transform;
 			playerThree = GameObject.Find ("PlayerThree").transform;
 			playerFour = GameObject.Find ("PlayerFour").transform;
-		}
-
-		referencePoint = GameObject.FindGameObjectWithTag ("ReferencePoint").transform; // Finds reference point gameObject.transform.
+		}*/
 	}
 
 	public void Update () 
 	{	
 		if (Time.timeScale <= 0) 
 		{
-			Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
-			Time.timeScale = 0.05f;
+			Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
+			//Time.timeScale = 0.05f;
 		}
 
 		if (CalculationMode == calcMode.none) 
@@ -103,7 +109,6 @@ public class TimescaleController : MonoBehaviour
 		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
-		vignetteScript.chromaticAberration = 0.3f - (Time.timeScale / 10);
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
 
 		if (PlayerMode == mode.onePlayer) 
@@ -111,6 +116,7 @@ public class TimescaleController : MonoBehaviour
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
 		}
 
+		/*
 		if (PlayerMode == mode.twoPlayers)
 		{
 			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y) / 2) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
@@ -124,7 +130,7 @@ public class TimescaleController : MonoBehaviour
 		if (PlayerMode == mode.fourPlayers)
 		{
 			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y + playerThree.transform.position.y + playerFour.transform.position.y) / 4) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
-		}
+		}*/
 
 		if (CalculationMode == calcMode.Distance) 
 		{
@@ -133,14 +139,14 @@ public class TimescaleController : MonoBehaviour
 
 			if (distance < 7) 
 			{
-				Music.pitch = 0.05f;
+				Music.pitch = 0.2f;
 			}
 
 			if (distance < 14 && distance >= 7) 
 			{
 				if (Time.timeScale < 1 || Music.pitch < 1)
 				{
-					Music.pitch = Time.timeScale - 0.4f;
+					Music.pitch = 0.5f;
 				}
 
 				if (Time.timeScale >= 1 || Music.pitch > 1) 
@@ -205,4 +211,3 @@ public class TimescaleController : MonoBehaviour
 		}
 	}
 }
-

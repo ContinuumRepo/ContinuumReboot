@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!1 &101870
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -19,14 +19,14 @@ GameObject:
   - 114: {fileID: 11403186}
   m_Layer: 16
   m_Name: Purple Brick (4)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &102050
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -43,14 +43,14 @@ GameObject:
   - 114: {fileID: 11429456}
   m_Layer: 16
   m_Name: Cyan Brick (8)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &103654
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -67,14 +67,14 @@ GameObject:
   - 114: {fileID: 11430706}
   m_Layer: 16
   m_Name: Cyan Brick (3)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &105276
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -91,14 +91,14 @@ GameObject:
   - 114: {fileID: 11459742}
   m_Layer: 16
   m_Name: Cyan Brick (7)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &106438
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -115,14 +115,14 @@ GameObject:
   - 114: {fileID: 11413124}
   m_Layer: 16
   m_Name: Purple Brick (8)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &106554
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -139,14 +139,14 @@ GameObject:
   - 114: {fileID: 11454954}
   m_Layer: 16
   m_Name: Cyan Brick (5)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &116388
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -163,14 +163,14 @@ GameObject:
   - 114: {fileID: 11422920}
   m_Layer: 16
   m_Name: Cyan Brick (6)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &127052
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -187,14 +187,14 @@ GameObject:
   - 114: {fileID: 11400132}
   m_Layer: 16
   m_Name: Cyan Brick (2)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &141984
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -211,14 +211,14 @@ GameObject:
   - 114: {fileID: 11430816}
   m_Layer: 16
   m_Name: Brain
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &144538
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -235,14 +235,14 @@ GameObject:
   - 114: {fileID: 11484220}
   m_Layer: 16
   m_Name: Purple Brick (1)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &147226
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -259,14 +259,14 @@ GameObject:
   - 114: {fileID: 11480540}
   m_Layer: 16
   m_Name: Cyan Brick (1)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &149220
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -283,14 +283,14 @@ GameObject:
   - 114: {fileID: 11494472}
   m_Layer: 16
   m_Name: Purple Brick
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &154064
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -307,14 +307,30 @@ GameObject:
   - 114: {fileID: 11477660}
   m_Layer: 16
   m_Name: Purple Brick (2)
-  m_TagString: Cube
+  m_TagString: BossPart
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &155764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 417996}
+  - 114: {fileID: 11498052}
+  m_Layer: 0
+  m_Name: Rotator
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &159370
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -331,14 +347,14 @@ GameObject:
   - 114: {fileID: 11453336}
   m_Layer: 16
   m_Name: Purple Brick (3)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &161634
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -355,7 +371,7 @@ GameObject:
   - 114: {fileID: 11414916}
   m_Layer: 16
   m_Name: Purple Brick (5)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -389,14 +405,14 @@ GameObject:
   - 114: {fileID: 11485136}
   m_Layer: 0
   m_Name: CubeFormation03
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &170170
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -413,14 +429,14 @@ GameObject:
   - 114: {fileID: 11405718}
   m_Layer: 16
   m_Name: Cyan Brick (4)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &179724
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -437,14 +453,14 @@ GameObject:
   - 114: {fileID: 11483316}
   m_Layer: 16
   m_Name: Purple Brick (7)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &183180
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
@@ -461,7 +477,7 @@ GameObject:
   - 114: {fileID: 11455744}
   m_Layer: 16
   m_Name: Purple Brick (6)
-  m_TagString: Cube
+  m_TagString: BossPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -477,7 +493,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 7
 --- !u!4 &401052
 Transform:
@@ -490,7 +506,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 15
 --- !u!4 &401362
 Transform:
@@ -503,7 +519,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 10
 --- !u!4 &404780
 Transform:
@@ -516,7 +532,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 1
 --- !u!4 &406088
 Transform:
@@ -529,7 +545,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 9
 --- !u!4 &408578
 Transform:
@@ -542,8 +558,39 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 6
+--- !u!4 &417996
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155764}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 462394}
+  - {fileID: 404780}
+  - {fileID: 441556}
+  - {fileID: 463572}
+  - {fileID: 450336}
+  - {fileID: 498154}
+  - {fileID: 408578}
+  - {fileID: 400296}
+  - {fileID: 496946}
+  - {fileID: 406088}
+  - {fileID: 401362}
+  - {fileID: 480438}
+  - {fileID: 498092}
+  - {fileID: 485336}
+  - {fileID: 462648}
+  - {fileID: 401052}
+  - {fileID: 440940}
+  - {fileID: 449130}
+  m_Father: {fileID: 466810}
+  m_RootOrder: 0
 --- !u!4 &433518
 Transform:
   m_ObjectHideFlags: 1
@@ -568,7 +615,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 16
 --- !u!4 &441556
 Transform:
@@ -581,7 +628,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 2
 --- !u!4 &449130
 Transform:
@@ -594,7 +641,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 17
 --- !u!4 &450336
 Transform:
@@ -607,7 +654,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 4
 --- !u!4 &462394
 Transform:
@@ -620,7 +667,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 0
 --- !u!4 &462648
 Transform:
@@ -633,7 +680,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 14
 --- !u!4 &463572
 Transform:
@@ -646,7 +693,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 3
 --- !u!4 &466810
 Transform:
@@ -659,24 +706,7 @@ Transform:
   m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 462394}
-  - {fileID: 404780}
-  - {fileID: 441556}
-  - {fileID: 463572}
-  - {fileID: 450336}
-  - {fileID: 498154}
-  - {fileID: 408578}
-  - {fileID: 400296}
-  - {fileID: 496946}
-  - {fileID: 406088}
-  - {fileID: 401362}
-  - {fileID: 480438}
-  - {fileID: 498092}
-  - {fileID: 485336}
-  - {fileID: 462648}
-  - {fileID: 401052}
-  - {fileID: 440940}
-  - {fileID: 449130}
+  - {fileID: 417996}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &480438
@@ -690,7 +720,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 11
 --- !u!4 &485336
 Transform:
@@ -703,7 +733,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 13
 --- !u!4 &496946
 Transform:
@@ -717,7 +747,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 433518}
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 8
 --- !u!4 &498092
 Transform:
@@ -730,7 +760,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 12
 --- !u!4 &498154
 Transform:
@@ -743,7 +773,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 466810}
+  m_Father: {fileID: 417996}
   m_RootOrder: 5
 --- !u!23 &2301894
 MeshRenderer:
@@ -2142,9 +2172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11403186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2156,9 +2186,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11403806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2205,14 +2235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2221,6 +2251,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11405718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2232,9 +2263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11408334
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2247,14 +2278,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2263,6 +2294,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11411036
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2291,14 +2323,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2307,6 +2339,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11413124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2318,9 +2351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11414444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2333,14 +2366,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2349,6 +2382,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11414916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2360,9 +2394,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11416434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2374,7 +2408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2390,7 +2424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2460,9 +2494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11424272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,7 +2526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2509,14 +2543,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2525,6 +2559,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11427222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2536,7 +2571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2552,9 +2587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11430706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2566,9 +2601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11430816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2580,18 +2615,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 559156675d4cac64c80d99f862cdb628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyType: 0
   Health: 100
+  PointReward: 250
   Explosion: {fileID: 113200, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
   EnemyExplosion: {fileID: 196682, guid: 37f24fd5b56a8634cb4a6f8a7ede1777, type: 2}
-  PointReward: 250
   bombRate: 2
   Bombs:
   - {fileID: 156088, guid: 22e6ff05b09ae834c8054a815e108a6a, type: 2}
   - {fileID: 188294, guid: 536f38899ec02d94a8ccd5946222798c, type: 2}
-  BombNumberMax: 2
+  - {fileID: 182876, guid: 55e4f3231036d54498f71bf9daf276d3, type: 2}
+  BombNumberMax: 3
   CurrentBomb: 0
   EnemyTrans: {fileID: 0}
-  EnemyType: 0
   Music: {fileID: 0}
   NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
   BossMusic: {fileID: 8300000, guid: e070c979a5bf5aa4cb4aa7476576e74c, type: 3}
@@ -2625,14 +2661,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2641,6 +2677,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11433152
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2653,14 +2690,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2669,6 +2706,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11433910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2681,14 +2719,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2697,6 +2735,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11436666
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2708,7 +2747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2778,7 +2817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -2795,14 +2834,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2811,6 +2850,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11445680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2823,7 +2863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 1.2
+  SMOOTH_TIME: 1
   LockX: 0
   LockY: 0
   LockZ: 0
@@ -2839,9 +2879,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!114 &11446338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2854,14 +2891,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2870,6 +2907,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11448268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2900,14 +2938,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -2916,6 +2954,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11453336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2927,9 +2966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11454896
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2941,9 +2980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11454954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2955,9 +2994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11455744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2969,9 +3008,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11457110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3002,14 +3041,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3018,6 +3057,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11459742
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3029,9 +3069,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11459936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3062,14 +3102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3078,6 +3118,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11465148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3178,14 +3219,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3194,6 +3235,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11473900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3206,14 +3248,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3222,6 +3264,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11474788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3269,9 +3312,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11480540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3283,9 +3326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11480716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3313,7 +3356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -3361,7 +3404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -3377,9 +3420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11484220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3391,9 +3434,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
 --- !u!114 &11484692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3405,7 +3448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: -24
+  moveSpeed: 0
   rotationSpeed: 0
   tweenRate: 0.1
   isSourceBrick: 0
@@ -3467,14 +3510,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  Explosion: {fileID: 194952, guid: 86927affe6cb3254797a5bbf2524bb00, type: 2}
   PointType: 3
-  PointReward: 40
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3483,6 +3526,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11490080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3495,14 +3539,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  Explosion: {fileID: 188342, guid: 82c9bd89754be624dbb678f5a584d3b7, type: 2}
   PointType: 4
-  PointReward: 50
+  PointReward: 25
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
+  normalMaterial: {fileID: 2100000, guid: b37f1713a64d64640b9d3ac085a8e9f4, type: 2}
   orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
   yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
   greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
@@ -3511,6 +3555,7 @@ MonoBehaviour:
   redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
+  isBossPart: 1
 --- !u!114 &11492626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3540,9 +3585,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xBound: {x: -100, y: 100}
-  yBound: {x: -50, y: 100}
-  zBound: {x: -100, y: 100}
+  xBound: {x: 0, y: 0}
+  yBound: {x: 0, y: 0}
+  zBound: {x: 0, y: 0}
+--- !u!114 &11498052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveUnitsPerSecond:
+    value: {x: 0, y: 0, z: 0}
+    space: 1
+  rotateDegreesPerSecond:
+    value: {x: 0, y: 180, z: 0}
+    space: 1
+  ignoreTimescale: 0
 --- !u!198 &19891884
 ParticleSystem:
   m_ObjectHideFlags: 1

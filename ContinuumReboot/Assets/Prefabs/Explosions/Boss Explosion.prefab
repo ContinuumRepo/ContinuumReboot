@@ -150,7 +150,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 100
+      scalar: 400
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -166,7 +166,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 1
+          value: 0.75
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -427,7 +427,7 @@ ParticleSystem:
     serializedVersion: 2
     m_Type: 0
     rate:
-      scalar: 1000
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -461,11 +461,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 0
+    cnt0: 1000
     cnt1: 30
     cnt2: 30
     cnt3: 30
-    cntmax0: 0
+    cntmax0: 1000
     cntmax1: 30
     cntmax2: 30
     cntmax3: 30
@@ -1150,7 +1150,7 @@ ParticleSystem:
       minMaxState: 3
     separateAxis: 0
     inWorldSpace: 0
-    dampen: 0.3
+    dampen: 0.4
   SizeBySpeedModule:
     enabled: 0
     curve:
@@ -1635,7 +1635,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.25
+          value: 0.75
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -2593,7 +2593,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     magnitude:
-      scalar: 40
+      scalar: 30
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2609,7 +2609,7 @@ ParticleSystem:
         serializedVersion: 2
         m_Curve:
         - time: 0
-          value: 0.075
+          value: 0.1
           inSlope: 0
           outSlope: 0
           tangentMode: 0

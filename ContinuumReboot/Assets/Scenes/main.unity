@@ -5501,6 +5501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 1
@@ -5542,11 +5543,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 4
-  playerControllerScript: {fileID: 0}
-  newSpeed: -70
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -5558,11 +5557,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 1
-  ComboNN: 0
+  newSpeed: -70
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!114 &64973473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5716,7 +5715,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 3, z: 3}
+  m_Size: {x: 10, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &82448998
 GameObject:
@@ -9019,6 +9018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.05
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0
@@ -10726,7 +10726,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 11
+  m_RootOrder: 8
 --- !u!1 &109640326
 GameObject:
   m_ObjectHideFlags: 0
@@ -19131,17 +19131,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!82 &156460793
 AudioSource:
   m_ObjectHideFlags: 0
@@ -19306,7 +19304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67463f88ad7802045b8888823d6bc8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseScript: {fileID: 0}
   isPreGame: 1
   PreGameUI: {fileID: 1346888102}
   CountDownDelay: 1
@@ -19388,15 +19385,17 @@ MonoBehaviour:
   - {fileID: 195736, guid: e1c979e136963b6418e13d2851f7d984, type: 2}
   - {fileID: 104828, guid: 46c23eabffa09824395e481c74bd85b2, type: 2}
   - {fileID: 108550, guid: bce4d3400ef130e4c9733382a1ecaa8d, type: 2}
-  - {fileID: 195736, guid: e1c979e136963b6418e13d2851f7d984, type: 2}
-  - {fileID: 104828, guid: 46c23eabffa09824395e481c74bd85b2, type: 2}
-  - {fileID: 108550, guid: bce4d3400ef130e4c9733382a1ecaa8d, type: 2}
-  - {fileID: 195736, guid: e1c979e136963b6418e13d2851f7d984, type: 2}
-  - {fileID: 104828, guid: 46c23eabffa09824395e481c74bd85b2, type: 2}
-  - {fileID: 108550, guid: bce4d3400ef130e4c9733382a1ecaa8d, type: 2}
-  - {fileID: 195736, guid: e1c979e136963b6418e13d2851f7d984, type: 2}
-  - {fileID: 104828, guid: 46c23eabffa09824395e481c74bd85b2, type: 2}
-  - {fileID: 108550, guid: bce4d3400ef130e4c9733382a1ecaa8d, type: 2}
+  - {fileID: 177440, guid: be5d63b86a19fb647ab3438029703036, type: 2}
+  - {fileID: 187834, guid: c3dc03e2279c14a40b06c0719f386ac3, type: 2}
+  - {fileID: 160280, guid: f5c0d92af1b03ae44b7315b0e110a6a5, type: 2}
+  - {fileID: 124928, guid: c6238cfd4cbcfa9478c33248d4188957, type: 2}
+  - {fileID: 102112, guid: 01d5bd819b25e8747a4ae09c645ccb07, type: 2}
+  - {fileID: 156088, guid: 7546a7ae19ac8a047b656979d7a1b9e3, type: 2}
+  - {fileID: 124994, guid: 85d21acd8a43ca5489d89585291eeb25, type: 2}
+  - {fileID: 147140, guid: abf5616a10cbca5439df1b3398f5fe84, type: 2}
+  - {fileID: 100298, guid: c2519de7520f7034cb702f9ab79c7cc5, type: 2}
+  - {fileID: 115358, guid: 13d1871adf9b9c644a20eb977ebb21bb, type: 2}
+  - {fileID: 127800, guid: ac684fc94bb461e4991d9444ca083420, type: 2}
   rareitemSpawnValues: {x: 30, y: 28, z: 0}
   rareitemStartWait: 30
   rareitemSpawnWait: 45
@@ -19423,6 +19422,7 @@ MonoBehaviour:
   ShowFpsText: {fileID: 1895155896}
   CheatSound: {fileID: 2113772651}
   CheatActivatedAnim: {fileID: 371871069}
+  MouseScript: {fileID: 0}
 --- !u!114 &162497499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23550,12 +23550,9 @@ MonoBehaviour:
   distance: 1
   MultiplierText: {fileID: 283724135}
   Music: {fileID: 339966602}
-  AudibleMaxTime: 1
-  AudibleTimeRemaining: 0
   CalculationMode: 0
   PlayerMode: 0
   DistantStars: {fileID: 602010984}
-  vignetteScript: {fileID: 538907865}
   PlayerMat: {fileID: 1484625765}
 --- !u!1 &252001405
 GameObject:
@@ -23609,6 +23606,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 1
@@ -23650,11 +23648,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 4
-  playerControllerScript: {fileID: 0}
-  newSpeed: -70
   InitialShakeDuration: 0.13
   InitialShakeStrength: 0.15
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -23666,11 +23662,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 1
-  ComboNN: 0
+  newSpeed: -70
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!114 &252001410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23824,7 +23820,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6, y: 3, z: 3}
+  m_Size: {x: 10, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &252019978
 GameObject:
@@ -27569,6 +27565,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
   LockX: 1
   LockY: 0
   LockZ: 1
@@ -33077,13 +33074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCam: {fileID: 538907853}
-  sensRot: 0.1
-  ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.1
-  powerupBloomAmount: 0.3
-  shakeTime: 0.4
-  shakeAmount: 1
   PlayerNumber: 0
   speed: -60
   tilt: 0
@@ -33097,18 +33087,11 @@ MonoBehaviour:
   shotSpawn: {fileID: 1661213482}
   fireRate: 0.1
   altfireRate: 0
-  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
   LTriggerAnim: {fileID: 322631913}
-  ComboText: {fileID: 2011414363}
-  ComboTime: 0
-  ComboN: 0
-  ComboAnimation: {fileID: 2011414362}
-  ComboImage: {fileID: 525879908}
-  Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -33120,7 +33103,6 @@ MonoBehaviour:
   Shield: {fileID: 766750761}
   HorizontalBeam: {fileID: 1814519604}
   ClonedPlayer: {fileID: 1692096742}
-  isClone: 1
   HelixObject: {fileID: 367883750}
   WifiShot: {fileID: 154546, guid: 45798554146cf884eb33b01fe9c3d9a4, type: 2}
   DoubleShotIcon: {fileID: 1272269061}
@@ -33132,10 +33114,9 @@ MonoBehaviour:
   HelixIcon: {fileID: 223823093}
   WifiIcon: {fileID: 1265303973}
   ThreeDIcon: {fileID: 2114196955}
-  BgmLowFilter: {fileID: 339966604}
-  BgmHighFilter: {fileID: 339966603}
   MainCanvas: {fileID: 1082494267}
-  LensScript: {fileID: 0}
+  isClone: 1
+  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupDurationA: 10
   powerupDurationB: 10
   powerupDurationC: 10
@@ -33147,6 +33128,11 @@ MonoBehaviour:
   ActivePowerupParticles: {fileID: 2043040999}
   TimeRunningOutParticles: {fileID: 876698964}
   PowerupMeter: {fileID: 1869040196}
+  ComboTime: 0
+  ComboN: 0
+  ComboText: {fileID: 2011414363}
+  ComboAnimation: {fileID: 2011414362}
+  ComboImage: {fileID: 525879908}
   Health: 0
   startingHealth: 100
   minHealth: 0
@@ -33160,15 +33146,23 @@ MonoBehaviour:
   initialTimeScale: 0.15
   slowTimeDuration: 3
   slowTimeRemaining: 0
+  TimeSlowingSpeed: 0.5
+  minTimeScale: 0.01667
   BGMMusic: {fileID: 339966602}
   PressToContinue: {fileID: 601646022}
   DeactivatePlayerElements: {fileID: 634708996}
-  TimeSlowingSpeed: 0.5
-  minTimeScale: 0.01667
   GameOverUI: {fileID: 2114330362}
   GameOverSound: {fileID: 968086315}
   GameOverLoop: {fileID: 1124104977}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
+  BgmLowFilter: {fileID: 339966604}
+  BgmHighFilter: {fileID: 339966603}
+  MainCam: {fileID: 538907853}
+  normalBloomAmount: 0.1
+  powerupBloomAmount: 0.3
+  shakeTime: 0.4
+  shakeAmount: 1
+  ColorCorrectionCurvesScript: {fileID: 0}
 --- !u!114 &356986085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34754,7 +34748,7 @@ Transform:
   - {fileID: 960315932}
   - {fileID: 252001406}
   m_Father: {fileID: 634708997}
-  m_RootOrder: 9
+  m_RootOrder: 6
 --- !u!114 &367883752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51702,17 +51696,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!82 &573060998
 AudioSource:
   m_ObjectHideFlags: 0
@@ -58398,9 +58390,6 @@ Transform:
   - {fileID: 1484625764}
   - {fileID: 353225749}
   - {fileID: 683608842}
-  - {fileID: 1540288344}
-  - {fileID: 766750762}
-  - {fileID: 1814519605}
   - {fileID: 367883751}
   - {fileID: 876698962}
   - {fileID: 107156134}
@@ -58549,17 +58538,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!23 &636480243
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60295,17 +60282,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!23 &641530213
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -60439,17 +60424,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!82 &644608082
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67386,7 +67369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -72514,17 +72497,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!82 &763641016
 AudioSource:
   m_ObjectHideFlags: 0
@@ -72707,6 +72688,7 @@ GameObject:
   - 82: {fileID: 766750767}
   - 114: {fileID: 766750766}
   - 114: {fileID: 766750769}
+  - 114: {fileID: 766750770}
   m_Layer: 13
   m_Name: Shield
   m_TagString: Bullet
@@ -72720,14 +72702,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 766750761}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children:
   - {fileID: 2044216241}
-  m_Father: {fileID: 634708997}
-  m_RootOrder: 7
+  m_Father: {fileID: 1658532486}
+  m_RootOrder: 8
 --- !u!23 &766750763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -72895,11 +72877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 7
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 1
   InitialShakeStrength: 1.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 1
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -72911,11 +72891,40 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 2147483647
-  ComboNN: 1
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
+--- !u!114 &766750770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 766750761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyInStart: 0
+  SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
+  LockX: 0
+  LockY: 0
+  LockZ: 1
+  useSmoothing: 0
+  target: {fileID: 864279380}
+  velocity: {x: 0, y: 0, z: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  useRB: 0
+  lockedPos: 0
+  hasLockedPos: 0
 --- !u!1 &772125112
 GameObject:
   m_ObjectHideFlags: 0
@@ -75449,13 +75458,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCam: {fileID: 538907853}
-  sensRot: 0.2
-  ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.26
-  powerupBloomAmount: 0.35
-  shakeTime: 0.4
-  shakeAmount: 1
   PlayerNumber: 0
   speed: 40
   tilt: 0
@@ -75467,20 +75469,13 @@ MonoBehaviour:
   zBound: 0
   shot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   shotSpawn: {fileID: 353225749}
-  fireRate: 0.2
+  fireRate: 0.25
   altfireRate: 40
-  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 658689108}
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
   LTriggerAnim: {fileID: 322631913}
-  ComboText: {fileID: 2011414363}
-  ComboTime: 0
-  ComboN: 0
-  ComboAnimation: {fileID: 2011414362}
-  ComboImage: {fileID: 525879908}
-  Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
   RegularShot: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
@@ -75492,7 +75487,6 @@ MonoBehaviour:
   Shield: {fileID: 766750761}
   HorizontalBeam: {fileID: 1814519604}
   ClonedPlayer: {fileID: 1692096742}
-  isClone: 0
   HelixObject: {fileID: 367883750}
   WifiShot: {fileID: 154546, guid: 45798554146cf884eb33b01fe9c3d9a4, type: 2}
   DoubleShotIcon: {fileID: 1272269061}
@@ -75504,10 +75498,9 @@ MonoBehaviour:
   HelixIcon: {fileID: 223823093}
   WifiIcon: {fileID: 211911166}
   ThreeDIcon: {fileID: 2114196955}
-  BgmLowFilter: {fileID: 339966604}
-  BgmHighFilter: {fileID: 339966603}
   MainCanvas: {fileID: 1082494267}
-  LensScript: {fileID: 0}
+  isClone: 0
+  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupDurationA: 10
   powerupDurationB: 12
   powerupDurationC: 12
@@ -75519,6 +75512,11 @@ MonoBehaviour:
   ActivePowerupParticles: {fileID: 2043040999}
   TimeRunningOutParticles: {fileID: 876698964}
   PowerupMeter: {fileID: 1869040196}
+  ComboTime: 0
+  ComboN: 0
+  ComboText: {fileID: 2011414363}
+  ComboAnimation: {fileID: 2011414362}
+  ComboImage: {fileID: 525879908}
   Health: 0
   startingHealth: 100
   minHealth: 0
@@ -75532,15 +75530,23 @@ MonoBehaviour:
   initialTimeScale: 0.15
   slowTimeDuration: 6
   slowTimeRemaining: 0
+  TimeSlowingSpeed: 0.3
+  minTimeScale: 0.016667
   BGMMusic: {fileID: 339966602}
   PressToContinue: {fileID: 601646022}
   DeactivatePlayerElements: {fileID: 634708996}
-  TimeSlowingSpeed: 0.3
-  minTimeScale: 0.016667
   GameOverUI: {fileID: 2114330362}
   GameOverSound: {fileID: 968086315}
   GameOverLoop: {fileID: 1124104977}
   gameOverExplosion: {fileID: 186396, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
+  BgmLowFilter: {fileID: 339966604}
+  BgmHighFilter: {fileID: 339966603}
+  MainCam: {fileID: 538907853}
+  normalBloomAmount: 0.26
+  powerupBloomAmount: 0.35
+  shakeTime: 0.4
+  shakeAmount: 1
+  ColorCorrectionCurvesScript: {fileID: 538907860}
 --- !u!1 &866902722
 GameObject:
   m_ObjectHideFlags: 0
@@ -77216,7 +77222,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 10
+  m_RootOrder: 7
 --- !u!199 &876698963
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -84612,17 +84618,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!82 &1012535197
 AudioSource:
   m_ObjectHideFlags: 0
@@ -90828,17 +90832,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!82 &1115116168
 AudioSource:
   m_ObjectHideFlags: 0
@@ -91977,7 +91979,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 14
+  m_RootOrder: 11
 --- !u!1 &1197570684
 GameObject:
   m_ObjectHideFlags: 0
@@ -96049,13 +96051,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCam: {fileID: 538907853}
-  sensRot: 0.1
-  ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.1
-  powerupBloomAmount: 0.3
-  shakeTime: 0.4
-  shakeAmount: 1
   PlayerNumber: 0
   speed: -60
   tilt: 0
@@ -96069,18 +96064,11 @@ MonoBehaviour:
   shotSpawn: {fileID: 1802026769}
   fireRate: 0.1
   altfireRate: 0
-  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
   LTriggerAnim: {fileID: 322631913}
-  ComboText: {fileID: 2011414363}
-  ComboTime: 0
-  ComboN: 0
-  ComboAnimation: {fileID: 2011414362}
-  ComboImage: {fileID: 525879908}
-  Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -96092,7 +96080,6 @@ MonoBehaviour:
   Shield: {fileID: 766750761}
   HorizontalBeam: {fileID: 1814519604}
   ClonedPlayer: {fileID: 1692096742}
-  isClone: 1
   HelixObject: {fileID: 367883750}
   WifiShot: {fileID: 154546, guid: 45798554146cf884eb33b01fe9c3d9a4, type: 2}
   DoubleShotIcon: {fileID: 1272269061}
@@ -96104,10 +96091,9 @@ MonoBehaviour:
   HelixIcon: {fileID: 223823093}
   WifiIcon: {fileID: 1265303973}
   ThreeDIcon: {fileID: 2114196955}
-  BgmLowFilter: {fileID: 339966604}
-  BgmHighFilter: {fileID: 339966603}
   MainCanvas: {fileID: 1082494267}
-  LensScript: {fileID: 0}
+  isClone: 1
+  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupDurationA: 10
   powerupDurationB: 10
   powerupDurationC: 10
@@ -96119,6 +96105,11 @@ MonoBehaviour:
   ActivePowerupParticles: {fileID: 2043040999}
   TimeRunningOutParticles: {fileID: 876698964}
   PowerupMeter: {fileID: 1869040196}
+  ComboTime: 0
+  ComboN: 0
+  ComboText: {fileID: 2011414363}
+  ComboAnimation: {fileID: 2011414362}
+  ComboImage: {fileID: 525879908}
   Health: 0
   startingHealth: 100
   minHealth: 0
@@ -96132,15 +96123,23 @@ MonoBehaviour:
   initialTimeScale: 0.15
   slowTimeDuration: 3
   slowTimeRemaining: 0
+  TimeSlowingSpeed: 0.5
+  minTimeScale: 0.01667
   BGMMusic: {fileID: 339966602}
   PressToContinue: {fileID: 601646022}
   DeactivatePlayerElements: {fileID: 634708996}
-  TimeSlowingSpeed: 0.5
-  minTimeScale: 0.01667
   GameOverUI: {fileID: 2114330362}
   GameOverSound: {fileID: 968086315}
   GameOverLoop: {fileID: 1124104977}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
+  BgmLowFilter: {fileID: 339966604}
+  BgmHighFilter: {fileID: 339966603}
+  MainCam: {fileID: 538907853}
+  normalBloomAmount: 0.1
+  powerupBloomAmount: 0.3
+  shakeTime: 0.4
+  shakeAmount: 1
+  ColorCorrectionCurvesScript: {fileID: 0}
 --- !u!114 &1257232937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98034,17 +98033,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!23 &1286155020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105913,6 +105910,7 @@ GameObject:
   - 114: {fileID: 1540288350}
   - 114: {fileID: 1540288351}
   - 114: {fileID: 1540288352}
+  - 114: {fileID: 1540288353}
   m_Layer: 13
   m_Name: GreenBeam
   m_TagString: Bullet
@@ -105926,17 +105924,17 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1540288343}
-  m_LocalRotation: {x: 0.000000115202326, y: -0.7071067, z: 0.7071068, w: -0.00000011520231}
-  m_LocalPosition: {x: -0, y: 0, z: -9.9}
-  m_LocalScale: {x: 0.6666667, y: 20, z: 0.33333337}
-  m_LocalEulerAnglesHint: {x: 89.980194, y: 180, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 29.699997, z: -0}
+  m_LocalScale: {x: 2, y: 60, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 2093146424}
   - {fileID: 694502286}
   - {fileID: 561881735}
   - {fileID: 1513401238}
-  m_Father: {fileID: 634708997}
-  m_RootOrder: 6
+  m_Father: {fileID: 1658532486}
+  m_RootOrder: 7
 --- !u!95 &1540288345
 Animator:
   serializedVersion: 3
@@ -106085,11 +106083,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 6
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -106101,11 +106097,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!114 &1540288351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106142,6 +106138,35 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+--- !u!114 &1540288353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1540288343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyInStart: 0
+  SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 29.7, z: 0}
+  LockX: 0
+  LockY: 0
+  LockZ: 1
+  useSmoothing: 0
+  target: {fileID: 864279380}
+  velocity: {x: 0, y: 0, z: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  useRB: 0
+  lockedPos: 0
+  hasLockedPos: 0
 --- !u!1 &1546295020
 GameObject:
   m_ObjectHideFlags: 0
@@ -113229,17 +113254,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!82 &1580114038
 AudioSource:
   m_ObjectHideFlags: 0
@@ -113623,6 +113646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
   LockX: 1
   LockY: 0
   LockZ: 0
@@ -115525,6 +115549,9 @@ Transform:
   - {fileID: 2133944672}
   - {fileID: 96605536}
   - {fileID: 648096326}
+  - {fileID: 1540288344}
+  - {fileID: 766750762}
+  - {fileID: 1814519605}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!1 &1661213481
@@ -117422,17 +117449,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!82 &1689816040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -129870,7 +129895,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: -360, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 16
+  m_RootOrder: 13
 --- !u!199 &1812129948
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -131430,6 +131455,7 @@ GameObject:
   - 82: {fileID: 1814519609}
   - 114: {fileID: 1814519610}
   - 114: {fileID: 1814519611}
+  - 114: {fileID: 1814519612}
   m_Layer: 13
   m_Name: HorizontalBeam
   m_TagString: Bullet
@@ -131443,15 +131469,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1814519604}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.976e-12, z: 0}
-  m_LocalScale: {x: 120, y: 1, z: 0.05}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
+  m_LocalPosition: {x: -0, y: -0, z: -0}
+  m_LocalScale: {x: 360, y: 3, z: 0.15}
+  m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children:
   - {fileID: 629393502}
   - {fileID: 423352050}
-  m_Father: {fileID: 634708997}
-  m_RootOrder: 8
+  m_Father: {fileID: 1658532486}
+  m_RootOrder: 9
 --- !u!23 &1814519606
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -131583,11 +131609,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 5
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -131599,11 +131623,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!114 &1814519611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131622,6 +131646,35 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+--- !u!114 &1814519612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1814519604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyInStart: 0
+  SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
+  LockX: 1
+  LockY: 0
+  LockZ: 1
+  useSmoothing: 0
+  target: {fileID: 864279380}
+  velocity: {x: 0, y: 0, z: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  useRB: 0
+  lockedPos: 0
+  hasLockedPos: 0
 --- !u!1 &1831119739
 GameObject:
   m_ObjectHideFlags: 0
@@ -133816,13 +133869,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCam: {fileID: 538907853}
-  sensRot: 0.1
-  ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.1
-  powerupBloomAmount: 0.3
-  shakeTime: 0.4
-  shakeAmount: 1
   PlayerNumber: 0
   speed: -60
   tilt: 0
@@ -133836,18 +133882,11 @@ MonoBehaviour:
   shotSpawn: {fileID: 1012932028}
   fireRate: 0.1
   altfireRate: 0
-  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
   LTriggerAnim: {fileID: 322631913}
-  ComboText: {fileID: 2011414363}
-  ComboTime: 0
-  ComboN: 0
-  ComboAnimation: {fileID: 2011414362}
-  ComboImage: {fileID: 525879908}
-  Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -133859,7 +133898,6 @@ MonoBehaviour:
   Shield: {fileID: 766750761}
   HorizontalBeam: {fileID: 1814519604}
   ClonedPlayer: {fileID: 1692096742}
-  isClone: 1
   HelixObject: {fileID: 367883750}
   WifiShot: {fileID: 154546, guid: 45798554146cf884eb33b01fe9c3d9a4, type: 2}
   DoubleShotIcon: {fileID: 1272269061}
@@ -133871,10 +133909,9 @@ MonoBehaviour:
   HelixIcon: {fileID: 223823093}
   WifiIcon: {fileID: 1265303973}
   ThreeDIcon: {fileID: 2114196955}
-  BgmLowFilter: {fileID: 339966604}
-  BgmHighFilter: {fileID: 339966603}
   MainCanvas: {fileID: 1082494267}
-  LensScript: {fileID: 0}
+  isClone: 1
+  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupDurationA: 10
   powerupDurationB: 10
   powerupDurationC: 10
@@ -133886,6 +133923,11 @@ MonoBehaviour:
   ActivePowerupParticles: {fileID: 2043040999}
   TimeRunningOutParticles: {fileID: 876698964}
   PowerupMeter: {fileID: 1869040196}
+  ComboTime: 0
+  ComboN: 0
+  ComboText: {fileID: 2011414363}
+  ComboAnimation: {fileID: 2011414362}
+  ComboImage: {fileID: 525879908}
   Health: 0
   startingHealth: 100
   minHealth: 0
@@ -133899,15 +133941,23 @@ MonoBehaviour:
   initialTimeScale: 0.15
   slowTimeDuration: 3
   slowTimeRemaining: 0
+  TimeSlowingSpeed: 0.5
+  minTimeScale: 0.01667
   BGMMusic: {fileID: 339966602}
   PressToContinue: {fileID: 601646022}
   DeactivatePlayerElements: {fileID: 634708996}
-  TimeSlowingSpeed: 0.5
-  minTimeScale: 0.01667
   GameOverUI: {fileID: 2114330362}
   GameOverSound: {fileID: 968086315}
   GameOverLoop: {fileID: 1124104977}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
+  BgmLowFilter: {fileID: 339966604}
+  BgmHighFilter: {fileID: 339966603}
+  MainCam: {fileID: 538907853}
+  normalBloomAmount: 0.1
+  powerupBloomAmount: 0.3
+  shakeTime: 0.4
+  shakeAmount: 1
+  ColorCorrectionCurvesScript: {fileID: 0}
 --- !u!114 &1913633764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134181,17 +134231,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletType: 0
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
   InitialShakeDuration: 0.25
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio: []
-  VibrationTime: 0.2
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 0
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.2
+  useMutedBullet: 0
 --- !u!23 &1926069222
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -134793,13 +134841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e4daaaa8f2a474f8860d10cc367953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCam: {fileID: 538907853}
-  sensRot: 0.1
-  ColorCorrectionCurvesScript: {fileID: 0}
-  normalBloomAmount: 0.1
-  powerupBloomAmount: 0.3
-  shakeTime: 0.4
-  shakeAmount: 1
   PlayerNumber: 0
   speed: -60
   tilt: 0
@@ -134813,18 +134854,11 @@ MonoBehaviour:
   shotSpawn: {fileID: 1485354901}
   fireRate: 0.1
   altfireRate: 0
-  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 1627362248}
   AltFireIndicator: {fileID: 906555285}
   FlashIndicator: {fileID: 906555289}
   LTriggerAnim: {fileID: 322631913}
-  ComboText: {fileID: 2011414363}
-  ComboTime: 0
-  ComboN: 0
-  ComboAnimation: {fileID: 2011414362}
-  ComboImage: {fileID: 525879908}
-  Powerups: []
   powerupTime: 0
   CurrentPowerup: 0
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -134836,7 +134870,6 @@ MonoBehaviour:
   Shield: {fileID: 766750761}
   HorizontalBeam: {fileID: 1814519604}
   ClonedPlayer: {fileID: 1692096742}
-  isClone: 1
   HelixObject: {fileID: 367883750}
   WifiShot: {fileID: 154546, guid: 45798554146cf884eb33b01fe9c3d9a4, type: 2}
   DoubleShotIcon: {fileID: 1272269061}
@@ -134848,10 +134881,9 @@ MonoBehaviour:
   HelixIcon: {fileID: 223823093}
   WifiIcon: {fileID: 1265303973}
   ThreeDIcon: {fileID: 2114196955}
-  BgmLowFilter: {fileID: 339966604}
-  BgmHighFilter: {fileID: 339966603}
   MainCanvas: {fileID: 1082494267}
-  LensScript: {fileID: 0}
+  isClone: 1
+  EmptyInstantdestroy: {fileID: 146688, guid: c2ae40505e5badf46b0cfa9841014e0f, type: 2}
   powerupDurationA: 10
   powerupDurationB: 10
   powerupDurationC: 10
@@ -134863,6 +134895,11 @@ MonoBehaviour:
   ActivePowerupParticles: {fileID: 2043040999}
   TimeRunningOutParticles: {fileID: 876698964}
   PowerupMeter: {fileID: 1869040196}
+  ComboTime: 0
+  ComboN: 0
+  ComboText: {fileID: 2011414363}
+  ComboAnimation: {fileID: 2011414362}
+  ComboImage: {fileID: 525879908}
   Health: 0
   startingHealth: 100
   minHealth: 0
@@ -134876,15 +134913,23 @@ MonoBehaviour:
   initialTimeScale: 0.15
   slowTimeDuration: 3
   slowTimeRemaining: 0
+  TimeSlowingSpeed: 0.5
+  minTimeScale: 0.01667
   BGMMusic: {fileID: 339966602}
   PressToContinue: {fileID: 601646022}
   DeactivatePlayerElements: {fileID: 634708996}
-  TimeSlowingSpeed: 0.5
-  minTimeScale: 0.01667
   GameOverUI: {fileID: 2114330362}
   GameOverSound: {fileID: 968086315}
   GameOverLoop: {fileID: 1124104977}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
+  BgmLowFilter: {fileID: 339966604}
+  BgmHighFilter: {fileID: 339966603}
+  MainCam: {fileID: 538907853}
+  normalBloomAmount: 0.1
+  powerupBloomAmount: 0.3
+  shakeTime: 0.4
+  shakeAmount: 1
+  ColorCorrectionCurvesScript: {fileID: 0}
 --- !u!54 &1957681823
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -139922,6 +139967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 1
   LockZ: 0
@@ -140206,7 +140252,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 634708997}
-  m_RootOrder: 15
+  m_RootOrder: 12
 --- !u!1 &2023782147
 GameObject:
   m_ObjectHideFlags: 0
@@ -140255,6 +140301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.2
+  offset: {x: 0, y: 0, z: 0}
   LockX: 1
   LockY: 0
   LockZ: 0
@@ -145165,7 +145212,7 @@ Transform:
   m_Children:
   - {fileID: 260469118}
   m_Father: {fileID: 634708997}
-  m_RootOrder: 12
+  m_RootOrder: 9
 --- !u!199 &2043040998
 ParticleSystemRenderer:
   m_ObjectHideFlags: 0
@@ -146685,7 +146732,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 2044216241}
   - 33: {fileID: 2044216246}
-  - 135: {fileID: 2044216245}
   - 23: {fileID: 2044216244}
   - 114: {fileID: 2044216242}
   m_Layer: 13
@@ -146752,18 +146798,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!135 &2044216245
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2044216240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &2044216246
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -146813,6 +146847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.8
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0
@@ -160068,6 +160103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 0.1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0

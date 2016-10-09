@@ -138,7 +138,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 59b6d223b8193e74fb3219032a7a6567, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a454b7bf4a9eeaa43b52d3ed39fe404a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 0.34
@@ -245,12 +245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletType: 4
-  playerControllerScript: {fileID: 0}
-  newSpeed: 0
+  BulletType: 3
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.5
-  timeScaleControllerScript: {fileID: 0}
+  ComboNN: 0
   ComboAudio:
   - {fileID: 0}
   - {fileID: 0}
@@ -262,11 +260,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  VibrationTime: 0.04
-  useMutedBullet: 0
   ricoshetNumber: 0
   ricoshetMax: 1
-  ComboNN: 0
+  newSpeed: 0
+  VibrationTime: 0.04
+  useMutedBullet: 0
 --- !u!114 &11441710
 MonoBehaviour:
   m_ObjectHideFlags: 1

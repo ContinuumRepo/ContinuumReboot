@@ -4,6 +4,7 @@ public class SmoothFollowOrig : MonoBehaviour
 {
 	public bool OnlyInStart;
 	public float SMOOTH_TIME = 0.3f;
+	public Vector3 offset;
 	
 	#region Public Properties
 	public bool LockX;
@@ -67,15 +68,15 @@ public class SmoothFollowOrig : MonoBehaviour
 			
 			#region Locks
 			if (LockX) {
-				newPos.x = thisTransform.position.x;
+				newPos.x = thisTransform.position.x + offset.x;
 			}
 			
 			if (LockY) {
-				newPos.y = thisTransform.position.y;
+				newPos.y = thisTransform.position.y + offset.y;
 			}
 			
 			if (LockZ) {
-				newPos.z = thisTransform.position.z;
+				newPos.z = thisTransform.position.z + offset.z;
 			}
 			#endregion
 		}
@@ -103,22 +104,22 @@ public class SmoothFollowOrig : MonoBehaviour
 				newPos.y = Mathf.SmoothDamp (thisTransform.position.y, target.position.y, ref velocity.y, SMOOTH_TIME);
 				newPos.z = Mathf.SmoothDamp (thisTransform.position.z, target.position.z, ref velocity.z, SMOOTH_TIME);
 			} else {
-				newPos.x = target.position.x;
-				newPos.y = target.position.y;
-				newPos.z = target.position.z;
+				newPos.x = target.position.x + offset.x;
+				newPos.y = target.position.y + offset.y;
+				newPos.z = target.position.z + offset.z;
 			}
 			
 			#region Locks
 			if (LockX) {
-				newPos.x = thisTransform.position.x;
+				newPos.x = thisTransform.position.x + offset.x;
 			}
 			
 			if (LockY) {
-				newPos.y = thisTransform.position.y;
+				newPos.y = thisTransform.position.y + offset.y;
 			}
 			
 			if (LockZ) {
-				newPos.z = thisTransform.position.z;
+				newPos.z = thisTransform.position.z + offset.z;
 			}
 			#endregion
 			

@@ -26,6 +26,7 @@ public class PointObject : MonoBehaviour
 	public Material redMaterial;
 	public TimescaleController timeController;
 	public Text ComboText;
+	public bool isBossPart;
 
 	void Start ()
 	{
@@ -114,19 +115,25 @@ public class PointObject : MonoBehaviour
 		}
 
 		// When a brick hits the player.
-		if (other.tag == "Player")
+		if (other.tag == "Player") 
 		{	
 			playerMesh.material = normalMaterial;
+
 			// If player health is greater than 25.
-			if (PlayerControllerScript.Health > 25)
+			if (gameObject.tag == "Cube") 
 			{
-				// Finds Points to destroy.
-				GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-				for (int i = Destroyers.Length - 1; i > 0; i--) 
+				if (PlayerControllerScript.Health > 25) 
 				{
-					Destroy (Destroyers [i].gameObject);
+					// Finds Points to destroy.
+					GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
+					for (int i = Destroyers.Length - 1; i > 0; i--) 
+					{
+						Destroy (Destroyers [i].gameObject);
+					}
 				}
 			}
+
+			PlayerControllerScript.collisionCooldown = 3;
 
 			if (PlayerControllerScript.Health > 10) 
 			{
