@@ -5232,6 +5232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Brain: {fileID: 196792}
   bossExplosion: {fileID: 180106, guid: 4107bb0f937d8e845a414437cf69a1a1, type: 2}
+  bossName: NEURON
+  NameText: {fileID: 0}
+  NameAnim: {fileID: 0}
 --- !u!114 &11465390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5936,6 +5939,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0

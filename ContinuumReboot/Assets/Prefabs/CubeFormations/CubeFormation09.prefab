@@ -13871,6 +13871,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Brain: {fileID: 127888}
   bossExplosion: {fileID: 180106, guid: 4107bb0f937d8e845a414437cf69a1a1, type: 2}
+  bossName: NEON GRASSHOPPER
+  NameText: {fileID: 0}
+  NameAnim: {fileID: 0}
 --- !u!114 &11438492
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -17115,6 +17118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0

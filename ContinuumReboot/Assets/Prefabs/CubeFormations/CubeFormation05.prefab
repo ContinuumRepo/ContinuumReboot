@@ -1907,6 +1907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 1
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
   LockZ: 0
@@ -2074,6 +2075,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Brain: {fileID: 154206}
   bossExplosion: {fileID: 180106, guid: 4107bb0f937d8e845a414437cf69a1a1, type: 2}
+  bossName: FIREFLY
+  NameText: {fileID: 0}
+  NameAnim: {fileID: 0}
 --- !u!114 &11488674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2206,8 +2210,8 @@ MonoBehaviour:
   - {fileID: 156088, guid: 22e6ff05b09ae834c8054a815e108a6a, type: 2}
   - {fileID: 188294, guid: 536f38899ec02d94a8ccd5946222798c, type: 2}
   - {fileID: 182876, guid: 55e4f3231036d54498f71bf9daf276d3, type: 2}
-  BombNumberMax: 0
-  CurrentBomb: 3
+  BombNumberMax: 3
+  CurrentBomb: 0
   EnemyTrans: {fileID: 0}
   Music: {fileID: 0}
   NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
