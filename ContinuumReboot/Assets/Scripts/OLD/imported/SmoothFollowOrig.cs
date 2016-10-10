@@ -29,7 +29,6 @@ public class SmoothFollowOrig : MonoBehaviour
 	private void Awake()
 	{
 		thisTransform = transform;
-		
 		velocity = new Vector3(0.5f, 0.5f, 0.5f);
 
 		if (target == null) 
@@ -40,7 +39,6 @@ public class SmoothFollowOrig : MonoBehaviour
 
 	void start ()
 	{
-
 		if (target == null) 
 		{
 			target = GameObject.FindGameObjectWithTag ("Player").transform;
@@ -48,34 +46,44 @@ public class SmoothFollowOrig : MonoBehaviour
 
 		if (OnlyInStart == true) 
 		{
-			if (useRB == true) {
+			if (useRB == true) 
+			{
 				GetComponent<Transform> ().position = new Vector3
-					(
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.x, xMin, xMax),
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.y, yMin, yMax),
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.z, zMin, zMax)
-						);
+				(
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.x, xMin, xMax),
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.y, yMin, yMax),
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.z, zMin, zMax)
+				);
 			}
+
 			var newPos = Vector3.zero;
 			
-			if (useSmoothing) {
+			if (useSmoothing) 
+			{
 				newPos.x = Mathf.SmoothDamp (thisTransform.position.x, target.position.x, ref velocity.x, SMOOTH_TIME);
 				newPos.y = Mathf.SmoothDamp(thisTransform.position.y, target.position.y, ref velocity.y, SMOOTH_TIME);
 				newPos.z = Mathf.SmoothDamp (thisTransform.position.z, target.position.z, ref velocity.z, SMOOTH_TIME);
-			} else {
+			} 
+
+			else 
+			
+			{
 				thisTransform.position = new Vector3 (target.position.x, target.position.y, target.position.z);
 			}
 			
 			#region Locks
-			if (LockX) {
+			if (LockX) 
+			{
 				newPos.x = thisTransform.position.x + offset.x;
 			}
 			
-			if (LockY) {
+			if (LockY) 
+			{
 				newPos.y = thisTransform.position.y + offset.y;
 			}
 			
-			if (LockZ) {
+			if (LockZ) 
+			{
 				newPos.z = thisTransform.position.z + offset.z;
 			}
 			#endregion
@@ -84,41 +92,53 @@ public class SmoothFollowOrig : MonoBehaviour
 
 	public void LateUpdate()
 	{
-		if (hasLockedPos == true) {
+		if (hasLockedPos == true) 
+		{
 			gameObject.GetComponent<Transform> ().position = new Vector3 (lockedPos, gameObject.transform.position.y, gameObject.transform.position.z);
 		}
 		
-		if (OnlyInStart == false) {
-			if (useRB == true) {
+		if (OnlyInStart == false) 
+		{
+			if (useRB == true) 
+			{
 				GetComponent<Transform> ().position = new Vector3
-					(
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.x, xMin, xMax),
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.y, yMin, yMax),
-						Mathf.Clamp (GetComponent<Rigidbody> ().position.z, zMin, zMax)
-						);
+				(
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.x, xMin, xMax),
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.y, yMin, yMax),
+					Mathf.Clamp (GetComponent<Rigidbody> ().position.z, zMin, zMax)
+				);
 			}
+
 			var newPos = Vector3.zero;
 			
-			if (useSmoothing) {
+			if (useSmoothing) 
+			{
 				newPos.x = Mathf.SmoothDamp (thisTransform.position.x, target.position.x, ref velocity.x, SMOOTH_TIME);
 				newPos.y = Mathf.SmoothDamp (thisTransform.position.y, target.position.y, ref velocity.y, SMOOTH_TIME);
 				newPos.z = Mathf.SmoothDamp (thisTransform.position.z, target.position.z, ref velocity.z, SMOOTH_TIME);
-			} else {
+			} 
+
+			else 
+			
+			{
 				newPos.x = target.position.x + offset.x;
 				newPos.y = target.position.y + offset.y;
 				newPos.z = target.position.z + offset.z;
 			}
 			
 			#region Locks
-			if (LockX) {
+			if (LockX) 
+			{
 				newPos.x = thisTransform.position.x + offset.x;
 			}
 			
-			if (LockY) {
+			if (LockY) 
+			{
 				newPos.y = thisTransform.position.y + offset.y;
 			}
 			
-			if (LockZ) {
+			if (LockZ) 
+			{
 				newPos.z = thisTransform.position.z + offset.z;
 			}
 			#endregion

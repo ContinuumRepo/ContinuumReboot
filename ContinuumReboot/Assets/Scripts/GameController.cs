@@ -135,8 +135,8 @@ public class GameController : MonoBehaviour
 
 	void Update () 
 	{
-		LevelUpText.GetComponent<Text> ().text = "LEVEL " + wave + "";
-		WaveLabel.GetComponentInChildren<Text>().text = "LEVEL " + wave + "";
+		LevelUpText.GetComponent<Text> ().text = "WAVE " + wave + "";
+		WaveLabel.GetComponentInChildren<Text>().text = "WAVE " + wave + "";
 
 		// Important!
 		if (spawnWait > minSpawnWait) 
@@ -305,6 +305,86 @@ public class GameController : MonoBehaviour
 				CheatSound.Play ();
 				CheatActivatedAnim.Play ("CheatActivated");
 				Debug.Log ("You pressed 'Z' and increased 'hazards'.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.T)) 
+			{
+				playerControllerScript.powerupTime = 90;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed 'T' and added 90 seconds of powerup time.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha1)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.RegularShot;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '1' and powerup is regular shot.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha2)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.DoubleShot;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '2' and powerup is double shot.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha3)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.TriShot;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '3' and powerup is try shot.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha4)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.BeamShot;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '4' and powerup is beam shot.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha5)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.horizontalBeam;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '5' and powerup is horizontal beam shot.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha6)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '6' and powerup is clones.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha7)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '7' and powerup is helix.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha8)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.helix;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '8' and powerup is shield.");
+			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha9)) 
+			{
+				playerControllerScript.CurrentPowerup = PlayerController.powerup.wifi;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '9' and powerup is ripple.");
 			}
 		}
 
