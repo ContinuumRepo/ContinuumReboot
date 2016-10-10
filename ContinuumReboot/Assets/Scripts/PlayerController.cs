@@ -561,7 +561,7 @@ public class PlayerController : MonoBehaviour
 		if (AltFireImage.fillAmount < 1) 
 		{
 			AltFireImage.fillAmount += Time.deltaTime / altfireRate;
-			AltFireIndicator.GetComponent<Image> ().color = Color.red;
+			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
 			FlashIndicator.enabled = false;
 			LTriggerAnim.enabled = false;
 		}
@@ -569,7 +569,7 @@ public class PlayerController : MonoBehaviour
 		if (AltFireImage.fillAmount >= 1) 
 		{
 			AltFireImage.fillAmount = 1;
-			AltFireIndicator.GetComponent<Image> ().color = Color.green;
+			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
 			FlashIndicator.enabled = true;
 			LTriggerAnim.enabled = true;
 		}
