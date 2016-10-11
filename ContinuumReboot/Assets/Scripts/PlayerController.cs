@@ -38,6 +38,13 @@ public class PlayerController : MonoBehaviour
 	public float altfireRate;
 	private float altnextFire;
 
+	public enum altmode
+	{
+		yes, no
+	}
+
+	public altmode AltFireMode;
+
 	public GameObject AltFire;
 	public Image AltFireImage;
 	public GameObject AltFireIndicator;
@@ -238,10 +245,31 @@ public class PlayerController : MonoBehaviour
 		initialPart = false;
 		PressToContinue.SetActive (false);
 		slowTimeRemaining = slowTimeDuration;
+
+		AltFire.SetActive (false);
+		AltFireMode = altmode.no;
+		AltFireImage.fillAmount = 0;
 	}
 
 	void Update () 
 	{
+		if (AltFireMode == altmode.no) 
+		{
+			AltFire.SetActive (false);
+			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
+		}
+
+		if (AltFireMode == altmode.yes) 
+		{
+			AltFire.SetActive (true);
+			AltFireImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
+		}
+
+		if (AltFireMode == altmode.yes && AltFireImage.fillAmount <= 0) 
+		{
+			AltFireMode = altmode.no;
+		}
+
 		ComboN = Mathf.RoundToInt (ComboTime);
 		ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
 		ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
@@ -422,6 +450,7 @@ public class PlayerController : MonoBehaviour
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
 				BgmLowFilter.enabled = true;
+				collisionCooldown = 3;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
 				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
 				{
@@ -456,7 +485,7 @@ public class PlayerController : MonoBehaviour
 				bloomScript.bloomIntensity = powerupBloomAmount;
 				ClonedPlayer.SetActive (true); // Turns on the clones!
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
-				gameControllerScript.PowerupText.text = "CLONES!"; // UI display clones.
+				gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
 				BgmHighFilter.enabled = true;
 
@@ -560,7 +589,7 @@ public class PlayerController : MonoBehaviour
 
 		if (AltFireImage.fillAmount < 1) 
 		{
-			AltFireImage.fillAmount += Time.deltaTime / altfireRate;
+			//AltFireImage.fillAmount += Time.deltaTime / altfireRate;
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
 			FlashIndicator.enabled = false;
 			LTriggerAnim.enabled = false;
@@ -572,6 +601,11 @@ public class PlayerController : MonoBehaviour
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
 			FlashIndicator.enabled = true;
 			LTriggerAnim.enabled = true;
+		}
+
+		if (AltFireImage.fillAmount <= 0) 
+		{
+			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 		}
 
 		/// Movement ///
@@ -597,66 +631,51 @@ public class PlayerController : MonoBehaviour
 				rb.velocity = movement * speed;
 			}
 
-			if (Input.GetKey (KeyCode.LeftAlt) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
+		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
+		{
+			// When the player presses altfire while bar is greater than 0
+			if (AltFireImage.fillAmount > 0.0f) 
 			{
-				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount > 0.0f) 
-				{
-					AltFire.SetActive (true);
-					AltFireImage.fillAmount -= 0.1f * Time.deltaTime;
-				}
-
-				// ""							"" while bar is greater than 0.9.
-				if (AltFireImage.fillAmount >= 1 && AltFire.activeSelf == false) 
-				{
-					AltFire.SetActive (true);
-				}
-
-				// ""							"" while bar is at 0.
-				if (AltFireImage.fillAmount <= 0 && AltFire.activeSelf == true) 
-				{
-					AltFire.SetActive (false);
-				}
+				AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+				AltFire.GetComponent<AudioSource> ().Play ();
+				AltFireMode = altmode.yes;
 			}
+		}
 
-			if (Input.GetKeyUp (KeyCode.LeftAlt) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) 
-			{
-				if (AltFireImage.fillAmount <= 1) 
-				{
-					//AltFire.SetActive (false);
-					//AltFireImage.fillAmount += 0.1f * Time.deltaTime;
-				}
+		if (AltFireImage.fillAmount <= 0) 
+		{
+			AltFireMode = altmode.no;
+		}
 
-				if (AltFireImage.fillAmount > 1) 
-				{
-					return;
-				}
-			}
+		if (AltFireImage.fillAmount <= 0) 
+		{
+			AltFireImage.fillAmount += 0.1f * Time.deltaTime;
+		}
 
-			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
-			{
-				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
-				float moveVerticalA = Input.GetAxis ("Vertical P1");
-				Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
-				rb.velocity = movementA * speed;
-			}
+		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
+		{
+			float moveHorizontalA = Input.GetAxis ("Horizontal P1");
+			float moveVerticalA = Input.GetAxis ("Vertical P1");
+			Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+			rb.velocity = movementA * speed;
+		}
 
-			if (PlayerNumber == playerNumber.PlayerTwo) 
-			{
-				float moveHorizontalB = Input.GetAxis ("Horizontal P2");
-				float moveVerticalB = Input.GetAxis ("Vertical P2");
-				Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
-				rb.velocity = movementB * speed;
-			}
+		if (PlayerNumber == playerNumber.PlayerTwo) 
+		{
+			float moveHorizontalB = Input.GetAxis ("Horizontal P2");
+			float moveVerticalB = Input.GetAxis ("Vertical P2");
+			Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+			rb.velocity = movementB * speed;
+		}
 
-			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
+		rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
-			// Player boundaries
-			GetComponent<Rigidbody> ().position = new Vector3 (
-				Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
-				Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
-				zBound		
-			);
+		// Player boundaries
+		GetComponent<Rigidbody> ().position = new Vector3 (
+			Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
+			Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
+			zBound		
+		);
 
 		/// Shooting functionality ///
 
@@ -673,12 +692,6 @@ public class PlayerController : MonoBehaviour
 		{
 		}
 
-		if (Input.GetKeyUp (KeyCode.LeftAlt)) 
-		{
-			//AltFire.SetActive (false);
-			//AltFireImage.fillAmount += Time.deltaTime;
-		}
-
 		// Controller Input.
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
@@ -691,46 +704,22 @@ public class PlayerController : MonoBehaviour
 			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
 			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
-				AltFire.GetComponent<SmoothFollowOrig> ().enabled = true;
 				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount > 0.0f && AltFire.activeSelf == true) 
+				if (AltFireImage.fillAmount > 0.0f) 
 				{
-					//AltFire.SetActive (true);
-					AltFireImage.fillAmount -= 0.1f * Time.unscaledDeltaTime;
-				}
-
-				// ""							"" while bar is greater than 0.9.
-				if (AltFireImage.fillAmount >= 0.95f && AltFire.activeSelf == false) 
-				{
-					AltFire.SetActive (true);
-				}
-
-				// ""							"" while bar is at 0.
-				if (AltFireImage.fillAmount <= 0 && AltFire.activeSelf == true) 
-				{
-					AltFire.SetActive (false);
+					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+					AltFire.GetComponent<AudioSource> ().Play ();
+					AltFireMode = altmode.yes;
 				}
 			}
 
 			if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) 
 			{
-				AltFire.SetActive (false);
 			}
 
 			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
 				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
-				AltFire.GetComponent<SmoothFollowOrig> ().enabled = false;
-				if (AltFireImage.fillAmount <= 1) 
-				{
-					AltFire.SetActive (false);
-					AltFireImage.fillAmount += 0.01f * Time.unscaledDeltaTime;
-				}
-
-				if (AltFireImage.fillAmount > 1) 
-				{
-					return;
-				}
 			}
 		}
 	}
@@ -762,6 +751,7 @@ public class PlayerController : MonoBehaviour
 		BGMMusic.Stop (); // Stops main music.
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
+
 		if (slowTimeRemaining > 2.0f) 
 		{
 			Time.timeScale = 0.05f;
@@ -788,51 +778,7 @@ public class PlayerController : MonoBehaviour
 				{
 					GameOverLoop.PlayDelayed (4.0f); // Delays.
 				}
-
-
-				// These controlls conflict with those in the game over screen
-				// If needed, check if PlayerPrefs.GetString ("InputMenu") is not = to "gameover" or "highscoreinput" or "gamepause"
-				/*
-				// Player presses A button or space during this time.
-				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown (KeyCode.R)) 
-				{
-					SceneManager.LoadScene ("main");				
-				}
-
-				if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Backspace)) 
-				{
-					SceneManager.LoadScene ("disclaimer");			
-				}*/
 			}
-
-			// These controlls conflict with those in the game over screen
-			// If needed, check if PlayerPrefs.GetString ("InputMenu") is not = to "gameover" or "highscoreinput" or "gamepause"
-			/*
-			if (Time.timeScale < 0.01f) 
-			{
-				if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown ("space"))
-				{
-					Time.timeScale = initialTimeScale; // sets timescale to this.
-					PressToContinue.SetActive (false); // tuens off press to continue text for that frame.
-
-					// Plays game over loop.
-					if (!GameOverLoop.isPlaying) 
-					{
-						GameOverLoop.PlayDelayed (4.0f);
-					}
-				}
-
-				// Player presses A button or space during this time.
-				if (Input.GetKeyDown ("joystick button 7") || Input.GetKeyDown (KeyCode.Return)) 
-				{
-					SceneManager.LoadScene ("main");				
-				}
-
-				if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Backspace) || Input.GetKeyDown (KeyCode.Escape)) 
-				{
-					SceneManager.LoadScene ("disclaimer");			
-				}
-			}*/
 		}
 
 		// if health is below 0 and the Game Over UI is active.
@@ -852,7 +798,6 @@ public class PlayerController : MonoBehaviour
 			{
 				Time.timeScale = 0.0165f;
 				PressToContinue.SetActive (false); // Turns off press to continue UI.
-
 			}
 		}
 	}
