@@ -132,6 +132,12 @@ public class PlayerController : MonoBehaviour
 	public Text HealthText; 			   			// The health text value which will be in percentage.
 	public float collisionCooldown;					// How long until the collider is active again?
 
+	public Material HealthFull;
+	public Material HealthThreeQuarters;
+	public Material HealthHalf;
+	public Material HealthQuarter;
+	public Material YellowMaterial;
+
 	[Header ("Game Over")]
 	public bool initialPart; 						// Is the GameOver state in its initial sequence.
 	public float initialTimeScale = 0.1f; 			// The Time.timeScale in the GameOver initial sequence.
@@ -248,7 +254,7 @@ public class PlayerController : MonoBehaviour
 
 		AltFire.SetActive (false);
 		AltFireMode = altmode.no;
-		AltFireImage.fillAmount = 0;
+		AltFireImage.fillAmount = 1;
 	}
 
 	void Update () 
@@ -335,7 +341,28 @@ public class PlayerController : MonoBehaviour
 
 			// UI health fill amounts and colors.
 			HealthImage.fillAmount = Health / 100;
-			HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
+
+			if (Health == 100) 
+			{
+				HealthImage.material = HealthFull;
+			}
+
+			if (Health == 75) 
+			{
+				HealthImage.material = HealthThreeQuarters;
+			}
+
+			if (Health == 50) 
+			{
+				HealthImage.material = HealthHalf;
+			}
+
+			if (Health == 25) 
+			{
+				HealthImage.material = HealthQuarter;
+			}
+				
+			//HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
 			HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
 
 			if (Health > 100) 
@@ -345,7 +372,27 @@ public class PlayerController : MonoBehaviour
 
 			/// POWERUPS ///
 			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
-			PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
+			//PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
+
+			if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
+			{
+				PowerupMeter.color = Color.cyan;
+			}
+
+			if (PowerupMeter.fillAmount > 0.5f && PowerupMeter.fillAmount <= 0.75f) 
+			{
+				PowerupMeter.color = Color.green;
+			}
+
+			if (PowerupMeter.fillAmount > 0.25f && PowerupMeter.fillAmount <= 0.5f) 
+			{
+				PowerupMeter.color = Color.yellow;
+			}
+
+			if (PowerupMeter.fillAmount > 0 && PowerupMeter.fillAmount <= 0.25f) 
+			{
+				PowerupMeter.color = Color.red;
+			}
 
 			// No powerup.
 			if (CurrentPowerup == powerup.RegularShot) 
@@ -589,7 +636,6 @@ public class PlayerController : MonoBehaviour
 
 		if (AltFireImage.fillAmount < 1) 
 		{
-			//AltFireImage.fillAmount += Time.deltaTime / altfireRate;
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
 			FlashIndicator.enabled = false;
 			LTriggerAnim.enabled = false;
@@ -607,6 +653,35 @@ public class PlayerController : MonoBehaviour
 		{
 			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 		}
+
+		AltFireImage.rectTransform.sizeDelta = new Vector2 (333, Mathf.Clamp(20/AltFireImage.fillAmount, 0, 50));
+
+		// Alt fire image bar colours.
+		if (AltFireImage.fillAmount >= 1 && AltFireImage.fillAmount > 0.75f) 
+		{
+			AltFireImage.material = HealthThreeQuarters;
+		}
+			
+		if (AltFireImage.fillAmount < 1 && AltFireImage.fillAmount > 0.75f) 
+		{
+			AltFireImage.material = YellowMaterial;
+		}
+
+		if (AltFireImage.fillAmount > 0.5f && AltFireImage.fillAmount <= 0.75f) 
+		{
+			AltFireImage.material = HealthHalf;
+		}
+
+		if (AltFireImage.fillAmount > 0.25f && AltFireImage.fillAmount <= 0.5f) 
+		{
+			AltFireImage.material = HealthHalf;
+		}
+
+		if (AltFireImage.fillAmount > 0 && AltFireImage.fillAmount <= 0.25f) 
+		{
+			AltFireImage.material = HealthQuarter;
+		}
+
 
 		/// Movement ///
 	
@@ -634,7 +709,7 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
 		{
 			// When the player presses altfire while bar is greater than 0
-			if (AltFireImage.fillAmount > 0.0f) 
+			if (AltFireImage.fillAmount >= 1) 
 			{
 				AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
 				AltFire.GetComponent<AudioSource> ().Play ();
@@ -705,7 +780,7 @@ public class PlayerController : MonoBehaviour
 			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
 			{
 				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount > 0.0f) 
+				if (AltFireImage.fillAmount >= 1) 
 				{
 					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
 					AltFire.GetComponent<AudioSource> ().Play ();
