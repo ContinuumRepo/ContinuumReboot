@@ -160,6 +160,8 @@ MonoBehaviour:
   moveSpeed: -10
   rotationSpeed: 0
   tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
 --- !u!114 &11417286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 4
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 1
   LockZ: 1
@@ -220,9 +223,6 @@ MonoBehaviour:
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
-  isMainCam: 0
-  camRotationX: 10
-  PlayerM: 0
 --- !u!114 &11482816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerupType: 2
   Explosion: {fileID: 114040, guid: 01f11387d2150d84795727affb2bd9d3, type: 2}
+  CloneObject: {fileID: 189392, guid: 9d057dde78638fa49ab1a325493a89a5, type: 2}
   useRandomPower: 0
 --- !u!198 &19814854
 ParticleSystem:

@@ -20,6 +20,7 @@ public class PowerupScript : MonoBehaviour
 	} 
 	public poweruptype PowerupType; // To show the above enum.
 	public GameObject Explosion; // The explosion to play on trigger enter.
+	public GameObject CloneObject;
 	public bool useRandomPower;
 
 	void Start () 
@@ -109,6 +110,7 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
 				Instantiate (Explosion, gameObject.transform.position, gameObject.transform.rotation);
 				playerControllerScript.ActivePowerupParticles.Play ();
+				Instantiate (CloneObject, new Vector3 (0, -15, 0), Quaternion.Euler (90, 180, 0));
 				//Debug.Log ("Clone powerup collected.");
 				Destroy (gameObject);
 			}

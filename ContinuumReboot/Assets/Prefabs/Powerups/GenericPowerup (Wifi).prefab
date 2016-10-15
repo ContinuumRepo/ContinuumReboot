@@ -159,6 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PowerupType: 7
   Explosion: {fileID: 114040, guid: 01f11387d2150d84795727affb2bd9d3, type: 2}
+  CloneObject: {fileID: 189392, guid: 9d057dde78638fa49ab1a325493a89a5, type: 2}
   useRandomPower: 0
 --- !u!114 &11436562
 MonoBehaviour:
@@ -203,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnlyInStart: 0
   SMOOTH_TIME: 4
+  offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 1
   LockZ: 1

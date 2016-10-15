@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: MenuPlayer
+  m_Name: MenuPlayerGreen 1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
@@ -20,9 +20,9 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: 498afbafa60d4fb4dbf41cd167c2ec09, type: 3}
-          m_Scale: {x: 3.5, y: 1.2}
-          m_Offset: {x: 0, y: 0.9}
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 3.5, y: 1.09}
+          m_Offset: {x: 0, y: 0.75}
       data:
         first:
           name: _BumpMap
@@ -62,9 +62,9 @@ Material:
         first:
           name: _EmissionMap
         second:
-          m_Texture: {fileID: 2800000, guid: 498afbafa60d4fb4dbf41cd167c2ec09, type: 3}
-          m_Scale: {x: 3.5, y: 1.2}
-          m_Offset: {x: 0, y: 0.9}
+          m_Texture: {fileID: 2800000, guid: 53b06ba65350b8945b7be703263f9ac0, type: 3}
+          m_Scale: {x: 3.5, y: 1.09}
+          m_Offset: {x: 0, y: 0.75}
       data:
         first:
           name: _DetailMask
@@ -170,6 +170,20 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -182,7 +196,7 @@ Material:
       data:
         first:
           name: _Cutoff
-        second: 0.9
+        second: 0.511
       data:
         first:
           name: _Shininess
@@ -230,7 +244,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 0.01
+        second: 2.2
       data:
         first:
           name: _Dist
@@ -271,19 +285,27 @@ Material:
         first:
           name: _GerstnerIntensity
         second: 1
+      data:
+        first:
+          name: _Emission
+        second: 1
     m_Colors:
       data:
         first:
           name: _EmissionColor
-        second: {r: 1.0294123, g: 2.893711, b: 4, a: 1}
+        second: {r: 0.3676471, g: 0.9746446, b: 5, a: 1}
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 0.891}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
       data:
         first:
           name: _TintColor
-        second: {r: 0.03698098, g: 0.08399358, b: 0.08823532, a: 0.628}
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _QOffset

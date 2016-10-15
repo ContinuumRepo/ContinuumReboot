@@ -406,7 +406,11 @@ public class PlayerController : MonoBehaviour
 				BgmLowFilter.enabled = false;
 				//ThreeDCam.SetActive (false);
 				shot = RegularShot; // Assigns shot which costs points.
-				ClonedPlayer.SetActive (false); // Turns off cloned players.
+				//ClonedPlayer.SetActive (false); // Turns off cloned players.
+				if (GameObject.Find ("Clone(Clone)") != null) 
+				{
+					Destroy (GameObject.Find ("Clone(Clone)"));
+				}
 				BeamShot.SetActive (false); // Turns off the vertical beam.
 				Shield.SetActive (false); // Turns off the shield.
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
@@ -530,7 +534,8 @@ public class PlayerController : MonoBehaviour
 			if (CurrentPowerup == powerup.Clone) 
 			{
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				ClonedPlayer.SetActive (true); // Turns on the clones!
+				//ClonedPlayer.SetActive (true); // Turns on the clones!
+
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
@@ -573,7 +578,13 @@ public class PlayerController : MonoBehaviour
 				CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
 				BeamShot.SetActive (false); // Turns off the beam.
 				Shield.SetActive (false); // Turns off the shield.
-				ClonedPlayer.SetActive (false); // Turns off the clones.
+				//ClonedPlayer.SetActive (false); // Turns off the clones.
+
+				if (GameObject.Find ("Clone(Clone)") != null) 
+				{
+					Destroy (GameObject.Find ("Clone(Clone)"));
+				}
+
 				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
 				shot = RegularShot; // Assigns shot to cost points.
 			}
