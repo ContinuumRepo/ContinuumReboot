@@ -138,6 +138,8 @@ public class PlayerController : MonoBehaviour
 	public Material HealthQuarter;
 	public Material YellowMaterial;
 
+	public Animator Overlay;
+
 	[Header ("Game Over")]
 	public bool initialPart; 						// Is the GameOver state in its initial sequence.
 	public float initialTimeScale = 0.1f; 			// The Time.timeScale in the GameOver initial sequence.
@@ -818,13 +820,11 @@ public class PlayerController : MonoBehaviour
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.
-
 			timeScaleControllerScript.CalculationMode = TimescaleController.calcMode.none;
-			Time.timeScale = 0.2f;
+			Time.timeScale = 0.2f;		
 		}
 
-		if (other.tag == "Barrier") 
-		{
+		if (other.tag == "Barrier") {
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.

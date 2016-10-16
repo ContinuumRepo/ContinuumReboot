@@ -276,19 +276,19 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 5700864
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4283498751
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 3472882944
         key3:
           serializedVersion: 2
-          rgba: 0
+          rgba: 16639
         key4:
           serializedVersion: 2
-          rgba: 0
+          rgba: 5308671
         key5:
           serializedVersion: 2
           rgba: 0
@@ -298,24 +298,24 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime0: 7132
+        ctime1: 22166
+        ctime2: 64764
+        ctime3: 36430
+        ctime4: 52428
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 1349
+        atime2: 62258
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -361,11 +361,11 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minColor:
         serializedVersion: 2
-        rgba: 4281414143
+        rgba: 4294925617
       maxColor:
         serializedVersion: 2
-        rgba: 4278190335
-      minMaxState: 2
+        rgba: 4294967295
+      minMaxState: 0
     startSize:
       scalar: 1
       maxCurve:
@@ -376,14 +376,9 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
@@ -392,15 +387,10 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
-      minMaxState: 0
+        m_RotationOrder: 0
+      minMaxState: 3
     startRotationX:
       scalar: 0
       maxCurve:
@@ -728,24 +718,24 @@ ParticleSystem:
       minMaxState: 0
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 16711794
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4294966528
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 3456172030
         key3:
           serializedVersion: 2
-          rgba: 0
+          rgba: 16639
         key4:
           serializedVersion: 2
-          rgba: 0
+          rgba: 5308671
         key5:
           serializedVersion: 2
           rgba: 0
@@ -755,34 +745,34 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime0: 3277
+        ctime1: 14264
+        ctime2: 26792
+        ctime3: 36430
+        ctime4: 52428
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 1349
+        atime2: 62258
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 5
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 5700864
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4283498751
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 3472882944
         key3:
           serializedVersion: 2
           rgba: 0
@@ -798,31 +788,31 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime0: 7132
+        ctime1: 22166
+        ctime2: 64764
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 1349
+        atime2: 62258
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 3
       minColor:
         serializedVersion: 2
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
         rgba: 4294967295
-      minMaxState: 1
+      minMaxState: 3
   UVModule:
     enabled: 0
     frameOverTime:
@@ -1015,7 +1005,7 @@ ParticleSystem:
   ForceModule:
     enabled: 1
     x:
-      scalar: 50
+      scalar: 500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1040,7 +1030,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     y:
-      scalar: 50
+      scalar: 500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1065,7 +1055,7 @@ ParticleSystem:
         m_RotationOrder: 0
       minMaxState: 3
     z:
-      scalar: 50
+      scalar: 500
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1095,7 +1085,7 @@ ParticleSystem:
     enabled: 0
     multiplier: 1
   ClampVelocityModule:
-    enabled: 1
+    enabled: 0
     x:
       scalar: 1
       maxCurve:
@@ -1392,19 +1382,19 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 5700864
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4283498751
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 3472882944
         key3:
           serializedVersion: 2
-          rgba: 0
+          rgba: 16639
         key4:
           serializedVersion: 2
-          rgba: 0
+          rgba: 5308671
         key5:
           serializedVersion: 2
           rgba: 0
@@ -1414,34 +1404,34 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
+        ctime0: 7132
+        ctime1: 22166
+        ctime2: 64764
+        ctime3: 36430
+        ctime4: 52428
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 1349
+        atime2: 62258
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 16623104
         key1:
           serializedVersion: 2
-          rgba: 4294967295
+          rgba: 4283498751
         key2:
           serializedVersion: 2
-          rgba: 0
+          rgba: 3472882944
         key3:
           serializedVersion: 2
           rgba: 0
@@ -1457,31 +1447,31 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime0: 7132
+        ctime1: 22166
+        ctime2: 64764
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
-        atime2: 0
+        atime1: 1349
+        atime2: 62258
         atime3: 0
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 3
       minColor:
         serializedVersion: 2
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
         rgba: 4294967295
-      minMaxState: 1
+      minMaxState: 3
     range: {x: 0, y: 1}
   CollisionModule:
     enabled: 0

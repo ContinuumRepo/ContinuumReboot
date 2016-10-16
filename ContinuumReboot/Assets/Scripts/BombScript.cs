@@ -52,6 +52,13 @@ public class BombScript : MonoBehaviour
 			Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
 			Destroy (other.gameObject);
 		}
+
+		if (other.tag == "Bullet") 
+		{
+			//Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
+			Destroy (other.gameObject);
+			Destroy (gameObject);
+		}
 			
 		if (other.tag == "Player") 
 		{	
@@ -59,12 +66,14 @@ public class BombScript : MonoBehaviour
 			{
 				// Finds Points to destroy.
 				GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-				for (int i = Destroyers.Length - 1; i > 0; i--) {
+				for (int i = Destroyers.Length - 1; i > 0; i--) 
+				{
 					Destroy (Destroyers [i].gameObject);
 				}
 			}
 
-			if (PlayerControllerScript.Health > 10) {
+			if (PlayerControllerScript.Health > 10) 
+			{
 				// Instantiates a larger explosion.
 				Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			}
@@ -76,7 +85,8 @@ public class BombScript : MonoBehaviour
 			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
 
 			// If player health is less than 10.
-			if (PlayerControllerScript.Health <= 10) {
+			if (PlayerControllerScript.Health <= 10) 
+			{
 				// Instantiate huge explosion.
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}

@@ -12,9 +12,20 @@ public class MenuControlsPlay : ButtonEvents
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
+	public Animator PlayAnimation;
+	public Image LoadPanel;
+
+	void Update ()
+	{
+		if (LoadPanel.color.a >= 1) 
+		{
+			menuScript.LoadScene ("main");
+		}
+	}
+
 	public override void OnClick()
 	{
-		menuScript.LoadScene ("main");
+		PlayAnimation.Play ("PanelLoad");
 	}
 
 	public override void OnEnter()
