@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11408250}
   - 135: {fileID: 13582822}
   - 82: {fileID: 8291340}
+  - 114: {fileID: 11494032}
   m_Layer: 15
   m_Name: Bomb (left)
   m_TagString: Bomb
@@ -252,6 +253,22 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
+--- !u!114 &11494032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 156088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  timeLeft: 0
+  DestroyType: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!135 &13582822
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -648,9 +665,9 @@ ParticleSystem:
   EmissionModule:
     enabled: 1
     serializedVersion: 2
-    m_Type: 0
+    m_Type: 1
     rate:
-      scalar: 50
+      scalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:

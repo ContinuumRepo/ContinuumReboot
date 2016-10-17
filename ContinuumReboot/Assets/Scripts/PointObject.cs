@@ -131,7 +131,7 @@ public class PointObject : MonoBehaviour
 			{
 				if (PlayerControllerScript.Health > 25) 
 				{
-					PlayerControllerScript.OverlayTime = 1;
+					PlayerControllerScript.OverlayTime = 2;
 					//PlayerControllerScript.Overlay.Play ("Overlay");
 					// Finds Points to destroy.
 					GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
@@ -155,8 +155,10 @@ public class PointObject : MonoBehaviour
 
 			if (PlayerControllerScript.Health > 25)
 			{
+				/*
 			// Desaturates screen.
 				PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+				*/
 			}
 
 			// If player health is less than 10.

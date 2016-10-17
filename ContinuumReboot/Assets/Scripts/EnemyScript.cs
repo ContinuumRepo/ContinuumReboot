@@ -17,9 +17,9 @@ public class EnemyScript : MonoBehaviour
 	public int CurrentBomb; 						// The bomb number we are up to.
 	public Transform EnemyTrans; 					// The transofrm which the enemy will follow.
 
-	public AudioSource Music;						// The current game music.
-	public AudioClip NormalMusic;					// Normal music clip.
-	public AudioClip BossMusic;						// Boss music clip.
+	//public AudioSource Music;						// The current game music.
+	//public AudioClip NormalMusic;					// Normal music clip.
+	//public AudioClip BossMusic;						// Boss music clip.
 	public Image EnemyHealthBar;					// Enemy health bar image.
 	public bool dontuseEnemyTrans;					// Use tranform?
 
@@ -28,7 +28,7 @@ public class EnemyScript : MonoBehaviour
 
 	void Start () 
 	{
-		Music = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSource> ();
+		//Music = GameObject.FindGameObjectWithTag ("BGM").GetComponent<AudioSource> ();
 
 		// Finds the Game Controller.
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>(); 
@@ -37,14 +37,14 @@ public class EnemyScript : MonoBehaviour
 		{
 			if (GameObject.Find ("Boss") == null) 
 			{
-				Music.clip = NormalMusic;
+				//Music.clip = NormalMusic;
 			}
 		}
 
 		if (EnemyType == enemyType.Boss) 
 		{
-			Music.clip = BossMusic;
-			Music.Play ();
+			//Music.clip = BossMusic;
+			//Music.Play ();
 			EnemyTrans = GameObject.FindGameObjectWithTag ("EnemyTrans").transform; // Finds the transform the enemy will follow.
 		}
 
@@ -87,7 +87,7 @@ public class EnemyScript : MonoBehaviour
 
 		if (EnemyType == enemyType.Boss) 
 		{
-			Music.pitch = 1;
+			//Music.pitch = 1;
 			EnemyHealthBar.fillAmount = (float)Health / 800.0f;
 			if (Health > 0 && Time.time > nextBomb) 
 			{
@@ -103,9 +103,9 @@ public class EnemyScript : MonoBehaviour
 
 			if (Health <= 0) 
 			{
-				Music.clip = NormalMusic;
-				Music.UnPause ();
-				Music.Play ();
+				//Music.clip = NormalMusic;
+				//Music.UnPause ();
+				//Music.Play ();
 				Instantiate (EnemyExplosion, gameObject.transform.position, Quaternion.Euler (60, 90, 0));
 				gameControllerScript.WaveLabel.SetActive (true);
 				gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;

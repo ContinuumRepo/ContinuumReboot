@@ -53,9 +53,9 @@ public class BombScript : MonoBehaviour
 			Destroy (other.gameObject);
 		}
 
-		if (other.tag == "Bullet") 
+		if (other.tag == "Bullet" && other.name != "HorizontalBeam" && other.name != "Shield" && other.name != "GreenBeam" && 
+			other.name != "AltFire (no cost)" && other.name != "HelixLeft" && other.name == "HelixRight") 
 		{
-			//Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
 			Destroy (other.gameObject);
 			Destroy (gameObject);
 		}
@@ -82,8 +82,8 @@ public class BombScript : MonoBehaviour
 			PlayerControllerScript.Health -= Damage;
 
 			// Desaturates screen.
-			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
-
+			//PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+			PlayerControllerScript.OverlayTime = 2;
 			// If player health is less than 10.
 			if (PlayerControllerScript.Health <= 10) 
 			{
