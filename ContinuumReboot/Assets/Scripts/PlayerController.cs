@@ -139,6 +139,9 @@ public class PlayerController : MonoBehaviour
 	public Material YellowMaterial;
 
 	public Animator Overlay;
+	public ScreenOverlay ScreenOverlayScript;
+	public float OverlayIntensity = 0.2f;
+	public float OverlayTime;
 
 	[Header ("Game Over")]
 	public bool initialPart; 						// Is the GameOver state in its initial sequence.
@@ -181,6 +184,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
+		OverlayTime = 0;
+		OverlayIntensity = 0.15f;
 		ComboTime = 0;
 		collisionCooldown = 0;
 
@@ -261,6 +267,18 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		if (OverlayTime <= 0) 
+		{
+			OverlayTime = 0;
+		}
+
+		if (OverlayTime > 0) 
+		{
+			OverlayTime -= 1f * Time.unscaledDeltaTime;
+			OverlayIntensity = Mathf.Clamp(OverlayTime + 0.15f, 0, 0.5f);
+			ScreenOverlayScript.intensity = OverlayIntensity;
+		}
+
 		if (AltFireMode == altmode.no) 
 		{
 			AltFire.SetActive (false);

@@ -123,8 +123,7 @@ public class PointObject : MonoBehaviour
 		// When a brick hits the player.
 		if (other.tag == "Player") 
 		{	
-			PlayerControllerScript.Overlay.Play ("Overlay");
-			sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
+			//sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
 			playerMesh.material = normalMaterial;
 
 			// If player health is greater than 25.
@@ -132,6 +131,8 @@ public class PointObject : MonoBehaviour
 			{
 				if (PlayerControllerScript.Health > 25) 
 				{
+					PlayerControllerScript.OverlayTime = 1;
+					//PlayerControllerScript.Overlay.Play ("Overlay");
 					// Finds Points to destroy.
 					GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
 					for (int i = Destroyers.Length - 1; i > 0; i--) 
