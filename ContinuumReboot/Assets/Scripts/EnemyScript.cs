@@ -69,7 +69,7 @@ public class EnemyScript : MonoBehaviour
 			if (Health > 0 && Time.time > nextBomb) 
 			{
 				nextBomb = Time.time + bombRate;
-				Instantiate (Bombs [CurrentBomb], gameObject.transform.position, gameObject.transform.rotation);
+				Instantiate (Bombs [CurrentBomb], gameObject.transform.position, Quaternion.identity);
 				CurrentBomb += 1;
 
 				if (CurrentBomb >= BombNumberMax) 

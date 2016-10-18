@@ -63,6 +63,9 @@ public class MenuPlay1P : ButtonEvents
 		menuPlayer1.material = playerMaterial;
 		engineLcyan.Stop();
 		engineRcyan.Stop();
+		engineLnone.Play();
+		engineRnone.Play();
+
 		menuParticleShort.startSpeed = p1ParticleShortSpeedExit;
 		//general brick prefab change material? what does this do?
 	}

@@ -27,14 +27,14 @@ public class PointObject : MonoBehaviour
 	public TimescaleController timeController;
 	public Text ComboText;
 	public bool isBossPart;
-	private SunShafts sunShaftsScript;
+	//private SunShafts sunShaftsScript;
 
 	void Start ()
 	{
 		ComboText = GameObject.Find ("ComboText").GetComponent<Text> ();
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
 		playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
-		sunShaftsScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SunShafts> ();
+		//sunShaftsScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SunShafts> ();
 
 		// Finding the main engine particle system GameObject.
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");

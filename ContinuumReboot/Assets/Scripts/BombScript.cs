@@ -54,7 +54,7 @@ public class BombScript : MonoBehaviour
 		}
 
 		if (other.tag == "Bullet" && other.name != "HorizontalBeam" && other.name != "Shield" && other.name != "GreenBeam" && 
-			other.name != "AltFire (no cost)" && other.name != "HelixLeft" && other.name == "HelixRight") 
+			other.name != "AltFire (no cost)" && other.name != "HelixLeft" && other.name != "HelixRight") 
 		{
 			Destroy (other.gameObject);
 			Destroy (gameObject);
