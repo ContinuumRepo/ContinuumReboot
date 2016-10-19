@@ -135,6 +135,15 @@ public class GameController : MonoBehaviour
 
 	void Update () 
 	{
+		if (GameObject.FindGameObjectWithTag ("Boss") != null) 
+		{
+			MainSound.GetComponent<AudioHighPassFilter> ().enabled = true;
+		}
+		if (GameObject.FindGameObjectWithTag ("Boss") == null) 
+		{
+			MainSound.GetComponent<AudioHighPassFilter> ().enabled = false;
+		}
+
 		LevelUpText.GetComponent<Text> ().text = "WAVE " + wave + "";
 		WaveLabel.GetComponentInChildren<Text>().text = "WAVE " + wave + "";
 
@@ -234,12 +243,6 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
 			Debug.Log ("isPaused = " + isPaused);
-			/*
-			if (isPaused)
-				UnPauseGame ();
-			else
-				PauseGame ();
-			*/
 		}
 
 		if (Input.GetKeyDown (KeyCode.R) && playerControllerScript.Health > 0) 
@@ -553,7 +556,11 @@ public class GameController : MonoBehaviour
 
 			yield return new WaitForSeconds (waveWait / 2);
 			GameObject rareitem = Rareitems [Random.Range (7, Rareitems.Length)];
-			Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler(0, 0, 0));
+
+			if (GameObject.FindGameObjectWithTag ("Boss") == null) 
+			{
+				Instantiate (rareitem, new Vector3 (0, 40, 0), Quaternion.Euler (0, 0, 0));
+			}
 			yield return new WaitForSeconds (waveWait / 2);
 		}
 	}

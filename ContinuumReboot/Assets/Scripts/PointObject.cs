@@ -27,14 +27,14 @@ public class PointObject : MonoBehaviour
 	public TimescaleController timeController;
 	public Text ComboText;
 	public bool isBossPart;
-	private SunShafts sunShaftsScript;
+	//private SunShafts sunShaftsScript;
 
 	void Start ()
 	{
 		ComboText = GameObject.Find ("ComboText").GetComponent<Text> ();
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
 		playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
-		sunShaftsScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SunShafts> ();
+		//sunShaftsScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SunShafts> ();
 
 		// Finding the main engine particle system GameObject.
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
@@ -66,7 +66,7 @@ public class PointObject : MonoBehaviour
 				gameControllerScript.CurrentScore += PointReward * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
 				ComboText.color = new Color (1, 0.5f, 0);
-				sunShaftsScript.sunColor = new Color (0.78f, 0.33f, 0, 1);
+				//sunShaftsScript.sunColor = new Color (0.78f, 0.33f, 0, 1);
 			}
 
 			// Yellow brick.
@@ -78,7 +78,7 @@ public class PointObject : MonoBehaviour
 				gameControllerScript.CurrentScore += PointReward * 2 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
 				ComboText.color = new Color (1, 1, 0);
-				sunShaftsScript.sunColor = new Color (1, 1, 0, 1);
+				//sunShaftsScript.sunColor = new Color (1, 1, 0, 1);
 			}
 
 			// Green brick.
@@ -90,7 +90,7 @@ public class PointObject : MonoBehaviour
 				gameControllerScript.CurrentScore += PointReward * 3 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
 				ComboText.color = new Color (0, 1, 0);
-				sunShaftsScript.sunColor = new Color (0, 1, 0, 1);
+				//sunShaftsScript.sunColor = new Color (0, 1, 0, 1);
 			}
 
 			// Cyan brick.
@@ -102,7 +102,7 @@ public class PointObject : MonoBehaviour
 				gameControllerScript.CurrentScore += PointReward * 4 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
 				ComboText.color = new Color (0, 1, 1);
-				sunShaftsScript.sunColor = new Color (0, 1, 1, 1);
+				//sunShaftsScript.sunColor = new Color (0, 1, 1, 1);
 			}
 
 			// Purple brick.
@@ -114,7 +114,7 @@ public class PointObject : MonoBehaviour
 				gameControllerScript.CurrentScore += PointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
 				PlayerControllerScript.ComboAnimation.Play (0);
 				ComboText.color = new Color (0.9f, 0.2f, 1);
-				sunShaftsScript.sunColor = new Color (0.8f, 0.25f, 1, 1);
+				//sunShaftsScript.sunColor = new Color (0.8f, 0.25f, 1, 1);
 			}
 
 			Destroy (gameObject); // Destroys the gameObject.
@@ -123,7 +123,7 @@ public class PointObject : MonoBehaviour
 		// When a brick hits the player.
 		if (other.tag == "Player") 
 		{	
-			sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
+			//sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
 			playerMesh.material = normalMaterial;
 
 			// If player health is greater than 25.
@@ -131,6 +131,8 @@ public class PointObject : MonoBehaviour
 			{
 				if (PlayerControllerScript.Health > 25) 
 				{
+					PlayerControllerScript.OverlayTime = 2;
+					//PlayerControllerScript.Overlay.Play ("Overlay");
 					// Finds Points to destroy.
 					GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
 					for (int i = Destroyers.Length - 1; i > 0; i--) 
@@ -153,8 +155,10 @@ public class PointObject : MonoBehaviour
 
 			if (PlayerControllerScript.Health > 25)
 			{
+				/*
 			// Desaturates screen.
 				PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+				*/
 			}
 
 			// If player health is less than 10.

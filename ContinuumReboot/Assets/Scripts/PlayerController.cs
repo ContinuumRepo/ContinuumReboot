@@ -138,6 +138,11 @@ public class PlayerController : MonoBehaviour
 	public Material HealthQuarter;
 	public Material YellowMaterial;
 
+	public Animator Overlay;
+	public ScreenOverlay ScreenOverlayScript;
+	public float OverlayIntensity = 0.2f;
+	public float OverlayTime;
+
 	[Header ("Game Over")]
 	public bool initialPart; 						// Is the GameOver state in its initial sequence.
 	public float initialTimeScale = 0.1f; 			// The Time.timeScale in the GameOver initial sequence.
@@ -179,6 +184,9 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
+		OverlayTime = 0;
+		OverlayIntensity = -0.15f;
 		ComboTime = 0;
 		collisionCooldown = 0;
 
@@ -259,6 +267,18 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		if (OverlayTime <= 0.1f) 
+		{
+			OverlayIntensity = 0.1f;
+		}
+
+		if (OverlayTime > 0.1f) 
+		{
+			OverlayTime -= 2f * Time.unscaledDeltaTime;
+			OverlayIntensity = -Mathf.Clamp(OverlayTime, 0, 1) + 0.15f;
+			ScreenOverlayScript.intensity = OverlayIntensity;
+		}
+
 		if (AltFireMode == altmode.no) 
 		{
 			AltFire.SetActive (false);
@@ -402,8 +422,8 @@ public class PlayerController : MonoBehaviour
 				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 				//ThreeDCamera.enabled = false;
-				BgmHighFilter.enabled = false;
-				BgmLowFilter.enabled = false;
+				//BgmHighFilter.enabled = false;
+				//BgmLowFilter.enabled = false;
 				//ThreeDCam.SetActive (false);
 				shot = RegularShot; // Assigns shot which costs points.
 				//ClonedPlayer.SetActive (false); // Turns off cloned players.
@@ -500,7 +520,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
 				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
-				BgmLowFilter.enabled = true;
+				//BgmLowFilter.enabled = true;
 				collisionCooldown = 3;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
 				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
@@ -539,7 +559,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
 				gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
-				BgmHighFilter.enabled = true;
+				//BgmHighFilter.enabled = true;
 
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
@@ -612,12 +632,12 @@ public class PlayerController : MonoBehaviour
 				GameOver (); // Triggers game Over method.
 				timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
 			}
-
+			/*
 			// if color correction saturation is less than 1
 			if (ColorCorrectionCurvesScript.saturation < 1) 
 			{
 				ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime; // Increase saturation.
-			}
+			}*/
 		}
 	}
 
@@ -818,13 +838,11 @@ public class PlayerController : MonoBehaviour
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.
-
 			timeScaleControllerScript.CalculationMode = TimescaleController.calcMode.none;
-			Time.timeScale = 0.2f;
+			Time.timeScale = 0.2f;		
 		}
 
-		if (other.tag == "Barrier") 
-		{
+		if (other.tag == "Barrier") {
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.

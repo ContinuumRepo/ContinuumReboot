@@ -13,9 +13,10 @@ GameObject:
   - 23: {fileID: 2328374}
   - 54: {fileID: 5403450}
   - 114: {fileID: 11467808}
+  - 114: {fileID: 11494254}
   m_Layer: 15
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +112,22 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 0}
     space: 1
   ignoreTimescale: 0
+--- !u!114 &11494254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 123186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  timeLeft: 0
+  DestroyType: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

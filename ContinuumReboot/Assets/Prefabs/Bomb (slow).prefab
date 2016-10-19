@@ -49,9 +49,10 @@ GameObject:
   - 114: {fileID: 11460502}
   - 135: {fileID: 13587618}
   - 82: {fileID: 8216220}
+  - 114: {fileID: 11489308}
   m_Layer: 15
   m_Name: Bomb (slow)
-  m_TagString: Cube
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,6 +253,22 @@ MonoBehaviour:
   Damage: 25
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   BombExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
+--- !u!114 &11489308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99955548e1bb0a94dbf12d2e5a5a6b14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 10
+  timeLeft: 0
+  DestroyType: 0
+  ActiveObject: {fileID: 0}
+  PressAnyKeyScript: {fileID: 0}
 --- !u!135 &13587618
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -2152,9 +2169,9 @@ ParticleSystem:
   EmissionModule:
     enabled: 1
     serializedVersion: 2
-    m_Type: 0
+    m_Type: 1
     rate:
-      scalar: 50
+      scalar: 0.25
       maxCurve:
         serializedVersion: 2
         m_Curve:

@@ -52,6 +52,13 @@ public class BombScript : MonoBehaviour
 			Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
 			Destroy (other.gameObject);
 		}
+
+		if (other.tag == "Bullet" && other.name != "HorizontalBeam" && other.name != "Shield" && other.name != "GreenBeam" && 
+			other.name != "AltFire (no cost)" && other.name != "HelixLeft" && other.name != "HelixRight") 
+		{
+			Destroy (other.gameObject);
+			Destroy (gameObject);
+		}
 			
 		if (other.tag == "Player") 
 		{	
@@ -59,12 +66,14 @@ public class BombScript : MonoBehaviour
 			{
 				// Finds Points to destroy.
 				GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
-				for (int i = Destroyers.Length - 1; i > 0; i--) {
+				for (int i = Destroyers.Length - 1; i > 0; i--) 
+				{
 					Destroy (Destroyers [i].gameObject);
 				}
 			}
 
-			if (PlayerControllerScript.Health > 10) {
+			if (PlayerControllerScript.Health > 10) 
+			{
 				// Instantiates a larger explosion.
 				Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			}
@@ -73,10 +82,11 @@ public class BombScript : MonoBehaviour
 			PlayerControllerScript.Health -= Damage;
 
 			// Desaturates screen.
-			PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
-
+			//PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
+			PlayerControllerScript.OverlayTime = 2;
 			// If player health is less than 10.
-			if (PlayerControllerScript.Health <= 10) {
+			if (PlayerControllerScript.Health <= 10) 
+			{
 				// Instantiate huge explosion.
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}

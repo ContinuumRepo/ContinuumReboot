@@ -183,6 +183,10 @@ Material:
         second: 0
       data:
         first:
+          name: V_CW_Label_Albedo
+        second: 0
+      data:
+        first:
           name: V_CW_Label_Tag
         second: 0
       data:
@@ -200,10 +204,6 @@ Material:
       data:
         first:
           name: V_CW_Texture_Mix_Mode
-        second: 0
-      data:
-        first:
-          name: V_CW_Label_Albedo
         second: 0
       data:
         first:
@@ -261,7 +261,7 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: 1, g: 0.5477429, b: 0.47794116, a: 0.39215687}
+        second: {r: 1, g: 0.5413731, b: 0.4705882, a: 0.691}
       data:
         first:
           name: _QOffset
