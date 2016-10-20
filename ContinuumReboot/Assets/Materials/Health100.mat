@@ -53,7 +53,7 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _OcclusionMap
+          name: _ToonShade
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -75,6 +75,13 @@ Material:
       data:
         first:
           name: _DetailAlbedoMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _OcclusionMap
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -137,13 +144,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ToonShade
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _Fresnel
         second:
           m_Texture: {fileID: 0}
@@ -193,8 +193,20 @@ Material:
         second: 1
       data:
         first:
+          name: _Outline
+        second: 0.005
+      data:
+        first:
           name: _Parallax
         second: 0.02
+      data:
+        first:
+          name: _InvFade
+        second: 0.01
+      data:
+        first:
+          name: _BumpAmt
+        second: 10
       data:
         first:
           name: _ZWrite
@@ -229,10 +241,6 @@ Material:
         second: 0
       data:
         first:
-          name: _InvFade
-        second: 0.01
-      data:
-        first:
           name: _Dist
         second: 1000
       data:
@@ -243,14 +251,6 @@ Material:
         first:
           name: _Rotation
         second: 0
-      data:
-        first:
-          name: _Outline
-        second: 0.005
-      data:
-        first:
-          name: _BumpAmt
-        second: 10
       data:
         first:
           name: _WaveScale
@@ -275,11 +275,15 @@ Material:
       data:
         first:
           name: _EmissionColor
-        second: {r: 0.7647059, g: 3.5983775, b: 4, a: 1}
+        second: {r: 0.7941177, g: 2.9016063, b: 4, a: 1}
       data:
         first:
           name: _Color
         second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _TintColor
@@ -296,10 +300,6 @@ Material:
         first:
           name: _SpecularColor
         second: {r: 0.72, g: 0.72, b: 0.72, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0, g: 0, b: 0, a: 1}
       data:
         first:
           name: _RefrColor
