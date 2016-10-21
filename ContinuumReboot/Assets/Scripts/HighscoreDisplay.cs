@@ -62,6 +62,12 @@ public class HighscoreDisplay : MonoBehaviour
 			resetPanel.SetActive (true);
 			PlayerPrefs.SetString ("InputMenu", "resethighscores");
 		}
+
+		if (Input.GetKeyDown (KeyCode.Slash))
+		{
+			resetPanel.SetActive (true);
+			PlayerPrefs.SetString ("InputMenu", "resethighscores");
+		}
 	}
 
 	public void ResetHighScores()

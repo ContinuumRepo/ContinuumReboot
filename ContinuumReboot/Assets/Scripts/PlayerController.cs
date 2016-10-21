@@ -685,7 +685,7 @@ public class PlayerController : MonoBehaviour
 			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 		}
 
-		AltFireImage.rectTransform.sizeDelta = new Vector2 (333, Mathf.Clamp(20/AltFireImage.fillAmount, 0, 50));
+		//AltFireImage.rectTransform.sizeDelta = new Vector2 (333, Mathf.Clamp(20/AltFireImage.fillAmount, 0, 50));
 
 		// Alt fire image bar colours.
 		if (AltFireImage.fillAmount >= 1 && AltFireImage.fillAmount > 0.75f) 
