@@ -170,7 +170,7 @@ public class InputScroll : MonoBehaviour
 
 	IEnumerator RenameWait (float wait, string newName)
 	{
-		yield return new WaitForSeconds (wait);
+		yield return WaitForUnscaledSeconds (wait);
 		PlayerPrefs.SetString ("InputMenu", newName);
 	}
 }

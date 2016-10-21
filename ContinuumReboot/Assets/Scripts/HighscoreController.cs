@@ -9,6 +9,11 @@ public class HighscoreController : MonoBehaviour
 
 	private List<string> hsNames = new List<string>();
 	private List<int> hsScores = new List<int>();
+	private List<int> hsWaves = new List<int>();
+
+	private string prefsNameBase = "HSName";
+	private string prefsScoreBase = "HSScore";
+	private string prefsWaveBase = "HSWave";
 
 	/// <summary>
 	/// Gets all names and scores for highscores
@@ -18,18 +23,17 @@ public class HighscoreController : MonoBehaviour
 	/// </summary>
 	void Start()
 	{
-		string prefsNameBase = "HSName";
-		string prefsScoreBase = "HSScore";
-
 		for (int i = 0; i < maxNoHS; i++)
 		{
 			string keyName = prefsNameBase + i.ToString();
 			string keyScore = prefsScoreBase + i.ToString();
+			string keyWave = prefsWaveBase + i.ToString();
 
 			if (PlayerPrefs.HasKey (keyName))
 			{
 				hsNames[i] = PlayerPrefs.GetString (keyName);
 				hsScores[i] = PlayerPrefs.GetInt (keyScore);
+				hsWaves[i] = PlayerPrefs.GetInt (keyWave);
 			}
 			else
 			{
@@ -66,13 +70,15 @@ public class HighscoreController : MonoBehaviour
 	/// Calculates the score against those already saved and
 	/// inserts the score and name into the appropriate index.
 	/// </summary>
-	public void InsertNewHighScore (string name, int score)
+	public void InsertNewHighScore (string name, int score, int wave)
 	{
 		// If there are no highscores set, add as the first index
 		if (hsScores.Count <= 0)
 		{
 			hsNames.Add (name);
 			hsScores.Add (score);
+			hsWaves.Add (wave);
+			Debug.Log (name + ", " + wave + ", " + score);
 		}
 		else
 		{
@@ -82,7 +88,9 @@ public class HighscoreController : MonoBehaviour
 				{
 					hsNames.Insert (i, name);
 					hsScores.Insert (i, score);
+					hsWaves.Insert (i, wave);
 					UpdatePrefs();
+					Debug.Log (name + ", " + wave + ", " + score);
 					break;
 				}
 			}
@@ -100,16 +108,15 @@ public class HighscoreController : MonoBehaviour
 		}
 		else
 		{
-			string prefsNameBase = "HSName";
-			string prefsScoreBase = "HSScore";
-
 			for (int i = 0; i < hsNames.Count; i++)
 			{
 				string keyName = prefsNameBase + i.ToString();
 				string keyScore = prefsScoreBase + i.ToString();
+				string keyWave = prefsWaveBase + i.ToString();
 
 				PlayerPrefs.SetString (keyName, hsNames[i]);
 				PlayerPrefs.SetInt (keyScore, hsScores[i]);
+				PlayerPrefs.SetInt (keyWave, hsWaves[i]);
 			}
 		}
 	}

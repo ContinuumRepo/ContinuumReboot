@@ -15,10 +15,12 @@ public class GameOverController : MonoBehaviour
 	public float gameOverInputWait;
 
 	private int score;
+	private int wave;
 
 	void OnEnable ()
 	{
 		score = (int) Mathf.Round (gameController.CurrentScore);
+		wave = gameController.wave;
 
 		gameOverScoreText.text = score.ToString();
 
@@ -26,17 +28,24 @@ public class GameOverController : MonoBehaviour
 		{
 			highscoreText.SetActive (true);
 			hsInput.enabled = true;
+			gameOverScroll.enabled = false;
 		}
 		else
 		{
+			highscoreText.SetActive (false);
 			EnableGameOverScroll();
 		}
+	}
 
+	void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.Slash))
+			Debug.Log (PlayerPrefs.GetString ("InputMenu"));
 	}
 
 	public void SubmitHighscore (string name)
 	{
-		hsController.InsertNewHighScore (name, score);
+		hsController.InsertNewHighScore (name, score, wave);
 		hsInput.enabled = false;
 		EnableGameOverScroll();
 	}
