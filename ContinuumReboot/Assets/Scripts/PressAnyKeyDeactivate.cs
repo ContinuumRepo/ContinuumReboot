@@ -6,6 +6,7 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 	public GameObject Deactivator;
 	public GameObject Enabler;
 	public GameObject SocialMedia;
+	public GameObject Koala;
 	public AudioSource PressStartSound;
 	public bool useInput;
 	public Animator TitleAnim;
@@ -17,12 +18,14 @@ public class PressAnyKeyDeactivate : MonoBehaviour
 		Enabler.SetActive (false);
 		Deactivator.SetActive (true);
 		SocialMedia.SetActive (false);
+		Koala.SetActive (false);
 	}
 
 	void Update () 
 	{
 		if (Input.anyKeyDown && useInput == true)
 		{
+			Koala.SetActive (true);
 			Enabler.SetActive (true);
 			SocialMedia.SetActive (true);
 			Deactivator.SetActive (false);
