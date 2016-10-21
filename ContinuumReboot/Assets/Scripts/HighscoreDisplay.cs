@@ -18,6 +18,7 @@ public class HighscoreDisplay : MonoBehaviour
 	private string prefsScoreBase = "HSScore";
 	private string prefsWaveBase = "HSWave";
 
+	[SerializeField]
 	private bool resetting = false;
 
 	void Start()
@@ -45,7 +46,7 @@ public class HighscoreDisplay : MonoBehaviour
 	{
 		if (Input.GetAxis ("Cancel") > 0) // If B is clicked
 		{
-			if (resetting)
+			if (!resetting)
 			{
 				backButtonScript.BackToMainButton();
 			}
@@ -53,18 +54,19 @@ public class HighscoreDisplay : MonoBehaviour
 			{
 				resetPanel.SetActive (false);
 				PlayerPrefs.SetString ("InputMenu", "leaderboards");
+				StartCoroutine (WaitToReset());
 			}
 		}
 
-		// If select is clicked, bring up reset confirm panel
-		if (Input.GetKeyDown ("joystick button 6"))
+		if (resetting && Input.GetAxis ("Submit") > 0) // If A is clicked
 		{
-			resetPanel.SetActive (true);
-			PlayerPrefs.SetString ("InputMenu", "resethighscores");
+			ResetHighScores();
 		}
 
-		if (Input.GetKeyDown (KeyCode.Slash))
+		// If select or '/' is clicked, bring up reset confirm panel
+		if (Input.GetKeyDown ("joystick button 6") || Input.GetKeyDown (KeyCode.Slash))
 		{
+			resetting = true;
 			resetPanel.SetActive (true);
 			PlayerPrefs.SetString ("InputMenu", "resethighscores");
 		}
@@ -89,7 +91,13 @@ public class HighscoreDisplay : MonoBehaviour
 				break;
 			}
 		}
-		SceneManager.LoadScene ("main");
+		SceneManager.LoadScene ("menu");
+	}
+
+	IEnumerator WaitToReset()
+	{
+		yield return new WaitForSeconds (0.2f);
+		resetting = false;
 	}
 }
 
