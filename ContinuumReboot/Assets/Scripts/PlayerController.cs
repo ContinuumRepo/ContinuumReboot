@@ -390,6 +390,12 @@ public class PlayerController : MonoBehaviour
 				Health = 100;
 			}
 
+			// Kill player
+			if (Input.GetKeyDown (KeyCode.Comma))
+			{
+				Health = 0;
+			}
+
 			/// POWERUPS ///
 			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
 			//PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);

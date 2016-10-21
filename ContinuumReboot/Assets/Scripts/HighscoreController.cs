@@ -31,9 +31,9 @@ public class HighscoreController : MonoBehaviour
 
 			if (PlayerPrefs.HasKey (keyName))
 			{
-				hsNames[i] = PlayerPrefs.GetString (keyName);
-				hsScores[i] = PlayerPrefs.GetInt (keyScore);
-				hsWaves[i] = PlayerPrefs.GetInt (keyWave);
+				hsNames.Add (PlayerPrefs.GetString (keyName));
+				hsScores.Add (PlayerPrefs.GetInt (keyScore));
+				hsWaves.Add (PlayerPrefs.GetInt (keyWave));
 			}
 			else
 			{
@@ -49,8 +49,8 @@ public class HighscoreController : MonoBehaviour
 	/// </summary>
 	public bool CheckForHighScore (int score)
 	{
-		// If there are no highscores set, score is a new highscore
-		if (hsScores.Count <= 0)
+		// If there are less than 10 highscores set, score is a new highscore
+		if (hsScores.Count < 10)
 		{
 			return true;
 		}
@@ -88,8 +88,10 @@ public class HighscoreController : MonoBehaviour
 					hsNames.Insert (i, name);
 					hsScores.Insert (i, score);
 					hsWaves.Insert (i, wave);
+					//Debug.Log (i + " (this): " + hsNames[i] + ", " + hsWaves[i] + ", " + hsScores[i]);
 					break;
 				}
+				//Debug.Log (i + ": " + hsNames[i] + ", " + hsWaves[i] + ", " + hsScores[i]);
 			}
 		}
 		UpdatePrefs();
