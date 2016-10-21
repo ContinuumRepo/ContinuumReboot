@@ -8,7 +8,7 @@ public class PauseExit : ButtonEvents
 	public AudioSource clickSound;
 	public AudioSource hoverSound;
 
-	public GameObject confirmExit;
+	public InputScroll confirmExitScroll;
 	public Animator exitAnim;
 
 	public Button thisButton;
@@ -20,12 +20,12 @@ public class PauseExit : ButtonEvents
 		if (PlayerPrefs.GetString ("InputMenu") == "exitconfirm")
 		{
 			PlayerPrefs.SetString ("InputMenu", "gamepause");
-			confirmExit.SetActive (false);
+			confirmExitScroll.enabled = false;
 		}
 		else
 		{
-			PlayerPrefs.SetString ("InputMenu", "exitconfirm");
-			confirmExit.SetActive (true);
+			scrollScript.WaitToRenameInputMenu (0.1f, "exitconfirm");
+			confirmExitScroll.enabled = true;
 		}
 		clickSound.Play();
 	}

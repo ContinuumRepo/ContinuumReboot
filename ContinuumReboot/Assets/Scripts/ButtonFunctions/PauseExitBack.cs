@@ -1,17 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 [AddComponentMenu("ButtonEvents/PauseExitBack")]
 public class PauseExitBack : ButtonEvents
 {
 	public AudioSource clickSound;
 
-	public GameObject confirmExit;
+	public Button exitButton;
+	public InputScroll confirmExitScroll;
+	public InputScroll backScrollScript;
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("InputMenu", "gamepause");
-		confirmExit.SetActive (false);
+		backScrollScript.WaitToRenameInputMenu (0.1f, "gamepause");
+		exitButton.Select();
+		confirmExitScroll.enabled = false;
 		clickSound.Play();
 	}
 

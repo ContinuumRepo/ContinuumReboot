@@ -26,6 +26,8 @@ public class InputScroll : MonoBehaviour
 	void Start ()
 	{
 		buttonIndex = buttons.Length;
+		indexLocation = firstIndex;
+		buttons[firstIndex].OnEnter();
 	}
 	
 	// Update is called once per frame
@@ -65,7 +67,7 @@ public class InputScroll : MonoBehaviour
 				}
 				else
 				{
-					PlayerPrefs.SetString ("InputMenu", bPrefsValue);
+					WaitToRenameInputMenu (0.1f, bPrefsValue);
 					bDeactivate.SetActive (false);
 				}
 			}
@@ -80,6 +82,11 @@ public class InputScroll : MonoBehaviour
 					Debug.Log ("Resetting for mouse movement");
 				}
 			}
+		}
+
+		if (Input.GetKeyDown (KeyCode.Slash))
+		{
+			Debug.Log (PlayerPrefs.GetString ("InputMenu"));
 		}
 	}
 

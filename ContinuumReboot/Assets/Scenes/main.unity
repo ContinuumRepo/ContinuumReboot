@@ -7641,7 +7641,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 395221390}
   - {fileID: 1719108518}
-  timeBuffer: 0.1
+  timeBuffer: 0.2
   inputLocPrefsValue: exitconfirm
   startToSelect: 1
   bToClose: 1
@@ -20385,7 +20385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1724558036}
   hoverSound: {fileID: 1235494378}
-  confirmExit: {fileID: 109640326}
+  confirmExitScroll: {fileID: 109640329}
   exitAnim: {fileID: 509033873}
   thisButton: {fileID: 509033869}
   scrollScript: {fileID: 745027555}
@@ -23169,7 +23169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1724558036}
-  confirmExit: {fileID: 109640326}
+  exitButton: {fileID: 509033869}
+  confirmExitScroll: {fileID: 109640329}
+  backScrollScript: {fileID: 745027555}
 --- !u!1 &579110153
 GameObject:
   m_ObjectHideFlags: 0
@@ -30810,7 +30812,7 @@ MonoBehaviour:
   - {fileID: 541505252}
   - {fileID: 1290782231}
   - {fileID: 509033874}
-  timeBuffer: 0.1
+  timeBuffer: 0.2
   inputLocPrefsValue: gamepause
   startToSelect: 0
   bToClose: 1
@@ -55075,7 +55077,6 @@ GameObject:
   - 222: {fileID: 1719108516}
   - 114: {fileID: 1719108515}
   - 114: {fileID: 1719108514}
-  - 114: {fileID: 1719108513}
   - 114: {fileID: 1719108517}
   - 114: {fileID: 1719108518}
   m_Layer: 5
@@ -55104,18 +55105,6 @@ RectTransform:
   m_AnchoredPosition: {x: 840, y: -420}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1719108513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1719108511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7ece267a8cb77b49875f67d7be7895b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noButton: {fileID: 0}
 --- !u!114 &1719108514
 MonoBehaviour:
   m_ObjectHideFlags: 0
