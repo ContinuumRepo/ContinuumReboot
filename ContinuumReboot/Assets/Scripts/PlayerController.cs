@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
 	public AudioSource BGMMusic; 					// The main game music.
 	public GameObject PressToContinue; 				// The initial UI "Press A to view stats".
 	public GameObject DeactivatePlayerElements; 	// The GameObjects to deactivate once the player is defeated.
-	public GameObject GameOverUI; 					// The Game Over UI after the initial sequence.
+	//public GameObject GameOverUI; 					// The Game Over UI after the initial sequence.
 	public AudioSource GameOverSound; 				// The GameOver Sound effect.
 	public AudioSource GameOverLoop; 				// The defeated Game Over music loop.
 	public GameObject gameOverExplosion; 			// The Awesome particle system for the Game Over.
@@ -255,7 +255,7 @@ public class PlayerController : MonoBehaviour
 		HelixObject.SetActive (false);
 
 		// Start GameOver conditions.
-		GameOverUI.SetActive (false);
+		//GameOverUI.SetActive (false);
 		initialPart = false;
 		PressToContinue.SetActive (false);
 		slowTimeRemaining = slowTimeDuration;
@@ -891,23 +891,28 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 
-		// if health is below 0 and the Game Over UI is active.
-		if (Health <= 0 && GameOverUI.activeSelf == true) 
+		if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown(KeyCode.Space)) 
 		{
-			PressToContinue.SetActive (false); // Turns off press to continue UI message.
+			//GameOverUI.SetActive (true);
+		}
+
+		// if health is below 0 and the Game Over UI is active.
+		if (Health <= 0) 
+		{
+			PressToContinue.SetActive (true); // Turns off press to continue UI message.
 
 			// When timescale is above an amount, to decrement time scale.
-			if (Time.timeScale >= 0.0166f) 
+			if (Time.timeScale > 0.0166f) 
 			{
 				Time.timeScale -= Time.unscaledDeltaTime * TimeSlowingSpeed; // Slows time down slowly.
 				PressToContinue.SetActive (false); // Turns off press to continue UI.
 			}
 
 			// When timescale is low enough.
-			if (Time.timeScale < 0.0165f)
+			if (Time.timeScale <= 0.0165f)
 			{
 				Time.timeScale = 0.0165f;
-				PressToContinue.SetActive (false); // Turns off press to continue UI.
+				PressToContinue.SetActive (true); // Turns off press to continue UI.
 			}
 		}
 	}
