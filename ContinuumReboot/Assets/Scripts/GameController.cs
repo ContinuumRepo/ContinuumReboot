@@ -390,6 +390,21 @@ public class GameController : MonoBehaviour
 				CheatActivatedAnim.Play ("CheatActivated");
 				Debug.Log ("You pressed '9' and powerup is ripple.");
 			}
+
+			if (Input.GetKeyDown (KeyCode.Alpha0)) 
+			{
+				playerControllerScript.Health -= 25;
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed '0' and lost health.");
+
+				if (playerControllerScript.Health < 25) 
+				{
+					playerControllerScript.GameOver ();
+					Instantiate (playerControllerScript.gameOverExplosion, Player.transform.position, Quaternion.identity);
+					Debug.Log ("You pressed '0' and GAME OVER.");
+				}
+			}
 		}
 
 		// END CHEATS //

@@ -855,8 +855,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	void GameOver ()
+	public void GameOver ()
 	{
+		BeamShot.SetActive (false);
+		HorizontalBeam.SetActive (false);
+		Shield.SetActive (false);
+		HelixObject.SetActive (false);
 		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
 		BGMMusic.Stop (); // Stops main music.
 		Cursor.lockState = CursorLockMode.None;
@@ -911,7 +915,7 @@ public class PlayerController : MonoBehaviour
 			// When timescale is low enough.
 			if (Time.timeScale <= 0.0165f)
 			{
-				Time.timeScale = 0.0165f;
+				Time.timeScale = 0.001f;
 				PressToContinue.SetActive (true); // Turns off press to continue UI.
 			}
 		}
