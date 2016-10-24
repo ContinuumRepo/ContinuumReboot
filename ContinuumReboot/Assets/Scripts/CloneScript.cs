@@ -98,9 +98,12 @@ public class CloneScript : MonoBehaviour
 		// Automatic shooting.
 		if (Time.unscaledTime > nextFire) 
 		{
-			Instantiate (Bullet, shotSpawn.position, Quaternion.Euler (0, 0, 180));
-			nextFire = Time.unscaledTime + fireRate * (1 / Time.timeScale);
-			Change ();
+			if (Time.timeScale > 0) 
+			{
+				Instantiate (Bullet, shotSpawn.position, Quaternion.Euler (0, 0, 180));
+				nextFire = Time.unscaledTime + fireRate;// * (1 / Time.timeScale);
+				Change ();
+			}
 		}
 	}
 

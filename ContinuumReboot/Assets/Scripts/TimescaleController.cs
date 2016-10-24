@@ -16,10 +16,12 @@ public class TimescaleController : MonoBehaviour
 	private float currentTimeScale; 		// Stores calculation of timescale here.
 	private Transform referencePoint;		// Needs this to calculate.
 	public AudioSource Music;				// The main game music.
+	public float lerpPitch;
 
 	public enum calcMode
 	{
 		Distance, 							// Calculates music pitch by via distance
+		Continuous,
 		timeScale,							// Calculates music pitch by Time.timeScale directly
 		none								// Does nothing to the music pitch.
 	}
@@ -86,10 +88,11 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{	
+		Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.deltaTime);
+
 		if (Time.timeScale <= 0) 
 		{
 			Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
-			//Time.timeScale = 0.05f;
 		}
 
 		if (CalculationMode == calcMode.none) 
@@ -104,6 +107,13 @@ public class TimescaleController : MonoBehaviour
 			{
 				CalculationMode = calcMode.Distance;
 			}
+		}
+
+		if (CalculationMode == calcMode.Continuous) 
+		{
+			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
+			Time.timeScale = distance;
+			Music.pitch = Time.timeScale;
 		}
 
 		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
@@ -136,43 +146,43 @@ public class TimescaleController : MonoBehaviour
 		{
 			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
 			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
-
+			//Music.pitch = Time.timeScale;
 			if (distance < 7) 
 			{
-				Music.pitch = 0.2f;
+				lerpPitch = 0.2f;
 			}
 
 			if (distance < 14 && distance >= 7) 
 			{
 				if (Time.timeScale < 1 || Music.pitch < 1)
 				{
-					Music.pitch = 0.5f;
+					lerpPitch = 0.5f;
 				}
 
 				if (Time.timeScale >= 1 || Music.pitch > 1) 
 				{
-					Music.pitch = 1;
+					lerpPitch = 1;
 				}
 			}
 
 			if (distance >= 14 && distance < 24) 
 			{
-				Music.pitch = 1f;
+				lerpPitch = 1f;
 			}
 
 			if (distance >= 24 && distance < 34) 
 			{
-				Music.pitch = 1.25f;
+				lerpPitch = 1.25f;
 			}
 
 			if (distance >= 34 && distance < 44) 
 			{
-				Music.pitch = 1.5f;
+				lerpPitch = 1.5f;
 			}
 
 			if (distance >= 44) 
 			{
-				Music.pitch = 2f;
+				lerpPitch = 2f;
 			}
 		}
 
@@ -185,28 +195,28 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale < 0.5f) 
 			{
-				Music.pitch = 0.15f;
+				lerpPitch = 0.15f;
 			}
 
 			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) {
-				Music.pitch = 0.4f;
+				lerpPitch = 0.4f;
 			}
 
 			if (Time.timeScale >= 1f && Time.timeScale < 2f) {
-				Music.pitch = 1f;
+				lerpPitch = 1f;
 			}
 
 			if (Time.timeScale >= 2f && Time.timeScale < 3f) {
-				Music.pitch = 1.25f;
+				lerpPitch = 1.25f;
 			}
 
 			if (Time.timeScale >= 3f && Time.timeScale < 4f) {
-				Music.pitch = 1.5f;
+				lerpPitch = 1.5f;
 			}
 
 			if (Time.timeScale >= 4f) 
 			{
-				Music.pitch = 2f;
+				lerpPitch = 2f;
 			}
 		}
 	}

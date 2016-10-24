@@ -48,8 +48,6 @@ public class PlayerController : MonoBehaviour
 	public GameObject AltFire;
 	public Image AltFireImage;
 	public GameObject AltFireIndicator;
-	//public Animator FlashIndicator;
-	//public Animator LTriggerAnim;
 
 	[Header ("Powerups")]
 	public float powerupTime = 0; 								// The current powerup time left.
@@ -212,8 +210,6 @@ public class PlayerController : MonoBehaviour
 		HelixIcon.SetActive (false);
 		WifiIcon.SetActive (false);
 		ThreeDIcon.SetActive (false);
-		//FlashIndicator.enabled = false;
-		//LTriggerAnim.enabled = false;
 		MainCanvas.worldCamera = Camera.main;
 
 		// Finds the rigidbody this script is attached to.
@@ -256,7 +252,6 @@ public class PlayerController : MonoBehaviour
 		HelixObject.SetActive (false);
 
 		// Start GameOver conditions.
-		//GameOverUI.SetActive (false);
 		initialPart = false;
 		PressToContinue.SetActive (false);
 		slowTimeRemaining = slowTimeDuration;
@@ -269,26 +264,24 @@ public class PlayerController : MonoBehaviour
 	void Update () 
 	{
 		/// Movement ///
-
-		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
+		if (Time.timeScale > 0) 
 		{
-			float moveHorizontal;
-			float moveVertical;
+			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) {
+				float moveHorizontal;
+				float moveVertical;
 
-			// Keyboard input
-			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)
-			{
-				moveHorizontal = Input.GetAxis ("Horizontal");
-				moveVertical = Input.GetAxis ("Vertical");	
-			}
-			else // Mouse input
-			{
-				moveHorizontal = Input.GetAxis ("Mouse X");
-				moveVertical = Input.GetAxis ("Mouse Y");					
-			}
+				// Keyboard input
+				if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+					moveHorizontal = Input.GetAxis ("Horizontal");
+					moveVertical = Input.GetAxis ("Vertical");	
+				} else { // Mouse input
+					moveHorizontal = Input.GetAxis ("Mouse X");
+					moveVertical = Input.GetAxis ("Mouse Y");					
+				}
 
-			Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-			rb.velocity = movement * speed;
+				Vector3 movement = new Vector3 (moveHorizontal * (1 / Time.timeScale), moveVertical * (1 / Time.timeScale), 0.0f);
+				rb.velocity = movement * speed;
+			}
 		}
 
 		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
@@ -355,31 +348,28 @@ public class PlayerController : MonoBehaviour
 		// Controller Input.
 		if (PlayerNumber == playerNumber.PlayerOne) 
 		{
-			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
-			{
-				nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
-			{
-				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount >= 1) 
-				{
-					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-					AltFire.GetComponent<AudioSource> ().Play ();
-					AltFireMode = altmode.yes;
+			if (Time.timeScale > 0) {
+				if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) {
+					nextFire = Time.unscaledTime + fireRate * (1 / Time.timeScale);
+					Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				}
-			}
 
-			if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) 
-			{
-			}
+				if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
+				   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+					// When the player presses altfire while bar is greater than 0
+					if (AltFireImage.fillAmount >= 1) {
+						AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+						AltFire.GetComponent<AudioSource> ().Play ();
+						AltFireMode = altmode.yes;
+					}
+				}
 
-			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
-			{
+				if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) {
+				}
+
+				if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+				}
 			}
 		}
 
@@ -524,7 +514,6 @@ public class PlayerController : MonoBehaviour
 
 			/// POWERUPS ///
 			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
-			//PowerupMeter.color = new Color (1 / powerupTime, powerupTime / 10, powerupTime / 15, 1.0f);
 
 			if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
 			{
@@ -553,22 +542,18 @@ public class PlayerController : MonoBehaviour
 				bloomScript.bloomIntensity = normalBloomAmount;
 				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
-				//ThreeDCamera.enabled = false;
-				//BgmHighFilter.enabled = false;
-				//BgmLowFilter.enabled = false;
-				//ThreeDCam.SetActive (false);
-				shot = RegularShot; // Assigns shot which costs points.
-				//ClonedPlayer.SetActive (false); // Turns off cloned players.
+				shot = RegularShot; 							// Assigns shot which costs points.
 				if (GameObject.Find ("Clone(Clone)") != null) 
 				{
 					Destroy (GameObject.Find ("Clone(Clone)"));
 				}
-				BeamShot.SetActive (false); // Turns off the vertical beam.
-				Shield.SetActive (false); // Turns off the shield.
-				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
+				BeamShot.SetActive (false); 					// Turns off the vertical beam.
+				Shield.SetActive (false);					    // Turns off the shield.
+				HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
 				HelixObject.SetActive (false);
 				WifiIcon.SetActive (false);
 				ThreeDIcon.SetActive (false);
+
 				// Turns off all powerup icons.
 				DoubleShotIcon.SetActive (false);
 				BeamShotIcon.SetActive (false);
@@ -579,8 +564,8 @@ public class PlayerController : MonoBehaviour
 				HelixIcon.SetActive (false);
 				LensScript.enabled = true;
 				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
-				BeamShot.SetActive (false); // Turns off the beam shot.
-				HorizontalBeam.SetActive (false); // Turns off the horizontal beam shot.
+				BeamShot.SetActive (false);						 // Turns off the beam shot.
+				HorizontalBeam.SetActive (false); 				 // Turns off the horizontal beam shot.
 			
 				// if the lens script radius is greater than 0.
 				if (LensScript.radius > 0) 
@@ -591,7 +576,7 @@ public class PlayerController : MonoBehaviour
 				// if the lens script radius is less than 0.
 				if (LensScript.radius < 0) 
 				{
-					LensScript.radius = 0; // Make it equal to exactly 0.
+					LensScript.radius = 0; 						// Make it equal to exactly 0.
 				}
 			}
 
@@ -599,10 +584,13 @@ public class PlayerController : MonoBehaviour
 			if (CurrentPowerup == powerup.DoubleShot) 
 			{
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = DoubleShot; // Assigns free double shot powerup.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				shot = DoubleShot;								 // Assigns free double shot powerup.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
-				DoubleShotIcon.SetActive (true); // Turns on the double shot icon.
+				DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
 			}
 
 			// WIFI shot.
@@ -610,37 +598,44 @@ public class PlayerController : MonoBehaviour
 			{
 				fireRate = 0.5f;
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = WifiShot; // Assigns free wifi shot powerup.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				shot = WifiShot; 								// Assigns free wifi shot powerup.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
-				WifiIcon.SetActive (true); // Turns on the wifi shot icon.
-				//BgmHighFilter.enabled = true;
-				//BgmLowFilter.enabled = true;
+				WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
 			}
 
 			// Tri shot.
 			if (CurrentPowerup == powerup.TriShot) 
 			{
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = TriShot; // Assigns free triple shot powerup.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				shot = TriShot; 								// Assigns free triple shot powerup.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
-				TriShotIcon.SetActive (true); // Turns on double shot icon.
+				TriShotIcon.SetActive (true); 					// Turns on double shot icon.
 			}
 
 			// Beam shot.
 			if (CurrentPowerup == powerup.BeamShot) 
 			{
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				BeamShot.SetActive (true); // Turns on vertical beam.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				BeamShot.SetActive (true); 						// Turns on vertical beam.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
-				BeamShotIcon.SetActive (true); // Turns on UI icon for the vertical beam.
+				BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
 
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
 				{
-					shot = RegularShotNoCost; // Make it the free version.
+					shot = RegularShotNoCost; 					// Make it the free version.
 				}
 			}
 
@@ -648,11 +643,13 @@ public class PlayerController : MonoBehaviour
 			if (CurrentPowerup == powerup.shield) 
 			{
 				bloomScript.bloomIntensity = powerupBloomAmount;
-				Shield.SetActive (true); // Turns on the shield.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				Shield.SetActive (true); 						// Turns on the shield.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-				ShieldIcon.SetActive (true); // Turns on UI icon for the shield.
-				//BgmLowFilter.enabled = true;
+				ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
 				collisionCooldown = 3;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
 				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
@@ -673,7 +670,10 @@ public class PlayerController : MonoBehaviour
 				bloomScript.bloomIntensity = powerupBloomAmount;	
 				HorizontalBeamIcon.SetActive (true);
 				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
 				// If shot is the regular shot.
 				if (shot == RegularShot) 
@@ -688,7 +688,10 @@ public class PlayerController : MonoBehaviour
 				bloomScript.bloomIntensity = powerupBloomAmount;
 				//ClonedPlayer.SetActive (true); // Turns on the clones!
 
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
 				CloneIcon.SetActive (true); // Turns on clone icon.
 				//BgmHighFilter.enabled = true;
@@ -706,7 +709,10 @@ public class PlayerController : MonoBehaviour
 				bloomScript.bloomIntensity = powerupBloomAmount;
 				HelixObject.SetActive (true);
 
-				powerupTime -= Time.unscaledDeltaTime; // Decreases powerup time linearly.
+				if (Time.timeScale > 0)
+				{
+					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+				}
 				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
 				HelixIcon.SetActive (true); // Turns on clone icon.
 				if (shot == RegularShot) 
@@ -730,7 +736,6 @@ public class PlayerController : MonoBehaviour
 				CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
 				BeamShot.SetActive (false); // Turns off the beam.
 				Shield.SetActive (false); // Turns off the shield.
-				//ClonedPlayer.SetActive (false); // Turns off the clones.
 
 				if (GameObject.Find ("Clone(Clone)") != null) 
 				{
@@ -764,12 +769,6 @@ public class PlayerController : MonoBehaviour
 				GameOver (); // Triggers game Over method.
 				timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
 			}
-			/*
-			// if color correction saturation is less than 1
-			if (ColorCorrectionCurvesScript.saturation < 1) 
-			{
-				ColorCorrectionCurvesScript.saturation += 0.5f * Time.unscaledDeltaTime; // Increase saturation.
-			}*/
 		}
 	}
 
@@ -779,7 +778,15 @@ public class PlayerController : MonoBehaviour
 
 		if (ComboTime >= 0) 
 		{
-			ComboTime -= 1.5f * Time.deltaTime;
+			if (gameControllerScript.isPaused == true) 
+			{
+				ComboTime -= 1.5f * Time.deltaTime;
+			}
+
+			if (gameControllerScript.isPaused == true) 
+			{
+				return;
+			}
 		}
 
 		if (ComboTime < 1f) 

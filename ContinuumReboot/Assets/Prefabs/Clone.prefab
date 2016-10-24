@@ -4655,10 +4655,9 @@ MonoBehaviour:
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 0}
   AltFireIndicator: {fileID: 0}
-  FlashIndicator: {fileID: 0}
-  LTriggerAnim: {fileID: 0}
   powerupTime: 0
   CurrentPowerup: 0
+  PowerupTimeText: {fileID: 0}
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
   RegularShotNoCost: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
   MutedRegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -4705,13 +4704,16 @@ MonoBehaviour:
   vibrationAmount: 1
   vibrationDuration: 0.4
   vibrationTime: 0
-  HealthText: {fileID: 0}
   collisionCooldown: 0
   HealthFull: {fileID: 0}
   HealthThreeQuarters: {fileID: 0}
   HealthHalf: {fileID: 0}
   HealthQuarter: {fileID: 0}
   YellowMaterial: {fileID: 0}
+  Overlay: {fileID: 0}
+  ScreenOverlayScript: {fileID: 0}
+  OverlayIntensity: 0.2
+  OverlayTime: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -4721,7 +4723,6 @@ MonoBehaviour:
   BGMMusic: {fileID: 0}
   PressToContinue: {fileID: 0}
   DeactivatePlayerElements: {fileID: 0}
-  GameOverUI: {fileID: 0}
   GameOverSound: {fileID: 0}
   GameOverLoop: {fileID: 0}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
@@ -5182,7 +5183,7 @@ MonoBehaviour:
   player: {fileID: 0}
   distance: 150
   delay: 1
-  fireRate: 0.2
+  fireRate: 0.14
   Bullet: {fileID: 138996, guid: b6fdf83a88727684d9c38b4f6fede6c1, type: 2}
   shotSpawn: {fileID: 481748}
 --- !u!114 &11447426
@@ -5254,10 +5255,9 @@ MonoBehaviour:
   AltFire: {fileID: 161744, guid: 1031ef866e5397a41982a1b0e284d037, type: 2}
   AltFireImage: {fileID: 0}
   AltFireIndicator: {fileID: 0}
-  FlashIndicator: {fileID: 0}
-  LTriggerAnim: {fileID: 0}
   powerupTime: 0
   CurrentPowerup: 0
+  PowerupTimeText: {fileID: 0}
   RegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
   RegularShotNoCost: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
   MutedRegularShot: {fileID: 135040, guid: 533c5afdaa7b3864e9cc2452df9f4989, type: 2}
@@ -5304,13 +5304,16 @@ MonoBehaviour:
   vibrationAmount: 1
   vibrationDuration: 0.4
   vibrationTime: 0
-  HealthText: {fileID: 0}
   collisionCooldown: 0
   HealthFull: {fileID: 0}
   HealthThreeQuarters: {fileID: 0}
   HealthHalf: {fileID: 0}
   HealthQuarter: {fileID: 0}
   YellowMaterial: {fileID: 0}
+  Overlay: {fileID: 0}
+  ScreenOverlayScript: {fileID: 0}
+  OverlayIntensity: 0.2
+  OverlayTime: 0
   initialPart: 0
   initialTimeScale: 0.15
   slowTimeDuration: 3
@@ -5320,7 +5323,6 @@ MonoBehaviour:
   BGMMusic: {fileID: 0}
   PressToContinue: {fileID: 0}
   DeactivatePlayerElements: {fileID: 0}
-  GameOverUI: {fileID: 0}
   GameOverSound: {fileID: 0}
   GameOverLoop: {fileID: 0}
   gameOverExplosion: {fileID: 141412, guid: 06cb730807c56fe40a9ae55ffdcd5770, type: 2}
