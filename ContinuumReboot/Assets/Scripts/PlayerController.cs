@@ -48,8 +48,8 @@ public class PlayerController : MonoBehaviour
 	public GameObject AltFire;
 	public Image AltFireImage;
 	public GameObject AltFireIndicator;
-	public Animator FlashIndicator;
-	public Animator LTriggerAnim;
+	//public Animator FlashIndicator;
+	//public Animator LTriggerAnim;
 
 	[Header ("Powerups")]
 	public float powerupTime = 0; 								// The current powerup time left.
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
 	}
 
 	public powerup CurrentPowerup;			    // The above enum values.
+	public Text PowerupTimeText;
 
 	[Header ("Powerup Prefabs")]
 	public GameObject RegularShot; 				// The bullet the player shoots when there is no powerup.
@@ -129,7 +130,7 @@ public class PlayerController : MonoBehaviour
 	public float vibrationAmount = 1;  	   			// The vibration amount as the player loses some health.
 	public float vibrationDuration = 0.4f; 			// The vibration duration as the player loses some health.
 	public float vibrationTime; 		   			// The actual vibration time left.
-	public Text HealthText; 			   			// The health text value which will be in percentage.
+	//public Text HealthText; 			   			// The health text value which will be in percentage.
 	public float collisionCooldown;					// How long until the collider is active again?
 
 	public Material HealthFull;
@@ -211,8 +212,8 @@ public class PlayerController : MonoBehaviour
 		HelixIcon.SetActive (false);
 		WifiIcon.SetActive (false);
 		ThreeDIcon.SetActive (false);
-		FlashIndicator.enabled = false;
-		LTriggerAnim.enabled = false;
+		//FlashIndicator.enabled = false;
+		//LTriggerAnim.enabled = false;
 		MainCanvas.worldCamera = Camera.main;
 
 		// Finds the rigidbody this script is attached to.
@@ -267,6 +268,131 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		/// Movement ///
+
+		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
+		{
+			float moveHorizontal;
+			float moveVertical;
+
+			// Keyboard input
+			if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)
+			{
+				moveHorizontal = Input.GetAxis ("Horizontal");
+				moveVertical = Input.GetAxis ("Vertical");	
+			}
+			else // Mouse input
+			{
+				moveHorizontal = Input.GetAxis ("Mouse X");
+				moveVertical = Input.GetAxis ("Mouse Y");					
+			}
+
+			Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
+			rb.velocity = movement * speed;
+		}
+
+		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
+		{
+			// When the player presses altfire while bar is greater than 0
+			if (AltFireImage.fillAmount >= 1) 
+			{
+				AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+				AltFire.GetComponent<AudioSource> ().Play ();
+				AltFireMode = altmode.yes;
+			}
+		}
+
+		if (AltFireImage.fillAmount <= 0) 
+		{
+			AltFireMode = altmode.no;
+		}
+
+		if (AltFireImage.fillAmount <= 0) 
+		{
+			AltFireImage.fillAmount += 0.1f * Time.deltaTime;
+		}
+
+		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
+		{
+			float moveHorizontalA = Input.GetAxis ("Horizontal P1");
+			float moveVerticalA = Input.GetAxis ("Vertical P1");
+			Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+			rb.velocity = movementA * speed;
+		}
+
+		if (PlayerNumber == playerNumber.PlayerTwo) 
+		{
+			float moveHorizontalB = Input.GetAxis ("Horizontal P2");
+			float moveVerticalB = Input.GetAxis ("Vertical P2");
+			Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+			rb.velocity = movementB * speed;
+		}
+
+		rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
+
+		// Player boundaries
+		GetComponent<Rigidbody> ().position = new Vector3 (
+			Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
+			Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
+			zBound		
+		);
+
+		/// Shooting functionality ///
+
+		// PC Controller Input.
+		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth))
+		{
+			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
+
+		if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+			(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
+		{
+		}
+
+		// Controller Input.
+		if (PlayerNumber == playerNumber.PlayerOne) 
+		{
+			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
+			{
+				nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
+				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+			{
+				// When the player presses altfire while bar is greater than 0
+				if (AltFireImage.fillAmount >= 1) 
+				{
+					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+					AltFire.GetComponent<AudioSource> ().Play ();
+					AltFireMode = altmode.yes;
+				}
+			}
+
+			if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) 
+			{
+			}
+
+			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
+			{
+			}
+		}
+
+		if (powerupTime > 0) 
+		{
+			PowerupTimeText.text = "" + Mathf.RoundToInt(powerupTime) + "";
+		}
+
+		if (powerupTime <= 0) 
+		{
+			PowerupTimeText.text = " ";
+		}
+
 		if (OverlayTime <= 0.1f) 
 		{
 			OverlayIntensity = 0.1f;
@@ -383,7 +509,7 @@ public class PlayerController : MonoBehaviour
 			}
 				
 			//HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
-			HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
+			//HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
 
 			if (Health > 100) 
 			{
@@ -674,16 +800,16 @@ public class PlayerController : MonoBehaviour
 		if (AltFireImage.fillAmount < 1) 
 		{
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
-			FlashIndicator.enabled = false;
-			LTriggerAnim.enabled = false;
+			//FlashIndicator.enabled = false;
+			//LTriggerAnim.enabled = false;
 		}
 			
 		if (AltFireImage.fillAmount >= 1) 
 		{
 			AltFireImage.fillAmount = 1;
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
-			FlashIndicator.enabled = true;
-			LTriggerAnim.enabled = true;
+			//FlashIndicator.enabled = true;
+			//LTriggerAnim.enabled = true;
 		}
 
 		if (AltFireImage.fillAmount <= 0) 
@@ -720,120 +846,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 
-		/// Movement ///
-	
-			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) 
-			{
-				float moveHorizontal;
-				float moveVertical;
 
-				// Keyboard input
-				if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0)
-				{
-					moveHorizontal = Input.GetAxis ("Horizontal");
-					moveVertical = Input.GetAxis ("Vertical");	
-				}
-				else // Mouse input
-				{
-					moveHorizontal = Input.GetAxis ("Mouse X");
-					moveVertical = Input.GetAxis ("Mouse Y");					
-				}
-
-				Vector3 movement = new Vector3 (moveHorizontal * (1/Time.timeScale), moveVertical * (1/Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
-			}
-
-		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
-		{
-			// When the player presses altfire while bar is greater than 0
-			if (AltFireImage.fillAmount >= 1) 
-			{
-				AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-				AltFire.GetComponent<AudioSource> ().Play ();
-				AltFireMode = altmode.yes;
-			}
-		}
-
-		if (AltFireImage.fillAmount <= 0) 
-		{
-			AltFireMode = altmode.no;
-		}
-
-		if (AltFireImage.fillAmount <= 0) 
-		{
-			AltFireImage.fillAmount += 0.1f * Time.deltaTime;
-		}
-
-		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
-		{
-			float moveHorizontalA = Input.GetAxis ("Horizontal P1");
-			float moveVerticalA = Input.GetAxis ("Vertical P1");
-			Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
-			rb.velocity = movementA * speed;
-		}
-
-		if (PlayerNumber == playerNumber.PlayerTwo) 
-		{
-			float moveHorizontalB = Input.GetAxis ("Horizontal P2");
-			float moveVerticalB = Input.GetAxis ("Vertical P2");
-			Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
-			rb.velocity = movementB * speed;
-		}
-
-		rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
-
-		// Player boundaries
-		GetComponent<Rigidbody> ().position = new Vector3 (
-			Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
-			Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
-			zBound		
-		);
-
-		/// Shooting functionality ///
-
-		// PC Controller Input.
-		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
-			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth))
-		{
-			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		}
-
-		if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
-			(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
-		{
-		}
-
-		// Controller Input.
-		if (PlayerNumber == playerNumber.PlayerOne) 
-		{
-			if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) 
-			{
-				nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			}
-
-			if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
-			   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
-			{
-				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount >= 1) 
-				{
-					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-					AltFire.GetComponent<AudioSource> ().Play ();
-					AltFireMode = altmode.yes;
-				}
-			}
-
-			if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) 
-			{
-			}
-
-			if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				(Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) 
-			{
-			}
-		}
 	}
 
 	void OnTriggerEnter (Collider other)
