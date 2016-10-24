@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CloneScript : MonoBehaviour 
 {
+	public PlayerController playerControllerScript;
 	public SmoothFollowOrig smoothFollowScript;
 	public Transform player;
 	public float distance = 3;
@@ -16,7 +17,7 @@ public class CloneScript : MonoBehaviour
 
 	void Start () 
 	{
-		//gameObject.transform.position = player.position;
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
 		player = GameObject.Find ("Player").transform;
 
@@ -100,8 +101,11 @@ public class CloneScript : MonoBehaviour
 		{
 			if (Time.timeScale > 0) 
 			{
-				Instantiate (Bullet, shotSpawn.position, Quaternion.Euler (0, 0, 180));
-				nextFire = Time.unscaledTime + fireRate;// * (1 / Time.timeScale);
+				if (playerControllerScript.Health >= 25) 
+				{
+					Instantiate (Bullet, shotSpawn.position, Quaternion.Euler (0, 0, 180));
+				}
+				nextFire = Time.unscaledTime + fireRate;
 				Change ();
 			}
 		}

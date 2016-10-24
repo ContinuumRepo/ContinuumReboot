@@ -168,6 +168,8 @@ public class PlayerController : MonoBehaviour
 	private bool playedGameOverSound; 						 	// Has the game over sound been played?
 	public float shakeTime = 0.5f;							 	// Time to shake the camera.
 	public float shakeAmount = 1.0f; 						  	// How hard the shake is on the camera.
+	public LayerMask layermask;
+	public LayerMask allLayers;
 
 	[HideInInspector]
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;	// Color Corrections image effect.
@@ -183,6 +185,8 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
+		Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
+		Camera.main.orthographicSize = 0.1f;
 		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
 		OverlayTime = 0;
 		OverlayIntensity = -0.15f;
@@ -263,6 +267,18 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		if (Camera.main.orthographicSize < 26 && Health >= 25) 
+		{
+			Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 26, Time.deltaTime);
+		}
+
+		if (Camera.main.orthographicSize < 26 && Health < 25) 
+		{
+			Camera.main.GetComponent<SmoothFollowOrig> ().enabled = true;
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, Time.deltaTime);
+		}
+
 		/// Movement ///
 		if (Time.timeScale > 0) 
 		{
@@ -778,7 +794,7 @@ public class PlayerController : MonoBehaviour
 
 		if (ComboTime >= 0) 
 		{
-			if (gameControllerScript.isPaused == true) 
+			if (gameControllerScript.isPaused != true) 
 			{
 				ComboTime -= 1.5f * Time.deltaTime;
 			}
@@ -883,11 +899,10 @@ public class PlayerController : MonoBehaviour
 		HelixObject.SetActive (false);
 		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
 		BGMMusic.Stop (); // Stops main music.
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
 
 		if (slowTimeRemaining > 2.0f) 
 		{
+			Camera.main.cullingMask = layermask;
 			Time.timeScale = 0.05f;
 		}
 			
@@ -901,6 +916,9 @@ public class PlayerController : MonoBehaviour
 		{
 			if (Time.timeScale >= 0.01f)
 			{
+				Camera.main.cullingMask = allLayers;
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
 				slowTimeRemaining = 0;
 				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;
 

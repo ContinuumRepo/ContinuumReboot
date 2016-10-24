@@ -4117,7 +4117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 1
+  SMOOTH_TIME: 0.5
   offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
@@ -4835,7 +4835,7 @@ MonoBehaviour:
   PointReward: 250
   Explosion: {fileID: 113200, guid: d0680ccf8b6565044bd469e196cc888b, type: 2}
   EnemyExplosion: {fileID: 196682, guid: 37f24fd5b56a8634cb4a6f8a7ede1777, type: 2}
-  bombRate: 2
+  bombRate: 0.8
   Bombs:
   - {fileID: 156088, guid: 22e6ff05b09ae834c8054a815e108a6a, type: 2}
   - {fileID: 188294, guid: 536f38899ec02d94a8ccd5946222798c, type: 2}
@@ -4843,9 +4843,6 @@ MonoBehaviour:
   BombNumberMax: 3
   CurrentBomb: 0
   EnemyTrans: {fileID: 0}
-  Music: {fileID: 0}
-  NormalMusic: {fileID: 8300000, guid: d3fdd0eda4f3d8f4a8fbd048f583881e, type: 3}
-  BossMusic: {fileID: 8300000, guid: e070c979a5bf5aa4cb4aa7476576e74c, type: 3}
   EnemyHealthBar: {fileID: 0}
   dontuseEnemyTrans: 1
 --- !u!114 &11499282

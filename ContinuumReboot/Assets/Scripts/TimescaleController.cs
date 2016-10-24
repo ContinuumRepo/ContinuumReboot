@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimescaleController : MonoBehaviour 
 {
 	public float highestTimeScale; 			// For stats screen.
-	public float timeScaleReadOnly;			// The actual value of time.timeScale.
+	public float timeScaleReadOnly;			// The actual value of Time.timeScale.
 	public float startTimeScale = 1.0f; 	// So there is no runtime error that timescale is below 0 at the start of the game.
 	public float timeSpeedIncreaseSens;		// Multipler to minimum time increase per frame.
 	public float addMinTime = 0.1f; 		// Minimum time scale.
@@ -88,11 +88,11 @@ public class TimescaleController : MonoBehaviour
 
 	public void Update () 
 	{	
-		Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.deltaTime);
-
+		Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.unscaledDeltaTime);
+		Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
 		if (Time.timeScale <= 0) 
 		{
-			Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
+			Time.timeScale = 0.001f;
 		}
 
 		if (CalculationMode == calcMode.none) 
@@ -126,30 +126,18 @@ public class TimescaleController : MonoBehaviour
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
 		}
 
-		/*
-		if (PlayerMode == mode.twoPlayers)
-		{
-			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y) / 2) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
-		}
-
-		if (PlayerMode == mode.threePlayers)
-		{
-			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y + playerThree.transform.position.y) / 3) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
-		}
-
-		if (PlayerMode == mode.fourPlayers)
-		{
-			distance = ((playerOne.transform.position.y + playerTwo.transform.position.y + playerThree.transform.position.y + playerFour.transform.position.y) / 4) - referencePoint.transform.position.y; // Calculates average distance y the two players. distance.
-		}*/
-
 		if (CalculationMode == calcMode.Distance) 
 		{
-			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
-			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
+			if (distance > 0)
+			{
+				Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime; // Stores values into time.TimeScale.
+				currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens; // Increases minimum timescale.
+			}
+
 			//Music.pitch = Time.timeScale;
 			if (distance < 7) 
 			{
-				lerpPitch = 0.2f;
+				lerpPitch = 0.25f;
 			}
 
 			if (distance < 14 && distance >= 7) 
@@ -165,24 +153,24 @@ public class TimescaleController : MonoBehaviour
 				}
 			}
 
-			if (distance >= 14 && distance < 24) 
+			if (distance >= 14 && distance < 21) 
 			{
 				lerpPitch = 1f;
 			}
 
-			if (distance >= 24 && distance < 34) 
+			if (distance >= 21 && distance < 28) 
 			{
 				lerpPitch = 1.25f;
 			}
 
-			if (distance >= 34 && distance < 44) 
+			if (distance >= 28 && distance < 35) 
 			{
 				lerpPitch = 1.5f;
 			}
 
-			if (distance >= 44) 
+			if (distance >= 35) 
 			{
-				lerpPitch = 2f;
+				lerpPitch = 1.75f;
 			}
 		}
 

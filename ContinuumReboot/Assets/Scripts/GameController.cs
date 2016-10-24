@@ -463,7 +463,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 1)];
+						GameObject hazard = Hazards [Random.Range (0, 4)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -481,7 +481,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 2)];
+						GameObject hazard = Hazards [Random.Range (0, 9)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -499,7 +499,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 3)];
+						GameObject hazard = Hazards [Random.Range (0, 14)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -517,7 +517,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 4)];
+						GameObject hazard = Hazards [Random.Range (0, 19)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -535,7 +535,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 5)];
+						GameObject hazard = Hazards [Random.Range (0, 24)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
