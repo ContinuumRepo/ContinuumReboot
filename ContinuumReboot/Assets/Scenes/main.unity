@@ -5499,7 +5499,7 @@ GameObject:
   - 33: {fileID: 96605539}
   - 23: {fileID: 96605537}
   - 114: {fileID: 96605538}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Vertical Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7577,7 +7577,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &130628875
 Transform:
@@ -7859,7 +7859,7 @@ GameObject:
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &162497496
 Transform:
@@ -8631,7 +8631,7 @@ GameObject:
   m_TagString: TimeScaleController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &241236806
 Transform:
@@ -10774,7 +10774,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &283724134
 RectTransform:
@@ -15674,7 +15674,7 @@ GameObject:
   - 4: {fileID: 435392051}
   - 33: {fileID: 435392053}
   - 23: {fileID: 435392052}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19695,7 +19695,6 @@ GameObject:
   - 114: {fileID: 538907860}
   - 114: {fileID: 538907861}
   - 114: {fileID: 538907855}
-  - 114: {fileID: 538907863}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19969,35 +19968,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 538907853}
   m_Enabled: 1
---- !u!114 &538907863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 538907853}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnlyInStart: 1
-  SMOOTH_TIME: 0.01
-  offset: {x: 0, y: 0, z: 0}
-  LockX: 0
-  LockY: 0
-  LockZ: 1
-  useSmoothing: 0
-  target: {fileID: 864279380}
-  velocity: {x: 0, y: 0, z: 0}
-  xMin: -100
-  xMax: 100
-  yMin: -100
-  yMax: 100
-  zMin: -100
-  zMax: 100
-  useRB: 0
-  lockedPos: 0
-  hasLockedPos: 0
 --- !u!114 &538907867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22292,6 +22262,14 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.ctime2
       value: 64764
       objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
   m_IsPrefabParent: 0
@@ -22385,7 +22363,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45, y: -24}
+  m_AnchoredPosition: {x: -20, y: -24}
   m_SizeDelta: {x: 1919.657, y: 1080.1929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &580723266
@@ -32682,7 +32660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 0.3
+  SMOOTH_TIME: 0.1
   offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
@@ -33181,7 +33159,7 @@ MonoBehaviour:
   shakeAmount: 1
   layermask:
     serializedVersion: 2
-    m_Bits: 4294967263
+    m_Bits: 4294901727
   allLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -34786,6 +34764,14 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
       value: 1593866751
       objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
   m_IsPrefabParent: 0
@@ -34958,7 +34944,7 @@ RectTransform:
   m_RootOrder: 10
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 829.1, y: -491.00006}
+  m_AnchoredPosition: {x: 879, y: -491.00006}
   m_SizeDelta: {x: 858.2, y: 858.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906555287
@@ -35183,7 +35169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 0.3
+  SMOOTH_TIME: 0.1
   offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
@@ -41204,7 +41190,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &1082494264
 RectTransform:
@@ -42136,6 +42122,14 @@ Prefab:
       propertyPath: ColorModule.gradient.maxGradient.ctime2
       value: 64764
       objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
   m_IsPrefabParent: 0
@@ -42413,7 +42407,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1226859555
 Transform:
@@ -42621,6 +42615,14 @@ Prefab:
     - target: {fileID: 19809950, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
       value: 1593866751
+      objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 100800, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1c90ef90fe28dcd44b12a506d00786cb, type: 2}
@@ -43191,7 +43193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 0.3
+  SMOOTH_TIME: 0.1
   offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
@@ -46052,7 +46054,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1503868212
 Transform:
@@ -50721,7 +50723,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &1581780844
 RectTransform:
@@ -53133,7 +53135,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1673086482
 MonoBehaviour:
@@ -53227,7 +53229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyInStart: 0
-  SMOOTH_TIME: 0.3
+  SMOOTH_TIME: 0.1
   offset: {x: 0, y: 0, z: 0}
   LockX: 0
   LockY: 0
@@ -54376,7 +54378,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!224 &1772476381
 RectTransform:
@@ -56561,7 +56563,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -942, y: -15}
+  m_AnchoredPosition: {x: -836, y: -15}
   m_SizeDelta: {x: 18.82, y: 840}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869040196
@@ -66781,7 +66783,7 @@ GameObject:
   - 33: {fileID: 2133944675}
   - 23: {fileID: 2133944673}
   - 114: {fileID: 2133944674}
-  m_Layer: 10
+  m_Layer: 16
   m_Name: Horizontal Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}

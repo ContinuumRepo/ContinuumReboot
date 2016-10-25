@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start () 
 	{
-		Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
+		//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
 		Camera.main.orthographicSize = 0.1f;
 		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
 		OverlayTime = 0;
@@ -269,14 +269,15 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Camera.main.orthographicSize < 26 && Health >= 25) 
 		{
-			Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
+			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 26, Time.deltaTime);
 		}
 
 		if (Camera.main.orthographicSize < 26 && Health < 25) 
 		{
-			Camera.main.GetComponent<SmoothFollowOrig> ().enabled = true;
-			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, Time.deltaTime);
+			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = true;
+			//Camera.main.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("GameOverExplosion(Clone)").transform;
+			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, 0.25f * Time.deltaTime);
 		}
 
 		/// Movement ///
