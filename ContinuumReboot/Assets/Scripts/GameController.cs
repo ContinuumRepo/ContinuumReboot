@@ -273,6 +273,15 @@ public class GameController : MonoBehaviour
 
 		if (playerControllerScript.Health > 0) 
 		{
+			if (Input.GetKeyDown (KeyCode.Backslash))
+			{
+				int randomColumn = Random.Range (0, columnLocations.Length);
+				Instantiate (Hazards[Random.Range(0, Hazards.Length)], new Vector3 (columnLocations [randomColumn], spawnValues.y, 0), Quaternion.identity);
+				CheatSound.Play ();
+				CheatActivatedAnim.Play ("CheatActivated");
+				Debug.Log ("You pressed 'Backslach' and added an enemy to the game.");
+			}
+
 			if (Input.GetKeyDown (KeyCode.C)) 
 			{
 				CurrentScore += 10000;

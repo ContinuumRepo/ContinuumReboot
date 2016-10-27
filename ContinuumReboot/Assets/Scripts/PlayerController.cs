@@ -918,8 +918,6 @@ public class PlayerController : MonoBehaviour
 			if (Time.timeScale >= 0.01f)
 			{
 				Camera.main.cullingMask = allLayers;
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
 				slowTimeRemaining = 0;
 				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;
 
@@ -954,6 +952,8 @@ public class PlayerController : MonoBehaviour
 			// When timescale is low enough.
 			if (Time.timeScale <= 0.0165f)
 			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
 				Time.timeScale = 0.001f;
 				PressToContinue.SetActive (true); // Turns off press to continue UI.
 			}
