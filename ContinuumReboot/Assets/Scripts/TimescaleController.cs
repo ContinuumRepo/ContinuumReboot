@@ -116,7 +116,7 @@ public class TimescaleController : MonoBehaviour
 			Music.pitch = Time.timeScale;
 		}
 
-		MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
+		//MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
 
 		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
 		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.

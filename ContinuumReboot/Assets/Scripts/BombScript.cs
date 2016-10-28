@@ -92,6 +92,6 @@ public class BombScript : MonoBehaviour
 			}
 		}
 
-		Destroy (gameObject);
+		//Destroy (gameObject);
 	}
 }

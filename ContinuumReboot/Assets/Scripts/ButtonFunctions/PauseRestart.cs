@@ -27,13 +27,13 @@ public class PauseRestart : ButtonEvents
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
 		restartAnim.enabled = true;
-		restartAnim.Play ("Play2PPointerEnter");
+		restartAnim.Play ("PauseHover");
 		thisButton.Select();
 		hoverSound.Play();
 	}
 
 	public override void OnExit()
 	{
-		restartAnim.Play ("Play2PPointerExit");
+		restartAnim.Play ("PauseNormal");
 	}
 }

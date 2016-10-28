@@ -35,13 +35,13 @@ public class PauseExit : ButtonEvents
 		if (scrollScript != null)
 			scrollScript.HighlightedButton = buttonIndex;
 		exitAnim.enabled = true;
-		exitAnim.Play ("Play2PPointerEnter");
+		exitAnim.Play ("PauseHover");
 		thisButton.Select();
 		hoverSound.Play();
 	}
 
 	public override void OnExit()
 	{
-		exitAnim.Play ("Play2PPointerExit");
+		exitAnim.Play ("PauseNormal");
 	}
 }

@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		/// Movement ///
-		if (Time.timeScale > 0) 
+		if (Time.timeScale > 0 && Health > 25) 
 		{
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) {
 				float moveHorizontal;
@@ -363,7 +363,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// Controller Input.
-		if (PlayerNumber == playerNumber.PlayerOne) 
+		if (PlayerNumber == playerNumber.PlayerOne && Health > 25) 
 		{
 			if (Time.timeScale > 0) {
 				if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) {
@@ -585,7 +585,7 @@ public class PlayerController : MonoBehaviour
 				HorizontalBeam.SetActive (false); 				 // Turns off the horizontal beam shot.
 			
 				// if the lens script radius is greater than 0.
-				if (LensScript.radius > 0) 
+				if (LensScript.radius > 0 && Health > 25) 
 				{
 					LensScript.radius -= Time.unscaledDeltaTime;
 				}
@@ -894,6 +894,8 @@ public class PlayerController : MonoBehaviour
 
 	public void GameOver ()
 	{
+		Camera.main.transform.position = new Vector3 (PlayerCollider.transform.position.x, PlayerCollider.transform.position.y, -100);
+
 		BeamShot.SetActive (false);
 		HorizontalBeam.SetActive (false);
 		Shield.SetActive (false);
@@ -903,13 +905,15 @@ public class PlayerController : MonoBehaviour
 
 		if (slowTimeRemaining > 2.0f) 
 		{
+			LensScript.radius += 6 * Time.deltaTime;
 			Camera.main.cullingMask = layermask;
 			Time.timeScale = 0.05f;
 		}
 			
 		if (slowTimeRemaining < 2f && slowTimeRemaining > 0 && Time.timeScale < 1) 
 		{
-			Time.timeScale += 5f * Time.unscaledDeltaTime;
+			Time.timeScale += 3f * Time.unscaledDeltaTime;
+			LensScript.radius += 3 * Time.deltaTime;
 			//GameOverCam.SetActive(true);
 		}
 			
@@ -917,6 +921,15 @@ public class PlayerController : MonoBehaviour
 		{
 			if (Time.timeScale >= 0.01f)
 			{
+				if (LensScript.radius > 0) 
+				{
+					LensScript.radius -= 1f * Time.unscaledDeltaTime;
+				}
+
+				if (LensScript.radius < 0) 
+				{
+					LensScript.radius = 0;
+				}
 				Camera.main.cullingMask = allLayers;
 				slowTimeRemaining = 0;
 				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;

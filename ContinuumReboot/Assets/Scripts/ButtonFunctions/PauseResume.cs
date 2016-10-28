@@ -41,13 +41,13 @@ public class PauseResume : ButtonEvents
 			scrollScript.HighlightedButton = buttonIndex;
 		thisButton.Select();
 		resumeAnim.enabled = true;
-		resumeAnim.Play ("Play2PPointerEnter");
+		resumeAnim.Play ("PauseHover");
 		thisButton.Select();
 		hoverSound.Play();
 	}
 
 	public override void OnExit()
 	{
-		resumeAnim.Play ("Play2PPointerExit");
+		resumeAnim.Play ("PauseNormal");
 	}
 }
