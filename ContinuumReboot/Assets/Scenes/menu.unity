@@ -55974,6 +55974,10 @@ Prefab:
       propertyPath: m_LowpassResonanceQ
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8215202, guid: 2b37861cab6bcca48a7ffe8eedb17067, type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b4cc27300f35e904799c8e04519f348f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2b37861cab6bcca48a7ffe8eedb17067, type: 2}
   m_IsPrefabParent: 0
@@ -71436,7 +71440,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: c909fee6e12618d4fa635027d790a96d,
+    m_HighlightedSprite: {fileID: 21300000, guid: f86e91b560beaee49b562306fee6defa,
       type: 3}
     m_PressedSprite: {fileID: 21300000, guid: f86e91b560beaee49b562306fee6defa, type: 3}
     m_DisabledSprite: {fileID: 0}

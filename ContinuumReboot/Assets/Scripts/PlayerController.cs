@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		/// Movement ///
-		if (Time.timeScale > 0 && Health > 25) 
+		if (Time.timeScale > 0 && Health >= 25) 
 		{
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) {
 				float moveHorizontal;
@@ -363,7 +363,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		// Controller Input.
-		if (PlayerNumber == playerNumber.PlayerOne && Health > 25) 
+		if (PlayerNumber == playerNumber.PlayerOne && Health >= 25) 
 		{
 			if (Time.timeScale > 0) {
 				if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) {
