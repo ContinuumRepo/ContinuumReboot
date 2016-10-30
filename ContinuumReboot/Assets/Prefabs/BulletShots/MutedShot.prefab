@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11434818}
   - 114: {fileID: 11422856}
   - 114: {fileID: 11479726}
+  - 114: {fileID: 11440582}
   m_Layer: 13
   m_Name: MutedShot
   m_TagString: Bullet
@@ -118,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135040}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -8.74, z: 0}
   m_LocalScale: {x: 0.2, y: 0.4, z: 0.4}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -197,7 +198,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d68c3b6c63c0174aba7776c1a1854ba, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -286,25 +287,25 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Time: 0.3
+  m_Time: 0.1
   m_StartWidth: 0.5
   m_EndWidth: 0
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
-      rgba: 4278320896
+      rgba: 3456237312
     m_Color[1]:
       serializedVersion: 2
-      rgba: 4286709504
+      rgba: 2810314496
     m_Color[2]:
       serializedVersion: 2
       rgba: 4294966528
     m_Color[3]:
       serializedVersion: 2
-      rgba: 4294918400
+      rgba: 3271508224
     m_Color[4]:
       serializedVersion: 2
-      rgba: 4294901980
+      rgba: 3086942428
   m_MinVertexDistance: 0.001
   m_Autodestruct: 0
 --- !u!114 &11422856
@@ -318,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc5aa69c84707458bc810f6d610caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletType: 0
+  BulletType: 1
   InitialShakeDuration: 0.26
   InitialShakeStrength: 0.6
   ComboNN: 0
@@ -336,7 +337,7 @@ MonoBehaviour:
   - {fileID: 0}
   ricoshetNumber: 0
   ricoshetMax: 1
-  newSpeed: -70
+  newSpeed: -120
   VibrationTime: 0.04
   useMutedBullet: 0
 --- !u!114 &11434818
@@ -369,6 +370,24 @@ MonoBehaviour:
   DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
+--- !u!114 &11440582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 1
+  minimumPitch: 0.0001
+  maximumPitch: 20
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
 --- !u!114 &11464538
 MonoBehaviour:
   m_ObjectHideFlags: 1
