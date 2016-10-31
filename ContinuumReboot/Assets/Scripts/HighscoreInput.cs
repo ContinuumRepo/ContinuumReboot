@@ -7,8 +7,9 @@ public class HighscoreInput : MonoBehaviour
 	public string[] characters;
 	public Text[] nameInputs;
 	public GameObject[] underlines;
-	public float scrollWait; // Time between button scroll
-	public AudioSource oneShot;
+	public float timeBuffer; // Time between button scroll
+	public AudioSource oneShotInit;
+	public AudioSource oneShotChar;
 	public GameOverController gameOverCont;
 
 	private bool waiting = false;
@@ -17,11 +18,15 @@ public class HighscoreInput : MonoBehaviour
 	private int charLenth;
 	private int nameLength;
 
+	private float scrollWait;
+	private int scrollNo = 0;
+
 	void Start ()
 	{
 		PlayerPrefs.SetString ("InputMenu", "highscoreinput");
 		charLenth = characters.Length;
 		nameLength = nameInputs.Length;
+		scrollWait = timeBuffer;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +34,11 @@ public class HighscoreInput : MonoBehaviour
 	{
 		if (!waiting)
 		{
+			if (scrollNo == 2)
+			{
+				scrollWait = timeBuffer / 2;
+			}
+
 			// Check for character change
 			float vertJoy = Input.GetAxis ("Vertical P1");
 			float vertKey = Input.GetAxis ("Vertical");
@@ -41,6 +51,11 @@ public class HighscoreInput : MonoBehaviour
 			{
 				ScrollChar (vertKey);
 			}
+			else
+			{
+				scrollNo = 0;
+				scrollWait = timeBuffer;
+			}
 		}
 
 		// Confirm to move to next initial input or confirm submit (A, space, enter/return)
@@ -51,7 +66,7 @@ public class HighscoreInput : MonoBehaviour
 				underlines [nameIdxLoc].SetActive (false);
 				nameIdxLoc++;
 				underlines [nameIdxLoc].SetActive (true);
-				oneShot.Play();
+				oneShotInit.Play();
 			}
 			else
 			{
@@ -69,7 +84,7 @@ public class HighscoreInput : MonoBehaviour
 				underlines [nameIdxLoc].SetActive (false);
 				nameIdxLoc--;
 				underlines [nameIdxLoc].SetActive (true);
-				oneShot.Play();
+				oneShotInit.Play();
 			}
 		}
 	}
@@ -106,6 +121,9 @@ public class HighscoreInput : MonoBehaviour
 			}
 		}
 
+		if (oneShotChar != null)
+			oneShotChar.Play();
+		scrollNo++;
 		StartCoroutine (ScrollWait());
 	}
 

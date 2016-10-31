@@ -8218,8 +8218,9 @@ MonoBehaviour:
   - {fileID: 1563035763}
   - {fileID: 1221313385}
   - {fileID: 1750648979}
-  scrollWait: 0.2
-  oneShot: {fileID: 1235494378}
+  timeBuffer: 0.15
+  oneShotInit: {fileID: 1235494378}
+  oneShotChar: {fileID: 0}
   gameOverCont: {fileID: 601646024}
 --- !u!1 &211911166
 GameObject:
