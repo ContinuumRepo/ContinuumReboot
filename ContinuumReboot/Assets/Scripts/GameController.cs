@@ -158,7 +158,7 @@ public class GameController : MonoBehaviour
 		{
 			timeScaleControllerScript.enabled = false; 	// Turns off time scale controller script.
 			Time.timeScale = 1.0f; 					   	// Sets time scale to 1.
-			isPaused = false; 							// Keeps game unpaused.
+			//isPaused = false; 							// Keeps game unpaused.
 		}
 
 		// If the game is not in pre-game mode, and player health is greater than 0.
@@ -198,7 +198,12 @@ public class GameController : MonoBehaviour
 		}
 
 		// HOTKEYS //
+		GetInput();
+		CheckForCheats();
+	}
 
+	private void GetInput()
+	{
 		// Pauses game and enables mouse pointer.
 		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
@@ -235,13 +240,6 @@ public class GameController : MonoBehaviour
 			}
 		}
 
-		if (Input.GetKeyDown ("joystick button 1") && isPaused == true && ControlsScreen.activeInHierarchy == false) 
-		{
-			UnPauseGame ();
-
-			MouseScript.enabled = true;
-		}
-			
 		if (Input.GetKeyDown (KeyCode.P)) 
 		{
 			Debug.Log ("isPaused = " + isPaused);
@@ -270,9 +268,10 @@ public class GameController : MonoBehaviour
 		{
 			ShowFpsText.SetActive (true); // Turns on FPS Game Object.
 		}
+	}
 
-		// CHEATS //
-
+	private void CheckForCheats()
+	{
 		if (playerControllerScript.Health > 0) 
 		{
 			if (Input.GetKeyDown (KeyCode.Backslash))
@@ -417,8 +416,6 @@ public class GameController : MonoBehaviour
 				}
 			}
 		}
-
-		// END CHEATS //
 	}
 
 	public void StartSpawningBricks ()

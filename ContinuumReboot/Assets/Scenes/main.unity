@@ -22427,7 +22427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickSound: {fileID: 1724558036}
-  exitButton: {fileID: 509033869}
+  exitButton: {fileID: 509033874}
   confirmExitScroll: {fileID: 109640329}
   backScrollScript: {fileID: 745027555}
 --- !u!1 &579110153
@@ -33341,6 +33341,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   ColorCorrectionCurvesScript: {fileID: 538907860}
+  LensScript: {fileID: 0}
 --- !u!1 &876698961
 GameObject:
   m_ObjectHideFlags: 0

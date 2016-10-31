@@ -7,15 +7,16 @@ public class PauseExitBack : ButtonEvents
 {
 	public AudioSource clickSound;
 
-	public Button exitButton;
+	public ButtonEvents exitButton;
 	public InputScroll confirmExitScroll;
 	public InputScroll backScrollScript;
 
 	public override void OnClick()
 	{
-		backScrollScript.WaitToRenameInputMenu (0.1f, "gamepause");
-		exitButton.Select();
 		confirmExitScroll.enabled = false;
+		backScrollScript.enabled = true;
+		backScrollScript.WaitToRenameInputMenu (0.1f, "gamepause");
+		exitButton.OnEnter();
 		clickSound.Play();
 	}
 

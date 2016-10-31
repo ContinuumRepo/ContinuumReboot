@@ -21,11 +21,13 @@ public class PauseExit : ButtonEvents
 		{
 			PlayerPrefs.SetString ("InputMenu", "gamepause");
 			confirmExitScroll.enabled = false;
+			scrollScript.enabled = true;
 		}
 		else
 		{
 			scrollScript.WaitToRenameInputMenu (0.1f, "exitconfirm");
 			confirmExitScroll.enabled = true;
+			scrollScript.enabled = false;
 		}
 		clickSound.Play();
 	}
