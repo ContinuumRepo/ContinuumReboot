@@ -27,21 +27,31 @@ public class PointObject : MonoBehaviour
 	public TimescaleController timeController;
 	public Text ComboText;
 	public bool isBossPart;
+	public bool isTutorialPart;
 	//private SunShafts sunShaftsScript;
 
 	void Start ()
 	{
 		ComboText = GameObject.Find ("ComboText").GetComponent<Text> ();
 		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
-		playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
-		//sunShaftsScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SunShafts> ();
+
+		// Finds player controller script and assigns to private variable.
+		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+
+		if (PlayerControllerScript.Health >= 25 && isTutorialPart == false) 
+		{
+			// Finds player mesh
+			playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
+		}
+
+		if (PlayerControllerScript.Health < 25 && isTutorialPart == false) 
+		{
+			Destroy (gameObject);
+		}
 
 		// Finding the main engine particle system GameObject.
 		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
 		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
-
-		// Finds player controller script and assigns to private variable.
-		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
 
 		// Finds GameController script and assigns to private variable.
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
@@ -142,7 +152,7 @@ public class PointObject : MonoBehaviour
 				}
 			}
 
-			PlayerControllerScript.collisionCooldown = 3;
+			PlayerControllerScript.collisionCooldown = 3;	
 
 			if (PlayerControllerScript.Health > 10) 
 			{

@@ -283,7 +283,7 @@ public class PlayerController : MonoBehaviour
 		/// Movement ///
 		if (Time.timeScale > 0 && Health >= 25) 
 		{
-			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true) {
+			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true && Health >= 25) {
 				float moveHorizontal;
 				float moveVertical;
 
@@ -322,7 +322,7 @@ public class PlayerController : MonoBehaviour
 			AltFireImage.fillAmount += 0.1f * Time.deltaTime;
 		}
 
-		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false) 
+		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false && Health >= 25) 
 		{
 			float moveHorizontalA = Input.GetAxis ("Horizontal P1");
 			float moveVerticalA = Input.GetAxis ("Vertical P1");
@@ -873,7 +873,7 @@ public class PlayerController : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if ((other.tag == "BossPart" || other.tag == "Cube") && (Shield.activeInHierarchy == false || BeamShot.activeInHierarchy == false || HorizontalBeam.activeInHierarchy == false))
+		if ((other.tag == "BossPart" || other.tag == "Cube" || other.tag == "Bomb") && (Shield.activeInHierarchy == false || BeamShot.activeInHierarchy == false || HorizontalBeam.activeInHierarchy == false))
 		{
 			collisionCooldown = 3;
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
@@ -962,7 +962,7 @@ public class PlayerController : MonoBehaviour
 			if (Time.timeScale <= 0.0165f)
 			{
 				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
+				//Cursor.visible = true;
 				Time.timeScale = 0.001f;
 				PressToContinue.SetActive (true); // Turns off press to continue UI.
 			}

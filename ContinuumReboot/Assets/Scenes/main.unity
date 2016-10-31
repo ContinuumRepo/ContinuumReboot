@@ -7660,7 +7660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
+  playerMesh: {fileID: 1484625765}
   Explosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   PointType: 4
   PointReward: 50
@@ -7678,6 +7678,7 @@ MonoBehaviour:
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 1
 --- !u!114 &134523181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8220,7 +8221,7 @@ MonoBehaviour:
   - {fileID: 1750648979}
   timeBuffer: 0.15
   oneShotInit: {fileID: 1235494378}
-  oneShotChar: {fileID: 0}
+  oneShotChar: {fileID: 346598930}
   gameOverCont: {fileID: 601646024}
 --- !u!1 &211911166
 GameObject:
@@ -11012,7 +11013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
+  playerMesh: {fileID: 1484625765}
   Explosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
   PointType: 2
   PointReward: 30
@@ -11030,6 +11031,7 @@ MonoBehaviour:
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 1
 --- !u!114 &295395460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11498,6 +11500,109 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340809887}
+--- !u!1 &346598928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 346598929}
+  - 82: {fileID: 346598930}
+  m_Layer: 0
+  m_Name: OneShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &346598929
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346598928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1471581253}
+  m_RootOrder: 9
+--- !u!82 &346598930
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346598928}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 95cca50e38e1059489b238e3e52ed265, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &353225748
 GameObject:
   m_ObjectHideFlags: 0
@@ -13970,7 +14075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
+  playerMesh: {fileID: 1484625765}
   Explosion: {fileID: 148528, guid: 21803ee831ba8ff459d0b94a16faa165, type: 2}
   PointType: 0
   PointReward: 10
@@ -13988,6 +14093,7 @@ MonoBehaviour:
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 1
 --- !u!114 &416970078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19077,7 +19183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
+  playerMesh: {fileID: 1484625765}
   Explosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
   PointType: 1
   PointReward: 20
@@ -19095,6 +19201,7 @@ MonoBehaviour:
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 1
 --- !u!114 &463133393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19987,8 +20094,8 @@ MonoBehaviour:
   sunColor: {r: 0, g: 0.503448, b: 1, a: 1}
   sunThreshold: {r: 0, g: 0, b: 0, a: 1}
   sunShaftBlurRadius: 3.71
-  sunShaftIntensity: 0.3
-  maxRadius: 0.56200004
+  sunShaftIntensity: 0.5
+  maxRadius: 0.8
   useDepthTexture: 1
   sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
   simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
@@ -31676,6 +31783,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!82 &766750767
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44332,6 +44440,7 @@ Transform:
   - {fileID: 388618434}
   - {fileID: 2113772652}
   - {fileID: 1573055143}
+  - {fileID: 346598929}
   m_Father: {fileID: 1226859555}
   m_RootOrder: 8
 --- !u!81 &1471581254
@@ -46371,7 +46480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 0}
+  playerMesh: {fileID: 1484625765}
   Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PointType: 3
   PointReward: 40
@@ -46389,6 +46498,7 @@ MonoBehaviour:
   timeController: {fileID: 0}
   ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 1
 --- !u!114 &1508172358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48512,6 +48622,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &1540288353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56603,6 +56714,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &1814519612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57075,7 +57187,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67.8, y: -34.3}
+  m_AnchoredPosition: {x: -67.80078, y: -34.299988}
   m_SizeDelta: {x: 1732.7, y: 373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895155898

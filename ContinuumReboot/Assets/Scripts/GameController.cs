@@ -100,7 +100,7 @@ public class GameController : MonoBehaviour
 		wave = 1;
 
 		// Start cursor lock state.
-		Cursor.visible = true;
+		//Cursor.visible = true;
 		Cursor.lockState = CursorLockMode.Locked;
 
 		// turns off bottom barrier so the player can safely translate into the play space.
@@ -226,11 +226,13 @@ public class GameController : MonoBehaviour
 		{
 			PauseGame ();
 
-			Cursor.lockState = CursorLockMode.None;
-			Cursor.visible = true;
-
-			MouseScript.visibleTime = MouseScript.visibleDuration;
-			MouseScript.enabled = false;
+			if (playerControllerScript.useKeyboardControls == true) 
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				MouseScript.visibleTime = MouseScript.visibleDuration;
+				MouseScript.enabled = false;
+			}
 		}
 
 		if (Input.GetKeyDown ("joystick button 1") && isPaused == true && ControlsScreen.activeInHierarchy == false) 
@@ -448,6 +450,7 @@ public class GameController : MonoBehaviour
 		MainSound.volume = 0.7f;										// Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = false; 	// Turns off low pass filter.
 		isPaused = false;
+		Cursor.visible = false;
 	}
 
 	IEnumerator CountDown ()

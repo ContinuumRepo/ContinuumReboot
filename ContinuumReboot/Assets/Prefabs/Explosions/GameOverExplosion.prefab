@@ -149,6 +149,7 @@ GameObject:
   - 198: {fileID: 19876568}
   - 199: {fileID: 19954294}
   - 82: {fileID: 8213922}
+  - 114: {fileID: 11467720}
   m_Layer: 0
   m_Name: GameOverExplosion
   m_TagString: Untagged
@@ -986,6 +987,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &11406558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1004,6 +1006,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &11425062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1022,6 +1025,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &11425970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1056,6 +1060,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &11432246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1138,6 +1143,35 @@ MonoBehaviour:
   DestroyType: 0
   ActiveObject: {fileID: 0}
   PressAnyKeyScript: {fileID: 0}
+--- !u!114 &11467720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnlyInStart: 0
+  SMOOTH_TIME: 0.3
+  offset: {x: 0, y: 0, z: 0}
+  LockX: 0
+  LockY: 0
+  LockZ: 0
+  useSmoothing: 0
+  target: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  zMin: 0
+  zMax: 0
+  useRB: 0
+  lockedPos: 0
+  hasLockedPos: 0
 --- !u!114 &11482226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,6 +1240,7 @@ MonoBehaviour:
   addPitch: 0
   reachedMinPitch: 0
   reachedMaxPitch: 0
+  dontUseStartPitch: 0
 --- !u!114 &11487894
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4189,7 +4224,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
@@ -8586,7 +8621,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
@@ -10075,7 +10110,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
@@ -11564,7 +11599,7 @@ ParticleSystem:
   looping: 0
   prewarm: 0
   playOnAwake: 1
-  moveWithTransform: 0
+  moveWithTransform: 1
   scalingMode: 1
   InitialModule:
     serializedVersion: 2
