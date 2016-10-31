@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.ImageEffects;
 
 public class EnemyController : MonoBehaviour 
 {
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
 	private Transform bossHover;
 	private SmoothFollowOrig smoothFollowScript;
 	private GameController gameControllerScript;
+	public GameObject Shafts;
 
 	void Start ()
 	{
@@ -28,6 +30,8 @@ public class EnemyController : MonoBehaviour
 		NameAnim = GameObject.Find ("BossText").GetComponent<Animator> ();
 		NameText.text = "" + bossName + "";
 		NameAnim.Play (0);
+		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
+		Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
 	}
 
 	void Update () 
@@ -42,6 +46,11 @@ public class EnemyController : MonoBehaviour
 			Instantiate (bossExplosion, gameObject.transform.position, Quaternion.identity);
 			Destroy (boss);
 			Destroy (gameObject);
+		}
+
+		if (Shafts.GetComponent<SmoothFollowOrig> ().target == null) 
+		{
+			Shafts.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("Player").transform;
 		}
 	}
 }

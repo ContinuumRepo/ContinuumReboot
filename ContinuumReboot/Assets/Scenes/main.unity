@@ -33340,6 +33340,7 @@ MonoBehaviour:
   allLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  Shafts: {fileID: 0}
   ColorCorrectionCurvesScript: {fileID: 538907860}
   LensScript: {fileID: 0}
 --- !u!1 &876698961
@@ -61582,7 +61583,7 @@ GameObject:
   - 114: {fileID: 2050921668}
   m_Layer: 0
   m_Name: Shafts
-  m_TagString: Untagged
+  m_TagString: Shafts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
