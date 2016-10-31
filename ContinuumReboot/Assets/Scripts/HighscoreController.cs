@@ -88,10 +88,15 @@ public class HighscoreController : MonoBehaviour
 					hsNames.Insert (i, name);
 					hsScores.Insert (i, score);
 					hsWaves.Insert (i, wave);
-					//Debug.Log (i + " (this): " + hsNames[i] + ", " + hsWaves[i] + ", " + hsScores[i]);
 					break;
 				}
-				//Debug.Log (i + ": " + hsNames[i] + ", " + hsWaves[i] + ", " + hsScores[i]);
+				if (i + 1 == hsNames.Count)
+				{
+					hsNames.Insert (i+1, name);
+					hsScores.Insert (i+1, score);
+					hsWaves.Insert (i+1, wave);
+					break;
+				}
 			}
 		}
 		UpdatePrefs();
