@@ -493,300 +493,309 @@ public class PlayerController : MonoBehaviour
 				GamePad.SetVibration (PlayerIndex.One, 0, 0);
 			}
 
-			// UI health fill amounts and colors.
-			HealthImage.fillAmount = Health / 100;
-
-			if (Health == 100) 
-			{
-				HealthImage.material = HealthFull;
-			}
-
-			if (Health == 75) 
-			{
-				HealthImage.material = HealthThreeQuarters;
-			}
-
-			if (Health == 50) 
-			{
-				HealthImage.material = HealthHalf;
-			}
-
-			if (Health == 25) 
-			{
-				HealthImage.material = HealthQuarter;
-			}
-				
-			//HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
-			//HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
-
-			if (Health > 100) 
-			{
-				Health = 100;
-			}
-
-			// Kill player
-			if (Input.GetKeyDown (KeyCode.Comma))
-			{
-				Health = 0;
-			}
-
 			/// POWERUPS ///
-			PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
-
-			if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
-			{
-				PowerupMeter.color = Color.cyan;
-			}
-
-			if (PowerupMeter.fillAmount > 0.5f && PowerupMeter.fillAmount <= 0.75f) 
-			{
-				PowerupMeter.color = Color.green;
-			}
-
-			if (PowerupMeter.fillAmount > 0.25f && PowerupMeter.fillAmount <= 0.5f) 
-			{
-				PowerupMeter.color = Color.yellow;
-			}
-
-			if (PowerupMeter.fillAmount > 0 && PowerupMeter.fillAmount <= 0.25f) 
-			{
-				PowerupMeter.color = Color.red;
-			}
-
-			// No powerup.
-			if (CurrentPowerup == powerup.RegularShot) 
-			{
-				fireRate = 0.25f;
-				bloomScript.bloomIntensity = normalBloomAmount;
-				GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
-				MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
-				shot = RegularShot; 							// Assigns shot which costs points.
-				if (GameObject.Find ("Clone(Clone)") != null) 
-				{
-					Destroy (GameObject.Find ("Clone(Clone)"));
-				}
-				BeamShot.SetActive (false); 					// Turns off the vertical beam.
-				Shield.SetActive (false);					    // Turns off the shield.
-				HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
-				HelixObject.SetActive (false);
-				WifiIcon.SetActive (false);
-				ThreeDIcon.SetActive (false);
-
-				// Turns off all powerup icons.
-				DoubleShotIcon.SetActive (false);
-				BeamShotIcon.SetActive (false);
-				TriShotIcon.SetActive (false);
-				ShieldIcon.SetActive (false);
-				HorizontalBeamIcon.SetActive (false);
-				CloneIcon.SetActive (false);
-				HelixIcon.SetActive (false);
-				LensScript.enabled = true;
-				gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
-				BeamShot.SetActive (false);						 // Turns off the beam shot.
-				HorizontalBeam.SetActive (false); 				 // Turns off the horizontal beam shot.
-			
-				// if the lens script radius is greater than 0.
-				if (LensScript.radius > 0 && Health > 25) 
-				{
-					LensScript.radius -= Time.unscaledDeltaTime;
-				}
-
-				// if the lens script radius is less than 0.
-				if (LensScript.radius < 0) 
-				{
-					LensScript.radius = 0; 						// Make it equal to exactly 0.
-				}
-			}
-
-			// Double shot.
-			if (CurrentPowerup == powerup.DoubleShot) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = DoubleShot;								 // Assigns free double shot powerup.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
-				DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
-			}
-
-			// WIFI shot.
-			if (CurrentPowerup == powerup.wifi) 
-			{
-				fireRate = 0.5f;
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = WifiShot; 								// Assigns free wifi shot powerup.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
-				WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
-			}
-
-			// Tri shot.
-			if (CurrentPowerup == powerup.TriShot) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				shot = TriShot; 								// Assigns free triple shot powerup.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
-				TriShotIcon.SetActive (true); 					// Turns on double shot icon.
-			}
-
-			// Beam shot.
-			if (CurrentPowerup == powerup.BeamShot) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				BeamShot.SetActive (true); 						// Turns on vertical beam.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
-				BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
-
-				// If shot is the regular shot.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; 					// Make it the free version.
-				}
-			}
-
-			// Shield.
-			if (CurrentPowerup == powerup.shield) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				Shield.SetActive (true); 						// Turns on the shield.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-				ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
-				collisionCooldown = 3;
-				// If lens script radius is less than or equal to 0.5 but also greater than 0.
-				if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
-				{
-					LensScript.radius += 0.1f * Time.unscaledDeltaTime; // Increases lens script radius linearly by factor of 0.1.  
-				}
-
-				// If shot is the regular shot.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; // Make it the free version.
-				}
-			}
-
-			// Horizontal beam.
-			if (CurrentPowerup == powerup.horizontalBeam) 
-			{	
-				bloomScript.bloomIntensity = powerupBloomAmount;	
-				HorizontalBeamIcon.SetActive (true);
-				HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
-				// If shot is the regular shot.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; // Make it the free version.
-				}
-			}
-
-			// Clone player.
-			if (CurrentPowerup == powerup.Clone) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				//ClonedPlayer.SetActive (true); // Turns on the clones!
-
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
-				CloneIcon.SetActive (true); // Turns on clone icon.
-				//BgmHighFilter.enabled = true;
-
-				// If shot is the regular shot.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; // Make it the free version.
-				}
-			}
-
-			// Helix bullets.
-			if (CurrentPowerup == powerup.helix) 
-			{
-				bloomScript.bloomIntensity = powerupBloomAmount;
-				HelixObject.SetActive (true);
-
-				if (Time.timeScale > 0)
-				{
-					powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
-				}
-				gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
-				HelixIcon.SetActive (true); // Turns on clone icon.
-				if (shot == RegularShot) 
-				{
-					shot = RegularShotNoCost; // Make it the free version.
-				}
-			}
-
-			// Warning powerup time.
-			if (powerupTime < 3.0f && powerupTime > 2.8f) 
-			{
-				ActivePowerupParticles.Stop (); // Turns off main powerup particles.
-				powerupTimeRunningOut.Play (); // Turns on running out particles.
-				TimeRunningOutParticles.Play (); // Plays running out sound.
-			}
-
-			// When powerup runs out.
-			if (powerupTime < 0) 
-			{
-				powerupTime = 0; // Reset powerup time.
-				CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
-				BeamShot.SetActive (false); // Turns off the beam.
-				Shield.SetActive (false); // Turns off the shield.
-
-				if (GameObject.Find ("Clone(Clone)") != null) 
-				{
-					Destroy (GameObject.Find ("Clone(Clone)"));
-				}
-
-				HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
-				shot = RegularShot; // Assigns shot to cost points.
-			}
-
-			// Powerup ran out.
-			if (powerupTime > 0 && powerupTime < 0.05f && !powerupDeactivateAudio.GetComponent<AudioSource> ().isPlaying) 
-			{
-				powerupDeactivateAudio.Play (); // Plays powerup ran out sound.
-			}
-
-			if (powerupTime > 40) 
-			{
-				powerupTime = 40;
-			}
+			UpdatePowerUps();
 			
 			/// Health ///
+			UpdateHealth();
+		}
+	}
 
-			// Health at 0.
-			if (Health <= 0) 
+	private void UpdateHealth()
+	{
+		// UI health fill amounts and colors.
+		HealthImage.fillAmount = Health / 100;
+
+		if (Health == 100) 
+		{
+			HealthImage.material = HealthFull;
+		}
+
+		if (Health == 75) 
+		{
+			HealthImage.material = HealthThreeQuarters;
+		}
+
+		if (Health == 50) 
+		{
+			HealthImage.material = HealthHalf;
+		}
+
+		if (Health == 25) 
+		{
+			HealthImage.material = HealthQuarter;
+		}
+
+		//HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
+		//HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
+
+		if (Health > 100) 
+		{
+			Health = 100;
+		}
+
+		// Kill player
+		if (Input.GetKeyDown (KeyCode.Comma))
+		{
+			Health = 0;
+		}
+
+		// Health at 0.
+		if (Health <= 0) 
+		{
+			PlayerMesh.enabled = false; // Turns off player mesh renderer.
+			PlayerCollider.enabled = false; // Turns off player collider.
+			DeactivatePlayerElements.SetActive (false); // Turns off Player Game Objects.
+			gameControllerScript.StopAllCoroutines (); // Stops spawning objects and powerups.
+			GameOver (); // Triggers game Over method.
+			timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
+		}
+	}
+
+	private void UpdatePowerUps()
+	{
+		PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
+
+		if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
+		{
+			PowerupMeter.color = Color.cyan;
+		}
+
+		if (PowerupMeter.fillAmount > 0.5f && PowerupMeter.fillAmount <= 0.75f) 
+		{
+			PowerupMeter.color = Color.green;
+		}
+
+		if (PowerupMeter.fillAmount > 0.25f && PowerupMeter.fillAmount <= 0.5f) 
+		{
+			PowerupMeter.color = Color.yellow;
+		}
+
+		if (PowerupMeter.fillAmount > 0 && PowerupMeter.fillAmount <= 0.25f) 
+		{
+			PowerupMeter.color = Color.red;
+		}
+
+		// No powerup.
+		if (CurrentPowerup == powerup.RegularShot) 
+		{
+			fireRate = 0.25f;
+			bloomScript.bloomIntensity = normalBloomAmount;
+			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
+			MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+			shot = RegularShot; 							// Assigns shot which costs points.
+			if (GameObject.Find ("Clone(Clone)") != null) 
 			{
-				PlayerMesh.enabled = false; // Turns off player mesh renderer.
-				PlayerCollider.enabled = false; // Turns off player collider.
-				DeactivatePlayerElements.SetActive (false); // Turns off Player Game Objects.
-				gameControllerScript.StopAllCoroutines (); // Stops spawning objects and powerups.
-				GameOver (); // Triggers game Over method.
-				timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
+				Destroy (GameObject.Find ("Clone(Clone)"));
 			}
+			BeamShot.SetActive (false); 					// Turns off the vertical beam.
+			Shield.SetActive (false);					    // Turns off the shield.
+			HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
+			HelixObject.SetActive (false);
+			WifiIcon.SetActive (false);
+			ThreeDIcon.SetActive (false);
+
+			// Turns off all powerup icons.
+			DoubleShotIcon.SetActive (false);
+			BeamShotIcon.SetActive (false);
+			TriShotIcon.SetActive (false);
+			ShieldIcon.SetActive (false);
+			HorizontalBeamIcon.SetActive (false);
+			CloneIcon.SetActive (false);
+			HelixIcon.SetActive (false);
+			LensScript.enabled = true;
+			gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
+			BeamShot.SetActive (false);						 // Turns off the beam shot.
+			HorizontalBeam.SetActive (false); 				 // Turns off the horizontal beam shot.
+
+			// if the lens script radius is greater than 0.
+			if (LensScript.radius > 0 && Health > 25) 
+			{
+				LensScript.radius -= Time.unscaledDeltaTime;
+			}
+
+			// if the lens script radius is less than 0.
+			if (LensScript.radius < 0) 
+			{
+				LensScript.radius = 0; 						// Make it equal to exactly 0.
+			}
+		}
+
+		// Double shot.
+		if (CurrentPowerup == powerup.DoubleShot) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			shot = DoubleShot;								 // Assigns free double shot powerup.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
+			DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
+		}
+
+		// WIFI shot.
+		if (CurrentPowerup == powerup.wifi) 
+		{
+			fireRate = 0.5f;
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			shot = WifiShot; 								// Assigns free wifi shot powerup.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
+			WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
+		}
+
+		// Tri shot.
+		if (CurrentPowerup == powerup.TriShot) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			shot = TriShot; 								// Assigns free triple shot powerup.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
+			TriShotIcon.SetActive (true); 					// Turns on double shot icon.
+		}
+
+		// Beam shot.
+		if (CurrentPowerup == powerup.BeamShot) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			BeamShot.SetActive (true); 						// Turns on vertical beam.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
+			BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
+
+			// If shot is the regular shot.
+			if (shot == RegularShot) 
+			{
+				shot = RegularShotNoCost; 					// Make it the free version.
+			}
+		}
+
+		// Shield.
+		if (CurrentPowerup == powerup.shield) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			Shield.SetActive (true); 						// Turns on the shield.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
+			ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
+			collisionCooldown = 3;
+			// If lens script radius is less than or equal to 0.5 but also greater than 0.
+			if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
+			{
+				LensScript.radius += 0.1f * Time.unscaledDeltaTime; // Increases lens script radius linearly by factor of 0.1.  
+			}
+
+			// If shot is the regular shot.
+			if (shot == RegularShot) 
+			{
+				shot = RegularShotNoCost; // Make it the free version.
+			}
+		}
+
+		// Horizontal beam.
+		if (CurrentPowerup == powerup.horizontalBeam) 
+		{	
+			bloomScript.bloomIntensity = powerupBloomAmount;	
+			HorizontalBeamIcon.SetActive (true);
+			HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "TERROR BEAM!"; // UI display for powerup text.
+			// If shot is the regular shot.
+			if (shot == RegularShot) 
+			{
+				shot = RegularShotNoCost; // Make it the free version.
+			}
+		}
+
+		// Clone player.
+		if (CurrentPowerup == powerup.Clone) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			//ClonedPlayer.SetActive (true); // Turns on the clones!
+
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
+			CloneIcon.SetActive (true); // Turns on clone icon.
+			//BgmHighFilter.enabled = true;
+
+			// If shot is the regular shot.
+			if (shot == RegularShot) 
+			{
+				shot = RegularShotNoCost; // Make it the free version.
+			}
+		}
+
+		// Helix bullets.
+		if (CurrentPowerup == powerup.helix) 
+		{
+			bloomScript.bloomIntensity = powerupBloomAmount;
+			HelixObject.SetActive (true);
+
+			if (Time.timeScale > 0)
+			{
+				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
+			}
+			gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
+			HelixIcon.SetActive (true); // Turns on clone icon.
+			if (shot == RegularShot) 
+			{
+				shot = RegularShotNoCost; // Make it the free version.
+			}
+		}
+
+		// Warning powerup time.
+		if (powerupTime < 3.0f && powerupTime > 2.8f) 
+		{
+			ActivePowerupParticles.Stop (); // Turns off main powerup particles.
+			powerupTimeRunningOut.Play (); // Turns on running out particles.
+			TimeRunningOutParticles.Play (); // Plays running out sound.
+		}
+
+		// When powerup runs out.
+		if (powerupTime < 0) 
+		{
+			powerupTime = 0; // Reset powerup time.
+			CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
+			BeamShot.SetActive (false); // Turns off the beam.
+			Shield.SetActive (false); // Turns off the shield.
+
+			if (GameObject.Find ("Clone(Clone)") != null) 
+			{
+				Destroy (GameObject.Find ("Clone(Clone)"));
+			}
+
+			HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
+			shot = RegularShot; // Assigns shot to cost points.
+		}
+
+		// Powerup ran out.
+		if (powerupTime > 0 && powerupTime < 0.05f && !powerupDeactivateAudio.GetComponent<AudioSource> ().isPlaying) 
+		{
+			powerupDeactivateAudio.Play (); // Plays powerup ran out sound.
+		}
+
+		if (powerupTime > 40) 
+		{
+			powerupTime = 40;
 		}
 	}
 

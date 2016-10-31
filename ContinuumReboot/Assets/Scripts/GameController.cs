@@ -135,71 +135,74 @@ public class GameController : MonoBehaviour
 
 	void Update () 
 	{
-		if (GameObject.FindGameObjectWithTag ("Boss") != null) 
+		if (!isPaused)
 		{
-			MainSound.GetComponent<AudioHighPassFilter> ().enabled = true;
-		}
-		if (GameObject.FindGameObjectWithTag ("Boss") == null) 
-		{
-			MainSound.GetComponent<AudioHighPassFilter> ().enabled = false;
-		}
-
-		LevelUpText.GetComponent<Text> ().text = "WAVE " + wave + "";
-		WaveLabel.GetComponentInChildren<Text>().text = "WAVE " + wave + "";
-
-		// Important!
-		if (spawnWait > minSpawnWait) 
-		{
-			spawnWait -= speedupSpawnRate * Time.unscaledDeltaTime;
-		}
-
-		// If game is in pre-game mode.
-		if (isPreGame == true) 
-		{
-			timeScaleControllerScript.enabled = false; 	// Turns off time scale controller script.
-			Time.timeScale = 1.0f; 					   	// Sets time scale to 1.
-			//isPaused = false; 							// Keeps game unpaused.
-		}
-
-		// If the game is not in pre-game mode, and player health is greater than 0.
-		if (!isPreGame && playerControllerScript.Health > playerControllerScript.minHealth) 
-		{
-			// Sets UI for time multipler and converts to string format.
-			TimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
-
-			// Sets score and shows on UI.
-			ScoreText.text = "" + Mathf.Round (displayedScore) + "";
-			displayedScore = Mathf.Lerp (displayedScore, CurrentScore, Time.deltaTime);
-
-			if (twoPlayerMode == false) 
+			if (GameObject.FindGameObjectWithTag ("Boss") != null) 
 			{
-				CurrentScore += Time.deltaTime * ScoreSpeed;
+				MainSound.GetComponent<AudioHighPassFilter> ().enabled = true;
+			}
+			if (GameObject.FindGameObjectWithTag ("Boss") == null) 
+			{
+				MainSound.GetComponent<AudioHighPassFilter> ().enabled = false;
 			}
 
-			if (twoPlayerMode == true) 
+			LevelUpText.GetComponent<Text> ().text = "WAVE " + wave + "";
+			WaveLabel.GetComponentInChildren<Text>().text = "WAVE " + wave + "";
+
+			// Important!
+			if (spawnWait > minSpawnWait) 
 			{
-				CurrentScore += Time.deltaTime * (ScoreSpeed * 2);
+				spawnWait -= speedupSpawnRate * Time.unscaledDeltaTime;
 			}
+
+			// If game is in pre-game mode.
+			if (isPreGame == true) 
+			{
+				timeScaleControllerScript.enabled = false; 	// Turns off time scale controller script.
+				Time.timeScale = 1.0f; 					   	// Sets time scale to 1.
+				//isPaused = false; 							// Keeps game unpaused.
+			}
+
+			// If the game is not in pre-game mode, and player health is greater than 0.
+			if (!isPreGame && playerControllerScript.Health > playerControllerScript.minHealth) 
+			{
+				// Sets UI for time multipler and converts to string format.
+				TimeScaleText.text = "" + string.Format ("{0:0}", Mathf.Round (timeScaleControllerScript.timeScaleReadOnly * 100f)) + "%";
+
+				// Sets score and shows on UI.
+				ScoreText.text = "" + Mathf.Round (displayedScore) + "";
+				displayedScore = Mathf.Lerp (displayedScore, CurrentScore, Time.deltaTime);
+
+				if (twoPlayerMode == false) 
+				{
+					CurrentScore += Time.deltaTime * ScoreSpeed;
+				}
+
+				if (twoPlayerMode == true) 
+				{
+					CurrentScore += Time.deltaTime * (ScoreSpeed * 2);
+				}
+			}
+
+			// Game Over scoring functionality has been moved to GameOverController.cs - Claire
+			/*
+			// If the game is not in pre-game mode, and the player's is at game over condition.
+			if (!isPreGame && playerControllerScript.Health <= playerControllerScript.minHealth) 
+			{
+				// Sets game over score text.
+				GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
+			}*/
+
+			// If the game's score is less than 0.
+			if (CurrentScore < 0) 
+			{
+				CurrentScore = 0; // Make it equal to 0.
+			}
+
+			// HOTKEYS //
+			GetInput();
+			CheckForCheats();
 		}
-
-		// Game Over scoring functionality has been moved to GameOverController.cs - Claire
-		/*
-		// If the game is not in pre-game mode, and the player's is at game over condition.
-		if (!isPreGame && playerControllerScript.Health <= playerControllerScript.minHealth) 
-		{
-			// Sets game over score text.
-			GameOverScoreText.text = "" + Mathf.Round(CurrentScore) + "";
-		}*/
-
-		// If the game's score is less than 0.
-		if (CurrentScore < 0) 
-		{
-			CurrentScore = 0; // Make it equal to 0.
-		}
-
-		// HOTKEYS //
-		GetInput();
-		CheckForCheats();
 	}
 
 	private void GetInput()
@@ -216,6 +219,20 @@ public class GameController : MonoBehaviour
 			MouseScript.enabled = false; 								// Turns off mouse visibility script.
 		}
 
+		// Pause via controller input.
+		if (Input.GetButtonDown ("Pause") && isPaused == false)
+		{
+			if (playerControllerScript.useKeyboardControls == true) 
+			{
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				MouseScript.visibleTime = MouseScript.visibleDuration;
+				MouseScript.enabled = false;
+			}
+
+			PauseGame ();
+		}
+
 		if (Input.GetKeyDown (KeyCode.K)) 
 		{
 			playerControllerScript.useKeyboardControls = true;
@@ -224,20 +241,6 @@ public class GameController : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.G)) 
 		{
 			playerControllerScript.useKeyboardControls = false;
-		}
-
-		// Pause via controller input.
-		if (Input.GetButtonDown ("Pause") && isPaused == false)
-		{
-			PauseGame ();
-
-			if (playerControllerScript.useKeyboardControls == true) 
-			{
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
-				MouseScript.visibleTime = MouseScript.visibleDuration;
-				MouseScript.enabled = false;
-			}
 		}
 
 		if (Input.GetKeyDown (KeyCode.P)) 
