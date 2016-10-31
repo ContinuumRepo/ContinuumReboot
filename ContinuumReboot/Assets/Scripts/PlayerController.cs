@@ -175,7 +175,7 @@ public class PlayerController : MonoBehaviour
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;	// Color Corrections image effect.
 	private CameraShake camShakeScrpt; 						 	// Camera shake attached to the main camera.
 	private Bloom bloomScript;
-	private Lens LensScript; 	  								// The Lens script that is attached to the main camera.
+	public Lens LensScript; 	  								// The Lens script that is attached to the main camera.
 
 	// MISC PRIVATES AND SCRIPTS //
 	private GameController gameControllerScript; 			  	// GameController component.
@@ -670,7 +670,7 @@ public class PlayerController : MonoBehaviour
 				ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
 				collisionCooldown = 3;
 				// If lens script radius is less than or equal to 0.5 but also greater than 0.
-				if (LensScript.radius <= 0.5f && LensScript.radius >= 0) 
+				if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
 				{
 					LensScript.radius += 0.1f * Time.unscaledDeltaTime; // Increases lens script radius linearly by factor of 0.1.  
 				}

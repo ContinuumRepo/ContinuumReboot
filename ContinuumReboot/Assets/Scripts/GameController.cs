@@ -437,6 +437,7 @@ public class GameController : MonoBehaviour
 		MainSound.pitch = 1; 											// Sets custom pitch.
 		MainSound.volume = 0.25f; 										// Sets custom volume.
 		MainSound.GetComponent<AudioLowPassFilter> ().enabled = true; 	// Turns on low pass audio filter.
+		playerControllerScript.LensScript.radius = 0;
 	}
 
 	public void UnPauseGame ()
