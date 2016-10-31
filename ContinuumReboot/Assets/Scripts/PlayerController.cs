@@ -467,7 +467,8 @@ public class PlayerController : MonoBehaviour
 
 		if (Health < 25)
 		{
-			MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
+			//MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
+			Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
 		}
 
 		if (isClone) 
@@ -868,9 +869,6 @@ public class PlayerController : MonoBehaviour
 		{
 			AltFireImage.material = HealthQuarter;
 		}
-
-
-
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -894,8 +892,6 @@ public class PlayerController : MonoBehaviour
 
 	public void GameOver ()
 	{
-		Camera.main.transform.position = new Vector3 (PlayerCollider.transform.position.x, PlayerCollider.transform.position.y, -100);
-
 		BeamShot.SetActive (false);
 		HorizontalBeam.SetActive (false);
 		Shield.SetActive (false);
@@ -923,7 +919,7 @@ public class PlayerController : MonoBehaviour
 			{
 				if (LensScript.radius > 0) 
 				{
-					LensScript.radius -= 1f * Time.unscaledDeltaTime;
+					LensScript.radius -= 3f * Time.unscaledDeltaTime;
 				}
 
 				if (LensScript.radius < 0) 

@@ -36,6 +36,7 @@ GameObject:
   - 114: {fileID: 11445722}
   - 95: {fileID: 9505474}
   - 135: {fileID: 13578500}
+  - 114: {fileID: 11497080}
   m_Layer: 13
   m_Name: WifiShot (no cost)
   m_TagString: Bullet
@@ -142,11 +143,11 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: a454b7bf4a9eeaa43b52d3ed39fe404a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
-  m_Pitch: 0.34
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -294,6 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  activateThings: 0
+  Activator: {fileID: 0}
 --- !u!114 &11496902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,6 +315,25 @@ MonoBehaviour:
     value: {x: 0, y: 0, z: 900}
     space: 1
   ignoreTimescale: 0
+--- !u!114 &11497080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 154546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a5d58e3603432488033807d90b2390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPitch: 1
+  multiplierPitch: 0.3
+  minimumPitch: -10
+  maximumPitch: 3
+  addPitch: 0
+  reachedMinPitch: 0
+  reachedMaxPitch: 0
+  dontUseStartPitch: 1
 --- !u!135 &13578500
 SphereCollider:
   m_ObjectHideFlags: 1

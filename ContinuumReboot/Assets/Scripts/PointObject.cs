@@ -122,7 +122,7 @@ public class PointObject : MonoBehaviour
 
 		// When a brick hits the player.
 		if (other.tag == "Player") 
-		{	
+		{		
 			//sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
 			playerMesh.material = normalMaterial;
 

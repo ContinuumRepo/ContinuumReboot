@@ -20,12 +20,17 @@ public class AudioSourcePitchByTimescale : MonoBehaviour
 	public bool reachedMinPitch;
 	public bool reachedMaxPitch;
 	private AudioSource Audio;
+	public bool dontUseStartPitch;
 	
 	void Start () 
 	{
 		Audio = GetComponent<AudioSource> ();
 		//startingPitch = 1 // Time.timeScale; // Sets starting pitch based on Time.timeScale
-		Audio.pitch = startingPitch; // Gives value to audio pitch
+		if (dontUseStartPitch == false) 
+		{
+			Audio.pitch = startingPitch; // Gives value to audio pitch
+		}
+
 		reachedMaxPitch = false;
 	}
 	
