@@ -8,7 +8,8 @@ public class HighscoreInput : MonoBehaviour
 	public Text[] nameInputs;
 	public GameObject[] underlines;
 	public float timeBuffer; // Time between button scroll
-	public AudioSource oneShot;
+	public AudioSource oneShotInit;
+	public AudioSource oneShotChar;
 	public GameOverController gameOverCont;
 
 	private bool waiting = false;
@@ -65,7 +66,7 @@ public class HighscoreInput : MonoBehaviour
 				underlines [nameIdxLoc].SetActive (false);
 				nameIdxLoc++;
 				underlines [nameIdxLoc].SetActive (true);
-				oneShot.Play();
+				oneShotInit.Play();
 			}
 			else
 			{
@@ -83,7 +84,7 @@ public class HighscoreInput : MonoBehaviour
 				underlines [nameIdxLoc].SetActive (false);
 				nameIdxLoc--;
 				underlines [nameIdxLoc].SetActive (true);
-				oneShot.Play();
+				oneShotInit.Play();
 			}
 		}
 	}
@@ -120,6 +121,8 @@ public class HighscoreInput : MonoBehaviour
 			}
 		}
 
+		if (oneShotChar != null)
+			oneShotChar.Play();
 		scrollNo++;
 		StartCoroutine (ScrollWait());
 	}
