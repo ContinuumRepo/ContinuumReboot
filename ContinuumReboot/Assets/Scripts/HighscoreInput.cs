@@ -7,7 +7,7 @@ public class HighscoreInput : MonoBehaviour
 	public string[] characters;
 	public Text[] nameInputs;
 	public GameObject[] underlines;
-	public float scrollWait; // Time between button scroll
+	public float timeBuffer; // Time between button scroll
 	public AudioSource oneShot;
 	public GameOverController gameOverCont;
 
@@ -17,11 +17,15 @@ public class HighscoreInput : MonoBehaviour
 	private int charLenth;
 	private int nameLength;
 
+	private float scrollWait;
+	private int scrollNo = 0;
+
 	void Start ()
 	{
 		PlayerPrefs.SetString ("InputMenu", "highscoreinput");
 		charLenth = characters.Length;
 		nameLength = nameInputs.Length;
+		scrollWait = timeBuffer;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +33,11 @@ public class HighscoreInput : MonoBehaviour
 	{
 		if (!waiting)
 		{
+			if (scrollNo == 2)
+			{
+				scrollWait = timeBuffer / 2;
+			}
+
 			// Check for character change
 			float vertJoy = Input.GetAxis ("Vertical P1");
 			float vertKey = Input.GetAxis ("Vertical");
@@ -40,6 +49,11 @@ public class HighscoreInput : MonoBehaviour
 			else if (vertKey > 0.5 || vertKey < -0.5)
 			{
 				ScrollChar (vertKey);
+			}
+			else
+			{
+				scrollNo = 0;
+				scrollWait = timeBuffer;
 			}
 		}
 
@@ -106,6 +120,7 @@ public class HighscoreInput : MonoBehaviour
 			}
 		}
 
+		scrollNo++;
 		StartCoroutine (ScrollWait());
 	}
 

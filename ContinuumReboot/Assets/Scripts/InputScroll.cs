@@ -22,12 +22,16 @@ public class InputScroll : MonoBehaviour
 	private bool waiting = false;
 	private bool resetForMouse = false;
 
+	private float scrollWait;
+	private int scrollNo = 0;
+
 	// Use this for initialization
 	void Start ()
 	{
 		buttonIndex = buttons.Length;
 		indexLocation = firstIndex;
 		buttons[firstIndex].OnEnter();
+		scrollWait = timeBuffer;
 	}
 	
 	// Update is called once per frame
@@ -35,20 +39,33 @@ public class InputScroll : MonoBehaviour
 	{
 		if (PlayerPrefs.GetString ("InputMenu") == inputLocPrefsValue)
 		{
-			if (buttonIndex > 0 && !waiting)
+			if (!waiting)
 			{
-				float valueJoy = Input.GetAxis ("Vertical P1");
-				float valueKey = Input.GetAxis ("Vertical");
+				if (buttonIndex > 0)
+				{
+					if (scrollNo == 2)
+					{
+						scrollWait = timeBuffer / 2;
+					}
 
-				if (valueJoy != 0)
-				{
-					resetForMouse = false;
-					CheckScroll (valueJoy);
-				}
-				else if (valueKey != 0)
-				{
-					resetForMouse = false;
-					CheckScroll (valueKey);
+					float valueJoy = Input.GetAxis ("Vertical P1");
+					float valueKey = Input.GetAxis ("Vertical");
+
+					if (valueJoy != 0)
+					{
+						resetForMouse = false;
+						CheckScroll (valueJoy);
+					}
+					else if (valueKey != 0)
+					{
+						resetForMouse = false;
+						CheckScroll (valueKey);
+					}
+					else
+					{
+						scrollNo = 0;
+						scrollWait = timeBuffer;
+					}
 				}
 			}
 
@@ -140,7 +157,7 @@ public class InputScroll : MonoBehaviour
 
 	IEnumerator ScrollWait()
 	{
-		yield return WaitForUnscaledSeconds (timeBuffer);
+		yield return WaitForUnscaledSeconds (scrollWait);
 		waiting = false;
 	}
 
@@ -156,6 +173,7 @@ public class InputScroll : MonoBehaviour
 
 	private void SetHighlighted (int newIndex)
 	{
+		scrollNo++;
 		indexLocation = newIndex;
 		//idxSet = true;
 
