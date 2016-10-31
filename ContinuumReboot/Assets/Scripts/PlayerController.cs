@@ -170,6 +170,7 @@ public class PlayerController : MonoBehaviour
 	public float shakeAmount = 1.0f; 						  	// How hard the shake is on the camera.
 	public LayerMask layermask;
 	public LayerMask allLayers;
+	public GameObject Shafts;
 
 	[HideInInspector]
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;	// Color Corrections image effect.
@@ -263,10 +264,17 @@ public class PlayerController : MonoBehaviour
 		AltFire.SetActive (false);
 		AltFireMode = altmode.no;
 		AltFireImage.fillAmount = 1;
+
+		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
 	}
 
 	void Update () 
 	{
+		if (Shafts.GetComponent<SmoothFollowOrig> ().target == null)
+		{
+			Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
+		}
+
 		if (Camera.main.orthographicSize < 26 && Health >= 25) 
 		{
 			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
