@@ -270,6 +270,234 @@ public class PlayerController : MonoBehaviour
 
 	void Update () 
 	{
+		UpdateCamera();
+
+		if (!gameControllerScript.isPaused)
+		{
+			/// Movement ///
+			if (Time.timeScale > 0 && Health >= 25) 
+			{
+				if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true && Health >= 25) {
+					float moveHorizontal;
+					float moveVertical;
+
+					// Keyboard input
+					if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+						moveHorizontal = Input.GetAxis ("Horizontal");
+						moveVertical = Input.GetAxis ("Vertical");	
+					} else { // Mouse input
+						moveHorizontal = Input.GetAxis ("Mouse X");
+						moveVertical = Input.GetAxis ("Mouse Y");					
+					}
+
+					Vector3 movement = new Vector3 (moveHorizontal * (1 / Time.timeScale), moveVertical * (1 / Time.timeScale), 0.0f);
+					rb.velocity = movement * speed;
+				}
+			}
+
+			if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
+			{
+				// When the player presses altfire while bar is greater than 0
+				if (AltFireImage.fillAmount >= 1) 
+				{
+					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+					AltFire.GetComponent<AudioSource> ().Play ();
+					AltFireMode = altmode.yes;
+				}
+			}
+
+			if (AltFireImage.fillAmount <= 0) 
+			{
+				AltFireMode = altmode.no;
+			}
+
+			if (AltFireImage.fillAmount <= 0) 
+			{
+				AltFireImage.fillAmount += 0.1f * Time.deltaTime;
+			}
+
+			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false && Health >= 25) 
+			{
+				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
+				float moveVerticalA = Input.GetAxis ("Vertical P1");
+				Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementA * speed;
+			}
+
+			if (PlayerNumber == playerNumber.PlayerTwo) 
+			{
+				float moveHorizontalB = Input.GetAxis ("Horizontal P2");
+				float moveVerticalB = Input.GetAxis ("Vertical P2");
+				Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+				rb.velocity = movementB * speed;
+			}
+
+			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
+
+			// Player boundaries
+			GetComponent<Rigidbody> ().position = new Vector3 (
+				Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
+				Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
+				zBound		
+			);
+
+			/// Shooting functionality ///
+
+			// PC Controller Input.
+			if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+				(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth))
+			{
+				nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
+				Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			}
+
+			if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
+				(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
+			{
+			}
+
+			// Controller Input.
+			if (PlayerNumber == playerNumber.PlayerOne && Health >= 25) 
+			{
+				if (Time.timeScale > 0) {
+					if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) {
+						nextFire = Time.unscaledTime + fireRate * (1 / Time.timeScale);
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+					}
+
+					if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
+					   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+						// When the player presses altfire while bar is greater than 0
+						if (AltFireImage.fillAmount >= 1) {
+							AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+							AltFire.GetComponent<AudioSource> ().Play ();
+							AltFireMode = altmode.yes;
+						}
+					}
+
+					if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) {
+					}
+
+					if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
+					   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
+					}
+				}
+			}
+
+			if (powerupTime > 0) 
+			{
+				PowerupTimeText.text = "" + Mathf.RoundToInt(powerupTime) + "";
+			}
+
+			if (powerupTime <= 0) 
+			{
+				PowerupTimeText.text = " ";
+			}
+
+			if (OverlayTime <= 0.1f) 
+			{
+				OverlayIntensity = 0.1f;
+			}
+
+			if (OverlayTime > 0.1f) 
+			{
+				OverlayTime -= 2f * Time.unscaledDeltaTime;
+				OverlayIntensity = -Mathf.Clamp(OverlayTime, 0, 1) + 0.15f;
+				ScreenOverlayScript.intensity = OverlayIntensity;
+			}
+
+			if (AltFireMode == altmode.no) 
+			{
+				AltFire.SetActive (false);
+				AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
+			}
+
+			if (AltFireMode == altmode.yes) 
+			{
+				AltFire.SetActive (true);
+				AltFireImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
+			}
+
+			if (AltFireMode == altmode.yes && AltFireImage.fillAmount <= 0) 
+			{
+				AltFireMode = altmode.no;
+			}
+
+			ComboN = Mathf.RoundToInt (ComboTime);
+			ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
+			ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
+			ComboImage.GetComponent<RectTransform> ().sizeDelta = new Vector2 ((5 * (ComboTime)), 684.3f); 
+
+			if (ComboTime > 11) 
+			{
+				ComboTime = 11;
+			}
+
+			if (ComboTime < 0) 
+			{
+				ComboTime = 0;
+			}
+				
+			if (ComboN > 10) 
+			{
+				ComboN = 10;
+			}
+
+			if (collisionCooldown > 0) 
+			{
+				collisionCooldown -= Time.unscaledDeltaTime;
+				PlayerCollider.enabled = false;
+			}
+
+			if (collisionCooldown <= 0) 
+			{
+				collisionCooldown = 0;
+				PlayerCollider.enabled = true;
+			}
+
+			if (isClone == false && Health >= 25) 
+			{
+			}
+
+			if (Health < 25)
+			{
+				//MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
+				Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
+			}
+
+			if (isClone) 
+			{
+				shot = MutedRegularShot;
+			}
+
+			// If the Game Object that is attached to this script is not a clone.
+			if (!isClone) 
+			{
+				// Decreases vibration time linearly.
+				vibrationTime -= Time.unscaledDeltaTime;
+
+				if (vibrationTime > 0) 
+				{
+					GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
+				}
+
+				if (vibrationTime <= 0) 
+				{
+					vibrationTime = 0;
+					GamePad.SetVibration (PlayerIndex.One, 0, 0);
+				}
+
+				/// POWERUPS ///
+				UpdatePowerUps();
+				
+				/// Health ///
+				UpdateHealth();
+			}
+		}
+	}
+
+	private void UpdateCamera()
+	{
 		if (Shafts.GetComponent<SmoothFollowOrig> ().target == null)
 		{
 			Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
@@ -286,226 +514,6 @@ public class PlayerController : MonoBehaviour
 			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = true;
 			//Camera.main.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("GameOverExplosion(Clone)").transform;
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, 0.25f * Time.deltaTime);
-		}
-
-		/// Movement ///
-		if (Time.timeScale > 0 && Health >= 25) 
-		{
-			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true && Health >= 25) {
-				float moveHorizontal;
-				float moveVertical;
-
-				// Keyboard input
-				if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
-					moveHorizontal = Input.GetAxis ("Horizontal");
-					moveVertical = Input.GetAxis ("Vertical");	
-				} else { // Mouse input
-					moveHorizontal = Input.GetAxis ("Mouse X");
-					moveVertical = Input.GetAxis ("Mouse Y");					
-				}
-
-				Vector3 movement = new Vector3 (moveHorizontal * (1 / Time.timeScale), moveVertical * (1 / Time.timeScale), 0.0f);
-				rb.velocity = movement * speed;
-			}
-		}
-
-		if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
-		{
-			// When the player presses altfire while bar is greater than 0
-			if (AltFireImage.fillAmount >= 1) 
-			{
-				AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-				AltFire.GetComponent<AudioSource> ().Play ();
-				AltFireMode = altmode.yes;
-			}
-		}
-
-		if (AltFireImage.fillAmount <= 0) 
-		{
-			AltFireMode = altmode.no;
-		}
-
-		if (AltFireImage.fillAmount <= 0) 
-		{
-			AltFireImage.fillAmount += 0.1f * Time.deltaTime;
-		}
-
-		if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false && Health >= 25) 
-		{
-			float moveHorizontalA = Input.GetAxis ("Horizontal P1");
-			float moveVerticalA = Input.GetAxis ("Vertical P1");
-			Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
-			rb.velocity = movementA * speed;
-		}
-
-		if (PlayerNumber == playerNumber.PlayerTwo) 
-		{
-			float moveHorizontalB = Input.GetAxis ("Horizontal P2");
-			float moveVerticalB = Input.GetAxis ("Vertical P2");
-			Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
-			rb.velocity = movementB * speed;
-		}
-
-		rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
-
-		// Player boundaries
-		GetComponent<Rigidbody> ().position = new Vector3 (
-			Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
-			Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
-			zBound		
-		);
-
-		/// Shooting functionality ///
-
-		// PC Controller Input.
-		if ((Input.GetKey ("space") && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
-			(Input.GetKey (KeyCode.LeftControl) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth))
-		{
-			nextFire = Time.unscaledTime + fireRate * (1/Time.timeScale);
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		}
-
-		if ((Input.GetKeyUp ("space") && gameControllerScript.CurrentScore > -1 && Health > minHealth) ||
-			(Input.GetKeyUp (KeyCode.LeftControl) && gameControllerScript.CurrentScore > -1 && Health > minHealth))
-		{
-		}
-
-		// Controller Input.
-		if (PlayerNumber == playerNumber.PlayerOne && Health >= 25) 
-		{
-			if (Time.timeScale > 0) {
-				if (((Input.GetAxisRaw ("Fire P1") > 0.1f || Input.GetMouseButton (0)) && Time.unscaledTime > nextFire && gameControllerScript.CurrentScore > -1 && Health > minHealth)) {
-					nextFire = Time.unscaledTime + fireRate * (1 / Time.timeScale);
-					Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-				}
-
-				if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
-				   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
-					// When the player presses altfire while bar is greater than 0
-					if (AltFireImage.fillAmount >= 1) {
-						AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-						AltFire.GetComponent<AudioSource> ().Play ();
-						AltFireMode = altmode.yes;
-					}
-				}
-
-				if (Input.GetAxisRaw ("Alt Fire P1") <= 0.3f) {
-				}
-
-				if (((Input.GetAxisRaw ("Alt Fire P1") <= 0 || Input.GetMouseButtonUp (1)) && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false) ||
-				   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
-				}
-			}
-		}
-
-		if (powerupTime > 0) 
-		{
-			PowerupTimeText.text = "" + Mathf.RoundToInt(powerupTime) + "";
-		}
-
-		if (powerupTime <= 0) 
-		{
-			PowerupTimeText.text = " ";
-		}
-
-		if (OverlayTime <= 0.1f) 
-		{
-			OverlayIntensity = 0.1f;
-		}
-
-		if (OverlayTime > 0.1f) 
-		{
-			OverlayTime -= 2f * Time.unscaledDeltaTime;
-			OverlayIntensity = -Mathf.Clamp(OverlayTime, 0, 1) + 0.15f;
-			ScreenOverlayScript.intensity = OverlayIntensity;
-		}
-
-		if (AltFireMode == altmode.no) 
-		{
-			AltFire.SetActive (false);
-			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
-		}
-
-		if (AltFireMode == altmode.yes) 
-		{
-			AltFire.SetActive (true);
-			AltFireImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
-		}
-
-		if (AltFireMode == altmode.yes && AltFireImage.fillAmount <= 0) 
-		{
-			AltFireMode = altmode.no;
-		}
-
-		ComboN = Mathf.RoundToInt (ComboTime);
-		ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
-		ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
-		ComboImage.GetComponent<RectTransform> ().sizeDelta = new Vector2 ((5 * (ComboTime)), 684.3f); 
-
-		if (ComboTime > 11) 
-		{
-			ComboTime = 11;
-		}
-
-		if (ComboTime < 0) 
-		{
-			ComboTime = 0;
-		}
-			
-		if (ComboN > 10) 
-		{
-			ComboN = 10;
-		}
-
-		if (collisionCooldown > 0) 
-		{
-			collisionCooldown -= Time.unscaledDeltaTime;
-			PlayerCollider.enabled = false;
-		}
-
-		if (collisionCooldown <= 0) 
-		{
-			collisionCooldown = 0;
-			PlayerCollider.enabled = true;
-		}
-
-		if (isClone == false && Health >= 25) 
-		{
-		}
-
-		if (Health < 25)
-		{
-			//MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
-			Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
-		}
-
-		if (isClone) 
-		{
-			shot = MutedRegularShot;
-		}
-
-		// If the Game Object that is attached to this script is not a clone.
-		if (!isClone) 
-		{
-			// Decreases vibration time linearly.
-			vibrationTime -= Time.unscaledDeltaTime;
-
-			if (vibrationTime > 0) 
-			{
-				GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
-			}
-
-			if (vibrationTime <= 0) 
-			{
-				vibrationTime = 0;
-				GamePad.SetVibration (PlayerIndex.One, 0, 0);
-			}
-
-			/// POWERUPS ///
-			UpdatePowerUps();
-			
-			/// Health ///
-			UpdateHealth();
 		}
 	}
 
