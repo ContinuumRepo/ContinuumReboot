@@ -630,15 +630,15 @@ public class GameController : MonoBehaviour
 	// For Health
 	IEnumerator RareitemSpawnWaves ()
 	{
-		yield return new WaitForSeconds (rareitemStartWait);
-		while (true)
-		{
-			for (int i = 0; i < rareitemCount; i++) 
-			{
-				GameObject rareitem = Rareitems [Random.Range (0, 4)];
-				Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
-				Instantiate (rareitem, rareitemSpawnPos, Quaternion.identity);
-				yield return new WaitForSeconds (rareitemSpawnWait);
+		if (isPreGame == false) {
+			yield return new WaitForSeconds (rareitemStartWait);
+			while (true) {
+				for (int i = 0; i < rareitemCount; i++) {
+					GameObject rareitem = Rareitems [Random.Range (0, 4)];
+					Vector3 rareitemSpawnPos = new Vector3 (Mathf.RoundToInt (Random.Range (-rareitemSpawnValues.x, rareitemSpawnValues.x)), rareitemSpawnValues.y, rareitemSpawnValues.z);
+					Instantiate (rareitem, rareitemSpawnPos, Quaternion.identity);
+					yield return new WaitForSeconds (rareitemSpawnWait);
+				}
 			}
 		}
 	}
