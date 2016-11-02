@@ -595,6 +595,16 @@ public class PlayerController : MonoBehaviour
 		// No powerup.
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
+			if (LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
+			{
+				LensScript.radius -= 0.5f * Time.unscaledDeltaTime; 
+			}
+
+			if (LensScript.radius < 0 && gameControllerScript.isPaused == false) 
+			{
+				LensScript.radius = 0;
+			}
+
 			fireRate = 0.25f;
 			bloomScript.bloomIntensity = normalBloomAmount;
 			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
