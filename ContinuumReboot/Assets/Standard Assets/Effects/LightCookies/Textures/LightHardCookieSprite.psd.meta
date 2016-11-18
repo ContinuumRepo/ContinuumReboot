@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ff90c0fef38ae724e94516f5796dd363
-timeCreated: 1479444054
+guid: 20c2bc3cff5d132419a73077c9ef4551
+timeCreated: 1479455706
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
@@ -12,18 +12,18 @@ TextureImporter:
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceStart: 2
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: 0.25
+    heightScale: 0.1
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
-  cubemapConvolutionSteps: 7
+  cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
@@ -31,7 +31,7 @@ TextureImporter:
   textureSettings:
     filterMode: 1
     aniso: 16
-    mipBias: -1
+    mipBias: 0
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
@@ -43,11 +43,31 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 508, y: 0, z: 508, w: 0}
-  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
   alphaIsTransparency: 1
   textureType: 8
-  buildTargetSettings: []
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 128
+    textureFormat: 33
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  - buildTarget: Android
+    maxTextureSize: 128
+    textureFormat: -2
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  - buildTarget: BlackBerry
+    maxTextureSize: 128
+    textureFormat: 13
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  - buildTarget: WP8
+    maxTextureSize: 128
+    textureFormat: 12
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
   spriteSheet:
     sprites: []
     outline: []
