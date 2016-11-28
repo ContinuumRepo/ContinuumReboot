@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMovement : MonoBehaviour {
+public class CameraMovement : MonoBehaviour 
+{
 
-	// Use this for initialization
 	void Start () 
 	{
-		//GetComponent<Transform> ().position = new Vector3 (0.2f, 2.1f, -165.1f);
-		GetComponent<Transform> ().rotation = Quaternion.Euler (0, 0, -135);
+		GetComponent<Transform> ().position = new Vector3 (0.2f, 2.1f, -188.1f);
+		GetComponent<Transform> ().rotation = Quaternion.Euler (0, 0, 225);
+		GetComponent<Animator> ().enabled = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+	void Update () 
+	{
 	
 	}
 }
