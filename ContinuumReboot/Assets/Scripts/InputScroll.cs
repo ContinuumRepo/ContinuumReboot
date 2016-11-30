@@ -20,7 +20,7 @@ public class InputScroll : MonoBehaviour
 	private int lastIndex = 0;
 
 	private bool waiting = false;
-	private bool resetForMouse = false;
+	private bool resetForMouse = true;
 
 	private float scrollWait;
 	private int scrollNo = 0;
@@ -70,13 +70,13 @@ public class InputScroll : MonoBehaviour
 			}
 
 			// When selecting a button run that button's OnClick method (A, Start, space, enter/return)
-			if (Input.GetKeyDown ("joystick button 0") == true || (startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("space") == true || Input.GetKeyDown ("return") == true)
+			if (Input.GetKeyDown ("joystick button 0") == true || /*(startToSelect && Input.GetKeyDown ("joystick button 7") == true) ||*/ Input.GetKeyDown ("space") == true || Input.GetKeyDown ("return") == true)
 			{
 				buttons[indexLocation].OnClick();
 			}
 
 			// If enabled, allow player to cancel to close the current menu (B, Start, escape)
-			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || (!startToSelect && Input.GetKeyDown ("joystick button 7") == true) || Input.GetKeyDown ("escape") == true))
+			if (bToClose && (Input.GetKeyDown ("joystick button 1") == true || /*(!startToSelect && Input.GetKeyDown ("joystick button 7") == true) ||*/ Input.GetKeyDown ("escape") == true))
 			{
 				if (bBackButton != null)
 				{

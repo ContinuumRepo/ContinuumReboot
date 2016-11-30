@@ -11,6 +11,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -18,8 +19,14 @@ public class MenuButtons : MonoBehaviour
 	public AudioSource uiHover;
 	public AudioLowPassFilter bgMenuMusicLow;
 	public AudioHighPassFilter bgMenuMusicHigh;
-
+	public Text DescriptionText;
 	public GameObject ParentMenu;
+	public GlobalMouseVisibility mouseScript;
+
+	[Header ("Press Start Button")]
+	public GameObject TitleUI;
+	public GameObject Menus;
+	public GameObject AllUI;
 
 	[Header("Play 1P Button")]
 	public GameObject controls;
@@ -58,6 +65,32 @@ public class MenuButtons : MonoBehaviour
 	void Start()
 	{
 		scrollScript = GetComponent<InputScroll> ();
+		mouseScript.InvisibleCursor ();
+	}
+
+	public void Update ()
+	{
+		if (Input.GetKeyDown ("joystick button 7") == true) 
+		{
+			if (TitleUI.activeInHierarchy == true) 
+			{
+				PressStartClick ();
+				mouseScript.InvisibleCursor ();
+			}
+		}
+	}
+
+	public void PressStartClick ()
+	{
+		mouseScript.InvisibleCursor ();
+		TitleUI.SetActive (false);
+		ParentMenu.SetActive (true);
+		uiConfirm.Play ();
+		Camera.main.GetComponent <SmoothFollowOrig> ().enabled = false;
+		Camera.main.GetComponent <Animator> ().enabled = true;
+		Camera.main.GetComponent <Animator> ().Play ("StartToMain");
+		AllUI.GetComponent<InputScroll> ().enabled = true;
+		Menus.SetActive (true);
 	}
 
 	#region Play 1P Button Functions
@@ -67,6 +100,7 @@ public class MenuButtons : MonoBehaviour
 		LoadingArcadeMode.SetActive (true);
 		ParentMenu.SetActive (false);
 		Camera.main.GetComponent<Animator> ().Play ("MainToSelect");
+		backgroundMenuAudio.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
 		DisableAllMenus ();
 	}
 
@@ -75,16 +109,23 @@ public class MenuButtons : MonoBehaviour
 		if (scrollScript != null) 
 		{
 			scrollScript.HighlightedButton = 0;
+			mouseScript.InvisibleCursor ();
 		}
 
 		p1Animator.enabled = true;
 		p1Animator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
 
+		DescriptionText.text = "You control the speed of time based on your vertical position on the screen. Shoot and dodge to stay alive in order to get more points" +
+			"" +
+			"\n\nTo help with this, there are powerups which can be shot or collected, boosting firepower, or activating defenses." +
+			"" +
+			"\n\nThe longer you stay alive, the more points you'll get. In this mode, try to beat your friends' scores!";
+
 		PlayerPrefs.SetString ("Menu", "controls");
 		controls.SetActive (true);
-		bgMenuMusicLow.enabled = true;
-
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 		backgroundMenuAudio.UnPause();
 		creditsAudio.Pause();
 
@@ -97,15 +138,13 @@ public class MenuButtons : MonoBehaviour
 
 	public void P1Exit()
 	{
-		p1Animator.Play ("MainButtonHoverExit");
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 
-		// Disables all other menus.
-		controls.SetActive (false);
-		multiplayer.SetActive (false);
-		leaderboards.SetActive (false);
-		settings.SetActive (false);
-		credits.SetActive (false);
-		quit.SetActive (false);
+		p1Animator.Play ("MainButtonHoverExit");
+		DescriptionText.text = "" + "";
+
+		DisableAllMenus ();
 	}
 	#endregion
 
@@ -115,6 +154,7 @@ public class MenuButtons : MonoBehaviour
 		uiConfirm.Play();
 		ParentMenu.SetActive (false);
 		Camera.main.GetComponent<Animator> ().Play ("MainToSelect");
+		backgroundMenuAudio.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
 		DisableAllMenus ();
 	}
 
@@ -122,9 +162,16 @@ public class MenuButtons : MonoBehaviour
 	{
 		if (scrollScript != null) 
 		{
+			mouseScript.InvisibleCursor ();
 			scrollScript.HighlightedButton = 1;
 		}
 			
+		DescriptionText.text = "BOTH players control the speed of time based on their average vertical position on the screen. Shoot and dodge to stay alive in order to get more points" +
+			"" +
+			"\n\nTo help with this, there are powerups which can be shot or collected, boosting firepower, or activating defenses." +
+			"" +
+			"\n\nThe longer you both stay alive, the more points you'll both get. In this mode, teamwork is key!";
+
 		p2Animator.enabled = true;
 		p2Animator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
@@ -132,11 +179,10 @@ public class MenuButtons : MonoBehaviour
 		smoothFollowClone2.enabled = false;
 		menuPlayer2.SetActive (true);
 		p2AudioIn.Play();
-
 		PlayerPrefs.SetString ("Menu", "multiplayer");
 		multiplayer.SetActive (true);
 		bgMenuMusicLow.enabled = true;
-
+		bgMenuMusicHigh.enabled = false;
 		backgroundMenuAudio.UnPause();
 		creditsAudio.Pause();
 
@@ -149,18 +195,15 @@ public class MenuButtons : MonoBehaviour
 
 	public void P2Exit()
 	{
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
+
 		p2Animator.Play ("MainButtonHoverExit");
 		smoothFollowClone2.enabled = true;
 		smoothFollowOrig2.enabled = false;
 		p2AudioOut.Play();
-
-		// Disables all other menus.
-		controls.SetActive (false);
-		multiplayer.SetActive (false);
-		leaderboards.SetActive (false);
-		settings.SetActive (false);
-		credits.SetActive (false);
-		quit.SetActive (false);
+		DescriptionText.text = "" + "";
+		DisableAllMenus ();
 	}
 	#endregion
 
@@ -175,16 +218,17 @@ public class MenuButtons : MonoBehaviour
 	{
 		if (scrollScript != null) 
 		{
+			mouseScript.InvisibleCursor ();
 			scrollScript.HighlightedButton = 2;
 		}
 
 		leadAnimator.enabled = true;
 		leadAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
-
+		DescriptionText.text = "View the top scorers." + "";
 		PlayerPrefs.SetString ("Menu", "leaderboards");
 		leaderboards.SetActive (true);
-		bgMenuMusicLow.enabled = true;
+		//bgMenuMusicLow.enabled = true;
 
 		backgroundMenuAudio.UnPause();
 		creditsAudio.Pause();
@@ -198,15 +242,11 @@ public class MenuButtons : MonoBehaviour
 
 	public void LeaderboardsExit()
 	{
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 		leadAnimator.Play ("MainButtonHoverExit");
-
-		// Disables all other menus.
-		controls.SetActive (false);
-		multiplayer.SetActive (false);
-		leaderboards.SetActive (false);
-		settings.SetActive (false);
-		credits.SetActive (false);
-		quit.SetActive (false);
+		DescriptionText.text = "" + "";
+		DisableAllMenus ();
 	}
 	#endregion
 
@@ -223,14 +263,14 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 3;
 		}
-
+		mouseScript.InvisibleCursor ();
 		settingsAnimator.enabled = true;
 		settingsAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
-
+		DescriptionText.text = "Settings." + "";
 		PlayerPrefs.SetString ("Menu", "settings");
 		settings.SetActive (true);
-		bgMenuMusicLow.enabled = true;
+		//bgMenuMusicLow.enabled = true;
 
 		backgroundMenuAudio.UnPause();
 		creditsAudio.Pause();
@@ -244,15 +284,11 @@ public class MenuButtons : MonoBehaviour
 
 	public void SettingsExit()
 	{
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 		settingsAnimator.Play ("MainButtonHoverExit");
-
-		// Disables all other menus.
-		controls.SetActive (false);
-		multiplayer.SetActive (false);
-		leaderboards.SetActive (false);
-		settings.SetActive (false);
-		credits.SetActive (false);
-		quit.SetActive (false);
+		DescriptionText.text = "" + "";
+		DisableAllMenus ();
 	}
 	#endregion
 
@@ -269,14 +305,14 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 4;
 		}
-
+		mouseScript.InvisibleCursor ();
 		creditsAnimator.enabled = true;
 		creditsAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
-
+		DescriptionText.text = "Credits." + "";
 		PlayerPrefs.SetString ("Menu", "credits");
 		credits.SetActive (true);
-		bgMenuMusicLow.enabled = true;
+		//bgMenuMusicLow.enabled = true;
 
 		backgroundMenuAudio.Pause();
 		creditsAudio.Play();
@@ -290,15 +326,11 @@ public class MenuButtons : MonoBehaviour
 
 	public void CreditsExit()
 	{
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 		creditsAnimator.Play ("MainButtonHoverExit");
-
-		// Disables all other menus.
-		controls.SetActive (false);
-		multiplayer.SetActive (false);
-		leaderboards.SetActive (false);
-		settings.SetActive (false);
-		credits.SetActive (false);
-		quit.SetActive (false);
+		DescriptionText.text = "" + "";
+		DisableAllMenus ();
 	}
 	#endregion
 
@@ -317,14 +349,14 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 5;
 		}
-
+		mouseScript.InvisibleCursor ();
 		quitAnimator.enabled = true;
 		quitAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
-
+		DescriptionText.text = "Quit to desktop?" + "";
 		PlayerPrefs.SetString ("Menu", "quit");
 		quit.SetActive (true);
-		bgMenuMusicLow.enabled = true;
+		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = true;
 
 		backgroundMenuAudio.UnPause();
@@ -339,7 +371,10 @@ public class MenuButtons : MonoBehaviour
 
 	public void QuitExit()
 	{
+		bgMenuMusicLow.enabled = false;
+		bgMenuMusicHigh.enabled = false;
 		quitAnimator.Play ("MainButtonHoverExit");
+		DescriptionText.text = "" + "";
 		DisableAllMenus ();
 	}
 	#endregion
@@ -352,7 +387,8 @@ public class MenuButtons : MonoBehaviour
 		leaderboards.SetActive (false);
 		settings.SetActive (false);
 		credits.SetActive (false);
-		quit.SetActive (false);
+		quit.SetActive (false);		
+		mouseScript.InvisibleCursor ();
 	}
 }
 	

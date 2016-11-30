@@ -5,64 +5,30 @@ using UnityEngine.UI;
 [AddComponentMenu("ButtonEvents/MenuCredits")]
 public class MenuCredits : ButtonEvents
 {
-	public AudioSource oneShot;
-	public AudioLowPassFilter bgMenuMusicLow;
-
-	public Material playerMaterial;
-
-	public ParticleSystem menuParticleShort;
-
 	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
-
-	[Header("Menu Player 1")]
-	public MeshRenderer menuPlayer1;
-	public ParticleSystem engineLnone;
-	public ParticleSystem engineRnone;
-	public ParticleSystem engineLpink;
-	public ParticleSystem engineRpink;
-
-	[Header("Credits Button")]
-	public GameObject credits;
-	public Animator creditsAnimator;
-	public GameObject creditsMesh;
-	public Material creditsMaterial;
-	public AudioSource creditsAudio;
-	public AudioSource backgroundMenuAudio;
+	public MenuButtons menuButtonsScript;
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("InputMenu", "credits");
-		credits.SetActive (true);
-		bgMenuMusicLow.enabled = true;
-		oneShot.Play();
-		backgroundMenuAudio.Pause();
-		creditsAudio.Play();
+		//PlayerPrefs.SetString ("InputMenu", "credits");
+		//menuButtonsScript.CreditsClick ();
 	}
 
 	public override void OnEnter()
 	{
 		if (scrollScript != null)
+		{
 			scrollScript.HighlightedButton = buttonIndex;
-		thisButton.Select();
-		creditsAnimator.enabled = true;
-		creditsAnimator.Play ("CreditsPointerEnter");
-		oneShot.Play();
-		creditsMesh.SetActive (true);
-		menuPlayer1.material = creditsMaterial;
-		engineLpink.Play();
-		engineRpink.Play();
-		engineLnone.Stop();
-		engineRnone.Stop();
+			thisButton.Select ();
+		}
+
+		menuButtonsScript.CreditsEnter ();
 	}
 
 	public override void OnExit()
 	{
-		creditsAnimator.Play ("CreditsPointerExit");
-		creditsMesh.SetActive (false);
-		menuPlayer1.material = playerMaterial;
-		engineLpink.Stop();
-		engineRpink.Stop();
+		menuButtonsScript.CreditsExit ();
 	}
 }

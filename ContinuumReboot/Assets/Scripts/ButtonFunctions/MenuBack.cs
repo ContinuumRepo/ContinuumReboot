@@ -20,6 +20,8 @@ public class MenuBack : ButtonEvents
 	public InputScroll scrollScript;
 	public int buttonIndex;
 
+	public GameObject Menus;
+
 	public override void OnClick()
 	{
 		backToScrollScript.WaitToRenameInputMenu (renameWait, "mainmenu");
@@ -27,7 +29,10 @@ public class MenuBack : ButtonEvents
 		bgMenuMusicHigh.enabled = false;
 		title.SetActive (true);
 		backAudio.Play();
+		GameObject.Find ("UI").GetComponent<InputScroll> ().enabled = false;
+		Menus.SetActive (false);
 		currentMenu.SetActive (false);
+		backAnimator.Play ("MainToStart");
 	}
 
 	public override void OnEnter()
@@ -38,11 +43,11 @@ public class MenuBack : ButtonEvents
 
 		oneShot.Play();
 		backAnimator.enabled = true;
-		backAnimator.Play ("BackButtonOnPointerEnter");
+		//backAnimator.Play ("BackButtonOnPointerEnter");
 	}
 
 	public override void OnExit()
 	{
-		backAnimator.Play ("BackButtonOnPointerExit");
+		//backAnimator.Play ("BackButtonOnPointerExit");
 	}
 }

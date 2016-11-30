@@ -11,7 +11,8 @@ public class GlobalMouseVisibility : MonoBehaviour
 	public enum mode 
 	{
 		Normal,
-		Alternative
+		Alternative,
+		Other
 	}
 
 	public mode VisibleMode;
@@ -24,6 +25,11 @@ public class GlobalMouseVisibility : MonoBehaviour
 		}
 
 		if (VisibleMode == mode.Alternative) 
+		{
+			Cursor.visible = false;
+		}
+
+		if (VisibleMode == mode.Other) 
 		{
 			Cursor.visible = false;
 		}
@@ -59,5 +65,10 @@ public class GlobalMouseVisibility : MonoBehaviour
 			Cursor.visible = false;
 			Cursor.lockState = CursorLockMode.Confined;
 		}
+	}
+
+	public void InvisibleCursor ()
+	{
+		Cursor.visible = false;
 	}
 }

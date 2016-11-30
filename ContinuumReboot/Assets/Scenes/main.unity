@@ -11186,7 +11186,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8dbb2dc895dba954382a3e8becfd4852, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a40652653b5f5104d98d6914733a7661, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -32553,7 +32553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &862326353
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32588,6 +32588,7 @@ GameObject:
   - 54: {fileID: 864279381}
   - 81: {fileID: 864279377}
   - 95: {fileID: 864279379}
+  - 114: {fileID: 864279378}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -32602,6 +32603,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 864279376}
   m_Enabled: 1
+--- !u!114 &864279378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864279376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c9325eb637fd44792d7badb5456f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 10
+  frequency: 1
+  time: 0
+  offset: 0
 --- !u!95 &864279379
 Animator:
   serializedVersion: 3
@@ -45669,8 +45685,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.0000572, y: -452}
-  m_SizeDelta: {x: 1231.9, y: 30.6}
+  m_AnchoredPosition: {x: -2.000061, y: -452}
+  m_SizeDelta: {x: 932, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1509217181
 MonoBehaviour:

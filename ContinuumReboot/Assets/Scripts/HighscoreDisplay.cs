@@ -91,7 +91,7 @@ public class HighscoreDisplay : MonoBehaviour
 				break;
 			}
 		}
-		SceneManager.LoadScene ("menu");
+		SceneManager.LoadScene ("NewMenu");
 	}
 
 	IEnumerator WaitToReset()

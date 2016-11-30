@@ -5,59 +5,29 @@ using UnityEngine.UI;
 [AddComponentMenu("ButtonEvents/MenuSettings")]
 public class MenuSettings : ButtonEvents
 {
-	public AudioSource oneShot;
-	public AudioLowPassFilter bgMenuMusicLow;
-
-	public Material playerMaterial;
-	public ParticleSystem menuParticleShort;
-
 	public Button thisButton;
 	public InputScroll scrollScript;
 	public int buttonIndex;
-
-	[Header("Menu Player 1")]
-	public MeshRenderer menuPlayer1;
-	public ParticleSystem engineLnone;
-	public ParticleSystem engineRnone;
-	public ParticleSystem engineLpurple;
-	public ParticleSystem engineRpurple;
-
-	[Header("Settings Button")]
-	public GameObject settings;
-	public Animator settingsAnimator;
-	public GameObject settingsMesh;
-	public Material settingsMaterial;
+	public MenuButtons menuButtonsScript;
 
 	public override void OnClick()
 	{
-		PlayerPrefs.SetString ("InputMenu", "settings");
-		settings.SetActive (true);
-		bgMenuMusicLow.enabled = true;
-		oneShot.Play();
+		//PlayerPrefs.SetString ("InputMenu", "settings");
+		//menuButtonsScript.SettingsClick ();
 	}
 
 	public override void OnEnter()
 	{
-		if (scrollScript != null)
+		if (scrollScript != null) 
+		{
 			scrollScript.HighlightedButton = buttonIndex;
-		thisButton.Select();
-		settingsAnimator.enabled = true;
-		settingsAnimator.Play ("CreditsPointerEnter");
-		oneShot.Play();
-		settingsMesh.SetActive (true);
-		menuPlayer1.material = settingsMaterial;
-		engineLpurple.Play();
-		engineRpurple.Play();
-		engineLnone.Stop();
-		engineRnone.Stop();
+			thisButton.Select ();
+		}
+		menuButtonsScript.SettingsEnter ();
 	}
 
 	public override void OnExit()
 	{
-		settingsAnimator.Play ("CreditsPointerExit");
-		settingsMesh.SetActive (false);
-		menuPlayer1.material = playerMaterial;
-		engineLpurple.Stop();
-		engineRpurple.Stop();
+		menuButtonsScript.SettingsExit ();
 	}
 }
