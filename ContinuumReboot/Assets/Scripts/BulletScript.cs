@@ -136,7 +136,6 @@ public class BulletScript : MonoBehaviour
 
 			if (playerControllerScript == null) 
 			{
-				//Debug.Log ("Cannot find player controller script: Could be that this is a muted bullet spawning right in front of a cube.");
 			}
 
 			if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
@@ -169,7 +168,6 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.shield) 
 			{
-				//Destroy (other.gameObject);
 			}
 
 			if (BulletType == bulletType.mutedShot) 
@@ -179,20 +177,17 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.verticalBeam) 
 			{
-				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 
 			if (BulletType == bulletType.horizontalBeam) 
 			{
-				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 				gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 			}
 
 			if (BulletType == bulletType.helix) 
 			{
-				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 
@@ -204,7 +199,6 @@ public class BulletScript : MonoBehaviour
 
 			if (BulletType == bulletType.altFire) 
 			{
-				//ComboAudio [playerControllerScript.ComboN].Play ();
 				Destroy (other.gameObject);
 			}
 		}

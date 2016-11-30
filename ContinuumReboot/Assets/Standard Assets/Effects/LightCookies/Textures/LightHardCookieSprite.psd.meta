@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 20c2bc3cff5d132419a73077c9ef4551
-timeCreated: 1479455706
+timeCreated: 1480497602
 licenseType: Pro
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: LightHardCookieSprite_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +39,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -69,7 +70,31 @@ TextureImporter:
     compressionQuality: 50
     allowsAlphaSplitting: 0
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: LightHardCookieSprite_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 65, y: 121}
+        - {x: -90, y: 121}
+        - {x: -121, y: 110}
+        - {x: -121, y: -117}
+        - {x: -97, y: -121}
+        - {x: 76, y: -121}
+        - {x: 108, y: -99}
+        - {x: 121, y: -63}
+        - {x: 121, y: 75}
+      - - {x: -39, y: -100}
+        - {x: -105, y: 13}
+        - {x: 68, y: 83}
+        - {x: 106, y: -13}
     outline: []
   spritePackingTag: 
   userData: 

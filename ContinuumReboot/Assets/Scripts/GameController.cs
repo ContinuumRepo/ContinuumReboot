@@ -383,7 +383,7 @@ public class GameController : MonoBehaviour
 			if (Input.GetKeyDown (KeyCode.Alpha6)) 
 			{
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
-				Instantiate (playerControllerScript.ClonedPlayer, new Vector3 (0, -15, 0), Quaternion.Euler (90, 180, 0));
+				Instantiate (playerControllerScript.ClonedPlayer, new Vector3 (0, -25, 0), Quaternion.Euler (90, 180, 0));
 				CheatSound.Play ();
 				CheatActivatedAnim.Play ("CheatActivated");
 				Debug.Log ("You pressed '6' and powerup is clones.");

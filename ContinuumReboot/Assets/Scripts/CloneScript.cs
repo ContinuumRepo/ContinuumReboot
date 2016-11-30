@@ -6,7 +6,6 @@ public class CloneScript : MonoBehaviour
 {
 	public PlayerController playerControllerScript;
 	public SmoothFollowOrig smoothFollowScript;
-	public LookatTarget lookScript;
 	public Transform player;
 	public float distance = 3;
 	public float delay = 1;
@@ -21,7 +20,6 @@ public class CloneScript : MonoBehaviour
 	{
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
 		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
-		//lookScript = GetComponent<LookatTarget> ();
 		player = GameObject.Find ("Player").transform;
 
 		// If target is anything but player.
@@ -35,7 +33,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 			}
 
 			// Not found.
@@ -43,7 +40,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 
@@ -58,7 +54,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 			}
 
 			// Not found.
@@ -66,7 +61,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 	}
@@ -76,7 +70,6 @@ public class CloneScript : MonoBehaviour
 		// If target is on player.
 		if (
 			smoothFollowScript.target == player
-			//lookScript.Target == player
 			) 
 		{
 			// Still try to find a cube.
@@ -84,7 +77,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 			}
 
 			// Not found.
@@ -92,7 +84,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 
@@ -106,7 +97,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 			}
 
 			// Not found.
@@ -114,7 +104,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 
@@ -138,7 +127,6 @@ public class CloneScript : MonoBehaviour
 		// If target is anything but player.
 		if (
 			smoothFollowScript.target != player
-			//lookScript.Target != player
 			) 
 		{
 			// Try to find a cube.
@@ -146,7 +134,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 
 			}
 
@@ -155,14 +142,12 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 
 		// If target is on player.
 		if (
 			smoothFollowScript.target == player
-			//lookScript.Target == player
 			) 
 		{
 			// Still try to find a cube.
@@ -170,7 +155,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Found? Assigned!
 				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
-				//lookScript.Target = GameObject.FindGameObjectWithTag ("Cube").transform;
 			}
 
 			// Not found.
@@ -178,7 +162,6 @@ public class CloneScript : MonoBehaviour
 			{
 				// Follow player.
 				smoothFollowScript.target = player;
-				//lookScript.Target = player;
 			}
 		}
 	}

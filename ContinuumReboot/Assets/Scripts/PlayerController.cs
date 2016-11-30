@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject HelixObject;				// Helix powerup.
 	public GameObject WifiShot;					// Wifi shot.
 
+	/*
 	[Header ("Powerup Icons")]
 	public GameObject DoubleShotIcon; 			// The UI for the double shot powerup.
 	public GameObject TriShotIcon; 				// The UI for the tri shot powerup.
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject HelixIcon; 				// The UI for the helix player powerup.
 	public GameObject WifiIcon; 				// The UI for the wifi player powerup.
 	public GameObject ThreeDIcon; 				// The UI for the 3D perspective powerup.
-
+	*/
 	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
 	public bool isClone; 						// Is this script attached to this gameObject a clone?
 
@@ -111,7 +112,7 @@ public class PlayerController : MonoBehaviour
 	public AudioSource powerupDeactivateAudio;	    // The audio source to play as the powerup time runs out.
 	public ParticleSystem ActivePowerupParticles;   // Plays particle system if powerup is active.
 	public ParticleSystem TimeRunningOutParticles;  // Plays particle system if powerup is running out.
-	public Image PowerupMeter; 						// The UI for the powerup bar.
+	//public Image PowerupMeter; 						// The UI for the powerup bar.
 
 	[Header ("Combos")]
 	public float ComboTime;
@@ -204,6 +205,7 @@ public class PlayerController : MonoBehaviour
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
 
+		/*
 		// Turns off powerup icons.
 		DoubleShotIcon.SetActive (false);
 		BeamShotIcon.SetActive (false);
@@ -214,6 +216,7 @@ public class PlayerController : MonoBehaviour
 		HelixIcon.SetActive (false);
 		WifiIcon.SetActive (false);
 		ThreeDIcon.SetActive (false);
+		*/
 		MainCanvas.worldCamera = Camera.main;
 
 		// Finds the rigidbody this script is attached to.
@@ -424,8 +427,7 @@ public class PlayerController : MonoBehaviour
 
 			ComboN = Mathf.RoundToInt (ComboTime);
 			ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
-			ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
-			ComboImage.GetComponent<RectTransform> ().sizeDelta = new Vector2 ((5 * (ComboTime)), 684.3f); 
+			//ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
 
 			if (ComboTime > 11) 
 			{
@@ -569,6 +571,7 @@ public class PlayerController : MonoBehaviour
 
 	private void UpdatePowerUps()
 	{
+		/*
 		PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
 
 		if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
@@ -589,7 +592,7 @@ public class PlayerController : MonoBehaviour
 		if (PowerupMeter.fillAmount > 0 && PowerupMeter.fillAmount <= 0.25f) 
 		{
 			PowerupMeter.color = Color.red;
-		}
+		}*/
 
 		// No powerup.
 		if (CurrentPowerup == powerup.RegularShot) 
@@ -617,6 +620,7 @@ public class PlayerController : MonoBehaviour
 			Shield.SetActive (false);					    // Turns off the shield.
 			HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
 			HelixObject.SetActive (false);
+			/*
 			WifiIcon.SetActive (false);
 			ThreeDIcon.SetActive (false);
 
@@ -628,6 +632,7 @@ public class PlayerController : MonoBehaviour
 			HorizontalBeamIcon.SetActive (false);
 			CloneIcon.SetActive (false);
 			HelixIcon.SetActive (false);
+			*/
 			LensScript.enabled = true;
 			gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 			BeamShot.SetActive (false);						 // Turns off the beam shot.
@@ -656,7 +661,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
-			DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
+			//DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
 		}
 
 		// WIFI shot.
@@ -670,7 +675,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
-			WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
+			//WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
 		}
 
 		// Tri shot.
@@ -683,7 +688,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
-			TriShotIcon.SetActive (true); 					// Turns on double shot icon.
+			//TriShotIcon.SetActive (true); 					// Turns on double shot icon.
 		}
 
 		// Beam shot.
@@ -696,7 +701,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
-			BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
+			//BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
 
 			// If shot is the regular shot.
 			if (shot == RegularShot) 
@@ -715,7 +720,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-			ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
+			//ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
 			collisionCooldown = 3;
 			// If lens script radius is less than or equal to 0.5 but also greater than 0.
 			if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
@@ -734,7 +739,7 @@ public class PlayerController : MonoBehaviour
 		if (CurrentPowerup == powerup.horizontalBeam) 
 		{	
 			bloomScript.bloomIntensity = powerupBloomAmount;	
-			HorizontalBeamIcon.SetActive (true);
+			//HorizontalBeamIcon.SetActive (true);
 			HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 			if (Time.timeScale > 0)
 			{
@@ -759,7 +764,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
-			CloneIcon.SetActive (true); // Turns on clone icon.
+			//CloneIcon.SetActive (true); // Turns on clone icon.
 			//BgmHighFilter.enabled = true;
 
 			// If shot is the regular shot.
@@ -780,7 +785,7 @@ public class PlayerController : MonoBehaviour
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
-			HelixIcon.SetActive (true); // Turns on clone icon.
+			//HelixIcon.SetActive (true); // Turns on clone icon.
 			if (shot == RegularShot) 
 			{
 				shot = RegularShotNoCost; // Make it the free version.
@@ -859,24 +864,18 @@ public class PlayerController : MonoBehaviour
 		if (AltFireImage.fillAmount < 1) 
 		{
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
-			//FlashIndicator.enabled = false;
-			//LTriggerAnim.enabled = false;
 		}
 			
 		if (AltFireImage.fillAmount >= 1) 
 		{
 			AltFireImage.fillAmount = 1;
 			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
-			//FlashIndicator.enabled = true;
-			//LTriggerAnim.enabled = true;
 		}
 
 		if (AltFireImage.fillAmount <= 0) 
 		{
 			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 		}
-
-		//AltFireImage.rectTransform.sizeDelta = new Vector2 (333, Mathf.Clamp(20/AltFireImage.fillAmount, 0, 50));
 
 		// Alt fire image bar colours.
 		if (AltFireImage.fillAmount >= 1 && AltFireImage.fillAmount > 0.75f) 

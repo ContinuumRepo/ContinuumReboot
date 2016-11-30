@@ -38,20 +38,19 @@ public class PowerupScript : MonoBehaviour
 	{
 		if (other.tag == "Player" || other.tag == "Bullet") 
 		{
-			/// Summary ///
+			/// <summary> ///
 			/// if powerup type == X powerup
 			/// set powerup time duration
 			/// change powerup type in player script
 			/// Instantiate explosion
 			/// Turn on powerup particles on player
 			/// Destroy this gameObject
-			/// End Summary ///
+			/// </summary>> ///
 
 			if (PowerupType == poweruptype.health) 
 			{
 				playerControllerScript.Health += 25;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
-				//Debug.Log ("Collected rare health woo!");
 				Destroy (gameObject);
 			}
 
@@ -61,7 +60,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.DoubleShot;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				//Debug.Log ("Double shot powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -71,7 +69,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.TriShot;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				//Debug.Log ("Tri shot powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -81,7 +78,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.BeamShot;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				//Debug.Log ("Beam shot powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -90,7 +86,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.powerupTime = playerControllerScript.powerupDurationD;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
-				//Debug.Log ("Shield powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -100,7 +95,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.horizontalBeam;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				//Debug.Log ("Horizontal beam powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -110,8 +104,7 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				Instantiate (CloneObject, new Vector3 (0, -15, 0), Quaternion.Euler (90, 180, 0));
-				//Debug.Log ("Clone powerup collected.");
+				Instantiate (CloneObject, new Vector3 (0, -25, 0), Quaternion.Euler (90, 180, 0));
 				Destroy (gameObject);
 			}
 
@@ -120,7 +113,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.powerupTime = playerControllerScript.powerupDurationD;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.helix;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
-				//Debug.Log ("Helix shot powerup collected.");
 				Destroy (gameObject);
 			}
 
@@ -130,7 +122,6 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.wifi;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				//Debug.Log ("Ping wifi shot powerup collected.");
 				Destroy (gameObject);
 			}
 		}
