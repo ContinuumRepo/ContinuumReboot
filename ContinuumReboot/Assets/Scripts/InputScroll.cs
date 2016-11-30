@@ -25,16 +25,14 @@ public class InputScroll : MonoBehaviour
 	private float scrollWait;
 	private int scrollNo = 0;
 
-	// Use this for initialization
 	void Start ()
 	{
 		buttonIndex = buttons.Length;
 		indexLocation = firstIndex;
-		buttons[firstIndex].OnEnter();
 		scrollWait = timeBuffer;
+		bBackButton.OnClick();
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
 	{
 		if (PlayerPrefs.GetString ("InputMenu") == inputLocPrefsValue)

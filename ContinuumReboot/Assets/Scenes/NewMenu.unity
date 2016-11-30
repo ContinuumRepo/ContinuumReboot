@@ -1938,8 +1938,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1589058627}
-        m_MethodName: P1Exit
+      - m_Target: {fileID: 1014032680}
+        m_MethodName: OnEnter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3523,7 +3523,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: -81.7555, y: -120.9144, z: 166.13159}
+  m_LocalEulerAnglesHint: {x: -90, y: 45, z: 0}
   m_Children:
   - {fileID: 1839293088}
   - {fileID: 208777882}
@@ -5681,7 +5681,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 340764404}
   - {fileID: 1412143297}
@@ -13184,6 +13184,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1000495033}
+  - 114: {fileID: 1000495034}
   m_Layer: 0
   m_Name: Main UI
   m_TagString: Untagged
@@ -13205,6 +13206,48 @@ Transform:
   - {fileID: 1540150244}
   m_Father: {fileID: 1589058626}
   m_RootOrder: 0
+--- !u!114 &1000495034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1000495032}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41e4005d3c598f940b6b73a05a3885ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiConfirm: {fileID: 264359589}
+  uiHover: {fileID: 79098466}
+  bgMenuMusicLow: {fileID: 921120376}
+  bgMenuMusicHigh: {fileID: 921120375}
+  DescriptionText: {fileID: 98873056}
+  ParentMenu: {fileID: 1000495032}
+  mouseScript: {fileID: 84575194}
+  TitleUI: {fileID: 1281974514}
+  Menus: {fileID: 608167381}
+  AllUI: {fileID: 1589058625}
+  controls: {fileID: 340764403}
+  p1Animator: {fileID: 1014032679}
+  LoadingArcadeMode: {fileID: 209942901}
+  menuPlay1PScript: {fileID: 0}
+  multiplayer: {fileID: 1412143296}
+  p2Animator: {fileID: 1923459736}
+  menuPlayer2: {fileID: 300671223}
+  smoothFollowOrig2: {fileID: 300671226}
+  smoothFollowClone2: {fileID: 300671225}
+  p2AudioIn: {fileID: 800076064}
+  p2AudioOut: {fileID: 200855038}
+  leaderboards: {fileID: 1008330132}
+  leadAnimator: {fileID: 1084404635}
+  settings: {fileID: 1446349002}
+  settingsAnimator: {fileID: 1928744792}
+  credits: {fileID: 417372486}
+  creditsAnimator: {fileID: 1594225927}
+  creditsAudio: {fileID: 127005178}
+  backgroundMenuAudio: {fileID: 921120373}
+  quit: {fileID: 620838714}
+  quitAnimator: {fileID: 13647071}
 --- !u!1 &1008330132
 GameObject:
   m_ObjectHideFlags: 0
@@ -13319,7 +13362,7 @@ MonoBehaviour:
   - {fileID: 739206793}
   - {fileID: 655553210}
   resetPanel: {fileID: 161251210}
-  backButtonScript: {fileID: 1186825921}
+  backButtonScript: {fileID: 0}
   resetting: 0
 --- !u!1 &1014032673
 GameObject:
@@ -13474,7 +13517,7 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 2
+          m_CallState: 0
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -13491,7 +13534,7 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 2
+          m_CallState: 0
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -16304,9 +16347,9 @@ GameObject:
   - 222: {fileID: 1186825925}
   - 114: {fileID: 1186825924}
   - 114: {fileID: 1186825923}
-  - 114: {fileID: 1186825921}
   - 114: {fileID: 1186825926}
   - 114: {fileID: 1186825922}
+  - 114: {fileID: 1186825921}
   m_Layer: 0
   m_Name: Back Button
   m_TagString: Untagged
@@ -16354,7 +16397,7 @@ MonoBehaviour:
   - {fileID: 620838714}
   bgMenuMusicLow: {fileID: 921120376}
   bgMenuMusicHigh: {fileID: 921120375}
-  title: {fileID: 1281974514}
+  title: {fileID: 1839293087}
   backAudio: {fileID: 13003153}
   bgMenuAudio: {fileID: 921120373}
   creditsAudio: {fileID: 127005178}
@@ -16383,6 +16426,8 @@ MonoBehaviour:
   scrollScript: {fileID: 1589058628}
   buttonIndex: 0
   Menus: {fileID: 608167381}
+  MenuMusic: {fileID: 921120373}
+  CreditsMusic: {fileID: 127005178}
 --- !u!114 &1186825923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16422,6 +16467,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1186825922}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1186825921}
         m_MethodName: BackToMainButton
         m_Mode: 1
@@ -16494,7 +16550,7 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 2
+          m_CallState: 0
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 1
@@ -16511,7 +16567,7 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 2
+          m_CallState: 0
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
@@ -18170,7 +18226,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1014032673}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1240403481
@@ -25746,6 +25802,7 @@ MonoBehaviour:
   controls: {fileID: 340764403}
   p1Animator: {fileID: 1014032679}
   LoadingArcadeMode: {fileID: 209942901}
+  menuPlay1PScript: {fileID: 1014032680}
   multiplayer: {fileID: 1412143296}
   p2Animator: {fileID: 1923459736}
   menuPlayer2: {fileID: 300671223}
@@ -25769,7 +25826,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1589058625}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c9b70436ae92144892999bca8382514, type: 3}
   m_Name: 

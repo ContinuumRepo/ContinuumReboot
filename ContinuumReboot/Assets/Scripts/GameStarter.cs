@@ -31,6 +31,5 @@ public class GameStarter : MonoBehaviour
 	void StartGame ()
 	{
 		StartCoroutine (GetComponent<GameController> ().BrickSpawnWaves ());
-
 	}
 }

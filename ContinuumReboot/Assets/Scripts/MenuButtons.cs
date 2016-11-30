@@ -32,6 +32,7 @@ public class MenuButtons : MonoBehaviour
 	public GameObject controls;
 	public Animator p1Animator;
 	public GameObject LoadingArcadeMode;
+	public MenuPlay1P menuPlay1PScript;
 
 	[Header("Play 2P Button")]
 	public GameObject multiplayer;
@@ -91,6 +92,7 @@ public class MenuButtons : MonoBehaviour
 		Camera.main.GetComponent <Animator> ().Play ("StartToMain");
 		AllUI.GetComponent<InputScroll> ().enabled = true;
 		Menus.SetActive (true);
+		menuPlay1PScript.OnEnter ();
 	}
 
 	#region Play 1P Button Functions

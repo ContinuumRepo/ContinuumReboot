@@ -21,6 +21,8 @@ public class MenuBack : ButtonEvents
 	public int buttonIndex;
 
 	public GameObject Menus;
+	public AudioSource MenuMusic;
+	public AudioSource CreditsMusic;
 
 	public override void OnClick()
 	{
@@ -29,10 +31,12 @@ public class MenuBack : ButtonEvents
 		bgMenuMusicHigh.enabled = false;
 		title.SetActive (true);
 		backAudio.Play();
-		GameObject.Find ("UI").GetComponent<InputScroll> ().enabled = false;
+		//GameObject.Find ("UI").GetComponent<InputScroll> ().enabled = false;
 		Menus.SetActive (false);
 		currentMenu.SetActive (false);
 		backAnimator.Play ("MainToStart");
+		MenuMusic.UnPause ();
+		CreditsMusic.Pause ();
 	}
 
 	public override void OnEnter()
