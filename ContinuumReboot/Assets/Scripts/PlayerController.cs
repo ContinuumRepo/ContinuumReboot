@@ -125,11 +125,18 @@ public class PlayerController : MonoBehaviour
 	public float Health; 			   	   			// Current health
 	public float startingHealth = 100; 	   			// The initial starting health so the UI health bar appears filled 100%.
 	public float minHealth = 0; 	   	   			// The health amount in which the player is defeated if this or below.
-	public Image HealthImage; 		       			// The health bar.
+
+	public Image Health25;
+	public Image Health50;
+	public Image Health75;
+	public Image Health100;
+	public Image Health125;
+	public Image Health150;
+	public Image Health175;
+
 	public float vibrationAmount = 1;  	   			// The vibration amount as the player loses some health.
 	public float vibrationDuration = 0.4f; 			// The vibration duration as the player loses some health.
 	public float vibrationTime; 		   			// The actual vibration time left.
-	//public Text HealthText; 			   			// The health text value which will be in percentage.
 	public float collisionCooldown;					// How long until the collider is active again?
 
 	public Material HealthFull;
@@ -236,7 +243,13 @@ public class PlayerController : MonoBehaviour
 
 		// Gives health starting health amount.
 		Health = startingHealth;
-		HealthImage.fillAmount = Health / 100;
+		Health25.enabled = true;
+		Health50.enabled = true;
+		Health75.enabled = true;
+		Health100.enabled = true;
+		Health125.enabled = false;
+		Health150.enabled = false;
+		Health175.enabled = false;
 
 		// Timescale controller script.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
@@ -273,7 +286,7 @@ public class PlayerController : MonoBehaviour
 	void Update () 
 	{
 		UpdateCamera();
-
+		//UpdateHealth ();
 		if (!gameControllerScript.isPaused)
 		{
 			/// Movement ///
@@ -518,82 +531,151 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void UpdateHealth()
+	public void UpdateHealth()
 	{
 		// UI health fill amounts and colors.
-		HealthImage.fillAmount = Health / 100;
+
+		if (Health == 175) 
+		{
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = true;
+			Health100.enabled = true;
+			Health125.enabled = true;
+			Health150.enabled = true;
+			Health175.enabled = true;
+
+			Health25.material = HealthFull;
+			Health50.material = HealthFull;
+			Health75.material = HealthFull;
+			Health100.material = HealthFull;
+			Health125.material = HealthThreeQuarters;
+			Health150.material = HealthThreeQuarters;
+			Health175.material = HealthThreeQuarters;
+		}
+
+		if (Health == 150) 
+		{
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = true;
+			Health100.enabled = true;
+			Health125.enabled = true;
+			Health150.enabled = true;
+			Health175.enabled = false;
+
+			Health25.material = HealthFull;
+			Health50.material = HealthFull;
+			Health75.material = HealthFull;
+			Health100.material = HealthFull;
+			Health125.material = HealthThreeQuarters;
+			Health150.material = HealthThreeQuarters;
+		}
+
+		if (Health == 125) 
+		{
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = true;
+			Health100.enabled = true;
+			Health125.enabled = true;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			Health25.material = HealthFull;
+			Health50.material = HealthFull;
+			Health75.material = HealthFull;
+			Health100.material = HealthFull;
+			Health125.material = HealthThreeQuarters;
+		}
+
 
 		if (Health == 100) 
 		{
-			HealthImage.material = HealthFull;
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = true;
+			Health100.enabled = true;
+			Health125.enabled = false;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			Health25.material = HealthFull;
+			Health50.material = HealthFull;
+			Health75.material = HealthFull;
+			Health100.material = HealthFull;
+
 		}
 
 		if (Health == 75) 
 		{
-			HealthImage.material = HealthThreeQuarters;
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = true;
+			Health100.enabled = false;
+			Health125.enabled = false;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			Health25.material = HealthThreeQuarters;
+			Health50.material = HealthThreeQuarters;
+			Health75.material = HealthThreeQuarters;
 		}
 
 		if (Health == 50) 
 		{
-			HealthImage.material = HealthHalf;
+			Health25.enabled = true;
+			Health50.enabled = true;
+			Health75.enabled = false;
+			Health100.enabled = false;
+			Health125.enabled = false;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			Health25.material = HealthHalf;
+			Health50.material = HealthHalf;
 		}
 
 		if (Health == 25) 
 		{
-			HealthImage.material = HealthQuarter;
+			Health25.enabled = true;
+			Health50.enabled = false;
+			Health75.enabled = false;
+			Health100.enabled = false;
+			Health125.enabled = false;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			Health25.material = HealthQuarter;
 		}
 
-		//HealthImage.color = new Color (25 / Health, Health / 100, 0, 0.9f);
-		//HealthText.text = string.Format ("{0:0}", Mathf.Round (Health)) + "%";
-
-		if (Health > 100) 
+		if (Health > 175) 
 		{
-			Health = 100;
-		}
-
-		// Kill player
-		if (Input.GetKeyDown (KeyCode.Comma))
-		{
-			Health = 0;
+			Health = 175;
 		}
 
 		// Health at 0.
 		if (Health <= 0) 
 		{
-			PlayerMesh.enabled = false; // Turns off player mesh renderer.
-			PlayerCollider.enabled = false; // Turns off player collider.
+			Health25.enabled = false;
+			Health50.enabled = false;
+			Health75.enabled = false;
+			Health100.enabled = false;
+			Health125.enabled = false;
+			Health150.enabled = false;
+			Health175.enabled = false;
+
+			PlayerMesh.enabled = false; 				// Turns off player mesh renderer.
+			PlayerCollider.enabled = false; 			// Turns off player collider.
 			DeactivatePlayerElements.SetActive (false); // Turns off Player Game Objects.
-			gameControllerScript.StopAllCoroutines (); // Stops spawning objects and powerups.
-			GameOver (); // Triggers game Over method.
-			timeScaleControllerScript.enabled = false; // Turns off time scale controller script.
+			gameControllerScript.StopAllCoroutines ();  // Stops spawning objects and powerups.
+			GameOver (); 								// Triggers game Over method.
+			timeScaleControllerScript.enabled = false;  // Turns off time scale controller script.
 		}
 	}
 
 	private void UpdatePowerUps()
 	{
-		/*
-		PowerupMeter.fillAmount = powerupTime / powerupDurationA; // UI fill amount for powerup.
-
-		if (PowerupMeter.fillAmount >= 1 && PowerupMeter.fillAmount > 0.75f) 
-		{
-			PowerupMeter.color = Color.cyan;
-		}
-
-		if (PowerupMeter.fillAmount > 0.5f && PowerupMeter.fillAmount <= 0.75f) 
-		{
-			PowerupMeter.color = Color.green;
-		}
-
-		if (PowerupMeter.fillAmount > 0.25f && PowerupMeter.fillAmount <= 0.5f) 
-		{
-			PowerupMeter.color = Color.yellow;
-		}
-
-		if (PowerupMeter.fillAmount > 0 && PowerupMeter.fillAmount <= 0.25f) 
-		{
-			PowerupMeter.color = Color.red;
-		}*/
-
 		// No powerup.
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
@@ -916,7 +998,8 @@ public class PlayerController : MonoBehaviour
 			Time.timeScale = 0.2f;		
 		}
 
-		if (other.tag == "Barrier") {
+		if (other.tag == "Barrier") 
+		{
 			vibrationTime = vibrationDuration; // Sets vibration time to set duration.
 			camShakeScrpt.shakeAmount = shakeAmount; // Sets cam shake to shake amount.
 			camShakeScrpt.shakeDuration = shakeTime; // Sets shake duration to shake time amount.

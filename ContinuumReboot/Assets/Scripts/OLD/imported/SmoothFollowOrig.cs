@@ -113,9 +113,17 @@ public class SmoothFollowOrig : MonoBehaviour
 			
 			if (useSmoothing) 
 			{
-				newPos.x = Mathf.SmoothDamp (thisTransform.position.x, target.position.x, ref velocity.x, SMOOTH_TIME) + offset.x;
-				newPos.y = Mathf.SmoothDamp (thisTransform.position.y, target.position.y, ref velocity.y, SMOOTH_TIME) + offset.y;
-				newPos.z = Mathf.SmoothDamp (thisTransform.position.z, target.position.z, ref velocity.z, SMOOTH_TIME) + offset.z;
+				if ((target.position.x >= xMin && target.position.x <= xMax) ||
+					(target.position.y >= yMin && target.position.y <= yMax) ||
+					(target.position.z >= zMin && target.position.z <= zMax)) {
+					newPos.x = Mathf.SmoothDamp (Mathf.Clamp (thisTransform.position.x, xMin, xMax), target.position.x, ref velocity.x, SMOOTH_TIME) + offset.x;
+					newPos.y = Mathf.SmoothDamp (Mathf.Clamp (thisTransform.position.y, yMin, yMax), target.position.y, ref velocity.y, SMOOTH_TIME) + offset.y;
+					newPos.z = Mathf.SmoothDamp (Mathf.Clamp (thisTransform.position.z, zMin, zMax), target.position.z, ref velocity.z, SMOOTH_TIME) + offset.z;
+				} else { 
+					newPos.x = thisTransform.position.x;
+					newPos.y = thisTransform.position.y;
+					newPos.z = thisTransform.position.z;
+				}
 			} 
 
 			else 
