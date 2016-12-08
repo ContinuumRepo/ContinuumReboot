@@ -139,7 +139,7 @@ public class GameController : MonoBehaviour
 	void Update () 
 	{
 		// Sets fixed timestep to decrease proportionately to the timescale.
-		//Time.fixedDeltaTime = Time.timeScale * 0.01667f;
+		Time.fixedDeltaTime = Time.timeScale * 0.01667f;
 		// Fixed timestep   = time scale * 1/60;
 		// E.g 				=        0.5 / 60 = 0.00833;
 		// Since the time scale is lowered, the phyiscs update will be accurate.

@@ -305,7 +305,7 @@ public class PlayerController : MonoBehaviour
 						moveVertical = Input.GetAxis ("Mouse Y");					
 					}
 
-					Vector3 movement = new Vector3 (moveHorizontal * (1 / Time.timeScale), moveVertical * (1 / Time.timeScale), 0.0f);
+					Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
 					rb.velocity = movement * speed;
 				}
 			}
@@ -335,7 +335,7 @@ public class PlayerController : MonoBehaviour
 			{
 				float moveHorizontalA = Input.GetAxis ("Horizontal P1");
 				float moveVerticalA = Input.GetAxis ("Vertical P1");
-				Vector3 movementA = new Vector3 (moveHorizontalA * (1/Time.timeScale), moveVerticalA * (1/Time.timeScale), 0.0f);
+				Vector3 movementA = new Vector3 (moveHorizontalA, moveVerticalA, 0.0f);
 				rb.velocity = movementA * speed;
 			}
 
@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
 			{
 				float moveHorizontalB = Input.GetAxis ("Horizontal P2");
 				float moveVerticalB = Input.GetAxis ("Vertical P2");
-				Vector3 movementB = new Vector3 (moveHorizontalB * (1/Time.timeScale), moveVerticalB * (1/Time.timeScale), 0.0f);
+				Vector3 movementB = new Vector3 (moveHorizontalB, moveVerticalB, 0.0f);
 				rb.velocity = movementB * speed;
 			}
 
