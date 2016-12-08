@@ -333,23 +333,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  randomiseType: 0
+  changeTypeOverTime: 0
+  changeTime: 1
   PointType: 3
-  PointReward: 40
+  OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
+  YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
+  GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
+  CyanMaterial: {fileID: 2100000, guid: 52df8f40010213d4995ec222bfb968fc, type: 2}
+  PurpleMaterial: {fileID: 2100000, guid: 93699924f62ae2d45b4ee126861aa6fb, type: 2}
+  RedMaterial: {fileID: 2100000, guid: af065f8f8c59d054490d374e282436df, type: 2}
+  CurrentPointReward: 0
+  OrangePointReward: 150
+  YellowPointReward: 150
+  GreenPointReward: 150
+  CyanPointReward: 150
+  PurplePointReward: 150
+  RedPointReward: 150
+  OrangeExplosion: {fileID: 148528, guid: 21803ee831ba8ff459d0b94a16faa165, type: 2}
+  YellowExplosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
+  GreenExplosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
+  CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
-  orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
-  yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
-  greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
-  cyanMaterial: {fileID: 2100000, guid: 4ec17934465affa458f5d99065889eca, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
-  redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
-  ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 0
 --- !u!114 &11488848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -410,23 +423,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 0}
-  Explosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  randomiseType: 0
+  changeTypeOverTime: 0
+  changeTime: 1
   PointType: 3
-  PointReward: 40
+  OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
+  YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
+  GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
+  CyanMaterial: {fileID: 2100000, guid: 52df8f40010213d4995ec222bfb968fc, type: 2}
+  PurpleMaterial: {fileID: 2100000, guid: 93699924f62ae2d45b4ee126861aa6fb, type: 2}
+  RedMaterial: {fileID: 2100000, guid: af065f8f8c59d054490d374e282436df, type: 2}
+  CurrentPointReward: 0
+  OrangePointReward: 150
+  YellowPointReward: 150
+  GreenPointReward: 150
+  CyanPointReward: 150
+  PurplePointReward: 150
+  RedPointReward: 150
+  OrangeExplosion: {fileID: 148528, guid: 21803ee831ba8ff459d0b94a16faa165, type: 2}
+  YellowExplosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
+  GreenExplosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
+  CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
   MainEngineParticles: {fileID: 0}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
   Damage: 25
   ScoreText: {fileID: 0}
-  normalMaterial: {fileID: 2100000, guid: 250fa7fedb9db4b47a1b5adaff85046f, type: 2}
-  orangeMaterial: {fileID: 2100000, guid: 572b85918de11a64280be5ece4154a15, type: 2}
-  yellowMaterial: {fileID: 2100000, guid: d7094b4bd03f0a441aca52df5466a317, type: 2}
-  greenMaterial: {fileID: 2100000, guid: cb16913623c765e4d9bbc48e16bc4e37, type: 2}
-  cyanMaterial: {fileID: 2100000, guid: 4ec17934465affa458f5d99065889eca, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: 7ded98f5a75c6ff4c88be4eb6b4230c8, type: 2}
-  redMaterial: {fileID: 2100000, guid: 4f7743d4558829b44a84dd78fcd87785, type: 2}
   timeController: {fileID: 0}
-  ComboText: {fileID: 0}
   isBossPart: 0
+  isTutorialPart: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

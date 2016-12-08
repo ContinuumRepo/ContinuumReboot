@@ -8,36 +8,66 @@ public class PointObject : MonoBehaviour
 {
 	private PlayerController PlayerControllerScript; 		// The Player Controller script.
 	private GameController gameControllerScript; 			// The GameController script.
+
 	public MeshRenderer playerMesh;
-	public GameObject Explosion; 							// Instantiated explosion.
-	public enum type {Orange, Yellow, Green, Cyan, Purple}; // Cube types.
-	public type PointType; 									// To show above enum in inspector.
-	public float PointReward = 150;						    // Rewards the player this many points when a bullet hits it.
+
+	public bool randomiseType;
+	public bool changeTypeOverTime;
+	public float changeTime = 1.0f;
+	public enum type {Orange, Yellow, Green, Cyan, Purple, Red}; // Cube types.
+	public type PointType; 			    						 // To show above enum in inspector.
+
+	public Material OrangeMaterial;
+	public Material YellowMaterial;
+	public Material GreenMaterial;
+	public Material CyanMaterial;
+	public Material PurpleMaterial;
+	public Material RedMaterial;
+
+	[Header ("Rewarding")]
+	public float CurrentPointReward;
+	public float OrangePointReward = 150;						    // Rewards the player this many points when a bullet hits it.
+	public float YellowPointReward = 150;
+	public float GreenPointReward = 150;
+	public float CyanPointReward = 150;
+	public float PurplePointReward = 150;
+	public float RedPointReward = 150;
+
+	[Header ("Explosions")]
+	public GameObject OrangeExplosion;
+	public GameObject YellowExplosion;
+	public GameObject GreenExplosion;
+	public GameObject CyanExplosion;
+	public GameObject PurpleExplosion;
+	public GameObject RedExplosion;
+
 	public ParticleSystem MainEngineParticles; 				// Engine Particle system.
 	public GameObject PlayerExplosion; 						// The explosion when the player hits it.
 	public float Damage = 25.0f; 							// Damage amount to player.
 	public Animator ScoreText;
-	/*
-	public Material normalMaterial;
-	public Material orangeMaterial;
-	public Material yellowMaterial;
-	public Material greenMaterial;
-	public Material cyanMaterial;
-	public Material pinkMaterial;
-	public Material redMaterial;
-	*/
+
 	public TimescaleController timeController;
-	public Text ComboText;
+	//public Text ComboText;
 	public bool isBossPart;
 	public bool isTutorialPart;
 
 	void Start ()
 	{
-		ComboText = GameObject.Find ("ComboText").GetComponent<Text> ();
-		ScoreText = GameObject.FindGameObjectWithTag ("ScoreText").GetComponent<Animator> ();
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		timeController = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
-		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+		if (randomiseType == true) 
+		{
+			PointType = (type)Random.Range (0, 5);
+		}
+
+		if (changeTypeOverTime == true) 
+		{
+			InvokeRepeating ("ChangeBrickType", 0, changeTime);
+		}
+
+		//ComboText = GameObject.Find 							("ComboText").			GetComponentInChildren  <Text> ();
+		ScoreText = GameObject.FindGameObjectWithTag 			("ScoreText").			GetComponent 			<Animator> ();
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").		GetComponent 			<GameController> ();
+		timeController = GameObject.FindGameObjectWithTag 		("TimeScaleController").GetComponent 			<TimescaleController> ();
+		PlayerControllerScript = GameObject.Find 				("Player").				GetComponent 			<PlayerController>();
 
 		if (PlayerControllerScript.Health >= 25 && isTutorialPart == false) 
 		{
@@ -54,91 +84,149 @@ public class PointObject : MonoBehaviour
 		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
 	}
 
+	void Update ()
+	{
+		if (PointType == type.Orange) 
+		{
+			GetComponent<MeshRenderer> ().material = OrangeMaterial;
+			CurrentPointReward = OrangePointReward;
+		}
+
+		if (PointType == type.Yellow) 
+		{
+			GetComponent<MeshRenderer> ().material = YellowMaterial;
+			CurrentPointReward = YellowPointReward;
+		}
+
+		if (PointType == type.Green) 
+		{
+			GetComponent<MeshRenderer> ().material = GreenMaterial;
+			CurrentPointReward = GreenPointReward;
+		}
+
+		if (PointType == type.Cyan) 
+		{
+			GetComponent<MeshRenderer> ().material = CyanMaterial;
+			CurrentPointReward = CyanPointReward;
+		}
+
+		if (PointType == type.Purple) 
+		{
+			GetComponent<MeshRenderer> ().material = PurpleMaterial;
+			CurrentPointReward = PurplePointReward;
+		}
+
+		if (PointType == type.Red) 
+		{
+			GetComponent<MeshRenderer> ().material = RedMaterial;
+			CurrentPointReward = RedPointReward;
+		}
+	}
+
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.tag == "Bullet") 
 		{
-			// Creates explosion.
-			Instantiate (Explosion, transform.position, transform.rotation);
 			ScoreText.Play ("Scoretext");
 
 			// Orange brick.
 			if (PointType == type.Orange) 
 			{
-				//playerMesh.material = orangeMaterial;
-				// Turns the engine color to orange.
-				//MainEngineParticles.startColor = new Color (0.78f, 0.33f, 0, 1);
-				gameControllerScript.CurrentScore += PointReward * Time.timeScale * PlayerControllerScript.ComboN;
-				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboText.color = new Color (1, 0.5f, 0);
-				PlayerControllerScript.ComboImage.color = new Color (1, 0.5f, 0);
+				if (isTutorialPart == false) 
+				{
+					gameControllerScript.CurrentScore += OrangePointReward * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (OrangeExplosion, transform.position, transform.rotation);
+				OrangeExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				OrangeExplosion.GetComponentInChildren <Animator> ().Play (0);
+				OrangeExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0.5f, 0);
 			}
 
 			// Yellow brick.
 			if (PointType == type.Yellow) 
 			{
-				//playerMesh.material = yellowMaterial;
-				// Turns the engine color to yellow.
-				//MainEngineParticles.startColor = new Color (1, 1, 0, 1);
-				gameControllerScript.CurrentScore += PointReward * 2 * Time.timeScale * PlayerControllerScript.ComboN;
-				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboText.color = new Color (1, 1, 0);
-				PlayerControllerScript.ComboImage.color = new Color (1, 1, 0);
+				if (isTutorialPart == false) 
+				{
+					gameControllerScript.CurrentScore += YellowPointReward * 2 * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (YellowExplosion, transform.position, transform.rotation);
+				YellowExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				YellowExplosion.GetComponentInChildren <Animator> ().Play (0);
+				YellowExplosion.GetComponentInChildren <Text> ().color = new Color (1, 1, 0);
 			}
 
 			// Green brick.
 			if (PointType == type.Green) 
 			{
-				//playerMesh.material = greenMaterial;
-				// Turns the engine color to green.
-				//MainEngineParticles.startColor = new Color (0, 1, 0, 1);
-				gameControllerScript.CurrentScore += PointReward * 3 * Time.timeScale * PlayerControllerScript.ComboN;
-				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboText.color = new Color (0, 1, 0);
-				PlayerControllerScript.ComboImage.color = new Color (0, 1, 0);
+				if (isTutorialPart == false) 
+				{
+					gameControllerScript.CurrentScore += GreenPointReward * 3 * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (GreenExplosion, transform.position, transform.rotation);
+				GreenExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				GreenExplosion.GetComponentInChildren <Animator> ().Play (0);
+				GreenExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 0);
 			}
 
 			// Cyan brick.
 			if (PointType == type.Cyan) 
 			{
-				//playerMesh.material = cyanMaterial;
-				// Turns the engine color to cyan.
-				//MainEngineParticles.startColor = new Color (0, 1, 1, 1);
-				gameControllerScript.CurrentScore += PointReward * 4 * Time.timeScale * PlayerControllerScript.ComboN;
-				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboText.color = new Color (0, 1, 1);
-				PlayerControllerScript.ComboImage.color = new Color (0, 1, 1);
+				if (isTutorialPart == false)
+				{
+					gameControllerScript.CurrentScore += CyanPointReward * 4 * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (CyanExplosion, transform.position, transform.rotation);
+				CyanExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				CyanExplosion.GetComponentInChildren <Animator> ().Play (0);
+				CyanExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 1);
 			}
 
 			// Purple brick.
 			if (PointType == type.Purple) 
 			{
-				//playerMesh.material = pinkMaterial;
-				// Turns the engine color to purple.
-				//MainEngineParticles.startColor = new Color (0.39f, 0, 1, 1);
-				gameControllerScript.CurrentScore += PointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
-				PlayerControllerScript.ComboAnimation.Play (0);
-				//ComboText.color = new Color (0.9f, 0.2f, 1);
-				PlayerControllerScript.ComboImage.color = new Color (0.9f, 0.2f, 1);
+				if (isTutorialPart == false) 
+				{
+					gameControllerScript.CurrentScore += PurplePointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (PurpleExplosion, transform.position, transform.rotation);
+				PurpleExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				PurpleExplosion.GetComponentInChildren <Animator> ().Play (0);
+				PurpleExplosion.GetComponentInChildren <Text> ().color = new Color (0.9f, 0.2f, 1);
 			}
 
-			Destroy (gameObject); // Destroys the gameObject.
+			// Red brick.
+			if (PointType == type.Red) 
+			{
+				if (isTutorialPart == false) 
+				{
+					gameControllerScript.CurrentScore += RedPointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
+				}
+
+				Instantiate (RedExplosion, transform.position, transform.rotation);
+				RedExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
+				RedExplosion.GetComponentInChildren <Animator> ().Play (0);
+				RedExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0, 0);
+			}
+
+			Destroy (gameObject);
 		}
 
 		// When a brick hits the player.
 		if (other.tag == "Player") 
 		{		
-			//sunShaftsScript.sunColor = new Color (0.5f, 1, 1, 1);
-			//playerMesh.material = normalMaterial;
-
 			// If player health is greater than 25.
 			if (gameObject.tag == "Cube") 
 			{
 				if (PlayerControllerScript.Health > 25) 
 				{
 					PlayerControllerScript.OverlayTime = 2;
-					//PlayerControllerScript.Overlay.Play ("Overlay");
-					// Finds Points to destroy.
+
+					//Finds Points to destroy.
 					GameObject[] Destroyers = GameObject.FindGameObjectsWithTag ("Cube");
 					for (int i = Destroyers.Length - 1; i > 0; i--) 
 					{
@@ -160,10 +248,6 @@ public class PointObject : MonoBehaviour
 
 			if (PlayerControllerScript.Health > 25)
 			{
-				/*
-			// Desaturates screen.
-				PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
-				*/
 			}
 
 			// If player health is less than 10.
@@ -173,5 +257,10 @@ public class PointObject : MonoBehaviour
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}
 		}
+	}
+
+	public void ChangeBrickType ()
+	{
+		PointType = (type)Random.Range (0, 5);
 	}
 }

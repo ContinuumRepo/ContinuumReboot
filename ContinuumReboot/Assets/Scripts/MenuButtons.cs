@@ -55,7 +55,8 @@ public class MenuButtons : MonoBehaviour
 	public GameObject credits;
 	public Animator creditsAnimator;
 	public AudioSource creditsAudio;
-	public AudioSource backgroundMenuAudio;
+	public AudioSource backgroundMenuAudioDrums;
+	public AudioSource backgroundMenuAudioSynths;
 
 	[Header("Quit Button")]
 	public GameObject quit;
@@ -102,7 +103,8 @@ public class MenuButtons : MonoBehaviour
 		LoadingArcadeMode.SetActive (true);
 		ParentMenu.SetActive (false);
 		Camera.main.GetComponent<Animator> ().Play ("MainToSelect");
-		backgroundMenuAudio.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
+		backgroundMenuAudioDrums.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
+		backgroundMenuAudioSynths.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
 		DisableAllMenus ();
 	}
 
@@ -128,7 +130,11 @@ public class MenuButtons : MonoBehaviour
 		controls.SetActive (true);
 		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = false;
-		backgroundMenuAudio.UnPause();
+		backgroundMenuAudioDrums.UnPause();
+		backgroundMenuAudioSynths.UnPause();
+		backgroundMenuAudioDrums.volume = 0.85f;
+		backgroundMenuAudioSynths.volume = 0.85f;
+
 		creditsAudio.Pause();
 
 		multiplayer.SetActive (false);
@@ -156,7 +162,8 @@ public class MenuButtons : MonoBehaviour
 		uiConfirm.Play();
 		ParentMenu.SetActive (false);
 		Camera.main.GetComponent<Animator> ().Play ("MainToSelect");
-		backgroundMenuAudio.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
+		backgroundMenuAudioDrums.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
+		backgroundMenuAudioSynths.GetComponent<DecreaseAudioVolumeOverTime> ().enabled = true;
 		DisableAllMenus ();
 	}
 
@@ -185,7 +192,11 @@ public class MenuButtons : MonoBehaviour
 		multiplayer.SetActive (true);
 		bgMenuMusicLow.enabled = true;
 		bgMenuMusicHigh.enabled = false;
-		backgroundMenuAudio.UnPause();
+		backgroundMenuAudioDrums.UnPause();
+		backgroundMenuAudioSynths.UnPause();
+
+		backgroundMenuAudioDrums.volume = 0.85f;
+		backgroundMenuAudioSynths.volume = 0.85f;
 		creditsAudio.Pause();
 
 		controls.SetActive (false);
@@ -232,7 +243,12 @@ public class MenuButtons : MonoBehaviour
 		leaderboards.SetActive (true);
 		//bgMenuMusicLow.enabled = true;
 
-		backgroundMenuAudio.UnPause();
+		backgroundMenuAudioDrums.UnPause();
+		backgroundMenuAudioSynths.UnPause();
+
+		backgroundMenuAudioDrums.volume = 0.0f;
+		backgroundMenuAudioSynths.volume = 0.85f;
+
 		creditsAudio.Pause();
 
 		controls.SetActive (false);
@@ -274,7 +290,11 @@ public class MenuButtons : MonoBehaviour
 		settings.SetActive (true);
 		//bgMenuMusicLow.enabled = true;
 
-		backgroundMenuAudio.UnPause();
+		backgroundMenuAudioDrums.UnPause();
+		backgroundMenuAudioSynths.UnPause();
+		backgroundMenuAudioDrums.volume = 0.85f;
+		backgroundMenuAudioSynths.volume = 0.0f;
+
 		creditsAudio.Pause();
 
 		controls.SetActive (false);
@@ -316,7 +336,8 @@ public class MenuButtons : MonoBehaviour
 		credits.SetActive (true);
 		//bgMenuMusicLow.enabled = true;
 
-		backgroundMenuAudio.Pause();
+		backgroundMenuAudioDrums.Pause();
+		backgroundMenuAudioSynths.Pause();
 		creditsAudio.Play();
 
 		controls.SetActive (false);
@@ -361,7 +382,8 @@ public class MenuButtons : MonoBehaviour
 		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = true;
 
-		backgroundMenuAudio.UnPause();
+		backgroundMenuAudioDrums.UnPause();
+		backgroundMenuAudioSynths.UnPause();
 		creditsAudio.Pause();
 
 		controls.SetActive (false);

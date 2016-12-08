@@ -1,0 +1,217 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &179056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 432372}
+  - 33: {fileID: 3301730}
+  - 65: {fileID: 6555694}
+  - 23: {fileID: 2304952}
+  - 54: {fileID: 5443726}
+  - 114: {fileID: 11458092}
+  - 95: {fileID: 9595570}
+  - 114: {fileID: 11456872}
+  - 114: {fileID: 11464154}
+  - 114: {fileID: 11400548}
+  m_Layer: 9
+  m_Name: Red Brick
+  m_TagString: Cube
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432372
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2, y: -0.1, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2304952
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 99e35a7b14f112b49b3d3893e60d5252, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3301730
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &5443726
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
+--- !u!65 &6555694
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9595570
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41773630983f3204dbb237b3bd04e70e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11400548
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3623fc983bd8c42a6c3e50bc140215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xBound: {x: -100, y: 100}
+  yBound: {x: -50, y: 100}
+  zBound: {x: -100, y: 100}
+--- !u!114 &11456872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1347817507220a4384f3ff6f7c24546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveUnitsPerSecond:
+    value: {x: 0, y: -50, z: 0}
+    space: 1
+  rotateDegreesPerSecond:
+    value: {x: 0, y: 0, z: 0}
+    space: 1
+  ignoreTimescale: 0
+--- !u!114 &11458092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb29b346377a8d488d89c0b8c8b04de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: -24
+  rotationSpeed: 0
+  tweenRate: 0.1
+  isSourceBrick: 0
+  groupWidth: 0
+--- !u!114 &11464154
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMesh: {fileID: 0}
+  randomiseType: 0
+  changeTypeOverTime: 0
+  changeTime: 1
+  PointType: 5
+  OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
+  YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
+  GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
+  CyanMaterial: {fileID: 2100000, guid: 52df8f40010213d4995ec222bfb968fc, type: 2}
+  PurpleMaterial: {fileID: 2100000, guid: 93699924f62ae2d45b4ee126861aa6fb, type: 2}
+  RedMaterial: {fileID: 2100000, guid: 99e35a7b14f112b49b3d3893e60d5252, type: 2}
+  CurrentPointReward: 0
+  OrangePointReward: 150
+  YellowPointReward: 150
+  GreenPointReward: 150
+  CyanPointReward: 150
+  PurplePointReward: 150
+  RedPointReward: 150
+  OrangeExplosion: {fileID: 148528, guid: 21803ee831ba8ff459d0b94a16faa165, type: 2}
+  YellowExplosion: {fileID: 145164, guid: acc67974e0dada14e8e48876cefdad3e, type: 2}
+  GreenExplosion: {fileID: 144836, guid: 02459bd4187ab0e49b8de258ae1aa7fa, type: 2}
+  CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
+  PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
+  RedExplosion: {fileID: 107866, guid: 7e71931667063e14cba5ee8d4f6681fe, type: 2}
+  MainEngineParticles: {fileID: 0}
+  PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
+  Damage: 25
+  ScoreText: {fileID: 0}
+  timeController: {fileID: 0}
+  isBossPart: 0
+  isTutorialPart: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 179056}
+  m_IsPrefabParent: 1

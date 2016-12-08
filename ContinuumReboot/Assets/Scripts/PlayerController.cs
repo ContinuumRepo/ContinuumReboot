@@ -183,7 +183,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector]
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;	// Color Corrections image effect.
 	private CameraShake camShakeScrpt; 						 	// Camera shake attached to the main camera.
-	private Bloom bloomScript;
+	//private Bloom bloomScript;
 	public Lens LensScript; 	  								// The Lens script that is attached to the main camera.
 
 	// MISC PRIVATES AND SCRIPTS //
@@ -206,8 +206,8 @@ public class PlayerController : MonoBehaviour
 			MainCam.transform.rotation = Quaternion.identity;
 		}
 			
-		bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
-		bloomScript.bloomIntensity = normalBloomAmount;
+		//bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
+		//bloomScript.bloomIntensity = normalBloomAmount;
 
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
@@ -690,7 +690,7 @@ public class PlayerController : MonoBehaviour
 			}
 
 			fireRate = 0.25f;
-			bloomScript.bloomIntensity = normalBloomAmount;
+			//bloomScript.bloomIntensity = normalBloomAmount;
 			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 			MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 			shot = RegularShot; 							// Assigns shot which costs points.
@@ -736,7 +736,7 @@ public class PlayerController : MonoBehaviour
 		// Double shot.
 		if (CurrentPowerup == powerup.DoubleShot) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = DoubleShot;								 // Assigns free double shot powerup.
 			if (Time.timeScale > 0)
 			{
@@ -750,7 +750,7 @@ public class PlayerController : MonoBehaviour
 		if (CurrentPowerup == powerup.wifi) 
 		{
 			fireRate = 0.5f;
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = WifiShot; 								// Assigns free wifi shot powerup.
 			if (Time.timeScale > 0)
 			{
@@ -763,7 +763,7 @@ public class PlayerController : MonoBehaviour
 		// Tri shot.
 		if (CurrentPowerup == powerup.TriShot) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = TriShot; 								// Assigns free triple shot powerup.
 			if (Time.timeScale > 0)
 			{
@@ -776,7 +776,7 @@ public class PlayerController : MonoBehaviour
 		// Beam shot.
 		if (CurrentPowerup == powerup.BeamShot) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			BeamShot.SetActive (true); 						// Turns on vertical beam.
 			if (Time.timeScale > 0)
 			{
@@ -795,7 +795,7 @@ public class PlayerController : MonoBehaviour
 		// Shield.
 		if (CurrentPowerup == powerup.shield) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			Shield.SetActive (true); 						// Turns on the shield.
 			if (Time.timeScale > 0)
 			{
@@ -820,7 +820,7 @@ public class PlayerController : MonoBehaviour
 		// Horizontal beam.
 		if (CurrentPowerup == powerup.horizontalBeam) 
 		{	
-			bloomScript.bloomIntensity = powerupBloomAmount;	
+			//bloomScript.bloomIntensity = powerupBloomAmount;	
 			//HorizontalBeamIcon.SetActive (true);
 			HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 			if (Time.timeScale > 0)
@@ -838,7 +838,7 @@ public class PlayerController : MonoBehaviour
 		// Clone player.
 		if (CurrentPowerup == powerup.Clone) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			//ClonedPlayer.SetActive (true); // Turns on the clones!
 
 			if (Time.timeScale > 0)
@@ -859,7 +859,7 @@ public class PlayerController : MonoBehaviour
 		// Helix bullets.
 		if (CurrentPowerup == powerup.helix) 
 		{
-			bloomScript.bloomIntensity = powerupBloomAmount;
+			//bloomScript.bloomIntensity = powerupBloomAmount;
 			HelixObject.SetActive (true);
 
 			if (Time.timeScale > 0)

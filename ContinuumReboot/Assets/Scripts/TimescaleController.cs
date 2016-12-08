@@ -5,18 +5,7 @@ using UnityEngine.UI;
 
 public class TimescaleController : MonoBehaviour 
 {
-	public float highestTimeScale; 			// For stats screen.
 	public float timeScaleReadOnly;			// The actual value of Time.timeScale.
-	public float startTimeScale = 1.0f; 	// So there is no runtime error that timescale is below 0 at the start of the game.
-	public float timeSpeedIncreaseSens;		// Multipler to minimum time increase per frame.
-	public float addMinTime = 0.1f; 		// Minimum time scale.
-	public float timeSpeedSens; 			// Dampens change in timescale as the distance between player and reference point increase.
-	public float distance;					// y-distance from Reference point to player.
-	public Text MultiplierText;				// Multipler text UI in %.
-	private float currentTimeScale; 		// Stores calculation of timescale here.
-	private Transform referencePoint;		// Needs this to calculate.
-	public AudioSource Music;				// The main game music.
-	public float lerpPitch;
 
 	public enum calcMode
 	{
@@ -37,17 +26,35 @@ public class TimescaleController : MonoBehaviour
 	}
 
 	public mode PlayerMode;
+
+	public float highestTimeScale; 			// For stats screen.
+
+	public float startTimeScale = 1.0f; 	// So there is no runtime error that timescale is below 0 at the start of the game.
+	public float timeSpeedIncreaseSens;		// Multipler to minimum time increase per frame.
+	public float addMinTime = 0.1f; 		// Minimum time scale.
+	public float timeSpeedSens; 			// Dampens change in timescale as the distance between player and reference point increase.
+	public float distance;					// y-distance from Reference point to player.
+	public Text MultiplierText;				// Multipler text UI in %.
+	private float currentTimeScale; 		// Stores calculation of timescale here.
+	private Transform referencePoint;		// Needs this to calculate.
+	public AudioSource Music;				// The main game music.
+
+	public AudioSource BassDrums;
+	public AudioSource Synth1;
+	public AudioSource Synth2;
+	public AudioSource Synth3;
+	public AudioSource Riff;
+	public float lerpPitch;
+	public float lerpBassVol;
+	public float lerpSynth1Vol;
+	public float lerpSynth2Vol;
+	public float lerpSynth3Vol;
+	public float lerpRiffVol;
+
 	public ParticleSystem DistantStars;		// The star field particles.
 	public MeshRenderer PlayerMat; 			// The player material.
 
-
-	private Transform playerOne;		// Player one transform.
-		
-	/*
-	private Transform playerTwo;		// Player two transform.
-	private Transform playerThree;		// Player three transform.
-	private Transform playerFour;		// Player four transform.
-	*/
+	private Transform playerOne;			// Player one transform.
 
 	public void Start () 
 	{
@@ -62,39 +69,24 @@ public class TimescaleController : MonoBehaviour
 			// Finds player transform.
 			playerOne = GameObject.Find ("Player").transform; 
 		}
-
-		/*
-		if (PlayerMode == mode.twoPlayers) 
-		{
-			playerOne = GameObject.Find ("Player").transform; 
-			playerTwo = GameObject.Find ("PlayerTwo").transform;
-		}
-
-		if (PlayerMode == mode.threePlayers) 
-		{
-			playerOne = GameObject.Find ("Player").transform; 
-			playerTwo = GameObject.Find ("PlayerTwo").transform;
-			playerThree = GameObject.Find ("PlayerThree").transform;
-		}
-
-		if (PlayerMode == mode.fourPlayers) 
-		{
-			playerOne = GameObject.Find ("Player").transform; 
-			playerTwo = GameObject.Find ("PlayerTwo").transform;
-			playerThree = GameObject.Find ("PlayerThree").transform;
-			playerFour = GameObject.Find ("PlayerFour").transform;
-		}*/
 	}
 
 	public void Update () 
 	{	
+		BassDrums.volume = Mathf.Lerp (BassDrums.volume, lerpBassVol, 2 * Time.unscaledDeltaTime);
+		Synth1.volume = Mathf.Lerp (Synth1.volume, lerpSynth1Vol, 2 * Time.unscaledDeltaTime);
+		Synth2.volume = Mathf.Lerp (Synth2.volume, lerpSynth2Vol, 2 * Time.unscaledDeltaTime);
+		Synth3.volume = Mathf.Lerp (Synth3.volume, lerpSynth3Vol, 2 * Time.unscaledDeltaTime);
+		Riff.volume = Mathf.Lerp (Riff.volume, lerpRiffVol, 2 * Time.unscaledDeltaTime);
+
 		Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.unscaledDeltaTime);
 		Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
+
 		if (Time.timeScale <= 0) 
 		{
 			Time.timeScale = 0.001f;
 		}
-
+			
 		if (CalculationMode == calcMode.none) 
 		{
 			if (Time.timeScale < 1) 
@@ -105,7 +97,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 1) 
 			{
-				CalculationMode = calcMode.Distance;
+				CalculationMode = calcMode.timeScale;
 			}
 		}
 
@@ -114,16 +106,125 @@ public class TimescaleController : MonoBehaviour
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
 			Time.timeScale = distance;
 			Music.pitch = Time.timeScale;
+
+			// Stores the highest timescale value for stats.
+			if (Time.timeScale > highestTimeScale) {
+				highestTimeScale = Time.timeScale;
+			}
+
+			if (Time.timeScale < 0.5f) 
+			{
+				lerpPitch = 0.15f;
+			}
+
+			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) 
+			{
+				lerpPitch = 0.4f;
+			}
+
+			if (Time.timeScale >= 1f && Time.timeScale < 2f) 
+			{
+				lerpPitch = 1f;
+			}
+
+			if (Time.timeScale >= 2f && Time.timeScale < 3f) 
+			{
+				lerpPitch = 1.25f;
+			}
+
+			if (Time.timeScale >= 3f && Time.timeScale < 4f) 
+			{
+				lerpPitch = 1.5f;
+			}
+
+			if (Time.timeScale >= 4f) 
+			{
+				lerpPitch = 2f;
+			}
 		}
 
-		//MultiplierText.color = new Color ((43 - distance) / 43, (43 - distance) / 20, distance / 43);
-
-		DistantStars.GetComponent<ParticleSystemRenderer> ().velocityScale = Time.timeScale / 8;
-		timeScaleReadOnly = Time.timeScale; // See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
+		// See actual time.TimeScale in inspector so you dont have to always check in edit > Project Settings > Time.
+		timeScaleReadOnly = Time.timeScale;
 
 		if (PlayerMode == mode.onePlayer) 
 		{
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
+			Time.timeScale = (distance * timeSpeedSens) + addMinTime;
+		}
+			
+		if (CalculationMode == calcMode.timeScale) 
+		{
+			// Stores the highest timescale value for stats.
+			if (Time.timeScale > highestTimeScale)
+			{
+				highestTimeScale = Time.timeScale;
+			}
+
+			if (Time.timeScale < 0.5f) 
+			{
+				lerpPitch = 0.15f;
+
+				lerpBassVol = 0.5f;
+				lerpSynth1Vol = 0.0f;
+				lerpSynth2Vol = 0.0f;
+				lerpSynth3Vol = 0.0f;
+				lerpRiffVol = 0.0f;
+			}
+
+			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) 
+			{
+				lerpPitch = 0.4f;
+
+				lerpBassVol = 1.0f;
+				lerpSynth1Vol = 0.5f;
+				lerpSynth2Vol = 0.0f;
+				lerpSynth3Vol = 0.0f;
+				lerpRiffVol = 0.0f;
+			}
+
+			if (Time.timeScale >= 1f && Time.timeScale < 2f) 
+			{
+				lerpPitch = 1f;
+
+				lerpBassVol = 1.0f;
+				lerpSynth1Vol = 1f;
+				lerpSynth2Vol = 0.5f;
+				lerpSynth3Vol = 0.0f;
+				lerpRiffVol = 0.01f;
+			}
+
+			if (Time.timeScale >= 2f && Time.timeScale < 3f) 
+			{
+				lerpPitch = 1.25f;
+
+				lerpBassVol = 1.0f;
+				lerpSynth1Vol = 1f;
+				lerpSynth2Vol = 1f;
+				lerpSynth3Vol = 0.5f;
+				lerpRiffVol = 0.0f;
+			}
+
+			if (Time.timeScale >= 3f && Time.timeScale < 4f) 
+			{
+				lerpPitch = 1.5f;
+
+				lerpBassVol = 1.0f;
+				lerpSynth1Vol = 1f;
+				lerpSynth2Vol = 1f;
+				lerpSynth3Vol = 1f;
+				lerpRiffVol = 0.5f;
+			}
+
+			if (Time.timeScale >= 4f) 
+			{
+				lerpPitch = 2f;
+
+				lerpBassVol = 1.0f;
+				lerpSynth1Vol = 1.0f;
+				lerpSynth2Vol = 1.0f;
+				lerpSynth3Vol = 1.0f;
+				lerpRiffVol = 1.0f;
+			}
 		}
 
 		if (CalculationMode == calcMode.Distance) 
@@ -171,40 +272,6 @@ public class TimescaleController : MonoBehaviour
 			if (distance >= 35) 
 			{
 				lerpPitch = 1.75f;
-			}
-		}
-
-		if (CalculationMode == calcMode.timeScale) 
-		{
-			// Stores the highest timescale value for stats.
-			if (Time.timeScale > highestTimeScale) {
-				highestTimeScale = Time.timeScale;
-			}
-
-			if (Time.timeScale < 0.5f) 
-			{
-				lerpPitch = 0.15f;
-			}
-
-			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) {
-				lerpPitch = 0.4f;
-			}
-
-			if (Time.timeScale >= 1f && Time.timeScale < 2f) {
-				lerpPitch = 1f;
-			}
-
-			if (Time.timeScale >= 2f && Time.timeScale < 3f) {
-				lerpPitch = 1.25f;
-			}
-
-			if (Time.timeScale >= 3f && Time.timeScale < 4f) {
-				lerpPitch = 1.5f;
-			}
-
-			if (Time.timeScale >= 4f) 
-			{
-				lerpPitch = 2f;
 			}
 		}
 	}

@@ -49,7 +49,7 @@ public class BombScript : MonoBehaviour
 
 		if (other.tag == "Cube") 
 		{
-			Instantiate (other.gameObject.GetComponent<PointObject>().Explosion, transform.position, Quaternion.identity);
+			Instantiate (other.gameObject.GetComponent<PointObject>().OrangeExplosion, transform.position, Quaternion.identity);
 			Destroy (other.gameObject);
 		}
 
