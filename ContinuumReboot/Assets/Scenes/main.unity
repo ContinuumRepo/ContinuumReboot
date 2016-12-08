@@ -7541,6 +7541,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 155492286}
   - 82: {fileID: 155492287}
+  - 114: {fileID: 155492288}
   m_Layer: 0
   m_Name: Synth2
   m_TagString: Untagged
@@ -7635,6 +7636,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &155492288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155492285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744005b9b852c7d45995b1ed0c8f53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 1010848328}
+  slave: {fileID: 155492287}
 --- !u!1 &162497495
 GameObject:
   m_ObjectHideFlags: 0
@@ -8283,7 +8297,7 @@ MonoBehaviour:
   highestTimeScale: 0
   startTimeScale: 0.1
   timeSpeedIncreaseSens: 0.02
-  addMinTime: -0.5
+  addMinTime: -0.7
   timeSpeedSens: 0.08
   distance: 1
   MultiplierText: {fileID: 283724135}
@@ -8293,12 +8307,16 @@ MonoBehaviour:
   Synth2: {fileID: 155492287}
   Synth3: {fileID: 247604835}
   Riff: {fileID: 1816767365}
-  lerpPitch: 0
   lerpBassVol: 0
   lerpSynth1Vol: 0
   lerpSynth2Vol: 0
   lerpSynth3Vol: 0
   lerpRiffVol: 0
+  lerpBassPitch: 0
+  lerpSynth1Pitch: 0
+  lerpSynth2Pitch: 0
+  lerpSynth3Pitch: 0
+  lerpRiffPitch: 0
   DistantStars: {fileID: 602010984}
   PlayerMat: {fileID: 1484625765}
 --- !u!1 &247604833
@@ -8310,6 +8328,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 247604834}
   - 82: {fileID: 247604835}
+  - 114: {fileID: 247604836}
   m_Layer: 0
   m_Name: Synth3
   m_TagString: Untagged
@@ -8404,6 +8423,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &247604836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247604833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744005b9b852c7d45995b1ed0c8f53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 155492287}
+  slave: {fileID: 247604835}
 --- !u!1 &252001405
 GameObject:
   m_ObjectHideFlags: 0
@@ -37338,6 +37370,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1010848327}
   - 82: {fileID: 1010848328}
+  - 114: {fileID: 1010848329}
   m_Layer: 0
   m_Name: Synth1
   m_TagString: Untagged
@@ -37432,6 +37465,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1010848329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1010848326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744005b9b852c7d45995b1ed0c8f53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 1493822044}
+  slave: {fileID: 1010848328}
 --- !u!1 &1013753585
 GameObject:
   m_ObjectHideFlags: 0
@@ -41731,7 +41777,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1421124480}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 25.9, z: 400}
+  m_LocalPosition: {x: -0, y: 30, z: 400}
   m_LocalScale: {x: 1, y: 90, z: 1000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_Children: []
@@ -54081,6 +54127,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1816767366}
   - 82: {fileID: 1816767365}
+  - 114: {fileID: 1816767367}
   m_Layer: 0
   m_Name: Riff
   m_TagString: Untagged
@@ -54175,6 +54222,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1471581253}
   m_RootOrder: 14
+--- !u!114 &1816767367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1816767364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744005b9b852c7d45995b1ed0c8f53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 247604835}
+  slave: {fileID: 1816767365}
 --- !u!20 &1858121599
 Camera:
   m_ObjectHideFlags: 0

@@ -44,12 +44,18 @@ public class TimescaleController : MonoBehaviour
 	public AudioSource Synth2;
 	public AudioSource Synth3;
 	public AudioSource Riff;
-	public float lerpPitch;
+
 	public float lerpBassVol;
 	public float lerpSynth1Vol;
 	public float lerpSynth2Vol;
 	public float lerpSynth3Vol;
 	public float lerpRiffVol;
+
+	public float lerpBassPitch;
+	public float lerpSynth1Pitch;
+	public float lerpSynth2Pitch;
+	public float lerpSynth3Pitch;
+	public float lerpRiffPitch;
 
 	public ParticleSystem DistantStars;		// The star field particles.
 	public MeshRenderer PlayerMat; 			// The player material.
@@ -79,7 +85,9 @@ public class TimescaleController : MonoBehaviour
 		Synth3.volume = Mathf.Lerp (Synth3.volume, lerpSynth3Vol, 2 * Time.unscaledDeltaTime);
 		Riff.volume = Mathf.Lerp (Riff.volume, lerpRiffVol, 2 * Time.unscaledDeltaTime);
 
-		Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.unscaledDeltaTime);
+		BassDrums.pitch = Mathf.Lerp (BassDrums.volume, lerpBassPitch, 2 * Time.unscaledDeltaTime);
+
+		//Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.unscaledDeltaTime);
 		Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
 
 		if (Time.timeScale <= 0) 
@@ -114,32 +122,32 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale < 0.5f) 
 			{
-				lerpPitch = 0.15f;
+				//lerpPitch = 0.15f;
 			}
 
 			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) 
 			{
-				lerpPitch = 0.4f;
+				//lerpPitch = 0.4f;
 			}
 
 			if (Time.timeScale >= 1f && Time.timeScale < 2f) 
 			{
-				lerpPitch = 1f;
+				//lerpPitch = 1f;
 			}
 
 			if (Time.timeScale >= 2f && Time.timeScale < 3f) 
 			{
-				lerpPitch = 1.25f;
+				//lerpPitch = 1.25f;
 			}
 
 			if (Time.timeScale >= 3f && Time.timeScale < 4f) 
 			{
-				lerpPitch = 1.5f;
+				//lerpPitch = 1.5f;
 			}
 
 			if (Time.timeScale >= 4f) 
 			{
-				lerpPitch = 2f;
+				//lerpPitch = 2f;
 			}
 		}
 
@@ -162,7 +170,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale < 0.5f) 
 			{
-				lerpPitch = 0.15f;
+				lerpBassPitch = 0.1f;
 
 				lerpBassVol = 0.5f;
 				lerpSynth1Vol = 0.0f;
@@ -173,7 +181,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 0.5f && Time.timeScale < 1f) 
 			{
-				lerpPitch = 0.4f;
+				lerpBassPitch = 0.4f;
 
 				lerpBassVol = 1.0f;
 				lerpSynth1Vol = 0.5f;
@@ -184,7 +192,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 1f && Time.timeScale < 2f) 
 			{
-				lerpPitch = 1f;
+				lerpBassPitch = 1f;
 
 				lerpBassVol = 1.0f;
 				lerpSynth1Vol = 1f;
@@ -195,7 +203,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 2f && Time.timeScale < 3f) 
 			{
-				lerpPitch = 1.25f;
+				lerpBassPitch = 1.1f;
 
 				lerpBassVol = 1.0f;
 				lerpSynth1Vol = 1f;
@@ -206,7 +214,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 3f && Time.timeScale < 4f) 
 			{
-				lerpPitch = 1.5f;
+				lerpBassPitch = 1.25f;
 
 				lerpBassVol = 1.0f;
 				lerpSynth1Vol = 1f;
@@ -217,7 +225,7 @@ public class TimescaleController : MonoBehaviour
 
 			if (Time.timeScale >= 4f) 
 			{
-				lerpPitch = 2f;
+				lerpBassPitch = 1.5f;
 
 				lerpBassVol = 1.0f;
 				lerpSynth1Vol = 1.0f;
@@ -238,40 +246,40 @@ public class TimescaleController : MonoBehaviour
 			//Music.pitch = Time.timeScale;
 			if (distance < 7) 
 			{
-				lerpPitch = 0.25f;
+				//lerpPitch = 0.25f;
 			}
 
 			if (distance < 14 && distance >= 7) 
 			{
 				if (Time.timeScale < 1 || Music.pitch < 1)
 				{
-					lerpPitch = 0.5f;
+					//lerpPitch = 0.5f;
 				}
 
 				if (Time.timeScale >= 1 || Music.pitch > 1) 
 				{
-					lerpPitch = 1;
+					//lerpPitch = 1;
 				}
 			}
 
 			if (distance >= 14 && distance < 21) 
 			{
-				lerpPitch = 1f;
+				//lerpPitch = 1f;
 			}
 
 			if (distance >= 21 && distance < 28) 
 			{
-				lerpPitch = 1.25f;
+				//lerpPitch = 1.25f;
 			}
 
 			if (distance >= 28 && distance < 35) 
 			{
-				lerpPitch = 1.5f;
+				//lerpPitch = 1.5f;
 			}
 
 			if (distance >= 35) 
 			{
-				lerpPitch = 1.75f;
+				//lerpPitch = 1.75f;
 			}
 		}
 	}
