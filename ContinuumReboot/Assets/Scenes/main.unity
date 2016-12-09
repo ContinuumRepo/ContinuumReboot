@@ -8291,17 +8291,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f28d21737d4f74f43859d970096b07f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeScaleReadOnly: 0
-  CalculationMode: 3
+  CalculationMode: 0
   PlayerMode: 0
-  highestTimeScale: 0
+  timeScaleReadOnly: 1
   startTimeScale: 0.1
-  timeSpeedIncreaseSens: 0.02
+  timeSpeedIncreaseSens: 2
   addMinTime: -0.7
-  timeSpeedSens: 0.08
-  distance: 1
+  timeSpeedSens: 8
   MultiplierText: {fileID: 283724135}
-  Music: {fileID: 339966602}
   BassDrums: {fileID: 1493822044}
   Synth1: {fileID: 1010848328}
   Synth2: {fileID: 155492287}
@@ -8317,8 +8314,21 @@ MonoBehaviour:
   lerpSynth2Pitch: 0
   lerpSynth3Pitch: 0
   lerpRiffPitch: 0
-  DistantStars: {fileID: 602010984}
   PlayerMat: {fileID: 1484625765}
+  lowVolSetting: 0
+  mediumVolSetting: 0.5
+  highVolSetting: 1
+  floorPitchSetting: 0.1
+  lowPitchSetting: 0.4
+  mediumPitchSetting: 1
+  medhighPitchSetting: 1.1
+  highPitchSetting: 1.25
+  roofPitchSetting: 1.5
+  time0Layers: 0.5
+  time1Layers: 1
+  time2Layers: 2
+  time3Layers: 3
+  timeRiffLayers: 4
 --- !u!1 &247604833
 GameObject:
   m_ObjectHideFlags: 0
@@ -43887,6 +43897,7 @@ GameObject:
   - 82: {fileID: 1493822044}
   - 114: {fileID: 1493822043}
   - 114: {fileID: 1493822042}
+  - 114: {fileID: 1493822045}
   m_Layer: 0
   m_Name: BaseDrums
   m_TagString: Untagged
@@ -44009,6 +44020,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &1493822045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1493822040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744005b9b852c7d45995b1ed0c8f53cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  master: {fileID: 1493822044}
+  slave: {fileID: 1010848328}
 --- !u!1 &1502288798
 GameObject:
   m_ObjectHideFlags: 0
