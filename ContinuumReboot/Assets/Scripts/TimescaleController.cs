@@ -85,7 +85,7 @@ public class TimescaleController : MonoBehaviour
 		Synth3.volume = Mathf.Lerp (Synth3.volume, lerpSynth3Vol, 2 * Time.unscaledDeltaTime);
 		Riff.volume = Mathf.Lerp (Riff.volume, lerpRiffVol, 2 * Time.unscaledDeltaTime);
 
-		BassDrums.pitch = Mathf.Lerp (BassDrums.volume, lerpBassPitch, 2 * Time.unscaledDeltaTime);
+		BassDrums.pitch = Mathf.Lerp (BassDrums.pitch, lerpBassPitch, 2 * Time.unscaledDeltaTime);
 
 		//Music.pitch = Mathf.Lerp (Music.pitch, lerpPitch, 2 * Time.unscaledDeltaTime);
 		Time.timeScale = Mathf.Clamp (Time.timeScale, 0.05f, 10.0f);
@@ -157,7 +157,8 @@ public class TimescaleController : MonoBehaviour
 		if (PlayerMode == mode.onePlayer) 
 		{
 			distance = playerOne.transform.position.y - referencePoint.transform.position.y;
-			Time.timeScale = (distance * timeSpeedSens) + addMinTime;
+			Time.timeScale = ((distance + currentTimeScale) * timeSpeedSens) + addMinTime;
+			currentTimeScale += Time.unscaledDeltaTime * timeSpeedIncreaseSens;
 		}
 			
 		if (CalculationMode == calcMode.timeScale) 

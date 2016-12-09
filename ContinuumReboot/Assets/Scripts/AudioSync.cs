@@ -6,7 +6,7 @@ public class AudioSync : MonoBehaviour
 	public AudioSource master;
 	public AudioSource slave;
 
-	void Update () 
+	void LateUpdate () 
 	{
 		slave.timeSamples = master.timeSamples;
 	}
