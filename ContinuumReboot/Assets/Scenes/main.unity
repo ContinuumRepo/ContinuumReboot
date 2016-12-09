@@ -7335,11 +7335,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 1484625765}
+  PointType: 4
+  Damage: 25
   randomiseType: 0
   changeTypeOverTime: 1
   changeTime: 1
-  PointType: 4
+  isBossPart: 0
+  isTutorialPart: 1
   OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
   YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
   GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
@@ -7359,13 +7361,17 @@ MonoBehaviour:
   CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
-  MainEngineParticles: {fileID: 607192101}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
+  ClipNames:
+  - ComboMoveNorth
+  - ComboMoveNorthWest
+  - ComboMoveNorthEast
+  MainEngineParticles: {fileID: 607192101}
   ScoreText: {fileID: 413306267}
+  playerMesh: {fileID: 1484625765}
   timeController: {fileID: 241236807}
-  isBossPart: 0
-  isTutorialPart: 1
+  PlayerControllerScript: {fileID: 0}
+  gameControllerScript: {fileID: 0}
 --- !u!114 &134523181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10775,11 +10781,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 1484625765}
+  PointType: 2
+  Damage: 25
   randomiseType: 0
   changeTypeOverTime: 1
   changeTime: 1
-  PointType: 2
+  isBossPart: 0
+  isTutorialPart: 1
   OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
   YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
   GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
@@ -10799,13 +10807,17 @@ MonoBehaviour:
   CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
-  MainEngineParticles: {fileID: 607192101}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
+  ClipNames:
+  - ComboMoveNorth
+  - ComboMoveNorthWest
+  - ComboMoveNorthEast
+  MainEngineParticles: {fileID: 607192101}
   ScoreText: {fileID: 413306267}
+  playerMesh: {fileID: 1484625765}
   timeController: {fileID: 241236807}
-  isBossPart: 0
-  isTutorialPart: 1
+  PlayerControllerScript: {fileID: 0}
+  gameControllerScript: {fileID: 0}
 --- !u!114 &295395460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13709,11 +13721,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 1484625765}
+  PointType: 0
+  Damage: 25
   randomiseType: 0
   changeTypeOverTime: 1
   changeTime: 1
-  PointType: 0
+  isBossPart: 0
+  isTutorialPart: 1
   OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
   YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
   GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
@@ -13733,13 +13747,17 @@ MonoBehaviour:
   CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
-  MainEngineParticles: {fileID: 607192101}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
+  ClipNames:
+  - ComboMoveNorth
+  - ComboMoveNorthWest
+  - ComboMoveNorthEast
+  MainEngineParticles: {fileID: 607192101}
   ScoreText: {fileID: 413306267}
+  playerMesh: {fileID: 1484625765}
   timeController: {fileID: 241236807}
-  isBossPart: 0
-  isTutorialPart: 1
+  PlayerControllerScript: {fileID: 0}
+  gameControllerScript: {fileID: 0}
 --- !u!114 &416970078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18624,11 +18642,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 1484625765}
+  PointType: 1
+  Damage: 25
   randomiseType: 0
   changeTypeOverTime: 1
   changeTime: 1
-  PointType: 1
+  isBossPart: 0
+  isTutorialPart: 1
   OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
   YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
   GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
@@ -18648,13 +18668,17 @@ MonoBehaviour:
   CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
-  MainEngineParticles: {fileID: 607192101}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
+  ClipNames:
+  - ComboMoveNorth
+  - ComboMoveNorthWest
+  - ComboMoveNorthEast
+  MainEngineParticles: {fileID: 607192101}
   ScoreText: {fileID: 413306267}
+  playerMesh: {fileID: 1484625765}
   timeController: {fileID: 241236807}
-  isBossPart: 0
-  isTutorialPart: 1
+  PlayerControllerScript: {fileID: 0}
+  gameControllerScript: {fileID: 0}
 --- !u!114 &463133393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19277,8 +19301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camTransform: {fileID: 1058476195}
   shakeDuration: 0
-  shakeAmount: 0.5
-  decreaseFactor: 1
+  shakeAmount: 0.8
+  decreaseFactor: 1.5
 --- !u!114 &538907855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44254,11 +44278,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1260b93770cb2eb49a0579914315304b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 1484625765}
+  PointType: 3
+  Damage: 25
   randomiseType: 0
   changeTypeOverTime: 1
   changeTime: 1
-  PointType: 3
+  isBossPart: 0
+  isTutorialPart: 1
   OrangeMaterial: {fileID: 2100000, guid: 18d778d5e22498745ae3fe7859d4007f, type: 2}
   YellowMaterial: {fileID: 2100000, guid: 0e4314f0a192f1c4eaa35f1cf67de8a6, type: 2}
   GreenMaterial: {fileID: 2100000, guid: 4049e95e25a6b714b8db90f7613c19a6, type: 2}
@@ -44278,13 +44304,17 @@ MonoBehaviour:
   CyanExplosion: {fileID: 138518, guid: 8375761e69f58714b91739d764ac644b, type: 2}
   PurpleExplosion: {fileID: 123384, guid: bb42c4f27366d4747bd56e4a652c3743, type: 2}
   RedExplosion: {fileID: 171128, guid: 680e2505cf768ab469d6f24238abcd96, type: 2}
-  MainEngineParticles: {fileID: 607192101}
   PlayerExplosion: {fileID: 196276, guid: cd58c46ac69bdb1479e2451a88f24165, type: 2}
-  Damage: 25
+  ClipNames:
+  - ComboMoveNorth
+  - ComboMoveNorthWest
+  - ComboMoveNorthEast
+  MainEngineParticles: {fileID: 607192101}
   ScoreText: {fileID: 413306267}
+  playerMesh: {fileID: 1484625765}
   timeController: {fileID: 241236807}
-  isBossPart: 0
-  isTutorialPart: 1
+  PlayerControllerScript: {fileID: 0}
+  gameControllerScript: {fileID: 0}
 --- !u!114 &1508172358
 MonoBehaviour:
   m_ObjectHideFlags: 0

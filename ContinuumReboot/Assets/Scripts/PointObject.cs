@@ -5,18 +5,27 @@ using UnityStandardAssets.ImageEffects;
 using UnityEngine.UI;
 
 public class PointObject : MonoBehaviour 
-{
-	private PlayerController PlayerControllerScript; 		// The Player Controller script.
-	private GameController gameControllerScript; 			// The GameController script.
+{	
+	[Header ("Stats")]
+	public type PointType; 	
+	public enum type 
+	{
+		Orange, 
+		Yellow, 
+		Green, 
+		Cyan, 
+		Purple, 
+		Red
+	}
 
-	public MeshRenderer playerMesh;
-
+	public float Damage = 25.0f; 							// Damage amount to player if hit by player.
 	public bool randomiseType;
 	public bool changeTypeOverTime;
 	public float changeTime = 1.0f;
-	public enum type {Orange, Yellow, Green, Cyan, Purple, Red}; // Cube types.
-	public type PointType; 			    						 // To show above enum in inspector.
+	public bool isBossPart;
+	public bool isTutorialPart;
 
+	[Header ("Materials")]
 	public Material OrangeMaterial;
 	public Material YellowMaterial;
 	public Material GreenMaterial;
@@ -40,30 +49,33 @@ public class PointObject : MonoBehaviour
 	public GameObject CyanExplosion;
 	public GameObject PurpleExplosion;
 	public GameObject RedExplosion;
-
-	public ParticleSystem MainEngineParticles; 				// Engine Particle system.
 	public GameObject PlayerExplosion; 						// The explosion when the player hits it.
-	public float Damage = 25.0f; 							// Damage amount to player.
-	public Animator ScoreText;
 
+	[Header ("Explosion Text Animation Array")]
+	public string[] ClipNames;
+
+	[Header ("MISC")]
+	public ParticleSystem MainEngineParticles; 				// Engine Particle system.
+	public Animator ScoreText;
+	public MeshRenderer playerMesh;
+
+	[HideInInspector]
 	public TimescaleController timeController;
-	//public Text ComboText;
-	public bool isBossPart;
-	public bool isTutorialPart;
+	public PlayerController PlayerControllerScript; 		// The Player Controller script.
+	public GameController gameControllerScript; 			// The GameController script.
 
 	void Start ()
 	{
 		if (randomiseType == true) 
 		{
-			PointType = (type)Random.Range (0, 5);
+			PointType = (type)Random.Range (0, 4);
 		}
 
 		if (changeTypeOverTime == true) 
 		{
 			InvokeRepeating ("ChangeBrickType", 0, changeTime);
 		}
-
-		//ComboText = GameObject.Find 							("ComboText").			GetComponentInChildren  <Text> ();
+			
 		ScoreText = GameObject.FindGameObjectWithTag 			("ScoreText").			GetComponent 			<Animator> ();
 		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").		GetComponent 			<GameController> ();
 		timeController = GameObject.FindGameObjectWithTag 		("TimeScaleController").GetComponent 			<TimescaleController> ();
@@ -139,7 +151,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (OrangeExplosion, transform.position, transform.rotation);
 				OrangeExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				OrangeExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//OrangeExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				OrangeExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0.5f, 0);
 			}
 
@@ -153,7 +165,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (YellowExplosion, transform.position, transform.rotation);
 				YellowExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				YellowExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//YellowExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);;
 				YellowExplosion.GetComponentInChildren <Text> ().color = new Color (1, 1, 0);
 			}
 
@@ -167,7 +179,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (GreenExplosion, transform.position, transform.rotation);
 				GreenExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				GreenExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//GreenExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				GreenExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 0);
 			}
 
@@ -181,7 +193,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (CyanExplosion, transform.position, transform.rotation);
 				CyanExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				CyanExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//CyanExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				CyanExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 1);
 			}
 
@@ -195,7 +207,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (PurpleExplosion, transform.position, transform.rotation);
 				PurpleExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				PurpleExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//PurpleExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				PurpleExplosion.GetComponentInChildren <Text> ().color = new Color (0.9f, 0.2f, 1);
 			}
 
@@ -209,7 +221,7 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (RedExplosion, transform.position, transform.rotation);
 				RedExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				RedExplosion.GetComponentInChildren <Animator> ().Play (0);
+				//RedExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				RedExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0, 0);
 			}
 

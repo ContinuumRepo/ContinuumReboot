@@ -81,18 +81,6 @@ public class PlayerController : MonoBehaviour
 	public GameObject HelixObject;				// Helix powerup.
 	public GameObject WifiShot;					// Wifi shot.
 
-	/*
-	[Header ("Powerup Icons")]
-	public GameObject DoubleShotIcon; 			// The UI for the double shot powerup.
-	public GameObject TriShotIcon; 				// The UI for the tri shot powerup.
-	public GameObject BeamShotIcon; 			// The UI for the beam shot powerup.
-	public GameObject ShieldIcon; 				// The UI for the shield powerup.
-	public GameObject HorizontalBeamIcon; 		// The UI for the horizontal beam powerup.
-	public GameObject CloneIcon; 				// The UI for the clone player powerup.
-	public GameObject HelixIcon; 				// The UI for the helix player powerup.
-	public GameObject WifiIcon; 				// The UI for the wifi player powerup.
-	public GameObject ThreeDIcon; 				// The UI for the 3D perspective powerup.
-	*/
 	public Canvas MainCanvas;					// Where most of the UI is (in camera space).
 	public bool isClone; 						// Is this script attached to this gameObject a clone?
 
@@ -183,7 +171,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector]
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;	// Color Corrections image effect.
 	private CameraShake camShakeScrpt; 						 	// Camera shake attached to the main camera.
-	//private Bloom bloomScript;
+	private Bloom bloomScript;
 	public Lens LensScript; 	  								// The Lens script that is attached to the main camera.
 
 	// MISC PRIVATES AND SCRIPTS //
