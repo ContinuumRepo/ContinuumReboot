@@ -17,10 +17,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 	[Header ("Movement")]
-	public float 	  speed = 10.0f; 								// The overall speed the player can move (sensitivity).
-	public float 	  tilt = 0.0f;  									// The amount the player can tilt (default = 0).
+	public float 	  speed = 10.0f; 			// The overall speed the player can move (sensitivity).
+	public float 	  tilt = 0.0f;  			// The amount the player can tilt (default = 0).
 	public bool 	  useKeyboardControls;
-	private Rigidbody rb; 										// The attached rigidbody component.
+	private Rigidbody rb; 						// The attached rigidbody component.
 
 	[Header ("Boundary")]
 	public float xBoundLower;
@@ -30,9 +30,9 @@ public class PlayerController : MonoBehaviour
 	public float zBound = 0;
 
 	[Header ("Shooting")]
-	public GameObject shot; 									// The main shot GameObject.
-	public Transform  shotSpawn; 								// Where the shot will be placed when instantiated.
-	public float 	  fireRate;	    								// Time between bullets before a new one is instantiated.
+	public GameObject shot; 					// The main shot GameObject.
+	public Transform  shotSpawn; 				// Where the shot will be placed when instantiated.
+	public float 	  fireRate;	    			// Time between bullets before a new one is instantiated.
 	private float	  nextFire; 
 	public float 	  altfireRate;
 	private float 	  altnextFire;
@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour
 	public GameObject AltFireIndicator;
 
 	[Header ("Powerups")]
-	public float   powerupTime = 0; 								// The current powerup time left.
+	public float   powerupTime = 0; 			// The current powerup time left.
 	public powerup CurrentPowerup;
-	public enum powerup 										// The different types of powerups.
+	public enum powerup 						// The different types of powerups.
 	{
 		RegularShot, 
 		DoubleShot, 
@@ -92,8 +92,8 @@ public class PlayerController : MonoBehaviour
 	public float powerupDurationE = 12.0f;
 	public float powerupDurationF = 30.0f;
 
-	public AudioSource 	  powerupTimeRunningOut; 		// The audio source to play as there is a few seconds left of the powerup.
-	public AudioSource    powerupDeactivateAudio;	    // The audio source to play as the powerup time runs out.
+	public AudioSource 	  powerupTimeRunningOut; 	// The audio source to play as there is a few seconds left of the powerup.
+	public AudioSource    powerupDeactivateAudio;	// The audio source to play as the powerup time runs out.
 	public ParticleSystem ActivePowerupParticles;   // Plays particle system if powerup is active.
 	public ParticleSystem TimeRunningOutParticles;  // Plays particle system if powerup is running out.
 
@@ -134,30 +134,30 @@ public class PlayerController : MonoBehaviour
 	public float 		 OverlayTime;
 
 	[Header ("Game Over")]
-	public bool 		 initialPart; 						// Is the GameOver state in its initial sequence.
-	public float		 initialTimeScale = 0.1f; 			// The Time.timeScale in the GameOver initial sequence.
-	public float 		 slowTimeDuration = 3.0f; 			// How long does the initial sequence go for?
-	public float 		 slowTimeRemaining = 0.0f; 			// The actual time left of the initial GameOver sequence.
-	public float 		 TimeSlowingSpeed = 0.1f; 			// The rate which the Time.timeScale decreases.
-	public float 		 minTimeScale = 0.0f; 				// The minimum timescale which Time.timeScale should be greater.
-	public AudioSource   BGMMusic; 							// The main game music.
-	public GameObject	 PressToContinue; 					// The initial UI "Press A to view stats".
-	public GameObject	 DeactivatePlayerElements; 			// The GameObjects to deactivate once the player is defeated.
-	public AudioSource   GameOverSound; 					// The GameOver Sound effect.
-	public AudioSource   GameOverLoop; 						// The defeated Game Over music loop.
-	public GameObject 	 gameOverExplosion; 				// The Awesome particle system for the Game Over.
+	public bool 		 initialPart; 				// Is the GameOver state in its initial sequence.
+	public float		 initialTimeScale = 0.1f; 	// The Time.timeScale in the GameOver initial sequence.
+	public float 		 slowTimeDuration = 3.0f; 	// How long does the initial sequence go for?
+	public float 		 slowTimeRemaining = 0.0f; 	// The actual time left of the initial GameOver sequence.
+	public float 		 TimeSlowingSpeed = 0.1f; 	// The rate which the Time.timeScale decreases.
+	public float 		 minTimeScale = 0.0f; 		// The minimum timescale which Time.timeScale should be greater.
+	public AudioSource   BGMMusic; 					// The main game music.
+	public GameObject	 PressToContinue; 			// The initial UI "Press A to view stats".
+	public GameObject	 DeactivatePlayerElements; 	// The GameObjects to deactivate once the player is defeated.
+	public AudioSource   GameOverSound; 			// The GameOver Sound effect.
+	public AudioSource   GameOverLoop; 				// The defeated Game Over music loop.
+	public GameObject 	 gameOverExplosion; 		// The Awesome particle system for the Game Over.
 
 	[Header ("Audio")]
-	public AudioLowPassFilter  BgmLowFilter;				// Low pass filter for the main music.
-	public AudioHighPassFilter BgmHighFilter;				// High pass filter for the main music.
+	public AudioLowPassFilter  BgmLowFilter;		// Low pass filter for the main music.
+	public AudioHighPassFilter BgmHighFilter;		// High pass filter for the main music.
 
 	[Header ("Main Camera attributes")]
 	public GameObject MainCam;
 	public float 	  normalBloomAmount = 0.1f;
 	public float 	  powerupBloomAmount = 0.3f;
-	private bool 	  playedGameOverSound; 					// Has the game over sound been played?
-	public float 	  shakeTime = 0.5f;						// Time to shake the camera.
-	public float 	  shakeAmount = 1.0f; 					// How hard the shake is on the camera.
+	private bool 	  playedGameOverSound; 			// Has the game over sound been played?
+	public float 	  shakeTime = 0.5f;				// Time to shake the camera.
+	public float 	  shakeAmount = 1.0f; 			// How hard the shake is on the camera.
 	public LayerMask  layermask;
 	public LayerMask  allLayers;
 	public GameObject Shafts;
@@ -169,15 +169,16 @@ public class PlayerController : MonoBehaviour
 	public Lens 				 LensScript; 	  			// The Lens script that is attached to the main camera.
 
 	// MISC PRIVATES AND SCRIPTS //
-	private GameController 		gameControllerScript; 			  	// GameController component.
-	private TimescaleController timeScaleControllerScript;    	// TimeScale Controller component.
-	private MeshCollider 		PlayerCollider; 					  	// Collider for the player.
-	private MeshRenderer	    PlayerMesh; 						 	// MeshRenderer for the player.
+	private GameController 		gameControllerScript; 		// GameController component.
+	private TimescaleController timeScaleControllerScript;  // TimeScale Controller component.
+	private MeshCollider 		PlayerCollider; 			// Collider for the player.
+	private MeshRenderer	    PlayerMesh; 				// MeshRenderer for the player.
 
 	void Start () 
 	{
+		FindComponents ();
 		Camera.main.orthographicSize = 0.1f;
-		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
+
 		OverlayTime = 0;
 		OverlayIntensity = -0.15f;
 		ComboTime = 0;
@@ -187,42 +188,12 @@ public class PlayerController : MonoBehaviour
 		{
 			MainCam.transform.rotation = Quaternion.identity;
 		}
-			
-		//bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
-		//bloomScript.bloomIntensity = normalBloomAmount;
 
 		BgmHighFilter.enabled = false;
 		BgmLowFilter.enabled = false;
 
-		/*
-		// Turns off powerup icons.
-		DoubleShotIcon.SetActive (false);
-		BeamShotIcon.SetActive (false);
-		TriShotIcon.SetActive (false);
-		ShieldIcon.SetActive (false);
-		HorizontalBeamIcon.SetActive (false);
-		CloneIcon.SetActive (false);
-		HelixIcon.SetActive (false);
-		WifiIcon.SetActive (false);
-		ThreeDIcon.SetActive (false);
-		*/
 		MainCanvas.worldCamera = Camera.main;
-
-		// Finds the rigidbody this script is attached to.
-		rb = GetComponent<Rigidbody> ();
-
-		// Finds Game Controller script.
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-
-		// Finds Player Mesh Collider (note collider and mesh comonents are two different GameObjects).
-		PlayerCollider = GameObject.Find ("Collider").GetComponent<MeshCollider>();
-
-		// Finds Player Mesh Renderer
-		if (isClone == false) 
-		{
-			PlayerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
-		}
-
+	
 		// Gives health starting health amount.
 		Health = startingHealth;
 		Health25.enabled = true;
@@ -232,20 +203,7 @@ public class PlayerController : MonoBehaviour
 		Health125.enabled = false;
 		Health150.enabled = false;
 		Health175.enabled = false;
-
-		// Timescale controller script.
-		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
-
-		// Finds color correction curves script.
-		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
-
-		// Finds Camera Shake script.
-		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true && isClone == false) 
-		{
-			camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
-			LensScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Lens> ();
-		}
-
+	
 		// Start powerup conditions.
 		CurrentPowerup = powerup.RegularShot;
 		BeamShot.SetActive (false);
@@ -261,8 +219,6 @@ public class PlayerController : MonoBehaviour
 		AltFire.SetActive (false);
 		AltFireMode = altmode.no;
 		AltFireImage.fillAmount = 1;
-
-		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
 	}
 
 	void Update () 
@@ -1065,5 +1021,44 @@ public class PlayerController : MonoBehaviour
 				PressToContinue.SetActive (true); // Turns off press to continue UI.
 			}
 		}
+	}
+
+	void FindComponents ()
+	{
+		ScreenOverlayScript = Camera.main.GetComponent<ScreenOverlay> ();
+
+		// Finds the rigidbody this script is attached to.
+		rb = GetComponent<Rigidbody> ();
+
+		// Finds Game Controller script.
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+
+		// Finds Player Mesh Collider (note collider and mesh comonents are two different GameObjects).
+		PlayerCollider = GameObject.Find ("Collider").GetComponent<MeshCollider>();
+
+		// Finds Player Mesh Renderer
+		if (isClone == false) 
+		{
+			PlayerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
+		}
+
+		// Timescale controller script.
+		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
+
+		// Finds color correction curves script.
+		ColorCorrectionCurvesScript = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ColorCorrectionCurves>();
+
+		// Finds Camera Shake script.
+		if (GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ().enabled == true && isClone == false) 
+		{
+			camShakeScrpt = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
+			LensScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Lens> ();
+		}
+
+		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
+
+		//bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
+		//bloomScript.bloomIntensity = normalBloomAmount;
+
 	}
 }

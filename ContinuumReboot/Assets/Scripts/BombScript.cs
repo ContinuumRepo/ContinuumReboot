@@ -4,43 +4,21 @@ using UnityStandardAssets.Utility;
 
 public class BombScript : MonoBehaviour 
 {
-	private AutoMoveAndRotate moveScript;
-	public enum bombMode {left, right, slowLeft, slowRight}
-	public bombMode BombMode;
-	private PlayerController PlayerControllerScript;
 	public int Damage = 25;
+	public Vector2 MoveRange;
+	private PlayerController PlayerControllerScript;
+
 	public GameObject PlayerExplosion;
 	public GameObject BombExplosion;
+
+	private AutoMoveAndRotate moveScript;
 
 	void Start () 
 	{
 		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
 		moveScript = GetComponent<AutoMoveAndRotate> ();
 
-		if (BombMode == bombMode.left)
-		{
-			moveScript.moveUnitsPerSecond.value = new Vector3 (-1, 0, 0); 
-		}
-
-		if (BombMode == bombMode.right) 
-		{
-			moveScript.moveUnitsPerSecond.value = new Vector3 (1, 0, 0);
-		}
-
-		if (BombMode == bombMode.slowLeft) 
-		{
-			moveScript.moveUnitsPerSecond.value = new Vector3 (-2, 1, 0);
-		}
-
-		if (BombMode == bombMode.slowRight) 
-		{
-			moveScript.moveUnitsPerSecond.value = new Vector3 (2, 1, 0);
-		}
-	}
-		
-	void Update () 
-	{
-	
+		moveScript.moveUnitsPerSecond.value = new Vector3 (Random.Range (-MoveRange.x, MoveRange.x), Random.Range (-MoveRange.y, MoveRange.y), 0); 
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -56,7 +34,6 @@ public class BombScript : MonoBehaviour
 		if (other.tag == "Bullet" || other.name == "HorizontalBeam" || other.name == "Shield" || other.name == "GreenBeam" || 
 			other.name == "AltFire (no cost)" || other.name == "HelixLeft" || other.name == "HelixRight") 
 		{
-			//Destroy (other.gameObject);
 			Destroy (gameObject);
 		}
 			
@@ -81,9 +58,8 @@ public class BombScript : MonoBehaviour
 			// Gives damage to player.
 			PlayerControllerScript.Health -= Damage;
 
-			// Desaturates screen.
-			//PlayerControllerScript.ColorCorrectionCurvesScript.saturation = 0;
 			PlayerControllerScript.OverlayTime = 2;
+
 			// If player health is less than 10.
 			if (PlayerControllerScript.Health <= 10) 
 			{
@@ -91,7 +67,5 @@ public class BombScript : MonoBehaviour
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}
 		}
-
-		//Destroy (gameObject);
 	}
 }

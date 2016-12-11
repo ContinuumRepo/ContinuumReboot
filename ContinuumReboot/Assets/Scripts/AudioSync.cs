@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// Syncronizes audio source with another audio source.
+
+using UnityEngine;
 using System.Collections;
 
 public class AudioSync : MonoBehaviour 

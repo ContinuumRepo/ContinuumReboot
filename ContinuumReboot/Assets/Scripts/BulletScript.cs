@@ -31,7 +31,7 @@ public class BulletScript : MonoBehaviour
 	public float newSpeed = -70.0f; 						// New speed when ricoshet.
 
 	[Header ("Misc")]
-	public float VibrationTime = 0.04f;  					// How long should the vibrationh occur
+	public float VibrationTime = 0.04f;  					// How long should the vibration occur?
 	public bool useMutedBullet;								// Is the bullet (no cost) without sound?
 
 	private PlayerController playerControllerScript;		// Player Controller script component.
@@ -40,36 +40,16 @@ public class BulletScript : MonoBehaviour
 
 	void Start () 
 	{
-		// Finds scripts.
-		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
-		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
-		camShakeScript = Camera.main.GetComponent<CameraShake> ();
-
-		camShakeScript.shakeDuration = InitialShakeDuration / 3;
-		camShakeScript.shakeAmount = InitialShakeStrength / 3;
-		ComboNN = playerControllerScript.ComboN;
+		FindComponents ();
+		SetCamShakeSettings ();
+		SetCombo ();
+	
 		VibrationTime = 0.04f;
 
 		if (BulletType == bulletType.mutedShot) 
 		{
 			GetComponent<BoxCollider> ().enabled = true;
 		}
-			
-		if (playerControllerScript.ComboTime > 0.1f) 
-		{
-			playerControllerScript.ComboTime -= 0.1f;
-		}
-
-		ComboAudio[0] = GameObject.FindGameObjectWithTag ("ComboAudioZero").GetComponent<AudioSource>();
-		ComboAudio[1] = GameObject.FindGameObjectWithTag ("ComboAudioOne").GetComponent<AudioSource>();
-		ComboAudio[2] = GameObject.FindGameObjectWithTag ("ComboAudioTwo").GetComponent<AudioSource>();
-		ComboAudio[3] = GameObject.FindGameObjectWithTag ("ComboAudioThree").GetComponent<AudioSource>();
-		ComboAudio[4] = GameObject.FindGameObjectWithTag ("ComboAudioFour").GetComponent<AudioSource>();
-		ComboAudio[5] = GameObject.FindGameObjectWithTag ("ComboAudioFive").GetComponent<AudioSource>();
-		ComboAudio[6] = GameObject.FindGameObjectWithTag ("ComboAudioSix").GetComponent<AudioSource>();
-		ComboAudio[7] = GameObject.FindGameObjectWithTag ("ComboAudioSeven").GetComponent<AudioSource>();
-		ComboAudio[8] = GameObject.FindGameObjectWithTag ("ComboAudioEight").GetComponent<AudioSource>();
-		ComboAudio[9] = GameObject.FindGameObjectWithTag ("ComboAudioNine").GetComponent<AudioSource>();
 	}
 
 	void Update ()
@@ -206,6 +186,40 @@ public class BulletScript : MonoBehaviour
 		if (ComboNN > 10) 
 		{
 			ComboNN = 10;
+		}
+	}
+
+	void FindComponents ()
+	{
+		MoveAndRotateScript = GetComponent<AutoMoveAndRotate> ();
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+		camShakeScript = Camera.main.GetComponent<CameraShake> ();
+
+		ComboAudio[0] = GameObject.FindGameObjectWithTag ("ComboAudioZero").GetComponent<AudioSource>();
+		ComboAudio[1] = GameObject.FindGameObjectWithTag ("ComboAudioOne").GetComponent<AudioSource>();
+		ComboAudio[2] = GameObject.FindGameObjectWithTag ("ComboAudioTwo").GetComponent<AudioSource>();
+		ComboAudio[3] = GameObject.FindGameObjectWithTag ("ComboAudioThree").GetComponent<AudioSource>();
+		ComboAudio[4] = GameObject.FindGameObjectWithTag ("ComboAudioFour").GetComponent<AudioSource>();
+		ComboAudio[5] = GameObject.FindGameObjectWithTag ("ComboAudioFive").GetComponent<AudioSource>();
+		ComboAudio[6] = GameObject.FindGameObjectWithTag ("ComboAudioSix").GetComponent<AudioSource>();
+		ComboAudio[7] = GameObject.FindGameObjectWithTag ("ComboAudioSeven").GetComponent<AudioSource>();
+		ComboAudio[8] = GameObject.FindGameObjectWithTag ("ComboAudioEight").GetComponent<AudioSource>();
+		ComboAudio[9] = GameObject.FindGameObjectWithTag ("ComboAudioNine").GetComponent<AudioSource>();
+	}
+
+	void SetCamShakeSettings ()
+	{
+		camShakeScript.shakeDuration = InitialShakeDuration / 3;
+		camShakeScript.shakeAmount = InitialShakeStrength / 3;
+	}
+
+	void SetCombo ()
+	{
+		ComboNN = playerControllerScript.ComboN;
+
+		if (playerControllerScript.ComboTime > 0.1f) 
+		{
+			playerControllerScript.ComboTime -= 0.1f;
 		}
 	}
 }

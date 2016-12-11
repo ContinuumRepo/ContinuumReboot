@@ -18,7 +18,7 @@ public class PointObject : MonoBehaviour
 		Red
 	}
 
-	public float Damage = 25.0f; 							// Damage amount to player if hit by player.
+	public float Damage = 25.0f; 			// Damage amount to player if hit by player.
 	public bool randomiseType;
 	public bool changeTypeOverTime;
 	public float changeTime = 1.0f;
@@ -35,7 +35,7 @@ public class PointObject : MonoBehaviour
 
 	[Header ("Rewarding")]
 	public float CurrentPointReward;
-	public float OrangePointReward = 150;						    // Rewards the player this many points when a bullet hits it.
+	public float OrangePointReward = 150;	// Rewards the player this many points when a bullet hits it.
 	public float YellowPointReward = 150;
 	public float GreenPointReward = 150;
 	public float CyanPointReward = 150;
@@ -49,23 +49,25 @@ public class PointObject : MonoBehaviour
 	public GameObject CyanExplosion;
 	public GameObject PurpleExplosion;
 	public GameObject RedExplosion;
-	public GameObject PlayerExplosion; 						// The explosion when the player hits it.
+	public GameObject PlayerExplosion; 		// The explosion when the player hits it.
 
 	[Header ("Explosion Text Animation Array")]
 	public string[] ClipNames;
 
 	[Header ("MISC")]
-	public ParticleSystem MainEngineParticles; 				// Engine Particle system.
+	public ParticleSystem MainEngineParticles; 		// Engine Particle system.
 	public Animator ScoreText;
 	public MeshRenderer playerMesh;
 
 	[HideInInspector]
 	public TimescaleController timeController;
-	public PlayerController PlayerControllerScript; 		// The Player Controller script.
-	public GameController gameControllerScript; 			// The GameController script.
+	public PlayerController PlayerControllerScript; // The Player Controller script.
+	public GameController gameControllerScript; 	// The GameController script.
 
 	void Start ()
 	{
+		FindComponents ();
+
 		if (randomiseType == true) 
 		{
 			PointType = (type)Random.Range (0, 4);
@@ -76,24 +78,10 @@ public class PointObject : MonoBehaviour
 			InvokeRepeating ("ChangeBrickType", 0, changeTime);
 		}
 			
-		ScoreText = GameObject.FindGameObjectWithTag 			("ScoreText").			GetComponent 			<Animator> ();
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").		GetComponent 			<GameController> ();
-		timeController = GameObject.FindGameObjectWithTag 		("TimeScaleController").GetComponent 			<TimescaleController> ();
-		PlayerControllerScript = GameObject.Find 				("Player").				GetComponent 			<PlayerController>();
-
-		if (PlayerControllerScript.Health >= 25 && isTutorialPart == false) 
-		{
-			playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
-		}
-
 		if (PlayerControllerScript.Health < 25 && isTutorialPart == false) 
 		{
 			Destroy (gameObject);
 		}
-
-		// Finding the main engine particle system GameObject.
-		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
-		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
 	}
 
 	void Update ()
@@ -151,7 +139,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (OrangeExplosion, transform.position, transform.rotation);
 				OrangeExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//OrangeExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				OrangeExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0.5f, 0);
 			}
 
@@ -165,7 +152,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (YellowExplosion, transform.position, transform.rotation);
 				YellowExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//YellowExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);;
 				YellowExplosion.GetComponentInChildren <Text> ().color = new Color (1, 1, 0);
 			}
 
@@ -179,7 +165,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (GreenExplosion, transform.position, transform.rotation);
 				GreenExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//GreenExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				GreenExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 0);
 			}
 
@@ -193,7 +178,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (CyanExplosion, transform.position, transform.rotation);
 				CyanExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//CyanExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				CyanExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 1);
 			}
 
@@ -207,7 +191,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (PurpleExplosion, transform.position, transform.rotation);
 				PurpleExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//PurpleExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				PurpleExplosion.GetComponentInChildren <Text> ().color = new Color (0.9f, 0.2f, 1);
 			}
 
@@ -221,7 +204,6 @@ public class PointObject : MonoBehaviour
 
 				Instantiate (RedExplosion, transform.position, transform.rotation);
 				RedExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
-				//RedExplosion.GetComponentInChildren <Animator> ().Play (ClipNames [Random.Range (0, 2)]);
 				RedExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0, 0);
 			}
 
@@ -274,5 +256,22 @@ public class PointObject : MonoBehaviour
 	public void ChangeBrickType ()
 	{
 		PointType = (type)Random.Range (0, 5);
+	}
+
+	void FindComponents ()
+	{
+		ScoreText = GameObject.FindGameObjectWithTag 			("ScoreText").			GetComponent 			<Animator> ();
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").		GetComponent 			<GameController> ();
+		timeController = GameObject.FindGameObjectWithTag 		("TimeScaleController").GetComponent 			<TimescaleController> ();
+		PlayerControllerScript = GameObject.Find 				("Player").				GetComponent 			<PlayerController>();
+
+		// Finding the main engine particle system GameObject.
+		GameObject MainEngine = GameObject.FindGameObjectWithTag ("MainEngine");
+		MainEngineParticles = MainEngine.GetComponent<ParticleSystem> ();
+
+		if (PlayerControllerScript.Health >= 25 && isTutorialPart == false) 
+		{
+			playerMesh = GameObject.FindGameObjectWithTag ("PlayerMesh").GetComponent<MeshRenderer> ();
+		}
 	}
 }
