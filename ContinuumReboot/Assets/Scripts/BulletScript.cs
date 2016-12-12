@@ -50,6 +50,13 @@ public class BulletScript : MonoBehaviour
 		{
 			GetComponent<BoxCollider> ().enabled = true;
 		}
+
+		/*
+		if (BulletType == bulletType.shield) 
+		{
+			GetComponent<Animator> ().Play ("ShieldEntry");
+		}
+		*/
 	}
 
 	void Update ()

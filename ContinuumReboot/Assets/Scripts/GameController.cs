@@ -391,10 +391,11 @@ public class GameController : MonoBehaviour
 
 			if (Input.GetKeyDown (KeyCode.Alpha7)) 
 			{
+				GameObject.Find ("Shield").GetComponent<Animator> ().Play ("ShieldEntry");
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				CheatSound.Play ();
 				CheatActivatedAnim.Play ("CheatActivated");
-				Debug.Log ("You pressed '7' and powerup is helix.");
+				Debug.Log ("You pressed '7' and powerup is shield.");
 			}
 
 			if (Input.GetKeyDown (KeyCode.Alpha8)) 
@@ -402,7 +403,7 @@ public class GameController : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.helix;
 				CheatSound.Play ();
 				CheatActivatedAnim.Play ("CheatActivated");
-				Debug.Log ("You pressed '8' and powerup is shield.");
+				Debug.Log ("You pressed '8' and powerup is helix.");
 			}
 
 			if (Input.GetKeyDown (KeyCode.Alpha9)) 

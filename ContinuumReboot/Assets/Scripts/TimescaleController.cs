@@ -161,7 +161,7 @@ public class TimescaleController : MonoBehaviour
 				lerpRiffVol = lowVolSetting;
 			}
 
-			if (Time.timeScale >= time1Layers && Time.timeScale < time3Layers) 
+			if (Time.timeScale >= time2Layers && Time.timeScale < time3Layers) 
 			{
 				lerpBassPitch = medhighPitchSetting;
 

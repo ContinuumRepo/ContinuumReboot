@@ -39,15 +39,6 @@ public class PowerupScript : MonoBehaviour
 	{
 		if (other.tag == "Player" || other.tag == "Bullet") 
 		{
-			/// <summary> ///
-			/// if powerup type == X powerup
-			/// set powerup time duration
-			/// change powerup type in player script
-			/// Instantiate explosion
-			/// Turn on powerup particles on player
-			/// Destroy this gameObject
-			/// </summary>> ///
-
 			if (PowerupType == poweruptype.health) 
 			{
 				playerControllerScript.Health += 25;
@@ -84,6 +75,7 @@ public class PowerupScript : MonoBehaviour
 
 			if (PowerupType == poweruptype.shield) 
 			{
+				GameObject.Find ("Shield").GetComponent<Animator> ().Play ("ShieldEntry");
 				playerControllerScript.powerupTime = playerControllerScript.powerupDurationD;
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.shield;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));

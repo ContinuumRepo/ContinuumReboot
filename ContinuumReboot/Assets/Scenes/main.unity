@@ -8199,7 +8199,7 @@ MonoBehaviour:
   mediumVolSetting: 0.5
   highVolSetting: 1
   floorPitchSetting: 0.1
-  lowPitchSetting: 0.4
+  lowPitchSetting: 0.6
   mediumPitchSetting: 1
   medhighPitchSetting: 1.1
   highPitchSetting: 1.25
@@ -30549,7 +30549,7 @@ Transform:
   m_GameObject: {fileID: 766750761}
   m_LocalRotation: {x: -0.000000115202326, y: 0.7071067, z: -0.7071068, w: -0.00000011520231}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_LocalEulerAnglesHint: {x: 89.980194, y: -180, z: 0}
   m_Children:
   - {fileID: 2044216241}
@@ -30630,7 +30630,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 239fbc6304550854882dbe4fd0ccc7df, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

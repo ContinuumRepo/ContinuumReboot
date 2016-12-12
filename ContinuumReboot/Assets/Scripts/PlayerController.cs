@@ -231,10 +231,8 @@ public class PlayerController : MonoBehaviour
 				// When the player presses altfire while bar is greater than 0
 				if (SpecialAbility == ability.Emp) 
 				{
-					Shield.SetActive (true);
-					//AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-					//AltFire.GetComponent<AudioSource> ().Play ();
 					AbilityActive = abilityActive.yes;
+					PlayerCollider.enabled = false;
 				}
 			}
 
@@ -247,7 +245,6 @@ public class PlayerController : MonoBehaviour
 				{
 					AbilityActive = abilityActive.no;
 					Shield.GetComponent<Animator> ().Play ("ShieldExit");
-					//Shield.SetActive (false);
 				}
 			}
 
@@ -270,9 +267,9 @@ public class PlayerController : MonoBehaviour
 			rb.position = new Vector3 (rb.position.x, rb.position.y, 0);
 
 			// Player boundaries
-			GetComponent<Rigidbody> ().position = new Vector3 (
-				Mathf.Clamp (rb.position.x, xBoundLower, xBoundUpper),
-				Mathf.Clamp (rb.position.y, yBoundLower, yBoundUpper),
+			GetComponent<Transform> ().position = new Vector3 (
+				Mathf.Clamp (GetComponent<Transform> ().position.x, xBoundLower, xBoundUpper),
+				Mathf.Clamp (GetComponent<Transform> ().position.y, yBoundLower, yBoundUpper),
 				zBound		
 			);
 
@@ -309,8 +306,6 @@ public class PlayerController : MonoBehaviour
 							{
 								Shield.SetActive (true);
 								Shield.GetComponent<Animator> ().Play ("ShieldEntry");
-								//AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-								//AltFire.GetComponent<AudioSource> ().Play ();
 								AbilityActive = abilityActive.yes;
 							}
 						}
@@ -334,7 +329,6 @@ public class PlayerController : MonoBehaviour
 
 			if (AbilityActive == abilityActive.yes && SpecialAbilityImage.fillAmount <= 1) 
 			{
-				Shield.SetActive (true);
 				SpecialAbilityImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
 			}
 
@@ -342,6 +336,7 @@ public class PlayerController : MonoBehaviour
 			{
 				AbilityActive = abilityActive.no;
 				Shield.GetComponent<Animator> ().Play ("ShieldExit");
+				PlayerCollider.enabled = true;
 			}
 
 			ComboN = Mathf.RoundToInt (ComboTime);
@@ -552,6 +547,7 @@ public class PlayerController : MonoBehaviour
 		// No powerup.
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
+			/*
 			if (LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
 			{
 				LensScript.radius -= 0.5f * Time.unscaledDeltaTime; 
@@ -560,7 +556,7 @@ public class PlayerController : MonoBehaviour
 			if (LensScript.radius < 0 && gameControllerScript.isPaused == false) 
 			{
 				LensScript.radius = 0;
-			}
+			}*/
 
 			fireRate = 0.25f;
 
@@ -649,18 +645,16 @@ public class PlayerController : MonoBehaviour
 		// Shield.
 		if (CurrentPowerup == powerup.shield) 
 		{
-			Shield.SetActive (true); 						// Turns on the shield.
+			//Shield.GetComponent<LensController> ().enabled = true;
+
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
+
 			gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
 			collisionCooldown = 3;
-			// If lens script radius is less than or equal to 0.5 but also greater than 0.
-			if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
-			{
-				LensScript.radius += 0.1f * Time.unscaledDeltaTime; // Increases lens script radius linearly by factor of 0.1.  
-			}
+			PlayerCollider.enabled = false;
 
 			// If shot is the regular shot.
 			if (shot == RegularShot) 
@@ -733,11 +727,15 @@ public class PlayerController : MonoBehaviour
 			powerupTime = 0; // Reset powerup time.
 			CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
 			BeamShot.SetActive (false); // Turns off the beam.
-			//Shield.SetActive (false); // Turns off the shield.
 
 			if (GameObject.Find ("Clone(Clone)") != null) 
 			{
 				Destroy (GameObject.Find ("Clone(Clone)"));
+			}
+
+			if (Shield.GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("ShieldSustain")) 
+			{
+				Shield.GetComponent<Animator> ().Play ("ShieldExit");
 			}
 
 			HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
@@ -869,22 +867,17 @@ public class PlayerController : MonoBehaviour
 		{
 			Time.timeScale += 3f * Time.unscaledDeltaTime;
 			LensScript.radius += 3 * Time.deltaTime;
-			//GameOverCam.SetActive(true);
 		}
 			
 		if (slowTimeRemaining <= 0) 
 		{
 			if (Time.timeScale >= 0.01f)
 			{
-				if (LensScript.radius > 0) 
-				{
-					LensScript.radius -= 3f * Time.unscaledDeltaTime;
-				}
-
 				if (LensScript.radius < 0) 
 				{
 					LensScript.radius = 0;
 				}
+
 				Camera.main.cullingMask = allLayers;
 				slowTimeRemaining = 0;
 				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;
@@ -902,7 +895,6 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown(KeyCode.Space)) 
 		{
-			//GameOverUI.SetActive (true);
 		}
 
 		// if health is below 0 and the Game Over UI is active.
@@ -981,7 +973,6 @@ public class PlayerController : MonoBehaviour
 		// Start powerup conditions.
 		CurrentPowerup = powerup.RegularShot;
 		BeamShot.SetActive (false);
-		Shield.SetActive (false);
 		HorizontalBeam.SetActive (false);
 		HelixObject.SetActive (false);
 	}
