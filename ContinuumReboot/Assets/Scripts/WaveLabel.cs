@@ -10,9 +10,4 @@ public class WaveLabel : MonoBehaviour
 		waveNumber = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().wave;
 		GetComponent<Canvas> ().worldCamera = Camera.main;
 	}
-
-	void Update () 
-	{
-	
-	}
 }

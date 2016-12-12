@@ -3,7 +3,8 @@ using System.Collections;
 
 public class PowerupScript : MonoBehaviour 
 {
-	private PlayerController playerControllerScript; // The player controller script component.
+	public poweruptype PowerupType; 
+
 	// Powerups list.
 	public enum poweruptype 
 	{
@@ -16,17 +17,17 @@ public class PowerupScript : MonoBehaviour
 		helix, 
 		wifi,
 		health
-		//ThreeD
 	} 
-	public poweruptype PowerupType; // To show the above enum.
-	public GameObject Explosion; // The explosion to play on trigger enter.
+
+	public GameObject Explosion;
 	public GameObject CloneObject;
 	public bool useRandomPower;
 
+	private PlayerController playerControllerScript;
+
 	void Start () 
 	{
-		// Finds player controller component.
-		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+		FindComponents ();
 
 		if (useRandomPower == true) 
 		{
@@ -125,5 +126,11 @@ public class PowerupScript : MonoBehaviour
 				Destroy (gameObject);
 			}
 		}
+	}
+
+	void FindComponents ()
+	{
+		// Finds player controller component.
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
 	}
 }

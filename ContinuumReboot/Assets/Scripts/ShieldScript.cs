@@ -4,31 +4,52 @@ using XInputDotNetPure;
 
 public class ShieldScript : MonoBehaviour 
 {
-	private CameraShake camShakeScript;
+	[Header ("Camera shake settings")]
 	public float InitialShakeDuration = 0.25f;
 	public float InitialShakeStrength = 0.5f;
-	//private GameController gameControllerScript;
-	private PlayerController playerControllerScript;
-	public TimescaleController timeScaleControllerScript;
-	public float DecrementPortion = 0.1f;
-	public float DecrementAmount = 100.0f;
+
+	[Header ("Audio clips")]
 	public int PlayElement;
 	public AudioSource[] Oneshots;
-	public GameObject BulletNoCost;
-
 	public AudioSource Explosion;
+
+	[Header ("Misc")]
+	public GameObject BulletNoCost;
 	public ParticleSystem[] RicoshetParticle;
 	public float VibrationTime = 0.04f;
 
+	private CameraShake camShakeScript;
+	private PlayerController playerControllerScript;
+
 	void Start () 
 	{
-		camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
-		camShakeScript.shakeDuration = InitialShakeDuration;
-		camShakeScript.shakeAmount = InitialShakeStrength;
+		FindComponents ();
+		SetCamShakeSettings ();
+
 		VibrationTime = 0.04f;
 		PlayElement = 0;
-		//gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
-		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController>();
+	}
+
+	void Update ()
+	{
+		Vibrate ();
+	}
+
+	void OnTriggerEnter (Collider other)
+	{
+		if (other.tag == "Brick" || other.tag == "Cube") 
+		{
+			camShakeScript.shakeDuration = InitialShakeDuration;
+			camShakeScript.shakeAmount = InitialShakeStrength;
+			PlayElement = 0;
+			Explosion.Play ();
+			Oneshots [0].Play ();
+		}
+	}
+
+	void FindComponents ()
+	{
+		camShakeScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<CameraShake> ();
 
 		// Finds Combo Particle System game objects in Scene (Should be attached as a child of the "Player" GameObject).
 		RicoshetParticle[0] = GameObject.FindGameObjectWithTag ("ComboOrangeParticles").GetComponent<ParticleSystem>();
@@ -38,7 +59,13 @@ public class ShieldScript : MonoBehaviour
 		RicoshetParticle[4] = GameObject.FindGameObjectWithTag ("ComboPurpleParticles").GetComponent<ParticleSystem>();
 	}
 
-	void Update ()
+	void SetCamShakeSettings ()
+	{
+		camShakeScript.shakeDuration = InitialShakeDuration;
+		camShakeScript.shakeAmount = InitialShakeStrength;
+	}
+
+	void Vibrate ()
 	{
 		VibrationTime -= Time.fixedDeltaTime;
 
@@ -51,29 +78,6 @@ public class ShieldScript : MonoBehaviour
 		{
 			GamePad.SetVibration (PlayerIndex.One, 0, 0);
 			VibrationTime = 0;
-		}
-
-		if (Oneshots [0].isPlaying == false) 
-		{
-			//Destroy (Oneshots[0]);
-		}
-	}
-
-	void OnTriggerEnter (Collider other)
-	{
-		if (other.tag == "Brick" || other.tag == "Cube") 
-		{
-			camShakeScript.shakeDuration = InitialShakeDuration;
-			camShakeScript.shakeAmount = InitialShakeStrength;
-			PlayElement = 0;
-			//Instantiate (Oneshots [PlayElement], Vector3.zero, Quaternion.identity);
-			Explosion.Play ();
-			Oneshots [0].Play ();
-		}
-
-		if (other.tag == "Brick" || other.tag == "Cube") 
-		{
-
 		}
 	}
 }

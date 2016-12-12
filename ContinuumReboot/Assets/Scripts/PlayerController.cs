@@ -80,9 +80,6 @@ public class PlayerController : MonoBehaviour
 	public Canvas MainCanvas;					// Where most of the UI is (in world space).
 	public bool   isClone; 						// Is this script attached to this gameObject a clone?
 
-	// A GameObject when spawned will destroy itself immediately (To keep the console quiet of exceptions).
-	public GameObject EmptyInstantdestroy; 
-
 	[Header ("Misc powerup attributes")]
 	// The powerup durations.
 	public float powerupDurationA = 10.0f;
@@ -162,6 +159,10 @@ public class PlayerController : MonoBehaviour
 	public LayerMask  allLayers;
 	public GameObject Shafts;
 
+	[Header ("Misc")]
+	// A GameObject when spawned will destroy itself immediately (To keep the console quiet of exceptions).
+	public GameObject EmptyInstantdestroy; 
+
 	[HideInInspector]
 	public ColorCorrectionCurves ColorCorrectionCurvesScript;
 	private CameraShake 		 camShakeScrpt; 			// Camera shake attached to the main camera.
@@ -177,54 +178,19 @@ public class PlayerController : MonoBehaviour
 	void Start () 
 	{
 		FindComponents ();
-		Camera.main.orthographicSize = 0.1f;
-
-		OverlayTime = 0;
-		OverlayIntensity = -0.15f;
-		ComboTime = 0;
-		collisionCooldown = 0;
-
-		if (isClone == false) 
-		{
-			MainCam.transform.rotation = Quaternion.identity;
-		}
-
-		BgmHighFilter.enabled = false;
-		BgmLowFilter.enabled = false;
-
-		MainCanvas.worldCamera = Camera.main;
-	
-		// Gives health starting health amount.
-		Health = startingHealth;
-		Health25.enabled = true;
-		Health50.enabled = true;
-		Health75.enabled = true;
-		Health100.enabled = true;
-		Health125.enabled = false;
-		Health150.enabled = false;
-		Health175.enabled = false;
-	
-		// Start powerup conditions.
-		CurrentPowerup = powerup.RegularShot;
-		BeamShot.SetActive (false);
-		Shield.SetActive (false);
-		HorizontalBeam.SetActive (false);
-		HelixObject.SetActive (false);
-
-		// Start GameOver conditions.
-		initialPart = false;
-		PressToContinue.SetActive (false);
-		slowTimeRemaining = slowTimeDuration;
-
-		AltFire.SetActive (false);
-		AltFireMode = altmode.no;
-		AltFireImage.fillAmount = 1;
+		StartingHealthConditions ();
+		StartingPowerupConditions ();
+		StartingGameOverConditions ();
+		StartingAudioConditions ();
+		StartingAltFireConditions ();
+		StartingCameraConditions ();
+		StartingPlayerConditions ();
 	}
 
 	void Update () 
 	{
 		UpdateCamera();
-		//UpdateHealth ();
+
 		if (!gameControllerScript.isPaused)
 		{
 			/// Movement ///
@@ -417,34 +383,9 @@ public class PlayerController : MonoBehaviour
 				Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
 			}
 
-			if (isClone) 
-			{
-				shot = MutedRegularShot;
-			}
+			CheckIfClone ();
 
-			// If the Game Object that is attached to this script is not a clone.
-			if (!isClone) 
-			{
-				// Decreases vibration time linearly.
-				vibrationTime -= Time.unscaledDeltaTime;
 
-				if (vibrationTime > 0) 
-				{
-					GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
-				}
-
-				if (vibrationTime <= 0) 
-				{
-					vibrationTime = 0;
-					GamePad.SetVibration (PlayerIndex.One, 0, 0);
-				}
-
-				/// POWERUPS ///
-				UpdatePowerUps();
-				
-				/// Health ///
-				UpdateHealth();
-			}
 		}
 	}
 
@@ -457,14 +398,11 @@ public class PlayerController : MonoBehaviour
 
 		if (Camera.main.orthographicSize < 30 && Health >= 25) 
 		{
-			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = false;
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 30, Time.deltaTime);
 		}
 
 		if (Camera.main.orthographicSize < 30 && Health < 25) 
 		{
-			//Camera.main.GetComponent<SmoothFollowOrig> ().enabled = true;
-			//Camera.main.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("GameOverExplosion(Clone)").transform;
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, 0.25f * Time.deltaTime);
 		}
 	}
@@ -628,10 +566,10 @@ public class PlayerController : MonoBehaviour
 			}
 
 			fireRate = 0.25f;
-			//bloomScript.bloomIntensity = normalBloomAmount;
+
 			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
 			MainCanvas.worldCamera = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
-			shot = RegularShot; 							// Assigns shot which costs points.
+			shot = RegularShot;
 			if (GameObject.Find ("Clone(Clone)") != null) 
 			{
 				Destroy (GameObject.Find ("Clone(Clone)"));
@@ -640,23 +578,12 @@ public class PlayerController : MonoBehaviour
 			Shield.SetActive (false);					    // Turns off the shield.
 			HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
 			HelixObject.SetActive (false);
-			/*
-			WifiIcon.SetActive (false);
-			ThreeDIcon.SetActive (false);
 
-			// Turns off all powerup icons.
-			DoubleShotIcon.SetActive (false);
-			BeamShotIcon.SetActive (false);
-			TriShotIcon.SetActive (false);
-			ShieldIcon.SetActive (false);
-			HorizontalBeamIcon.SetActive (false);
-			CloneIcon.SetActive (false);
-			HelixIcon.SetActive (false);
-			*/
-			LensScript.enabled = true;
 			gameControllerScript.PowerupText.text = "" + ""; // Shows how much each bullet costs as the powerup text.
 			BeamShot.SetActive (false);						 // Turns off the beam shot.
 			HorizontalBeam.SetActive (false); 				 // Turns off the horizontal beam shot.
+
+			LensScript.enabled = true;
 
 			// if the lens script radius is greater than 0.
 			if (LensScript.radius > 0 && Health > 25) 
@@ -1060,5 +987,97 @@ public class PlayerController : MonoBehaviour
 		//bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
 		//bloomScript.bloomIntensity = normalBloomAmount;
 
+	}
+
+	void StartingHealthConditions ()
+	{
+		// Gives health starting health amount.
+		Health = startingHealth;
+		Health25.enabled = true;
+		Health50.enabled = true;
+		Health75.enabled = true;
+		Health100.enabled = true;
+		Health125.enabled = false;
+		Health150.enabled = false;
+		Health175.enabled = false;
+	}
+
+	void StartingPowerupConditions ()
+	{
+		// Start powerup conditions.
+		CurrentPowerup = powerup.RegularShot;
+		BeamShot.SetActive (false);
+		Shield.SetActive (false);
+		HorizontalBeam.SetActive (false);
+		HelixObject.SetActive (false);
+	}
+
+	void StartingGameOverConditions ()
+	{
+		// Start GameOver conditions.
+		initialPart = false;
+		PressToContinue.SetActive (false);
+		slowTimeRemaining = slowTimeDuration;
+	}
+
+	void StartingAudioConditions ()
+	{
+		BgmHighFilter.enabled = false;
+		BgmLowFilter.enabled = false;
+	}
+
+	void StartingAltFireConditions ()
+	{
+		AltFire.SetActive (false);
+		AltFireMode = altmode.no;
+		AltFireImage.fillAmount = 1;
+	}
+
+	void StartingCameraConditions ()
+	{
+		Camera.main.orthographicSize = 0.1f;
+		MainCanvas.worldCamera = Camera.main;
+		OverlayTime = 0;
+		OverlayIntensity = -0.15f;
+	}
+
+	void StartingPlayerConditions ()
+	{
+		ComboTime = 0;
+		collisionCooldown = 0;
+
+		if (isClone == false) 
+		{
+			MainCam.transform.rotation = Quaternion.identity;
+		}
+	}
+
+	void CheckIfClone ()
+	{
+		if (isClone) 
+		{
+			shot = MutedRegularShot;
+		}
+
+		// If the Game Object that is attached to this script is not a clone.
+		if (!isClone) 
+		{
+			// Decreases vibration time linearly.
+			vibrationTime -= Time.unscaledDeltaTime;
+
+			if (vibrationTime > 0) 
+			{
+				GamePad.SetVibration (PlayerIndex.One, vibrationAmount, vibrationAmount);
+			}
+
+			if (vibrationTime <= 0) 
+			{
+				vibrationTime = 0;
+				GamePad.SetVibration (PlayerIndex.One, 0, 0);
+			}
+
+			UpdatePowerUps();
+			UpdateHealth();
+		}
 	}
 }

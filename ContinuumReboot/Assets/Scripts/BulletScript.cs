@@ -59,17 +59,7 @@ public class BulletScript : MonoBehaviour
 			MoveAndRotateScript.moveUnitsPerSecond.value = new Vector3 (0, -30 * Time.timeScale, 0);
 		}
 
-		if (VibrationTime > 0) 
-		{
-			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f); 
-			VibrationTime -= Time.fixedDeltaTime;
-		}
-
-		if (VibrationTime <= 0) 
-		{
-			GamePad.SetVibration (PlayerIndex.One, 0, 0);
-			VibrationTime = 0;
-		}
+		UpdateVibrationSettings ();
 
 		if (ricoshetNumber > ricoshetMax) 
 		{
@@ -94,42 +84,25 @@ public class BulletScript : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		// When bullet is a horizontal beam.
-		if (other.tag == "Barrier" && BulletType == bulletType.horizontalBeam) 
+		if (other.tag == "Barrier")
 		{
-			gameObject.transform.rotation = Quaternion.identity;
-		}
+			if ( BulletType == bulletType.horizontalBeam)
+			{
+				gameObject.transform.rotation = Quaternion.identity;
+			}
 
-		// When bullet is not a horizontal beam.
-		if (other.tag == "Barrier" && BulletType != bulletType.horizontalBeam && BulletType == bulletType.verticalBeam && BulletType == bulletType.shield)
-		{
-			gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
+			if (BulletType != bulletType.horizontalBeam && BulletType == bulletType.verticalBeam && BulletType == bulletType.shield) 
+			{
+				gameObject.transform.rotation = Quaternion.Euler (0, 0, Random.Range (135, 225));
+			}
 		}
 
 		// When bullet hits a brick.
 		if (other.tag == "BossPart" || other.tag == "Cube")
 		{
-			if (playerControllerScript != null)
-			{
-				playerControllerScript.ComboTime += 0.4f;
-			}
-
-			if (playerControllerScript == null) 
-			{
-			}
-
-			if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
-			{
-				ComboAudio [Mathf.Clamp(playerControllerScript.ComboN, 0, 9)].Play ();
-			}
-
-			if (playerControllerScript.ComboN > 10 || ComboNN > 10 || playerControllerScript.ComboTime > 10) 
-			{
-				ComboAudio [9].Play ();
-			}
-
-			camShakeScript.shakeDuration = InitialShakeDuration;
-			camShakeScript.shakeAmount = InitialShakeStrength;
+			AddComboTime ();
+			CheckCurrentCombo ();
+			ResetCamShake ();
 
 			if (BulletType == bulletType.regularShot) 
 			{
@@ -213,6 +186,12 @@ public class BulletScript : MonoBehaviour
 		camShakeScript.shakeAmount = InitialShakeStrength / 3;
 	}
 
+	void ResetCamShake ()
+	{
+		camShakeScript.shakeDuration = InitialShakeDuration;
+		camShakeScript.shakeAmount = InitialShakeStrength;
+	}
+
 	void SetCombo ()
 	{
 		ComboNN = playerControllerScript.ComboN;
@@ -220,6 +199,42 @@ public class BulletScript : MonoBehaviour
 		if (playerControllerScript.ComboTime > 0.1f) 
 		{
 			playerControllerScript.ComboTime -= 0.1f;
+		}
+	}
+
+	void CheckCurrentCombo ()
+	{
+		if (playerControllerScript.ComboN < 10 || ComboNN < 10 || playerControllerScript.ComboTime < 10) 
+		{
+			ComboAudio [Mathf.Clamp(playerControllerScript.ComboN, 0, 9)].Play ();
+		}
+
+		if (playerControllerScript.ComboN > 10 || ComboNN > 10 || playerControllerScript.ComboTime > 10) 
+		{
+			ComboAudio [9].Play ();
+		}
+	}
+
+	void UpdateVibrationSettings ()
+	{
+		if (VibrationTime > 0) 
+		{
+			GamePad.SetVibration (PlayerIndex.One, 0, 0.25f); 
+			VibrationTime -= Time.fixedDeltaTime;
+		}
+
+		if (VibrationTime <= 0) 
+		{
+			GamePad.SetVibration (PlayerIndex.One, 0, 0);
+			VibrationTime = 0;
+		}
+	}
+
+	void AddComboTime ()
+	{
+		if (playerControllerScript != null)
+		{
+			playerControllerScript.ComboTime += 0.4f;
 		}
 	}
 }
