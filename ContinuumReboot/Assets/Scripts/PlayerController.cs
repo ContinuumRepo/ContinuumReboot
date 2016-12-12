@@ -37,16 +37,25 @@ public class PlayerController : MonoBehaviour
 	public float 	  altfireRate;
 	private float 	  altnextFire;
 
-	public altmode AltFireMode;
-	public enum altmode
+	[Header ("Special Abilities")]
+	public ability SpecialAbility;
+	public enum ability
+	{
+		// Add special abilities here
+		Emp,
+
+	}
+		
+	public Image 	  SpecialAbilityImage;
+	public GameObject SpecialAbilityIndicator;
+
+	public GameObject AltFire;
+	public abilityActive AbilityActive;
+	public enum abilityActive
 	{
 		yes, no
 	}
-
-	public GameObject AltFire;
-	public Image 	  AltFireImage;
-	public GameObject AltFireIndicator;
-
+		
 	[Header ("Powerups")]
 	public float   powerupTime = 0; 			// The current powerup time left.
 	public powerup CurrentPowerup;
@@ -63,6 +72,7 @@ public class PlayerController : MonoBehaviour
 		wifi
 	}
 	public Text PowerupTimeText;
+	public GameObject PowerupPanel;
 
 	[Header ("Powerup Prefabs")]
 	public GameObject RegularShot; 				// The bullet the player shoots when there is no powerup.
@@ -97,9 +107,6 @@ public class PlayerController : MonoBehaviour
 	[Header ("Combos")]
 	public float 	ComboTime;
 	public int 		ComboN;
-	public Text		ComboText;
-	public Animator ComboAnimation;
-	public Image 	ComboImage;
 
 	[Header ("Health")]
 	public float Health; 			   	   			// Current health
@@ -114,17 +121,17 @@ public class PlayerController : MonoBehaviour
 	public Image Health150;
 	public Image Health175;
 
-	public float vibrationAmount = 1;  	   			// The vibration amount as the player loses some health.
-	public float vibrationDuration = 0.4f; 			// The vibration duration as the player loses some health.
-	public float vibrationTime; 		   			// The actual vibration time left.
-	public float collisionCooldown;					// How long until the collider is active again?
-
 	public Material HealthFull;
 	public Material HealthThreeQuarters;
 	public Material HealthHalf;
 	public Material HealthQuarter;
 	public Material YellowMaterial;
 
+	[Header ("Hit Player")]
+	public float vibrationAmount = 1;  	   			// The vibration amount as the player loses some health.
+	public float vibrationDuration = 0.4f; 			// The vibration duration as the player loses some health.
+	public float vibrationTime; 		   			// The actual vibration time left.
+	public float collisionCooldown;					// How long until the collider is active again?
 	public Animator 	 Overlay;
 	public ScreenOverlay ScreenOverlayScript;
 	public float 		 OverlayIntensity = 0.2f;
@@ -193,18 +200,23 @@ public class PlayerController : MonoBehaviour
 
 		if (!gameControllerScript.isPaused)
 		{
-			/// Movement ///
+			/// PC Movement ///
 			if (Time.timeScale > 0 && Health >= 25) 
 			{
-				if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true && Health >= 25) {
+				if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == true && Health >= 25) 
+				{
 					float moveHorizontal;
 					float moveVertical;
 
 					// Keyboard input
-					if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) {
+					if (Input.GetAxis ("Horizontal") != 0 || Input.GetAxis ("Vertical") != 0) 
+					{
 						moveHorizontal = Input.GetAxis ("Horizontal");
 						moveVertical = Input.GetAxis ("Vertical");	
-					} else { // Mouse input
+					} 
+					else 
+					{ 
+						// Mouse input
 						moveHorizontal = Input.GetAxis ("Mouse X");
 						moveVertical = Input.GetAxis ("Mouse Y");					
 					}
@@ -214,25 +226,29 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKey (KeyCode.LeftAlt) == true && AltFireImage.fillAmount >= 1) 
+			if (Input.GetKey (KeyCode.LeftAlt) == true && SpecialAbilityImage.fillAmount >= 1) 
 			{
 				// When the player presses altfire while bar is greater than 0
-				if (AltFireImage.fillAmount >= 1) 
+				if (SpecialAbility == ability.Emp) 
 				{
-					AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-					AltFire.GetComponent<AudioSource> ().Play ();
-					AltFireMode = altmode.yes;
+					Shield.SetActive (true);
+					//AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+					//AltFire.GetComponent<AudioSource> ().Play ();
+					AbilityActive = abilityActive.yes;
 				}
 			}
 
-			if (AltFireImage.fillAmount <= 0) 
+			if (SpecialAbilityImage.fillAmount <= 0) 
 			{
-				AltFireMode = altmode.no;
-			}
+				DeactivateSpecialAbilities ();
+				SpecialAbilityImage.fillAmount += 0.1f * Time.deltaTime;
 
-			if (AltFireImage.fillAmount <= 0) 
-			{
-				AltFireImage.fillAmount += 0.1f * Time.deltaTime;
+				if (SpecialAbility == ability.Emp)
+				{
+					AbilityActive = abilityActive.no;
+					Shield.GetComponent<Animator> ().Play ("ShieldExit");
+					//Shield.SetActive (false);
+				}
 			}
 
 			if (PlayerNumber == playerNumber.PlayerOne && useKeyboardControls == false && Health >= 25) 
@@ -287,10 +303,16 @@ public class PlayerController : MonoBehaviour
 					if (((Input.GetAxisRaw ("Alt Fire P1") > 0.3f || Input.GetMouseButton (1)) && gameControllerScript.CurrentScore > -1 && Health > minHealth && isClone == false) ||
 					   (Input.GetKeyDown ("joystick 1 button 2") && gameControllerScript.CurrentScore > 0 && Health > minHealth && isClone == false)) {
 						// When the player presses altfire while bar is greater than 0
-						if (AltFireImage.fillAmount >= 1) {
-							AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
-							AltFire.GetComponent<AudioSource> ().Play ();
-							AltFireMode = altmode.yes;
+						if (SpecialAbilityImage.fillAmount > 0.25f) 
+						{
+							if (SpecialAbility == ability.Emp) 
+							{
+								Shield.SetActive (true);
+								Shield.GetComponent<Animator> ().Play ("ShieldEntry");
+								//AltFire.GetComponent<Animator> ().Play ("Wifi Enlarge");
+								//AltFire.GetComponent<AudioSource> ().Play ();
+								AbilityActive = abilityActive.yes;
+							}
 						}
 					}
 
@@ -303,48 +325,26 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			if (powerupTime > 0) 
+			CheckPowerupTime ();
+
+			if (AbilityActive == abilityActive.no && SpecialAbilityImage.fillAmount > 0 && SpecialAbilityImage.fillAmount < 1) 
 			{
-				PowerupTimeText.text = "" + Mathf.RoundToInt(powerupTime) + "";
+				SpecialAbilityImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 			}
 
-			if (powerupTime <= 0) 
+			if (AbilityActive == abilityActive.yes && SpecialAbilityImage.fillAmount <= 1) 
 			{
-				PowerupTimeText.text = " ";
+				Shield.SetActive (true);
+				SpecialAbilityImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
 			}
 
-			if (OverlayTime <= 0.1f) 
+			if (AbilityActive == abilityActive.yes && SpecialAbilityImage.fillAmount <= 0) 
 			{
-				OverlayIntensity = 0.1f;
-			}
-
-			if (OverlayTime > 0.1f) 
-			{
-				OverlayTime -= 2f * Time.unscaledDeltaTime;
-				OverlayIntensity = -Mathf.Clamp(OverlayTime, 0, 1) + 0.15f;
-				ScreenOverlayScript.intensity = OverlayIntensity;
-			}
-
-			if (AltFireMode == altmode.no) 
-			{
-				AltFire.SetActive (false);
-				AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
-			}
-
-			if (AltFireMode == altmode.yes) 
-			{
-				AltFire.SetActive (true);
-				AltFireImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
-			}
-
-			if (AltFireMode == altmode.yes && AltFireImage.fillAmount <= 0) 
-			{
-				AltFireMode = altmode.no;
+				AbilityActive = abilityActive.no;
+				Shield.GetComponent<Animator> ().Play ("ShieldExit");
 			}
 
 			ComboN = Mathf.RoundToInt (ComboTime);
-			ComboImage.fillAmount = (ComboTime / 10) - 0.1f;
-			//ComboImage.color = new Color (0, 1, (ComboTime-1)/10, 1);
 
 			if (ComboTime > 11) 
 			{
@@ -379,13 +379,10 @@ public class PlayerController : MonoBehaviour
 
 			if (Health < 25)
 			{
-				//MainCam.transform.rotation = Quaternion.Euler (0, 0, 0);
 				Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
 			}
 
 			CheckIfClone ();
-
-
 		}
 	}
 
@@ -575,7 +572,7 @@ public class PlayerController : MonoBehaviour
 				Destroy (GameObject.Find ("Clone(Clone)"));
 			}
 			BeamShot.SetActive (false); 					// Turns off the vertical beam.
-			Shield.SetActive (false);					    // Turns off the shield.
+			//Shield.SetActive (false);					    // Turns off the shield.
 			HorizontalBeam.SetActive (false); 				// Turns off the horizontal beam.
 			HelixObject.SetActive (false);
 
@@ -601,54 +598,46 @@ public class PlayerController : MonoBehaviour
 		// Double shot.
 		if (CurrentPowerup == powerup.DoubleShot) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = DoubleShot;								 // Assigns free double shot powerup.
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "DOUBLE SHOT!"; // UI displays double shot text.
-			//DoubleShotIcon.SetActive (true); 				 // Turns on the double shot icon.
 		}
 
 		// WIFI shot.
 		if (CurrentPowerup == powerup.wifi) 
 		{
 			fireRate = 0.5f;
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = WifiShot; 								// Assigns free wifi shot powerup.
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "RIPPLE!"; // UI displays double shot text.
-			//WifiIcon.SetActive (true); 						// Turns on the wifi shot icon.
 		}
 
 		// Tri shot.
 		if (CurrentPowerup == powerup.TriShot) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			shot = TriShot; 								// Assigns free triple shot powerup.
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "TRIPLE SHOT"; // UI displays triple shot text.
-			//TriShotIcon.SetActive (true); 					// Turns on double shot icon.
 		}
 
 		// Beam shot.
 		if (CurrentPowerup == powerup.BeamShot) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			BeamShot.SetActive (true); 						// Turns on vertical beam.
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "ULTRA BEAM!"; // UI displays vertical beam text.
-			//BeamShotIcon.SetActive (true); 					// Turns on UI icon for the vertical beam.
 
 			// If shot is the regular shot.
 			if (shot == RegularShot) 
@@ -660,14 +649,12 @@ public class PlayerController : MonoBehaviour
 		// Shield.
 		if (CurrentPowerup == powerup.shield) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			Shield.SetActive (true); 						// Turns on the shield.
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "GIGA SHIELD!"; // UI text to display shield.
-			//ShieldIcon.SetActive (true); 					// Turns on UI icon for the shield.
 			collisionCooldown = 3;
 			// If lens script radius is less than or equal to 0.5 but also greater than 0.
 			if (LensScript.radius <= 0.5f && LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
@@ -685,8 +672,6 @@ public class PlayerController : MonoBehaviour
 		// Horizontal beam.
 		if (CurrentPowerup == powerup.horizontalBeam) 
 		{	
-			//bloomScript.bloomIntensity = powerupBloomAmount;	
-			//HorizontalBeamIcon.SetActive (true);
 			HorizontalBeam.SetActive (true); // Turns on the horizontal beam.
 			if (Time.timeScale > 0)
 			{
@@ -703,16 +688,11 @@ public class PlayerController : MonoBehaviour
 		// Clone player.
 		if (CurrentPowerup == powerup.Clone) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
-			//ClonedPlayer.SetActive (true); // Turns on the clones!
-
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
 			gameControllerScript.PowerupText.text = "CLONE!"; // UI display clones.
-			//CloneIcon.SetActive (true); // Turns on clone icon.
-			//BgmHighFilter.enabled = true;
 
 			// If shot is the regular shot.
 			if (shot == RegularShot) 
@@ -724,15 +704,15 @@ public class PlayerController : MonoBehaviour
 		// Helix bullets.
 		if (CurrentPowerup == powerup.helix) 
 		{
-			//bloomScript.bloomIntensity = powerupBloomAmount;
 			HelixObject.SetActive (true);
 
 			if (Time.timeScale > 0)
 			{
 				powerupTime -= Time.unscaledDeltaTime; 			 // Decreases powerup time linearly.
 			}
+
 			gameControllerScript.PowerupText.text = "MEGA HELIX!"; // UI display clones.
-			//HelixIcon.SetActive (true); // Turns on clone icon.
+	
 			if (shot == RegularShot) 
 			{
 				shot = RegularShotNoCost; // Make it the free version.
@@ -753,7 +733,7 @@ public class PlayerController : MonoBehaviour
 			powerupTime = 0; // Reset powerup time.
 			CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
 			BeamShot.SetActive (false); // Turns off the beam.
-			Shield.SetActive (false); // Turns off the shield.
+			//Shield.SetActive (false); // Turns off the shield.
 
 			if (GameObject.Find ("Clone(Clone)") != null) 
 			{
@@ -778,8 +758,6 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		ComboText.text = "x" + ComboN;
-
 		if (ComboTime >= 0) 
 		{
 			if (gameControllerScript.isPaused != true) 
@@ -808,46 +786,46 @@ public class PlayerController : MonoBehaviour
 			ComboN = 10;
 		}
 
-		if (AltFireImage.fillAmount < 1) 
+		if (SpecialAbilityImage.fillAmount < 1) 
 		{
-			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
+			SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
 		}
 			
-		if (AltFireImage.fillAmount >= 1) 
+		if (SpecialAbilityImage.fillAmount >= 1) 
 		{
-			AltFireImage.fillAmount = 1;
-			AltFireIndicator.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
+			SpecialAbilityImage.fillAmount = 1;
+			SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
 		}
 
-		if (AltFireImage.fillAmount <= 0) 
+		if (SpecialAbilityImage.fillAmount <= 0) 
 		{
-			AltFireImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
+			SpecialAbilityImage.fillAmount += 0.1f * Time.unscaledDeltaTime;
 		}
 
 		// Alt fire image bar colours.
-		if (AltFireImage.fillAmount >= 1 && AltFireImage.fillAmount > 0.75f) 
+		if (SpecialAbilityImage.fillAmount >= 1 && SpecialAbilityImage.fillAmount > 0.75f) 
 		{
-			AltFireImage.material = HealthThreeQuarters;
+			SpecialAbilityImage.material = HealthThreeQuarters;
 		}
 			
-		if (AltFireImage.fillAmount < 1 && AltFireImage.fillAmount > 0.75f) 
+		if (SpecialAbilityImage.fillAmount < 1 && SpecialAbilityImage.fillAmount > 0.75f) 
 		{
-			AltFireImage.material = YellowMaterial;
+			SpecialAbilityImage.material = YellowMaterial;
 		}
 
-		if (AltFireImage.fillAmount > 0.5f && AltFireImage.fillAmount <= 0.75f) 
+		if (SpecialAbilityImage.fillAmount > 0.5f && SpecialAbilityImage.fillAmount <= 0.75f) 
 		{
-			AltFireImage.material = HealthHalf;
+			SpecialAbilityImage.material = HealthHalf;
 		}
 
-		if (AltFireImage.fillAmount > 0.25f && AltFireImage.fillAmount <= 0.5f) 
+		if (SpecialAbilityImage.fillAmount > 0.25f && SpecialAbilityImage.fillAmount <= 0.5f) 
 		{
-			AltFireImage.material = HealthHalf;
+			SpecialAbilityImage.material = HealthHalf;
 		}
 
-		if (AltFireImage.fillAmount > 0 && AltFireImage.fillAmount <= 0.25f) 
+		if (SpecialAbilityImage.fillAmount > 0 && SpecialAbilityImage.fillAmount <= 0.25f) 
 		{
-			AltFireImage.material = HealthQuarter;
+			SpecialAbilityImage.material = HealthQuarter;
 		}
 	}
 
@@ -983,10 +961,6 @@ public class PlayerController : MonoBehaviour
 		}
 
 		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
-
-		//bloomScript = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Bloom>();
-		//bloomScript.bloomIntensity = normalBloomAmount;
-
 	}
 
 	void StartingHealthConditions ()
@@ -1029,8 +1003,8 @@ public class PlayerController : MonoBehaviour
 	void StartingAltFireConditions ()
 	{
 		AltFire.SetActive (false);
-		AltFireMode = altmode.no;
-		AltFireImage.fillAmount = 1;
+		DeactivateSpecialAbilities ();
+		SpecialAbilityImage.fillAmount = 1;
 	}
 
 	void StartingCameraConditions ()
@@ -1079,5 +1053,45 @@ public class PlayerController : MonoBehaviour
 			UpdatePowerUps();
 			UpdateHealth();
 		}
+	}
+
+	void CheckPowerupTime ()
+	{
+		if (powerupTime > 0) 
+		{
+			PowerupTimeText.text = "" + Mathf.RoundToInt(powerupTime) + "";
+		}
+
+		if (powerupTime <= 0) 
+		{
+			PowerupTimeText.text = " ";
+		}
+
+		if (powerupTime >= 3 && !PowerupPanel.GetComponent<Animator>().GetCurrentAnimatorStateInfo (0).IsName ("PowerupNormal")) 
+		{
+			PowerupPanel.GetComponent<Animator> ().Play ("PowerupNormal");
+		}
+
+		if (powerupTime < 3 && powerupTime > 0.0f && !PowerupPanel.GetComponent<Animator>().GetCurrentAnimatorStateInfo (0).IsName ("PowerupWarning")) 
+		{
+			PowerupPanel.GetComponent<Animator> ().Play ("PowerupWarning");
+		}
+
+		if (OverlayTime <= 0.1f) 
+		{
+			OverlayIntensity = 0.1f;
+		}
+
+		if (OverlayTime > 0.1f) 
+		{
+			OverlayTime -= 2f * Time.unscaledDeltaTime;
+			OverlayIntensity = -Mathf.Clamp(OverlayTime, 0, 1) + 0.15f;
+			ScreenOverlayScript.intensity = OverlayIntensity;
+		}
+	}
+
+	void DeactivateSpecialAbilities ()
+	{
+		AbilityActive = abilityActive.no;
 	}
 }

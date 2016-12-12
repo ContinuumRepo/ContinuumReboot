@@ -18,39 +18,60 @@ public class EnemyController : MonoBehaviour
 
 	void Start ()
 	{
-		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
-		Brain = GameObject.Find ("Brain");
-		boss = GameObject.FindGameObjectWithTag ("Boss");
-		bossHover = GameObject.Find ("EnemyBossRestPoint").GetComponent<Transform> ();
-
-		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
-		smoothFollowScript.target = bossHover.transform;
-
-		NameText = GameObject.Find ("BossText").GetComponent<Text> ();
-		NameAnim = GameObject.Find ("BossText").GetComponent<Animator> ();
+		FindComponents ();
+		OverrideShaftsCaster ();
 		NameText.text = "" + bossName + "";
 		NameAnim.Play (0);
-		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
-		Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
 	}
 
 	void Update () 
 	{
 		if (Brain == null || Brain.GetComponent<EnemyScript>().Health <= 0) 
 		{
-			gameControllerScript.WaveLabel.SetActive (true);
-			gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
-			gameControllerScript.WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
-			gameControllerScript.wave += 1;
-			gameControllerScript.hazardCount += 2;
-			Instantiate (bossExplosion, gameObject.transform.position, Quaternion.identity);
-			Destroy (boss);
+			KillBoss ();
+			ResetShaftsCaster ();
 			Destroy (gameObject);
 		}
+	}
 
+	void FindComponents ()
+	{
+		gameControllerScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController>();
+		Brain = GameObject.Find ("Brain");
+
+		boss = GameObject.FindGameObjectWithTag ("Boss");
+		bossHover = GameObject.Find ("EnemyBossRestPoint").GetComponent<Transform> ();
+
+		NameText = GameObject.Find ("BossText").GetComponent<Text> ();
+		NameAnim = GameObject.Find ("BossText").GetComponent<Animator> ();
+
+		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
+		smoothFollowScript.target = bossHover.transform;
+	}
+
+	void OverrideShaftsCaster ()
+	{
+		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
+		Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
+	}
+
+	void KillBoss ()
+	{
+		gameControllerScript.WaveLabel.SetActive (true);
+		gameControllerScript.WaveLabel.GetComponent<DestroyOrDeactivateByTime> ().enabled = true;
+		gameControllerScript.WaveLabel.GetComponent<Animator> ().Play ("WaveLabel");
+		gameControllerScript.wave += 1;
+		gameControllerScript.hazardCount += 2;
+		Instantiate (bossExplosion, gameObject.transform.position, Quaternion.identity);
+		Destroy (boss);
+	}
+
+	void ResetShaftsCaster ()
+	{
 		if (Shafts.GetComponent<SmoothFollowOrig> ().target == null) 
 		{
 			Shafts.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("Player").transform;
+			//Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
 		}
 	}
 }

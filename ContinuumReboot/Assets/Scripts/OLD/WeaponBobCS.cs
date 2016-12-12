@@ -4,8 +4,8 @@
 using UnityEngine;
 using System.Collections;
 
-public class WeaponBobCS : MonoBehaviour {
-	
+public class WeaponBobCS : MonoBehaviour 
+{
 	private float timer = 0.0f;
 	public float bobbingSpeed = 0.18f;
 	public float bobbingAmount = 0.2f;
@@ -21,15 +21,12 @@ public class WeaponBobCS : MonoBehaviour {
 	public bool Y;
 	public bool Z;
 
-	void  FixedUpdate ()
+	void FixedUpdate ()
 	{
 		waveslice = 0.0f;
 
-		//horizontal = Input.GetAxis("Horizontal");
 		horizontal = 1;
 		vertical = 1;
-
-		//vertical = Input.GetAxis("Vertical");
 
 		if (Mathf.Abs(horizontal) == 0 && Mathf.Abs(vertical) == 0) 
 		{
@@ -96,8 +93,6 @@ public class WeaponBobCS : MonoBehaviour {
 			{
 				transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z);
 			}
-
-
 		}
 
 		else 
