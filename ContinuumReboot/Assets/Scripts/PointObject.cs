@@ -21,6 +21,7 @@ public class PointObject : MonoBehaviour
 	public float Damage = 25.0f; 			// Damage amount to player if hit by player.
 	public bool randomiseType;
 	public bool changeTypeOverTime;
+	public bool scrollTypeSequence;
 	public float changeTime = 1.0f;
 	public bool isBossPart;
 	public bool isTutorialPart;
@@ -81,6 +82,11 @@ public class PointObject : MonoBehaviour
 		if (PlayerControllerScript.Health < 25 && isTutorialPart == false) 
 		{
 			Destroy (gameObject);
+		}
+
+		if (scrollTypeSequence == true) 
+		{
+			InvokeRepeating ("ScrollBrickType", 0, changeTime);
 		}
 	}
 
@@ -256,6 +262,34 @@ public class PointObject : MonoBehaviour
 	public void ChangeBrickType ()
 	{
 		PointType = (type)Random.Range (0, 5);
+	}
+
+	public void ScrollBrickType ()
+	{
+		if (PointType == type.Orange) 
+		{
+			PointType = type.Yellow;
+		}
+
+		if (PointType == type.Yellow) 
+		{
+			PointType = type.Green;
+		}
+
+		if (PointType == type.Green) 
+		{
+			PointType = type.Cyan;
+		}
+
+		if (PointType == type.Cyan) 
+		{
+			PointType = type.Purple;
+		}
+
+		if (PointType == type.Purple) 
+		{
+			PointType = type.Orange;
+		}
 	}
 
 	void FindComponents ()

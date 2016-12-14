@@ -97,7 +97,7 @@ public class PowerupScript : MonoBehaviour
 				playerControllerScript.CurrentPowerup = PlayerController.powerup.Clone;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				playerControllerScript.ActivePowerupParticles.Play ();
-				Instantiate (CloneObject, new Vector3 (0, -25, 0), Quaternion.Euler (90, 180, 0));
+				Instantiate (CloneObject, new Vector3 (0, -22, 0), Quaternion.Euler (90, 180, 0));
 				Destroy (gameObject);
 			}
 

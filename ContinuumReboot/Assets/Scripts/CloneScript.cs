@@ -4,63 +4,54 @@ using UnityStandardAssets.Cameras;
 
 public class CloneScript : MonoBehaviour 
 {
-	public PlayerController playerControllerScript;
-	public SmoothFollowOrig smoothFollowScript;
-	public Transform player;
 	public float distance = 3;
 	public float delay = 1;
 	public float fireRate = 0.2f;
 	private float nextFire; 
-
-	[Header ("Shooting")]
 	public GameObject Bullet;
 	public Transform shotSpawn;
 
+	private PlayerController playerControllerScript;
+	private SmoothFollowOrig smoothFollowScript;
+	private Transform player;
+
 	void Start () 
 	{
-		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
-		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
-		player = GameObject.Find ("Player").transform;
+		FindComponents ();
 
 		// If target is anything but player.
-		if (
-			//lookScript.Target != player
-			smoothFollowScript.target != player
-			) 
+		if (smoothFollowScript.target != player) 
 		{
 			// Try to find a cube.
 			if (GameObject.FindGameObjectWithTag ("Cube") != null)
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 			}
 
 			// Not found.
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
 
 		// If target is on player.
-		if (
-			smoothFollowScript.target == player
-			//lookScript.Target == player
-			) 
+		if (smoothFollowScript.target == player) 
 		{
 			// Still try to find a cube.
 			if (GameObject.FindGameObjectWithTag ("Cube") != null) 
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 			}
 
 			// Not found.
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
 	}
@@ -68,42 +59,37 @@ public class CloneScript : MonoBehaviour
 	void Update () 
 	{
 		// If target is on player.
-		if (
-			smoothFollowScript.target == player
-			) 
+		if (smoothFollowScript.target == player) 
 		{
 			// Still try to find a cube.
 			if (GameObject.FindGameObjectWithTag ("Cube") != null) 
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 			}
 
 			// Not found.
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
 
-		if (
-			smoothFollowScript.target == null
-			//lookScript.Target == null
-			) 
+		if (smoothFollowScript.target == null) 
 		{
 			// Still try to find a cube.
 			if (GameObject.FindGameObjectWithTag ("Cube") != null) 
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 			}
 
 			// Not found.
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
 
@@ -133,7 +119,7 @@ public class CloneScript : MonoBehaviour
 			if (GameObject.FindGameObjectWithTag ("Cube") != null)
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 
 			}
 
@@ -141,7 +127,7 @@ public class CloneScript : MonoBehaviour
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
 
@@ -154,15 +140,32 @@ public class CloneScript : MonoBehaviour
 			if (GameObject.FindGameObjectWithTag ("Cube") != null) 
 			{
 				// Found? Assigned!
-				smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+				FindCubeTarget ();
 			}
 
 			// Not found.
 			if (GameObject.FindGameObjectWithTag ("Cube") == null) 
 			{
 				// Follow player.
-				smoothFollowScript.target = player;
+				FindPlayerTarget ();
 			}
 		}
+	}
+
+	void FindComponents ()
+	{
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
+		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
+		player = GameObject.Find ("Player").transform;
+	}
+
+	void FindCubeTarget ()
+	{
+		smoothFollowScript.target = GameObject.FindGameObjectWithTag ("Cube").transform;
+	}
+
+	void FindPlayerTarget ()
+	{
+		smoothFollowScript.target = player;
 	}
 }

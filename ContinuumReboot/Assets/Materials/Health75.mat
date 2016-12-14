@@ -67,9 +67,9 @@ Material:
     - first:
         name: _EmissionMap
       second:
-        m_Texture: {fileID: 2800000, guid: 4a056241e2722dc46a7262a8e7073fd9, type: 3}
-        m_Scale: {x: 3.5, y: 1.2}
-        m_Offset: {x: 0, y: 0.9}
+        m_Texture: {fileID: 2800000, guid: 028dec7be4c26a742b110f06f47d6584, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - first:
         name: _Fresnel
       second:
@@ -97,9 +97,9 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 4a056241e2722dc46a7262a8e7073fd9, type: 3}
-        m_Scale: {x: 3.5, y: 1.2}
-        m_Offset: {x: 0, y: 0.9}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - first:
         name: _MetallicGlossMap
       second:
@@ -163,7 +163,7 @@ Material:
       second: 1
     - first:
         name: _Cutoff
-      second: 0.9
+      second: 0
     - first:
         name: _DetailNormalMapScale
       second: 0
@@ -184,7 +184,7 @@ Material:
       second: 1
     - first:
         name: _GlossMapScale
-      second: 1
+      second: 0
     - first:
         name: _Glossiness
       second: 0
@@ -272,7 +272,7 @@ Material:
       second: {r: 1, g: 1, b: 2, a: 1.15}
     - first:
         name: _EmissionColor
-      second: {r: 3.693, g: 3.693, b: 3.693, a: 1}
+      second: {r: 1.1029412, g: 3, b: 1.1945235, a: 1}
     - first:
         name: _GAmplitude
       second: {r: 0.3, g: 0.35, b: 0.25, a: 0.25}

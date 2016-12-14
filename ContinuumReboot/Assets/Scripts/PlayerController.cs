@@ -226,7 +226,8 @@ public class PlayerController : MonoBehaviour
 				}
 			}
 
-			if (Input.GetKey (KeyCode.LeftAlt) == true && SpecialAbilityImage.fillAmount >= 1) 
+			if (SpecialAbilityImage.fillAmount >= 1 
+				&& Input.GetMouseButtonDown (1)) 
 			{
 				// When the player presses altfire while bar is greater than 0
 				if (SpecialAbility == ability.Emp) 
@@ -245,6 +246,7 @@ public class PlayerController : MonoBehaviour
 				{
 					AbilityActive = abilityActive.no;
 					Shield.GetComponent<Animator> ().Play ("ShieldExit");
+					PlayerCollider.enabled = true;
 				}
 			}
 
@@ -307,6 +309,7 @@ public class PlayerController : MonoBehaviour
 								Shield.SetActive (true);
 								Shield.GetComponent<Animator> ().Play ("ShieldEntry");
 								AbilityActive = abilityActive.yes;
+								PlayerCollider.enabled = false;
 							}
 						}
 					}
@@ -330,6 +333,7 @@ public class PlayerController : MonoBehaviour
 			if (AbilityActive == abilityActive.yes && SpecialAbilityImage.fillAmount <= 1) 
 			{
 				SpecialAbilityImage.fillAmount -= 0.2f * Time.unscaledDeltaTime;
+				PlayerCollider.enabled = false;
 			}
 
 			if (AbilityActive == abilityActive.yes && SpecialAbilityImage.fillAmount <= 0) 
@@ -362,7 +366,7 @@ public class PlayerController : MonoBehaviour
 				PlayerCollider.enabled = false;
 			}
 
-			if (collisionCooldown <= 0) 
+			if (collisionCooldown <= 0 && AbilityActive == abilityActive.no) 
 			{
 				collisionCooldown = 0;
 				PlayerCollider.enabled = true;
@@ -374,7 +378,7 @@ public class PlayerController : MonoBehaviour
 
 			if (Health < 25)
 			{
-				Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
+				//Camera.main.transform.position = new Vector3 (PlayerMesh.transform.position.x, PlayerMesh.transform.position.y, -100);
 			}
 
 			CheckIfClone ();
@@ -387,7 +391,7 @@ public class PlayerController : MonoBehaviour
 		{
 			Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
 		}
-
+		/*
 		if (Camera.main.orthographicSize < 30 && Health >= 25) 
 		{
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 30, Time.deltaTime);
@@ -396,7 +400,7 @@ public class PlayerController : MonoBehaviour
 		if (Camera.main.orthographicSize < 30 && Health < 25) 
 		{
 			Camera.main.orthographicSize = Mathf.Lerp (Camera.main.orthographicSize, 0, 0.25f * Time.deltaTime);
-		}
+		}*/
 	}
 
 	public void UpdateHealth()
@@ -538,8 +542,18 @@ public class PlayerController : MonoBehaviour
 			DeactivatePlayerElements.SetActive (false); // Turns off Player Game Objects.
 			gameControllerScript.StopAllCoroutines ();  // Stops spawning objects and powerups.
 			GameOver (); 								// Triggers game Over method.
-			timeScaleControllerScript.enabled = false;  // Turns off time scale controller script.
+			timeScaleControllerScript.CalculationMode = TimescaleController.calcMode.none;
+			StopMainAudio ();
 		}
+	}
+
+	void StopMainAudio ()
+	{
+		timeScaleControllerScript.BassDrums.Stop ();
+		timeScaleControllerScript.Synth1.Stop ();
+		timeScaleControllerScript.Synth2.Stop ();
+		timeScaleControllerScript.Synth3.Stop ();
+		timeScaleControllerScript.Riff.Stop ();
 	}
 
 	private void UpdatePowerUps()
@@ -547,17 +561,6 @@ public class PlayerController : MonoBehaviour
 		// No powerup.
 		if (CurrentPowerup == powerup.RegularShot) 
 		{
-			/*
-			if (LensScript.radius >= 0 && gameControllerScript.isPaused == false) 
-			{
-				LensScript.radius -= 0.5f * Time.unscaledDeltaTime; 
-			}
-
-			if (LensScript.radius < 0 && gameControllerScript.isPaused == false) 
-			{
-				LensScript.radius = 0;
-			}*/
-
 			fireRate = 0.25f;
 
 			GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera>().enabled = true;
@@ -728,6 +731,11 @@ public class PlayerController : MonoBehaviour
 			CurrentPowerup = powerup.RegularShot; // Powerup type is now regular.
 			BeamShot.SetActive (false); // Turns off the beam.
 
+			if (AbilityActive == abilityActive.no)
+			{
+				PlayerCollider.enabled = true;
+			}
+
 			if (GameObject.Find ("Clone(Clone)") != null) 
 			{
 				Destroy (GameObject.Find ("Clone(Clone)"));
@@ -736,6 +744,7 @@ public class PlayerController : MonoBehaviour
 			if (Shield.GetComponent<Animator> ().GetCurrentAnimatorStateInfo (0).IsName ("ShieldSustain")) 
 			{
 				Shield.GetComponent<Animator> ().Play ("ShieldExit");
+				PlayerCollider.enabled = true;
 			}
 
 			HorizontalBeam.SetActive (false); // Turns off the horizontal beam.
@@ -786,13 +795,13 @@ public class PlayerController : MonoBehaviour
 
 		if (SpecialAbilityImage.fillAmount < 1) 
 		{
-			SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
+			//SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 0, 0, 0.4f);
 		}
 			
 		if (SpecialAbilityImage.fillAmount >= 1) 
 		{
 			SpecialAbilityImage.fillAmount = 1;
-			SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
+			//SpecialAbilityImage.GetComponent<Image> ().color = new Color (0, 1, 0, 0.4f);
 		}
 
 		if (SpecialAbilityImage.fillAmount <= 0) 
@@ -854,31 +863,26 @@ public class PlayerController : MonoBehaviour
 		Shield.SetActive (false);
 		HelixObject.SetActive (false);
 		slowTimeRemaining -= Time.unscaledDeltaTime; // decrements slow time remaining.
-		BGMMusic.Stop (); // Stops main music.
 
 		if (slowTimeRemaining > 2.0f) 
 		{
-			LensScript.radius += 6 * Time.deltaTime;
-			Camera.main.cullingMask = layermask;
 			Time.timeScale = 0.05f;
 		}
 			
 		if (slowTimeRemaining < 2f && slowTimeRemaining > 0 && Time.timeScale < 1) 
 		{
 			Time.timeScale += 3f * Time.unscaledDeltaTime;
-			LensScript.radius += 3 * Time.deltaTime;
 		}
 			
 		if (slowTimeRemaining <= 0) 
 		{
 			if (Time.timeScale >= 0.01f)
 			{
-				if (LensScript.radius < 0) 
+				if (LensScript.radius > 0) 
 				{
 					LensScript.radius = 0;
 				}
-
-				Camera.main.cullingMask = allLayers;
+					
 				slowTimeRemaining = 0;
 				Time.timeScale -= 0.25f * Time.unscaledDeltaTime;
 
@@ -891,10 +895,6 @@ public class PlayerController : MonoBehaviour
 					GameOverLoop.PlayDelayed (4.0f); // Delays.
 				}
 			}
-		}
-
-		if (Input.GetKeyDown ("joystick button 0") || Input.GetKeyDown(KeyCode.Space)) 
-		{
 		}
 
 		// if health is below 0 and the Game Over UI is active.
@@ -995,12 +995,12 @@ public class PlayerController : MonoBehaviour
 	{
 		AltFire.SetActive (false);
 		DeactivateSpecialAbilities ();
-		SpecialAbilityImage.fillAmount = 1;
+		SpecialAbilityImage.fillAmount = 0;
 	}
 
 	void StartingCameraConditions ()
 	{
-		Camera.main.orthographicSize = 0.1f;
+		//Camera.main.orthographicSize = 0.1f;
 		MainCanvas.worldCamera = Camera.main;
 		OverlayTime = 0;
 		OverlayIntensity = -0.15f;
