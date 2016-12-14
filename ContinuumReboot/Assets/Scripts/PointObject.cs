@@ -266,29 +266,11 @@ public class PointObject : MonoBehaviour
 
 	public void ScrollBrickType ()
 	{
-		if (PointType == type.Orange) 
-		{
-			PointType = type.Yellow;
-		}
+		PointType += 1;
 
-		if (PointType == type.Yellow) 
+		if (PointType > type.Purple) 
 		{
-			PointType = type.Green;
-		}
-
-		if (PointType == type.Green) 
-		{
-			PointType = type.Cyan;
-		}
-
-		if (PointType == type.Cyan) 
-		{
-			PointType = type.Purple;
-		}
-
-		if (PointType == type.Purple) 
-		{
-			PointType = type.Orange;
+			PointType = 0;
 		}
 	}
 
