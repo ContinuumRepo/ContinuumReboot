@@ -67,7 +67,7 @@ public class MenuButtons : MonoBehaviour
 	void Start()
 	{
 		scrollScript = GetComponent<InputScroll> ();
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 	}
 
 	public void Update ()
@@ -77,14 +77,14 @@ public class MenuButtons : MonoBehaviour
 			if (TitleUI.activeInHierarchy == true) 
 			{
 				PressStartClick ();
-				mouseScript.InvisibleCursor ();
+				//mouseScript.InvisibleCursor ();
 			}
 		}
 	}
 
 	public void PressStartClick ()
 	{
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 		TitleUI.SetActive (false);
 		ParentMenu.SetActive (true);
 		uiConfirm.Play ();
@@ -113,7 +113,7 @@ public class MenuButtons : MonoBehaviour
 		if (scrollScript != null) 
 		{
 			scrollScript.HighlightedButton = 0;
-			mouseScript.InvisibleCursor ();
+			//mouseScript.InvisibleCursor ();
 		}
 
 		p1Animator.enabled = true;
@@ -171,7 +171,7 @@ public class MenuButtons : MonoBehaviour
 	{
 		if (scrollScript != null) 
 		{
-			mouseScript.InvisibleCursor ();
+			//mouseScript.InvisibleCursor ();
 			scrollScript.HighlightedButton = 1;
 		}
 			
@@ -231,7 +231,7 @@ public class MenuButtons : MonoBehaviour
 	{
 		if (scrollScript != null) 
 		{
-			mouseScript.InvisibleCursor ();
+			//mouseScript.InvisibleCursor ();
 			scrollScript.HighlightedButton = 2;
 		}
 
@@ -281,7 +281,7 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 3;
 		}
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 		settingsAnimator.enabled = true;
 		settingsAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
@@ -327,7 +327,7 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 4;
 		}
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 		creditsAnimator.enabled = true;
 		creditsAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
@@ -372,7 +372,7 @@ public class MenuButtons : MonoBehaviour
 		{
 			scrollScript.HighlightedButton = 5;
 		}
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 		quitAnimator.enabled = true;
 		quitAnimator.Play ("MainButtonHoverEnter");
 		uiHover.Play();
@@ -412,7 +412,7 @@ public class MenuButtons : MonoBehaviour
 		settings.SetActive (false);
 		credits.SetActive (false);
 		quit.SetActive (false);		
-		mouseScript.InvisibleCursor ();
+		//mouseScript.InvisibleCursor ();
 	}
 }
 	

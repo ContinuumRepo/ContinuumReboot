@@ -9,19 +9,22 @@ public class EnemyController : MonoBehaviour
 	public GameObject bossExplosion;
 	public string bossName;
 	public Text NameText;
-	public Animator NameAnim;
+	//public GameObject Shafts;
+	public GameObject BossTextObject;
 	private GameObject boss;
 	private Transform bossHover;
 	private SmoothFollowOrig smoothFollowScript;
 	private GameController gameControllerScript;
-	public GameObject Shafts;
+
 
 	void Start ()
 	{
+		BossTextObject = GameObject.FindGameObjectWithTag ("BossText");
+		BossTextObject.GetComponent<AudioSource> ().Play ();
 		FindComponents ();
-		OverrideShaftsCaster ();
+		//OverrideShaftsCaster ();
 		NameText.text = "" + bossName + "";
-		NameAnim.Play (0);
+		BossTextObject.GetComponent<Animator> ().Play (0);
 	}
 
 	void Update () 
@@ -29,7 +32,7 @@ public class EnemyController : MonoBehaviour
 		if (Brain == null || Brain.GetComponent<EnemyScript>().Health <= 0) 
 		{
 			KillBoss ();
-			ResetShaftsCaster ();
+			//ResetShaftsCaster ();
 			Destroy (gameObject);
 		}
 	}
@@ -42,18 +45,18 @@ public class EnemyController : MonoBehaviour
 		boss = GameObject.FindGameObjectWithTag ("Boss");
 		bossHover = GameObject.Find ("EnemyBossRestPoint").GetComponent<Transform> ();
 
-		NameText = GameObject.Find ("BossText").GetComponent<Text> ();
-		NameAnim = GameObject.Find ("BossText").GetComponent<Animator> ();
+		NameText = GameObject.Find ("BossTextText").GetComponent<Text> ();
+		BossTextObject.GetComponentInChildren<Animator> ().Play (0);
 
 		smoothFollowScript = GetComponent<SmoothFollowOrig> ();
 		smoothFollowScript.target = bossHover.transform;
 	}
 
-	void OverrideShaftsCaster ()
+	/*void OverrideShaftsCaster ()
 	{
 		Shafts = GameObject.FindGameObjectWithTag ("Shafts");
 		Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
-	}
+	}*/
 
 	void KillBoss ()
 	{
@@ -66,12 +69,12 @@ public class EnemyController : MonoBehaviour
 		Destroy (boss);
 	}
 
-	void ResetShaftsCaster ()
+	/*void ResetShaftsCaster ()
 	{
 		if (Shafts.GetComponent<SmoothFollowOrig> ().target == null) 
 		{
 			Shafts.GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("Player").transform;
 			//Shafts.GetComponent<SmoothFollowOrig> ().target = gameObject.transform;
 		}
-	}
+	}*/
 }

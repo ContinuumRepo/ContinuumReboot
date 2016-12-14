@@ -9,14 +9,14 @@ TagManager:
   - MainEngine
   - Barrier
   - Point
-  - StaticPointExplosion
+  - Shield
   - ReferencePoint
   - BrickStackController
   - Cube
   - Bullet
   - Brick
   - GlobalMouseController
-  - BGM
+  - A
   - ComboOrangeParticles
   - ComboYellowParticles
   - ComboGreenParticles
@@ -40,19 +40,20 @@ TagManager:
   - PlayerMesh
   - Fire
   - BossPart
-  - MainAudioSource
+  - B
   - PlayerRotate
   - PointsText
   - LevelModText
   - TSCalc
   - PlayerGeom
   - EnemyTrans
-  - ComboAudioEight
-  - ComboAudioNine
-  - ComboAudioTen
+  - C
+  - D
+  - E
   - Boss
-  - Bomb
+  - F
   - Shafts
+  - BossText
   layers:
   - Default
   - TransparentFX

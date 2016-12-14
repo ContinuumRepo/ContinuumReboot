@@ -221,11 +221,11 @@ public class GameController : MonoBehaviour
 		{
 			PauseGame (); 												// Calls PauseGame method.
 
-			Cursor.lockState = CursorLockMode.None; 					// Unlocks mouse cursor.
-			Cursor.visible = true; 										// Makes cursor visible.
+			//Cursor.lockState = CursorLockMode.None; 					// Unlocks mouse cursor.
+			//Cursor.visible = true; 										// Makes cursor visible.
 
-			MouseScript.visibleTime = MouseScript.visibleDuration; 		// Sets mouse duration
-			MouseScript.enabled = false; 								// Turns off mouse visibility script.
+			//MouseScript.visibleTime = MouseScript.visibleDuration; 		// Sets mouse duration
+			//MouseScript.enabled = false; 								// Turns off mouse visibility script.
 		}
 
 		// Pause via controller input.
@@ -233,10 +233,10 @@ public class GameController : MonoBehaviour
 		{
 			if (playerControllerScript.useKeyboardControls == true) 
 			{
-				Cursor.lockState = CursorLockMode.None;
-				Cursor.visible = true;
-				MouseScript.visibleTime = MouseScript.visibleDuration;
-				MouseScript.enabled = false;
+				//Cursor.lockState = CursorLockMode.None;
+				//Cursor.visible = true;
+				//MouseScript.visibleTime = MouseScript.visibleDuration;
+				//MouseScript.enabled = false;
 			}
 
 			PauseGame ();

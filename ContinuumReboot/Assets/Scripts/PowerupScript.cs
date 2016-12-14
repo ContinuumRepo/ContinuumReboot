@@ -41,9 +41,40 @@ public class PowerupScript : MonoBehaviour
 		{
 			if (PowerupType == poweruptype.health) 
 			{
-				playerControllerScript.Health += 25;
 				Instantiate (Explosion, gameObject.transform.position, Quaternion.Euler (0, 0, 45));
 				Destroy (gameObject);
+
+				if (playerControllerScript.Health == 25) 
+				{
+					playerControllerScript.Health50.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				if (playerControllerScript.Health == 50) 
+				{
+					playerControllerScript.Health75.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				if (playerControllerScript.Health == 75) 
+				{
+					playerControllerScript.Health100.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				if (playerControllerScript.Health == 100) 
+				{
+					playerControllerScript.Health125.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				if (playerControllerScript.Health == 125) 
+				{
+					playerControllerScript.Health150.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				if (playerControllerScript.Health == 150) 
+				{
+					playerControllerScript.Health175.GetComponent<Animator> ().Play ("HealthSegmentAppear");
+				}
+
+				playerControllerScript.Health += 25;
 			}
 
 			if (PowerupType == poweruptype.doubleShot) 
