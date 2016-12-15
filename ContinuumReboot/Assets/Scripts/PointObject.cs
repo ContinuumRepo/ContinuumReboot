@@ -78,11 +78,12 @@ public class PointObject : MonoBehaviour
 		{
 			InvokeRepeating ("ChangeBrickType", 0, changeTime);
 		}
-			
+
+		/*
 		if (PlayerControllerScript.Health < 25 && isTutorialPart == false) 
 		{
 			Destroy (gameObject);
-		}
+		}*/
 
 		if (scrollTypeSequence == true) 
 		{
@@ -143,7 +144,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += OrangePointReward * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (OrangeExplosion, transform.position, transform.rotation);
+				Instantiate (OrangeExplosion, transform.position, Quaternion.identity);
 				OrangeExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				OrangeExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0.5f, 0);
 			}
@@ -156,7 +157,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += YellowPointReward * 2 * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (YellowExplosion, transform.position, transform.rotation);
+				Instantiate (YellowExplosion, transform.position, Quaternion.identity);
 				YellowExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				YellowExplosion.GetComponentInChildren <Text> ().color = new Color (1, 1, 0);
 			}
@@ -169,7 +170,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += GreenPointReward * 3 * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (GreenExplosion, transform.position, transform.rotation);
+				Instantiate (GreenExplosion, transform.position, Quaternion.identity);
 				GreenExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				GreenExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 0);
 			}
@@ -182,7 +183,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += CyanPointReward * 4 * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (CyanExplosion, transform.position, transform.rotation);
+				Instantiate (CyanExplosion, transform.position, Quaternion.identity);
 				CyanExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				CyanExplosion.GetComponentInChildren <Text> ().color = new Color (0, 1, 1);
 			}
@@ -195,7 +196,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += PurplePointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (PurpleExplosion, transform.position, transform.rotation);
+				Instantiate (PurpleExplosion, transform.position, Quaternion.identity);
 				PurpleExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				PurpleExplosion.GetComponentInChildren <Text> ().color = new Color (0.9f, 0.2f, 1);
 			}
@@ -208,7 +209,7 @@ public class PointObject : MonoBehaviour
 					gameControllerScript.CurrentScore += RedPointReward * 5 * Time.timeScale * PlayerControllerScript.ComboN;
 				}
 
-				Instantiate (RedExplosion, transform.position, transform.rotation);
+				Instantiate (RedExplosion, transform.position, Quaternion.identity);
 				RedExplosion.GetComponentInChildren <Text> ().text = "x" + PlayerControllerScript.ComboN + "";
 				RedExplosion.GetComponentInChildren <Text> ().color = new Color (1, 0, 0);
 			}
