@@ -22,6 +22,9 @@ public class PointObject : MonoBehaviour
 	public bool randomiseType;
 	public bool changeTypeOverTime;
 	public bool scrollTypeSequence;
+	public bool reactiveBrick;
+	public int BrickStep;
+	public GameObject ReactiveBrickObject;
 	public float changeTime = 1.0f;
 	public bool isBossPart;
 	public bool isTutorialPart;
@@ -79,11 +82,10 @@ public class PointObject : MonoBehaviour
 			InvokeRepeating ("ChangeBrickType", 0, changeTime);
 		}
 
-		/*
-		if (PlayerControllerScript.Health < 25 && isTutorialPart == false) 
+		if (reactiveBrick == true) 
 		{
-			Destroy (gameObject);
-		}*/
+			InvokeRepeating ("ReactiveBrick", 0, changeTime);
+		}
 
 		if (scrollTypeSequence == true) 
 		{
@@ -309,6 +311,21 @@ public class PointObject : MonoBehaviour
 		{
 			PointType = 0;
 		}
+	}
+
+	public void ReactiveBrick ()
+	{
+		if (PointType < type.Purple) 
+		{
+			PointType += 1;
+		}
+
+		if (PointType >= type.Purple) 
+		{
+			PointType = 0;
+		}
+
+		PointType = ReactiveBrickObject.GetComponent<PointObject> ().PointType + (int) PointType + BrickStep;
 	}
 
 	void FindComponents ()
