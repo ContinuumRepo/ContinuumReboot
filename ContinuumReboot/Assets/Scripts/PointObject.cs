@@ -28,6 +28,8 @@ public class PointObject : MonoBehaviour
 	public float changeTime = 1.0f;
 	public bool isBossPart;
 	public bool isTutorialPart;
+	public bool isPartOfFormation;
+	public float CurrentBrickSpeed;
 
 	[Header ("Materials")]
 	public Material OrangeMaterial;
@@ -72,6 +74,43 @@ public class PointObject : MonoBehaviour
 	{
 		FindComponents ();
 
+		if (isPartOfFormation == false) 
+		{
+			CurrentBrickSpeed = GetComponent<BrickMovement> ().moveSpeed;
+		}
+
+		if (changeTypeOverTime == false && randomiseType == false && reactiveBrick == false)
+		{
+			if (gameControllerScript.wave == 1) 
+			{
+				PointType = (type)Random.Range (0, 1);
+			}
+
+			if (gameControllerScript.wave == 2) 
+			{
+				PointType = (type)Random.Range (0, 2);
+			}
+
+			if (gameControllerScript.wave == 3) 
+			{
+				PointType = (type)Random.Range (0, 3);
+			}
+
+			if (gameControllerScript.wave == 4) 
+			{
+				PointType = (type)Random.Range (0, 4);
+			}
+			if (gameControllerScript.wave == 5) 
+			{
+				PointType = (type)Random.Range (0, 5);
+			}
+
+			if (gameControllerScript.wave > 5 && isBossPart == false) 
+			{
+				PointType = (type)Random.Range (0, 5);
+			}
+		}
+
 		if (randomiseType == true) 
 		{
 			PointType = (type)Random.Range (0, 4);
@@ -95,40 +134,75 @@ public class PointObject : MonoBehaviour
 
 	void Update ()
 	{
+
+		if (reactiveBrick == true && ReactiveBrickObject != null) 
+		{
+		}
+
 		if (PointType == type.Orange) 
 		{
 			GetComponent<MeshRenderer> ().material = OrangeMaterial;
 			CurrentPointReward = OrangePointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true) 
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.OrangeSpeed;
+			}
 		}
 
 		if (PointType == type.Yellow) 
 		{
 			GetComponent<MeshRenderer> ().material = YellowMaterial;
 			CurrentPointReward = YellowPointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true) 
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.YellowSpeed;
+			}
 		}
 
 		if (PointType == type.Green) 
 		{
 			GetComponent<MeshRenderer> ().material = GreenMaterial;
 			CurrentPointReward = GreenPointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true) 
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.GreenSpeed;
+			}
 		}
 
 		if (PointType == type.Cyan) 
 		{
 			GetComponent<MeshRenderer> ().material = CyanMaterial;
 			CurrentPointReward = CyanPointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true) 
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.CyanSpeed;
+			}
 		}
 
 		if (PointType == type.Purple) 
 		{
 			GetComponent<MeshRenderer> ().material = PurpleMaterial;
 			CurrentPointReward = PurplePointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true)
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.PurpleSpeed;
+			}
 		}
 
 		if (PointType == type.Red) 
 		{
 			GetComponent<MeshRenderer> ().material = RedMaterial;
 			CurrentPointReward = RedPointReward;
+
+			if (GetComponent<BrickMovement> ().enabled == true) 
+			{
+				GetComponent <BrickMovement> ().moveSpeed = gameControllerScript.RedSpeed;
+			}
 		}
 	}
 
@@ -315,17 +389,20 @@ public class PointObject : MonoBehaviour
 
 	public void ReactiveBrick ()
 	{
-		if (PointType < type.Purple) 
+		if (PointType <= type.Purple) 
 		{
 			PointType += 1;
 		}
 
-		if (PointType >= type.Purple) 
+		if (PointType >= type.Red) 
 		{
-			PointType = 0;
+			PointType = type.Orange;
 		}
 
-		PointType = ReactiveBrickObject.GetComponent<PointObject> ().PointType + (int) PointType + BrickStep;
+		if (ReactiveBrickObject != null) 
+		{
+			PointType = ReactiveBrickObject.GetComponent<PointObject> ().PointType + (int) this.PointType + BrickStep;
+		}
 	}
 
 	void FindComponents ()

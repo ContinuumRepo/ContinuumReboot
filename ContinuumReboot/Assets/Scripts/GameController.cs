@@ -28,6 +28,14 @@ public class GameController : MonoBehaviour
 	public int wave;
 	public GameObject WaveLabel;
 
+	[Header ("Brick Speeds")]
+	public float OrangeSpeed = -8;
+	public float YellowSpeed = -12;
+	public float GreenSpeed = -16;
+	public float CyanSpeed = -20;
+	public float PurpleSpeed = -24;
+	public float RedSpeed = -12;
+
 	[Header ("Spawning Powerups")]
 	public GameObject[] Powerups; 								// Array of different powerups to spawn.
 	public Vector3 powerupSpawnValues; 							// Spawn X, Y, Z values.
@@ -79,6 +87,7 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
+
 		// Finds scripts.
 		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
 		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
@@ -486,7 +495,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 4)];
+						GameObject hazard = Hazards [Random.Range (0, 0)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -504,7 +513,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 9)];
+						GameObject hazard = Hazards [Random.Range (0, 2)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -522,7 +531,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 14)];
+						GameObject hazard = Hazards [Random.Range (0, 3)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -540,7 +549,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 19)];
+						GameObject hazard = Hazards [Random.Range (0, 4)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
@@ -558,7 +567,7 @@ public class GameController : MonoBehaviour
 				{
 					if (GameObject.FindGameObjectWithTag ("Boss") == null) 
 					{
-						GameObject hazard = Hazards [Random.Range (0, 24)];
+						GameObject hazard = Hazards [Random.Range (0, 5)];
 						randomColumn = Random.Range (0, columnLocations.Length);
 						Vector3 spawnPosition = new Vector3 (columnLocations [randomColumn], spawnValues.y, 0);
 						Quaternion spawnRotation = Quaternion.identity;
