@@ -104,6 +104,9 @@ public class PlayerController : MonoBehaviour
 	public ParticleSystem ActivePowerupParticles;   // Plays particle system if powerup is active.
 	public ParticleSystem TimeRunningOutParticles;  // Plays particle system if powerup is running out.
 
+	public AudioSource SpecialAbilityActivateAudio;
+	public AudioSource SpecialAbilityDeactivateAudio;
+
 	[Header ("Combos")]
 	public float 	ComboTime;
 	public int 		ComboN;
@@ -238,6 +241,7 @@ public class PlayerController : MonoBehaviour
 				{
 					AbilityActive = abilityActive.yes;
 					PlayerCollider.enabled = false;
+					SpecialAbilityActivateAudio.Play ();
 				}
 			}
 
@@ -314,6 +318,7 @@ public class PlayerController : MonoBehaviour
 								Shield.GetComponent<Animator> ().Play ("ShieldEntry");
 								AbilityActive = abilityActive.yes;
 								PlayerCollider.enabled = false;
+								SpecialAbilityActivateAudio.Play ();
 							}
 						}
 					}
@@ -344,6 +349,7 @@ public class PlayerController : MonoBehaviour
 			{
 				AbilityActive = abilityActive.no;
 				Shield.GetComponent<Animator> ().Play ("ShieldExit");
+				SpecialAbilityDeactivateAudio.Play ();
 				PlayerCollider.enabled = true;
 			}
 
@@ -452,14 +458,6 @@ public class PlayerController : MonoBehaviour
 
 		if (Health == 100) 
 		{
-			/*Health25.enabled = true;
-			Health50.enabled = true;
-			Health75.enabled = true;
-			Health100.enabled = true;
-			Health125.enabled = false;
-			Health150.enabled = false;
-			Health175.enabled = false;*/
-
 			Health25.material = HealthFull;
 			Health50.material = HealthFull;
 			Health75.material = HealthFull;
@@ -469,14 +467,6 @@ public class PlayerController : MonoBehaviour
 
 		if (Health == 75) 
 		{
-			/*Health25.enabled = true;
-			Health50.enabled = true;
-			Health75.enabled = true;
-			Health100.enabled = false;
-			Health125.enabled = false;
-			Health150.enabled = false;
-			Health175.enabled = false;*/
-
 			Health25.material = HealthThreeQuarters;
 			Health50.material = HealthThreeQuarters;
 			Health75.material = HealthThreeQuarters;
@@ -484,28 +474,12 @@ public class PlayerController : MonoBehaviour
 
 		if (Health == 50) 
 		{
-			/*Health25.enabled = true;
-			Health50.enabled = true;
-			Health75.enabled = false;
-			Health100.enabled = false;
-			Health125.enabled = false;
-			Health150.enabled = false;
-			Health175.enabled = false;*/
-
 			Health25.material = HealthHalf;
 			Health50.material = HealthHalf;
 		}
 
 		if (Health == 25) 
 		{
-			/*Health25.enabled = true;
-			Health50.enabled = false;
-			Health75.enabled = false;
-			Health100.enabled = false;
-			Health125.enabled = false;
-			Health150.enabled = false;
-			Health175.enabled = false;*/
-
 			Health25.material = HealthQuarter;
 		}
 
@@ -517,14 +491,6 @@ public class PlayerController : MonoBehaviour
 		// Health at 0.
 		if (Health <= 0) 
 		{
-			/*Health25.enabled = false;
-			Health50.enabled = false;
-			Health75.enabled = false;
-			Health100.enabled = false;
-			Health125.enabled = false;
-			Health150.enabled = false;
-			Health175.enabled = false;*/
-
 			PlayerMesh.enabled = false; 				// Turns off player mesh renderer.
 			PlayerCollider.enabled = false; 			// Turns off player collider.
 			DeactivatePlayerElements.SetActive (false); // Turns off Player Game Objects.
@@ -948,14 +914,6 @@ public class PlayerController : MonoBehaviour
 		// Gives health starting health amount.
 		Health = startingHealth;
 
-		/*Health25.enabled = true;
-		Health50.enabled = true;
-		Health75.enabled = true;
-		Health100.enabled = true;
-		Health125.enabled = false;
-		Health150.enabled = false;
-		Health175.enabled = false;*/
-
 		Health125.GetComponent<Animator> ().enabled = false;
 		Health150.GetComponent<Animator> ().enabled = false;
 		Health175.GetComponent<Animator> ().enabled = false;
@@ -997,7 +955,6 @@ public class PlayerController : MonoBehaviour
 
 	void StartingCameraConditions ()
 	{
-		//Camera.main.orthographicSize = 0.1f;
 		MainCanvas.worldCamera = Camera.main;
 		OverlayTime = 0;
 		OverlayIntensity = -0.15f;
@@ -1081,5 +1038,6 @@ public class PlayerController : MonoBehaviour
 	void DeactivateSpecialAbilities ()
 	{
 		AbilityActive = abilityActive.no;
+		SpecialAbilityDeactivateAudio.Play ();
 	}
 }

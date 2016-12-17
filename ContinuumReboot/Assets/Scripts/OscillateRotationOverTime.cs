@@ -8,9 +8,20 @@ public class OscillateRotationOverTime : MonoBehaviour
 	public float time;
 	public float offset;
 
+	public bool changePos;
+
 	void Update () 
 	{
 		time += Time.deltaTime;
-		transform.rotation = Quaternion.Euler(0, amount * Mathf.Sin(time * frequency) + offset, 0);
+
+		if (changePos == false)
+		{
+			transform.rotation = Quaternion.Euler (0, amount * Mathf.Sin (time * frequency) + offset, 0);
+		}
+
+		if (changePos == true) 
+		{
+			transform.localPosition = new Vector3 (0, amount * Mathf.Sin (time * frequency) + offset, 0);
+		}
 	}
 }

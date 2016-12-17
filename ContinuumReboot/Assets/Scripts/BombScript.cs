@@ -15,8 +15,7 @@ public class BombScript : MonoBehaviour
 
 	void Start () 
 	{
-		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
-		moveScript = GetComponent<AutoMoveAndRotate> ();
+		FindComponents ();
 
 		moveScript.moveUnitsPerSecond.value = new Vector3 (Random.Range (-MoveRange.x, MoveRange.x), Random.Range (-MoveRange.y, MoveRange.y), 0); 
 	}
@@ -49,6 +48,41 @@ public class BombScript : MonoBehaviour
 				}
 			}
 
+			if (PlayerControllerScript.Health == 25) 
+			{
+				PlayerControllerScript.Health25.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 50) 
+			{
+				PlayerControllerScript.Health50.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 75) 
+			{
+				PlayerControllerScript.Health75.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 100) 
+			{
+				PlayerControllerScript.Health100.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 125) 
+			{
+				PlayerControllerScript.Health125.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 150) 
+			{
+				PlayerControllerScript.Health150.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
+			if (PlayerControllerScript.Health == 175) 
+			{
+				PlayerControllerScript.Health175.GetComponent<Animator> ().Play ("HealthSegmentDissappear");
+			}
+
 			if (PlayerControllerScript.Health > 10) 
 			{
 				// Instantiates a larger explosion.
@@ -67,5 +101,11 @@ public class BombScript : MonoBehaviour
 				Instantiate (PlayerControllerScript.gameOverExplosion, gameObject.transform.position, Quaternion.identity);
 			}
 		}
+	}
+
+	void FindComponents ()
+	{
+		PlayerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController>();
+		moveScript = GetComponent<AutoMoveAndRotate> ();
 	}
 }

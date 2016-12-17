@@ -297,7 +297,7 @@ public class PointObject : MonoBehaviour
 		if (other.tag == "Player") 
 		{		
 			// If player health is greater than 25.
-			if (gameObject.tag == "Cube") 
+			if ((gameObject.tag == "Cube") || (gameObject.tag == "BossPart" && isBossPart == true)) 
 			{
 				if (PlayerControllerScript.Health > 25) 
 				{
@@ -355,12 +355,11 @@ public class PointObject : MonoBehaviour
 				// Instantiates a larger explosion.
 				Instantiate (PlayerExplosion, transform.position, transform.rotation);
 			}
-
-			// Gives damage to player.
-			PlayerControllerScript.Health -= Damage;
-
+					
 			if (PlayerControllerScript.Health > 25)
 			{
+				// Gives damage to player.
+				PlayerControllerScript.Health -= Damage;
 			}
 
 			// If player health is less than 10.

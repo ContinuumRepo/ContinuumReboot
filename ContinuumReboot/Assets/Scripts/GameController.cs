@@ -87,17 +87,9 @@ public class GameController : MonoBehaviour
 
 	void Start () 
 	{
-
-		// Finds scripts.
-		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
-		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
-		brickStackControllerScript = GameObject.FindGameObjectWithTag ("BrickStackController").GetComponent<BrickStackController> ();
-		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
-
-		// Starts coroutines.
-		StartCoroutine (PowerupSpawnWaves ());
-		StartCoroutine (CountDown ());
-		StartCoroutine (RareitemSpawnWaves ());
+		FindComponents ();
+		StartCoroutines ();
+		StartBrickStackController ();
 
 		isPreGame = true; 				// We are in pre-game mode.
 		ShowFpsText.SetActive (false);  // Turns off showing FPS object.
@@ -110,48 +102,11 @@ public class GameController : MonoBehaviour
 
 		//Sets application framerate to "as fast as possible"
 		Application.targetFrameRate = -1;
-
-		// Start cursor lock state.
-		//Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.Locked;
-
-		// turns off bottom barrier so the player can safely translate into the play space.
-		BottomBarrier.GetComponent<BoxCollider>().enabled = false;
-
-		// Checks if there is a time scale controller script present in scene.
-		if (timeScaleControllerScript == null) 
-		{
-			Debug.Log ("Cannot find Timescale Controller script.");
-		}
-
-		// Checks if there is a brick stack controller script present in scene.
-		if (brickStackControllerScript == null) 
-		{
-			Debug.Log ("Cannot find Brick Stack Controller script.");
-		}
-
-		// Finds Player transform.
-		Player = GameObject.FindGameObjectWithTag ("Player").transform;
-
-		if (Player == null) 
-		{
-			Debug.Log ("Cannot find Player.");
-		}
-
-		// Brick stack controller start conditions.
-		int temp = brickStackControllerScript.GetTotalColumns;
-		columnLocations = new float[temp];
-		for (int i = 0; i < temp; i++) // X-loc for each column
-			columnLocations [i] = brickStackControllerScript.GetBrickXPos (i);
 	}
 
 	void Update () 
 	{
-		// Sets fixed timestep to decrease proportionately to the timescale.
-		Time.fixedDeltaTime = Time.timeScale * 0.01667f;
-		// Fixed timestep   = time scale * 1/60;
-		// E.g 				=        0.5 / 60 = 0.00833;
-		// Since the time scale is lowered, the phyiscs update will be accurate.
+		TweakFixedTimeStep ();
 
 		if (!isPaused)
 		{
@@ -178,7 +133,6 @@ public class GameController : MonoBehaviour
 			{
 				timeScaleControllerScript.enabled = false; 	// Turns off time scale controller script.
 				Time.timeScale = 1.0f; 					   	// Sets time scale to 1.
-				//isPaused = false; 							// Keeps game unpaused.
 			}
 
 			// If the game is not in pre-game mode, and player health is greater than 0.
@@ -228,26 +182,12 @@ public class GameController : MonoBehaviour
 		// Pauses game and enables mouse pointer.
 		if (Input.GetKeyDown (KeyCode.Escape) && isPaused == false) 
 		{
-			PauseGame (); 												// Calls PauseGame method.
-
-			//Cursor.lockState = CursorLockMode.None; 					// Unlocks mouse cursor.
-			//Cursor.visible = true; 										// Makes cursor visible.
-
-			//MouseScript.visibleTime = MouseScript.visibleDuration; 		// Sets mouse duration
-			//MouseScript.enabled = false; 								// Turns off mouse visibility script.
+			PauseGame ();
 		}
 
 		// Pause via controller input.
 		if (Input.GetButtonDown ("Pause") && isPaused == false)
 		{
-			if (playerControllerScript.useKeyboardControls == true) 
-			{
-				//Cursor.lockState = CursorLockMode.None;
-				//Cursor.visible = true;
-				//MouseScript.visibleTime = MouseScript.visibleDuration;
-				//MouseScript.enabled = false;
-			}
-
 			PauseGame ();
 		}
 
@@ -658,5 +598,43 @@ public class GameController : MonoBehaviour
 				yield return new WaitForSeconds (rareitemSpawnWait);
 			}
 		}
+	}
+
+	void FindComponents ()
+	{
+		// Finds scripts.
+		timeScaleControllerScript = GameObject.FindGameObjectWithTag ("TimeScaleController").GetComponent<TimescaleController> ();
+		playerControllerScript = GameObject.Find ("Player").GetComponent<PlayerController> ();
+		brickStackControllerScript = GameObject.FindGameObjectWithTag ("BrickStackController").GetComponent<BrickStackController> ();
+		MouseScript = GameObject.FindGameObjectWithTag ("GlobalMouseController").GetComponent<GlobalMouseVisibility>();
+
+		// Finds Player transform.
+		Player = GameObject.FindGameObjectWithTag ("Player").transform;
+	}
+
+	void StartCoroutines ()
+	{
+		// Starts coroutines.
+		StartCoroutine (PowerupSpawnWaves ());
+		StartCoroutine (CountDown ());
+		StartCoroutine (RareitemSpawnWaves ());
+	}
+
+	void StartBrickStackController ()
+	{
+		// Brick stack controller start conditions.
+		int temp = brickStackControllerScript.GetTotalColumns;
+		columnLocations = new float[temp];
+		for (int i = 0; i < temp; i++) // X-loc for each column
+			columnLocations [i] = brickStackControllerScript.GetBrickXPos (i);
+	}
+
+	void TweakFixedTimeStep ()
+	{
+		// Sets fixed timestep to decrease proportionately to the timescale.
+		Time.fixedDeltaTime = Time.timeScale * 0.01667f;
+		// Fixed timestep   = time scale * 1/60;
+		// E.g 				=        0.5 / 60 = 0.00833;
+		// Since the time scale is lowered, the phyiscs update will still be accurate.
 	}
 }
