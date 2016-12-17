@@ -117,7 +117,10 @@ public class MenuButtons : MonoBehaviour
 		}
 
 		p1Animator.enabled = true;
-		p1Animator.Play ("MainButtonHoverEnter");
+		if (TitleUI.activeInHierarchy == false)
+		{
+			p1Animator.Play ("MainButtonHoverEnter");
+		}
 		uiHover.Play();
 
 		DescriptionText.text = "You control the speed of time based on your vertical position on the screen. Shoot and dodge to stay alive in order to get more points" +
@@ -149,7 +152,10 @@ public class MenuButtons : MonoBehaviour
 		bgMenuMusicLow.enabled = false;
 		bgMenuMusicHigh.enabled = false;
 
-		p1Animator.Play ("MainButtonHoverExit");
+		if (TitleUI.activeInHierarchy == false) 
+		{
+			p1Animator.Play ("MainButtonHoverExit");
+		}
 		DescriptionText.text = "" + "";
 
 		DisableAllMenus ();
