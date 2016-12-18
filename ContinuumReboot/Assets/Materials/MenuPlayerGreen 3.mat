@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: MenuPlayerGreen 3
-  m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
   m_LightmapFlags: 0
   m_CustomRenderQueue: 3000
@@ -24,6 +24,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - first:
         name: _BumpMap
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Cube
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -53,6 +59,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _DetailTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _DownTex
       second:
         m_Texture: {fileID: 0}
@@ -62,6 +74,12 @@ Material:
         name: _EmissionMap
       second:
         m_Texture: {fileID: 2800000, guid: f4e9b63dfec4d7b49b01dbf0c89a84a5, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _FalloffTex
+      second:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -97,7 +115,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 53b06ba65350b8945b7be703263f9ac0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -116,6 +134,12 @@ Material:
         name: _ParallaxMap
       second:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _Ramp
+      second:
+        m_Texture: {fileID: 2800000, guid: 6b1107c4bebb3c54ab9e593a4c75da30, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -138,6 +162,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     - first:
         name: _RightTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ShadowTex
       second:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -168,6 +198,9 @@ Material:
         name: _BumpScale
       second: 1
     - first:
+        name: _ColorMask
+      second: 15
+    - first:
         name: _Cutoff
       second: 0.511
     - first:
@@ -178,6 +211,9 @@ Material:
       second: 1000
     - first:
         name: _DstBlend
+      second: 10
+    - first:
+        name: _EdgeLength
       second: 10
     - first:
         name: _Emission
@@ -205,7 +241,7 @@ Material:
       second: 0
     - first:
         name: _InvFade
-      second: 2.2
+      second: 0.01
     - first:
         name: _Metallic
       second: 0
@@ -217,7 +253,7 @@ Material:
       second: 1
     - first:
         name: _Outline
-      second: 0.005
+      second: 0.0119
     - first:
         name: _Parallax
       second: 0.02
@@ -243,11 +279,35 @@ Material:
         name: _SrcBlend
       second: 5
     - first:
+        name: _Stencil
+      second: 0
+    - first:
+        name: _StencilComp
+      second: 8
+    - first:
+        name: _StencilOp
+      second: 0
+    - first:
+        name: _StencilReadMask
+      second: 255
+    - first:
+        name: _StencilWriteMask
+      second: 255
+    - first:
+        name: _Strength
+      second: 0.2
+    - first:
         name: _UVSec
+      second: 0
+    - first:
+        name: _UseUIAlphaClip
       second: 0
     - first:
         name: _WaveScale
       second: 0.063
+    - first:
+        name: _WireThickness
+      second: 0
     - first:
         name: _ZWrite
       second: 0
@@ -265,6 +325,9 @@ Material:
         name: _BaseColor
       second: {r: 0.54, g: 0.95, b: 0.99, a: 0.5}
     - first:
+        name: _BaseScale
+      second: {r: 1, g: 1, b: 1, a: 0}
+    - first:
         name: _BumpDirection
       second: {r: 1, g: 1, b: -1, a: 1}
     - first:
@@ -272,10 +335,16 @@ Material:
       second: {r: 1, g: 1, b: -2, a: 3}
     - first:
         name: _Color
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _DistortParams
       second: {r: 1, g: 1, b: 2, a: 1.15}
+    - first:
+        name: _EmisColor
+      second: {r: 0.18382353, g: 0.18382353, b: 0.18382353, a: 0}
+    - first:
+        name: _Emission
+      second: {r: 1, g: 1, b: 1, a: 0}
     - first:
         name: _EmissionColor
       second: {r: 2.4117646, g: 3.6411765, b: 8, a: 1}
@@ -305,10 +374,13 @@ Material:
       second: {r: 0.15, g: 0.15, b: 0.5, a: 1}
     - first:
         name: _OutlineColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _QOffset
       second: {r: 0, g: 3200, b: 0, a: 0}
+    - first:
+        name: _ReflectColor
+      second: {r: 1, g: 1, b: 1, a: 0.5}
     - first:
         name: _ReflectionColor
       second: {r: 0.54, g: 0.95, b: 0.99, a: 0.5}
@@ -317,7 +389,7 @@ Material:
       second: {r: 0.34, g: 0.85, b: 0.92, a: 1}
     - first:
         name: _SpecColor
-      second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+      second: {r: 1, g: 1, b: 1, a: 1}
     - first:
         name: _SpecularColor
       second: {r: 0.72, g: 0.72, b: 0.72, a: 1}
