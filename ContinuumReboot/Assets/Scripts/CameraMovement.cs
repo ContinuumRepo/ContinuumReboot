@@ -13,6 +13,9 @@ public class CameraMovement : MonoBehaviour
 
 	void Update () 
 	{
-	
+		if (GetComponent<SmoothFollowOrig> ().target == null) 
+		{
+			GetComponent<SmoothFollowOrig> ().target = GameObject.Find ("Player 1").transform;
+		}
 	}
 }
