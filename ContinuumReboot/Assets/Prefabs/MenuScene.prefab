@@ -3436,7 +3436,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924920748553622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.11, y: 0, z: 0}
+  m_LocalPosition: {x: 1.4, y: 0.49, z: 0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4616745753851136}
@@ -4750,7 +4750,7 @@ Animator:
   m_GameObject: {fileID: 1727001269355802}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 181ee2bd6b6963a4c9dc3117d754ad5b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 90a213c64f897bc49a69d7cecb8a57d7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5944,12 +5944,12 @@ MonoBehaviour:
   useSmoothing: 1
   target: {fileID: 4392370214330938}
   velocity: {x: 0, y: 0, z: 0}
-  xMin: 0
-  xMax: 0
-  yMin: 0
-  yMax: 0
-  zMin: 0
-  zMax: 0
+  xMin: -1000
+  xMax: 1000
+  yMin: -1000
+  yMax: 1000
+  zMin: -1000
+  zMax: 1000
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
@@ -7274,12 +7274,12 @@ MonoBehaviour:
   useSmoothing: 1
   target: {fileID: 4243522947081556}
   velocity: {x: 0, y: 0, z: 0}
-  xMin: 0
-  xMax: 0
-  yMin: 0
-  yMax: 0
-  zMin: 0
-  zMax: 0
+  xMin: -1000
+  xMax: 1000
+  yMin: -1000
+  yMax: 1000
+  zMin: -1000
+  zMax: 1000
   useRB: 0
   lockedPos: 0
   hasLockedPos: 0
@@ -8805,7 +8805,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1924920748553622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1829541f8b949da4eadaeaeed48ab13b, type: 3}
   m_Name: 
@@ -9387,11 +9387,11 @@ MonoBehaviour:
   - {fileID: 1170299655809890}
   - {fileID: 1792768435182948}
   - {fileID: 1777446598955770}
-  bgMenuMusicLow: {fileID: 0}
-  bgMenuMusicHigh: {fileID: 0}
+  bgMenuMusicLow: {fileID: 169859359510855824}
+  bgMenuMusicHigh: {fileID: 165608673673688910}
   title: {fileID: 1727001269355802}
   backAudio: {fileID: 82075298725661198}
-  bgMenuAudio: {fileID: 0}
+  bgMenuAudio: {fileID: 82268587025699724}
   creditsAudio: {fileID: 82301901853964852}
   CameraAnim: {fileID: 95281079403032746}
 --- !u!114 &114830101085455738
@@ -9709,7 +9709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_FirstSelected: {fileID: 1223010324275888}
-  m_sendNavigationEvents: 1
+  m_sendNavigationEvents: 0
   m_DragThreshold: 5
 --- !u!114 &114888920515180584
 MonoBehaviour:
@@ -26018,7 +26018,7 @@ ParticleSystem:
   lengthInSec: 5
   speed: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   autoRandomSeed: 1
   startDelay:
@@ -41624,7 +41624,7 @@ ParticleSystem:
   lengthInSec: 5
   speed: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   autoRandomSeed: 1
   startDelay:

@@ -39,7 +39,7 @@ public class MenuBack : ButtonEvents
 		backAnimator.Play ("MainToStart");
 		MenuMusic.UnPause ();
 		CreditsMusic.Pause ();
-		FadePanel.GetComponent<Animator> ().enabled = false;
+		//FadePanel.GetComponent<Animator> ().enabled = false;
 	}
 
 	public override void OnEnter()
